@@ -7,7 +7,7 @@ In this project, I will document all the C coding questions.
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/duplicateZeros
 * Merge Sorted Array(Easy) 
   * Question: https://leetcode.com/problems/merge-sorted-array/
-  * Solution:
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/merge
 * Remove Element(Easy) 
   * Question: https://leetcode.com/problems/remove-element/
   * Solution:
