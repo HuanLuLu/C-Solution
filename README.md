@@ -4,3 +4,4 @@ In this project, I will document all the C coding questions.
 ## Array
 * Duplicate Zeros(Easy) https://leetcode.com/problems/duplicate-zeros/
 * Merge Sorted Array(Easy) https://leetcode.com/problems/merge-sorted-array/
+* Remove Element(Easy) https://leetcode.com/problems/remove-element/
