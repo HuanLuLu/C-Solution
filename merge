@@ -3,7 +3,7 @@ Create three pointers:
 r_nums1 point to the right-most element in nums1
 r_nums2 point to the right-most element in nums2
 end point to the end of nums1(physical end not the last element in nums1)
-Go through two arraies backward, so we don't need extra memory
+Go through two arrays backward, so we don't need extra memory
 
 Time complexity: O(m+n)
 Space complexity: O(1)
