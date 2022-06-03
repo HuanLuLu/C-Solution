@@ -1,0 +1,46 @@
+Methode 1:
+Create a tempo memory to save the input array. Then go through the tempo array forward in such a way that:
+  1. copy the current element to the input array;
+  2. if the current element is zero, add another zero into the array.
+Time complexity: O(n)
+Space complexity: O(n)
+
+Method 2:
+Duplicate the zeros without extra memory
+First, we need to count how many zeros are in the input array;
+
+Second, we insert the element into the right place backwords, so when we insert the element, we won't cover the elements in front of it, 
+which we still need to insert.
+
+Third, we consider the algorithm as: there is an invisible array with all zeros duplicated. Then we prune the array to the right size. 
+In other words, we could create a pointer point to the end of the invisible array. We won't insert any element until the location the pointer 
+pointed is inside the range of the input array.
+
+Time complexity: O(n)
+Space complexity: O(1)
+
+Code for method 2:
+
+void duplicateZeros(int* arr, int arrSize){
+    int countZero = 0;
+    for (int i=0; i<arrSize; i++) {
+        if (*(arr+i)==0) {countZero++;}
+    }
+
+    int r_arr = arrSize-1, r_temp = arrSize+countZero-1;
+
+    while(r_arr>=0) {
+        if (*(arr+r_arr)==0) {
+            if (r_temp < arrSize) {
+                *(arr+ r_temp)=0;
+            }
+            r_temp--;
+        }
+        if (r_temp < arrSize) {
+            *(arr+ r_temp) = *(arr+r_arr);
+        }
+        r_temp--;
+        r_arr--;
+    }
+    return;
+}
