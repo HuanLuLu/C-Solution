@@ -1,0 +1,66 @@
+In this question, we are asked to remove element from the list without using extra memory.
+First we could know, we need to use two pointers, one is to point the location to insert, the oter one is to searching the next elememt.
+
+Method 1: (not optimal)
+one pointer point to the start, the other one point the right-most valid element. 
+The method is the insert the right-most element to the front to remove the element.
+
+Time Complexity: O(n)
+Space Comlexity: O(1)
+
+int *moveRight(int *left, int *right, int val);
+
+int removeElement(int* nums, int numsSize, int val){
+	if ((numsSize==0) || (nums==NULL)) { return 0;}
+	
+	int count = 0;
+	int *left = nums, *right = nums+numsSize-1;
+
+	right = moveRight(left, right, val);
+
+	while (right >= left) {
+		if (*left == val) {
+			*left = *right;
+			left++;
+			right--;
+			right = moveRight(left, right, val);
+			count++;
+		}
+		else {
+			count++;
+			left++;
+		}
+	}
+	return count;
+}
+
+int *moveRight(int *left, int *right, int val) {
+	while (right >= left) {
+		if (*right != val) {return right;}
+		right--;
+	}
+	return right;
+}
+
+
+Method 2:
+Also create two pointers. 
+One will point to the right-most checked element; the other one will point to the next element to check.
+
+Time Complexity: O(n)
+Space Complexity: O(1)
+
+int removeElement(int* nums, int numsSize, int val){
+	int count = 0;
+	int *i = nums-1, *j = nums;
+
+	while(j < nums+numsSize) {
+		if (*j != val) {
+			i++;
+			*i = *j;
+			count++;
+		}
+		j++;
+	}
+	return count;
+}
