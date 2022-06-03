@@ -1,4 +1,6 @@
 # C-Solution
 In this project, I will document all the C coding questions.
 
-* Duplicate Zeros https://leetcode.com/problems/duplicate-zeros/
+## Array
+* Duplicate Zeros(Easy) https://leetcode.com/problems/duplicate-zeros/
+* Merge Sorted Array(Easy) https://leetcode.com/problems/merge-sorted-array/
