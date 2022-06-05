@@ -1,0 +1,17 @@
+Using two pointers, one point to the right-most no-duplicates array, the other one point to the current element.
+
+int removeDuplicates(int* nums, int numsSize){
+	int *i = nums, *j = nums;
+	int count = 1;
+
+	while (j < nums+numsSize) {
+		if (*i != *j) {
+			i++;
+			*i = *j;
+			count++;
+		}
+		j++;
+	}
+
+	return count;
+}
