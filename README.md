@@ -11,3 +11,6 @@ In this project, I will document all the C coding questions.
 * Remove Element(Easy) 
   * Question: https://leetcode.com/problems/remove-element/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Remove%20Element
+* Remove Duplicates from Sorted Array(Easy)
+  * Question: https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/removeDuplicates 
