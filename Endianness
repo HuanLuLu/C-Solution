@@ -1,0 +1,48 @@
+Let's assume a 32-bit quantity written as 12345678, which is hexadecimal. Science each hex digit is four bits, we need eight hex dights/four bytes to 
+represent the 32-bit value. The four bytes are: 12, 34, 56, 78.
+
+1. Definition
+
+For Big-endian:
+Store the most significant  byte in the samllest address:
+
+Address |  Value
+------------------
+1000    |   12
+1001    |   34
+1002    |   56
+1003    |   78
+
+
+For Little-endian:
+Store the least significant byte in the smallest address
+
+Address |  Value
+------------------
+1000    |   78
+1001    |   56
+1002    |   34
+1003    |   12
+
+2. Determin Endianness:
+constant int EndianTest = 1;
+#define is_bigendiant() (*((char *)&EndianTest)==0)
+
+Example:
+if (is_bigendiant) {...}
+
+3. Network Byte Order
+All of the protocol layers in TCP/IP are defined to be big-endian. So we send/receive the most significant bytes first.
+The multi-byte interger representation is called: network byte order.
+
+Even if the computers at each end are little-endian, multi-byte integers passed between them must be convered to network byte order prito to transmiision
+across the network.
+
+4. When Does Endianness Matter
+Endianness only makes sense when you are breaking up a multi-byte quantity and are trying to store the bytes at consecutive memory locations. 
+However, if you have a 32-bit register storing a 32-bit value, it makes no sense to talk about endianness. The register is neigther big-endian nor
+little-endian; it's just a register holding a 32-bit value. The rightmost bit is the least significant bit, and the leftmost bit is the most significant bit.
+
+If someone classifies a register as a big-endian, because it stores its most signficant byte at the lowest memory address.
+
+reference: https://developer.ibm.com/articles/au-endianc/
