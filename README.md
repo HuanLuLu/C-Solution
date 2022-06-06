@@ -18,4 +18,4 @@ In this project, I will document all the C coding questions.
 ## HashTable
 * Hash Table
   * Original Solution: https://www.tutorialspoint.com/data_structures_algorithms/hash_table_program_in_c.htm
-  * Improvement:  
+  * Improvement:  https://github.com/HuanLuLu/C-Solution/blob/main/HashTable
