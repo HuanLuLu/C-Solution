@@ -1,0 +1,83 @@
+We can pack individual boolean values into a signel integer/8-bits values for storage efficiency purpose. This is done by using the 
+bitwise and shift oprators to set, clear, check and toggle individual bits in the integer/8-bits value, treating each bit as a separate boolean value.
+
+Useful Macros:
+#define FLAG_0 (1<<0) //1
+#define FLAG_1 (1<<1) //2
+#define FLAG_2 (1<<2) //4
+#define FLAG_3 (1<<3) //8
+#define FLAG_4 (1<<4) //16
+#define FLAG_5 (1<<5) //32
+#define FLAG_6 (1<<6) //64
+#define FLAG_7 (1<<7) //128
+
+#define SetFlag(n,f) (n |= f)
+#define ClrFlag(n,f) (n &= (~f))
+#define TglFlag(n,f) (n ^= f)
+#define ChkFlag(n,f) (n &= f)
+
+
+Example:
+#include <stdio.h>
+
+#define FLAG_0 (1<<0) //1
+#define FLAG_1 (1<<1) //2
+#define FLAG_2 (1<<2) //4
+#define FLAG_3 (1<<3) //8
+#define FLAG_4 (1<<4) //16
+#define FLAG_5 (1<<5) //32
+#define FLAG_6 (1<<6) //64
+#define FLAG_7 (1<<7) //128
+
+#define SetFlag(n,f) (n |= f)
+#define ClrFlag(n,f) (n &= (~f))
+#define TglFlag(n,f) (n ^= f)
+#define ChkFlag(n,f) (n &= f)
+
+int main() {
+    unsigned char bitFlag = 0;
+    //set flag
+    bitFlag |= FLAG_2; //4
+    printf("the bitFlat = %u \n", bitFlag);
+    
+    //clean flag
+    bitFlag &= ~FLAG_2; //4
+    printf("the bitFlat = %u \n", bitFlag);
+    
+    //check flag
+    int result = bitFlag & FLAG_2;
+    printf("the bitFlag is %u, and the checking result is %d \n", bitFlag, result);
+    
+    bitFlag |= FLAG_4;
+    result = bitFlag & FLAG_4;
+    printf("the bitFlag is %u, and the checking result is %d \n", bitFlag, result);
+    
+    //Toggle the flag
+    bitFlag ^= FLAG_4;
+    printf("the bitFlat = %u \n", bitFlag);
+  //----------------------------------------------------------
+    printf("================\n");
+    //set flag
+    SetFlag(bitFlag, FLAG_2); //4
+    printf("the bitFlat = %u \n", bitFlag);
+    
+    //clear flag
+    ClrFlag(bitFlag, FLAG_2); //4
+    printf("the bitFlat = %u \n", bitFlag);
+    
+    //check flag
+    result = ChkFlag(bitFlag, FLAG_2);
+    printf("the bitFlag is %u, and the checking result is %d \n", bitFlag, result);
+    
+    SetFlag(bitFlag, FLAG_4);
+    result = ChkFlag(bitFlag, FLAG_4);
+    printf("the bitFlag is %u, and the checking result is %d \n", bitFlag, result);
+    
+    TglFlag(bitFlag, FLAG_4);
+    printf("the bitFlat = %u \n", bitFlag);
+    
+
+}
+
+
+Reference: https://blog.podkalicki.com/bit-level-operations-bit-flags-and-bit-masks/
