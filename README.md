@@ -22,3 +22,4 @@ In this project, I will document all the C coding questions.
 
 ## Others:
 * Enumaration: https://github.com/HuanLuLu/C-Solution/blob/main/Boolean%20Type%20In%20C
+* Endianness: https://github.com/HuanLuLu/C-Solution/blob/main/Endianness
