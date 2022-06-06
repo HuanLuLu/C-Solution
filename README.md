@@ -14,3 +14,8 @@ In this project, I will document all the C coding questions.
 * Remove Duplicates from Sorted Array(Easy)
   * Question: https://leetcode.com/problems/remove-duplicates-from-sorted-array/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/removeDuplicates 
+
+## HashTable
+* Hash Table
+  * Original Solution: https://www.tutorialspoint.com/data_structures_algorithms/hash_table_program_in_c.htm
+  * Improvement:  
