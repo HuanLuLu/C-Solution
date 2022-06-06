@@ -23,3 +23,4 @@ In this project, I will document all the C coding questions.
 ## Others:
 * Enumaration: https://github.com/HuanLuLu/C-Solution/blob/main/Boolean%20Type%20In%20C
 * Endianness: https://github.com/HuanLuLu/C-Solution/blob/main/Endianness
+* Bit Flags and Bit Masks: https://github.com/HuanLuLu/C-Solution/blob/main/Bit%20Flags%20and%20Bit%20Masks
