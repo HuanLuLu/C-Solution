@@ -1,0 +1,22 @@
+Since there is no boolean type in C, we could create our own boolean type.
+
+typedef enum {FALSE=0, TRUE=1} bool;
+#define FALSE 0
+#define TRUE  1
+
+
+Example:
+bool isFull(void) {
+    for (int i=0; i<SIZE; i++) {
+        if ( hashArray[i] == NULL || hashArray[i]->key == INVALID_KEY) {
+            return FALSE;
+        }
+    }
+    return TRUE;
+}
+
+
+bool insert(int key, int data) {
+    if (isFull()) {return FALSE;}
+    ....
+}
