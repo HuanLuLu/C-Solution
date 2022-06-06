@@ -19,3 +19,6 @@ In this project, I will document all the C coding questions.
 * Hash Table
   * Original Solution: https://www.tutorialspoint.com/data_structures_algorithms/hash_table_program_in_c.htm
   * Improvement:  https://github.com/HuanLuLu/C-Solution/blob/main/HashTable
+
+## Others:
+* Enumaration: https://github.com/HuanLuLu/C-Solution/blob/main/Boolean%20Type%20In%20C
