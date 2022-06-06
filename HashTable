@@ -1,0 +1,140 @@
+In the original solution, it have several issues:
+1. The code will loop infinitely when the hash table is full and we are trying to insert another data;
+2. The code will loop infinitely when the hash table is full, we want to delete/search a data that does not exist in the hash table;
+3. when we delete the data from the hash table, the original code doesn't free the memory and cause a memory leak.
+
+Some improvements:
+1. Create a new bool type.
+
+#include <stdio.h>
+#include <stdlib.h>
+
+struct DataItem {
+    int key;
+    int data;
+};
+
+typedef enum {FALSE=0, TRUE=1} bool;
+#define FALSE 0
+#define TRUE 1
+
+#define SIZE 1
+#define INVALID_KEY -1
+#define INVALID_INDEX -1
+
+struct DataItem *hashArray[SIZE];
+
+void initalHashArray(void) {
+    for (int i=0; i<SIZE; i++) {
+        hashArray[i] = NULL;
+    }
+    return;
+}
+
+bool isFull(void) {
+    for (int i=0; i<SIZE; i++) {
+        if ( hashArray[i] == NULL || hashArray[i]->key == INVALID_KEY) {
+            return FALSE;
+        }
+    }
+    return TRUE;
+}
+
+bool isDataItemEmpty(struct DataItem *dataItem) {
+    return (dataItem == NULL || dataItem->key == INVALID_KEY) ? TRUE : FALSE;
+}
+
+int getHashKey(int key) {
+    return key%SIZE;
+}
+
+bool insert(int key, int data) {
+    if (isFull()) {return FALSE;}
+
+    int hashKey = getHashKey(key);
+    struct DataItem *dataItem = (struct DataItem *)malloc(sizeof(struct DataItem));
+    dataItem->key = key;
+    dataItem->data = data;
+
+    while (!isDataItemEmpty(hashArray[hashKey])) {
+        hashKey += 1;
+        hashKey %= SIZE;
+    }
+
+    hashArray[hashKey] = dataItem;
+    return TRUE;
+}
+
+struct DataItem *search(int key) {
+    int hashKey = getHashKey(key);
+    int count = 0;
+
+    while (!isDataItemEmpty(hashArray[hashKey])) {
+        if ( hashArray[hashKey]->key == key ) {return hashArray[hashKey];}
+        hashKey += 1;
+        hashKey %= SIZE;
+        count++;
+        if (count>SIZE) {return NULL;}
+    }
+    return NULL;
+}
+
+void del(int key) {
+    int hashKey = getHashKey(key);
+    int count = 0;
+    
+    while (!isDataItemEmpty(hashArray[hashKey])) {
+        if ( hashArray[hashKey]->key == key ) {
+            hashArray[hashKey]->key = -1;
+            return;
+        }
+        else {
+            hashKey += 1;
+            hashKey %= SIZE;
+            count++;
+            if (count>SIZE) {return;}
+        }
+    }
+    return;
+}
+
+void display(void) {
+    for (int i=0; i<SIZE; i++) {
+        if (!isDataItemEmpty(hashArray[i])) {
+            printf("hashArray[%d] key is %d, data is %d \n", i, hashArray[i]->key, hashArray[i]->data);
+        }
+        else {
+            printf("hashArray[%d] is Empty \n", i);
+        }
+    }
+    return;
+}
+
+
+int main() {
+    initalHashArray();
+    
+    insert(1, 20);
+    insert(37, 97);
+    
+    display();
+    
+    struct DataItem *item = search(37);
+
+       if(item != NULL) {
+          printf("Element found: %d\n", item->data);
+       } else {
+          printf("Element not found\n");
+       }
+
+       del(37);
+       item = search(37);
+
+       if(item != NULL) {
+          printf("Element found: %d\n", item->data);
+       } else {
+          printf("Element not found\n");
+       }
+
+    return 0;
+}
