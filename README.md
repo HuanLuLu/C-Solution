@@ -14,6 +14,9 @@ In this project, I will document all the C coding questions.
 * Remove Duplicates from Sorted Array(Easy)
   * Question: https://leetcode.com/problems/remove-duplicates-from-sorted-array/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/removeDuplicates 
+* Valid Mountain Array 
+  * Question: https://leetcode.com/problems/valid-mountain-array/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Valid%20Mountain%20Array
 
 ## HashTable
 * Hash Table
