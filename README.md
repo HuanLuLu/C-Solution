@@ -14,9 +14,12 @@ In this project, I will document all the C coding questions.
 * Remove Duplicates from Sorted Array(Easy)
   * Question: https://leetcode.com/problems/remove-duplicates-from-sorted-array/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/removeDuplicates 
-* Valid Mountain Array 
+* Valid Mountain Array(Easy) 
   * Question: https://leetcode.com/problems/valid-mountain-array/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Valid%20Mountain%20Array
+* Replace Elements with Greatest Element on Right Side
+  * Question: https://leetcode.com/problems/replace-elements-with-greatest-element-on-right-side/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Replace%20Elements%20with%20Greatest%20Element%20on%20Right%20Side
 
 ## HashTable
 * Hash Table
