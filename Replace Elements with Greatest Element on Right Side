@@ -1,0 +1,19 @@
+Straight forward algorithm. 
+Method 1: 
+start from the left-most of the array, and find the max of the right part of array. Brutal force, the time complexity is O(n^2)
+
+Method 2:
+Search from the end. Create two variables: 
+right_max--record the max element on the right side of current element;
+curr_max--record max element for current and the right part of current element.
+
+int* replaceElements(int* arr, int arrSize, int* returnSize){
+    int curr_max = -1, right_max = -1;
+	for (int i = arrSize-1; i>=0; i--) {
+		curr_max = (arr[i] > curr_max) ? arr[i] : curr_max;
+		arr[i] = right_max;
+		right_max = curr_max;
+	}
+	*returnSize = arrSize;
+	return arr;
+}
