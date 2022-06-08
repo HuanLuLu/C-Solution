@@ -1,0 +1,62 @@
+Common Check point:
+1. Must have strictly increase 
+2. Must have strictly decrease
+3. Must have increase first then decrease
+
+Two methods:
+
+Method 1
+1. count the turnning point, mush only have 1
+2. calculate the multiplication of two consecutive slop. 
+   if the sign is postive, continue
+   if the sign is negative, turn point ++
+   if zero, return false
+3. make sure the number of turnpoint is 1
+
+#define TRUE 1
+#define FALSE 0
+
+bool validMountainArray(int* arr, int arrSize){
+	if (arrSize < 3) {return FALSE;}
+
+	int countTurn = 0, prev_sub = 1, curr_sub = 0;
+
+	for (int i = 1; i < arrSize; i++) {
+		curr_sub = arr[i] - arr[i-1];
+
+		if (curr_sub * prev_sub == 0) {return FALSE;}
+
+		if (curr_sub * prev_sub < 0) {
+			if ((countTurn != 0) || (i == 1)) {return FALSE;}
+			countTurn++;
+		}
+        prev_sub = curr_sub;
+	}
+	return (countTurn == 1) ? TRUE : FALSE;
+}
+
+Method 2
+Using while loop to go through the inceasing elements;
+after going through all increasing elements, make sure the number of increase elements not zero or whole array
+Go through the decreasing elements
+At this point, we should have went through the whole array elements
+
+#define TRUE 1
+#define FALSE 0
+
+bool validMountainArray(int* arr, int arrSize){
+	int i = 1;
+    while ((i<arrSize) && (arr[i]>arr[i-1])) {
+        i++;
+    }
+    
+    if ((i == 1) || (i == arrSize)) {return FALSE;}
+    
+    while ((i < arrSize) && (arr[i]<arr[i-1])) {
+        i++;
+    }
+    
+    return (i == arrSize) ? TRUE : FALSE;
+}
+
+
