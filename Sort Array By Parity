@@ -1,0 +1,16 @@
+Straight forward solution. Please note the swap in the algorithm.
+
+int* sortArrayByParity(int* nums, int numsSize, int* returnSize){
+	int i = -1;
+	int temp = 0;
+	for (int j=0; j<numsSize; j++) {
+		if (nums[j]%2 == 0) {
+			i++;
+			temp = nums[i];
+			nums[i] = nums[j];
+			nums[j] = temp;
+		}
+	}
+	*returnSize = numsSize;
+	return nums;
+}
