@@ -23,6 +23,9 @@ In this project, I will document all the C coding questions.
 * Move Zeroes
   * Question: https://leetcode.com/problems/move-zeroes/submissions/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Move%20Zeroes
+* Sort Array By Parity
+  * Question: https://leetcode.com/problems/sort-array-by-parity/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Sort%20Array%20By%20Parity
 
 ## HashTable
 * Hash Table
