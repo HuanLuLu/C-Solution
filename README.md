@@ -20,6 +20,9 @@ In this project, I will document all the C coding questions.
 * Replace Elements with Greatest Element on Right Side
   * Question: https://leetcode.com/problems/replace-elements-with-greatest-element-on-right-side/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Replace%20Elements%20with%20Greatest%20Element%20on%20Right%20Side
+* Move Zeroes
+  * Question: https://leetcode.com/problems/move-zeroes/submissions/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Move%20Zeroes
 
 ## HashTable
 * Hash Table
