@@ -1,0 +1,39 @@
+Quick in C:
+
+Standard C library provides qsort() that can be used for sorting an array. 
+As the name suggests, the function uses QuickSort algorithm to sort the given array. Following is prototype of qsort()
+
+void qsort (void* base, size_t num, size_t size, int (*comparator)(const void*,const void*));
+
+int comparator(const void* p1, const void* p2);
+Return value meaning
+<0 The element pointed by p1 goes before the element pointed by p2
+0  The element pointed by p1 is equivalent to the element pointed by p2
+>0 The element pointed by p1 goes after the element pointed by p2
+
+Example: Quick Sort an array:
+#include <stdio.h>
+#include <stdlib.h>
+
+int comparator(const void *p, const void *q) {
+    int l = *(const int *)p;
+    int r = *(const int *)q;
+    return l-r;
+}
+
+int main() {
+    int a[5] = {1,5,3,6,2};
+    qsort(a, 5, sizeof(int), comparator);
+    for (int i=0; i<5; i++){
+        printf("a[%d] = %d\n", i, a[i]);
+    }
+}
+
+Result:
+a[0] = 1
+a[1] = 2
+a[2] = 3
+a[3] = 5
+a[4] = 6
+
+Reference: https://www.geeksforgeeks.org/comparator-function-of-qsort-in-c/
