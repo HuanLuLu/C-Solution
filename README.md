@@ -29,6 +29,9 @@ In this project, I will document all the C coding questions.
 * Height Checker 
   * Question: https://leetcode.com/problems/height-checker/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Height%20Checker
+* Max Consecutive Ones II
+  * Question: https://leetcode.com/problems/max-consecutive-ones-ii/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Max%20Consecutive%20Ones%20II
 
 ## HashTable
 * Hash Table
