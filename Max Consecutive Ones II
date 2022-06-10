@@ -1,0 +1,55 @@
+Method 1:
+Use two pointers: i--last zero; j--current
+Used two counts: c1: count number of last ones; c2: count number of current ones
+
+This method is not the optimal:
+1. for [1,0], nums[j] != 1, so won't have change to update the max
+2. for [1], no zeros in the array, need extra code to check if we need add 1 for flipping
+
+int findMaxConsecutiveOnes(int* nums, int numsSize){
+	int i = -1, j = 0;
+	int c1 = 0, c2 = 0, max = 1;
+	int temp = 0;
+
+	for (; j<numsSize; j++) {
+		if (nums[j] == 1) {
+			c2++;	
+			temp = (i==-1) ? c1+c2 : c1+c2+1;
+			max = (temp > max)? temp : max;
+		}
+		else {
+			c1 = c2;
+			c2 = 0;
+			i = j;		
+		}
+	}
+    
+    if (nums[numsSize-1] == 0) {
+		temp = (i==-1) ? c1+c2 : c1+c2+1;
+		max = (temp > max)? temp : max;
+    }
+	return max;
+}
+
+Method 2:
+Consider "slide window": What is the legal window?
+Only have 1 zeros
+Every time move window, make sure the window is legal, then update the max
+
+int findMaxConsecutiveOnes(int* nums, int numsSize){
+	int l = 0, r = 0;
+	int max = 1;
+	int countZero = 0;
+
+	for (; r<numsSize; r++) {
+		if (nums[r] == 0) {
+			countZero++; 
+		}
+		while (countZero > 1) {
+			if (nums[l] == 0) {countZero--;}
+			l++;
+		}
+		max = ((r-l+1) > max) ? (r-l+1) : max;
+	}
+	return max;
+}
