@@ -1,0 +1,31 @@
+Since we are using C, we need somehow to sort it first then compare the difference.
+ 
+Method 1: Using qsort() from C standard libarary.
+Time complexity: O(nlogn)
+Space complexity: O(n)
+
+
+#include <stdlib.h>
+
+int comparator (const void *first, const void *second) {
+	int a1 = *(const int *)first, a2 = *(const int *)second;
+	return a1-a2;
+}
+
+int heightChecker(int* heights, int heightsSize){
+	int temp[heightsSize];
+	for (int i=0; i<heightsSize; i++) {
+		temp[i] = heights[i];
+	}
+
+	qsort(temp, heightsSize, sizeof(int), comparator);
+
+	int count = 0;
+	for (int i=0; i<heightsSize; i++) {
+		if (temp[i]!=heights[i]) {count ++;}
+	}
+	return count;
+}
+
+Method 2: Using counting sort to decrease the time complexity from O(nlogn) to O(n+m)
+The trade off is space complexity: O(n+m)
