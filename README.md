@@ -26,6 +26,9 @@ In this project, I will document all the C coding questions.
 * Sort Array By Parity
   * Question: https://leetcode.com/problems/sort-array-by-parity/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Sort%20Array%20By%20Parity
+* Height Checker 
+  * Question: https://leetcode.com/problems/height-checker/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Height%20Checker
 
 ## HashTable
 * Hash Table
