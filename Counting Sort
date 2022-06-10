@@ -1,0 +1,69 @@
+Counting Sort
+
+Counting sort is a sort method using hash-like extra array to calculate the position of each element in the result.
+
+Characterastics of counting sort:
+1. Counting sort make assumption about the data. The values of data will in a specific range.
+2. Counting sort algorithm is not a comparison-based algorithm. It hashes the value in a temporary count array and uses them for sorting.
+3. It uses a temporary array makeing it is not a inplace sorting algorithm.
+
+Presudocode:
+1. Create a count array. The size of count array is the range of possible value elements in the original array could choose.
+2. Go through the original array, count the element, store the count number in the count array, in such a way that, the value of original array will be 
+   the index of the counting array.
+3. Calculate the cumulative count value.
+4. Based on the cumulative count value calculate the location of corresponding element in the output array.
+
+Time complexity: O(m+n)
+Space complexity: O(m+n)
+
+
+Code:
+#include <stdio.h>
+
+#define MAX_VALUE 10
+
+void countSort(int a[], int aSize) {
+    int count[MAX_VALUE+1];
+    for (int i = 0; i <MAX_VALUE+1; i++) {
+        count[i] = 0;
+    }
+
+    //count the elements in a
+    for (int i=0; i<aSize; i++) {
+        count[a[i]] += 1;
+    }
+
+    //calcualte accumulative
+    for(int i=1; i<MAX_VALUE+1; i++) {
+        count[i] += count[i-1];
+    }
+
+    //create a temporary array
+    int temp[aSize];
+    for (int i=0; i<aSize; i++) {
+        temp[i] = a[i];
+    }
+
+    //sort
+    for (int i=0; i<aSize; i++) {
+        a[count[temp[i]] -1] = temp[i];
+        count[temp[i]]--;
+    }
+    return;
+}
+
+
+//value range: 1~10
+int main() {
+    int a[8] = {5,3,7,2,1,3,2,1};
+    countSort(a, 8);
+    
+    for (int i=0; i<8; i++) {
+        printf("a[%d] = %d \n", i, a[i]);
+    }
+}
+
+Reference:
+1. https://www.programiz.com/dsa/counting-sort
+2. https://www.geeksforgeeks.org/counting-sort/
