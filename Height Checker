@@ -29,3 +29,47 @@ int heightChecker(int* heights, int heightsSize){
 
 Method 2: Using counting sort to decrease the time complexity from O(nlogn) to O(n+m)
 The trade off is space complexity: O(n+m)
+
+void countSort(int *nums, int numsSize, int max_val) {
+	//create count array
+	int count[max_val+1];
+	for(int i=0; i<max_val+1; i++) {
+		count[i]=0;
+	}
+
+	//count
+	for (int i=0; i<numsSize; i++) {
+		count[nums[i]] += 1;
+	}
+
+	//calculate cumulative count
+	for (int i=1; i<max_val+1; i++) {
+		count[i] += count[i-1];
+	}
+
+	//sort
+	int temp[numsSize];
+	for(int i=0; i<numsSize; i++) {
+		temp[i]=nums[i];
+	}
+
+	for(int i=0; i<numsSize; i++) {
+		nums[ count[temp[i]] - 1] = temp[i];
+		count[temp[i]] -= 1;
+	}
+	return;
+}
+
+int heightChecker(int* heights, int heightsSize){
+	int temp[heightsSize];
+	for (int i=0; i<heightsSize; i++) {
+		temp[i] = heights[i];
+	}
+	countSort(temp, heightsSize, 100);
+	
+	int count = 0;
+	for(int i=0; i<heightsSize; i++) {
+		if (temp[i] != heights[i]) {count++;}
+	}
+	return count;
+}
