@@ -32,6 +32,9 @@ In this project, I will document all the C coding questions.
 * Max Consecutive Ones II
   * Question: https://leetcode.com/problems/max-consecutive-ones-ii/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Max%20Consecutive%20Ones%20II
+* Third Maximum Number
+  * Question: https://leetcode.com/problems/third-maximum-number/
+  * Solution: https://github.com/HuanLuLu/C-Solution/commit/396cea0f888156ccec03b7d7eb05a9e5e434ef37
 
 ## HashTable
 * Hash Table
