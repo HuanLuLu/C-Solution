@@ -1,0 +1,79 @@
+limits.h:
+reference:
+https://www.tutorialspoint.com/c_standard_library/limits_h.htm
+Also, notice that, here we assume the <limits.h> will change the macro based on if it is a 32bit or 64bit complier. 
+If not, need use flag for the situation
+
+
+Time complexity: O(n)
+Space coplexity: O(1)
+
+//include limits.h
+#include <limits.h>
+
+int thirdMax(int* nums, int numsSize){
+	long firstMax = LONG_MIN;
+	long secondMax = LONG_MIN;
+	long thirdMax = LONG_MIN;
+
+	for (int i=0; i<numsSize; i++) {
+        if ((nums[i] != firstMax) && (nums[i] != secondMax) && (nums[i] != thirdMax)) {
+            if (nums[i] > firstMax) {
+                thirdMax = secondMax;
+                secondMax = firstMax;
+                firstMax = nums[i];
+            }
+            else if (nums[i] > secondMax) {
+                thirdMax = secondMax;
+                secondMax = nums[i];
+            }
+            else if (nums[i] > thirdMax) {
+                thirdMax = nums[i];
+            }
+        }
+	}
+	return (thirdMax == LONG_MIN)? firstMax : thirdMax;
+}
+
+Method2 without using limits.h
+
+int thirdMax(int* nums, int numsSize){
+    int firstFg = 0;
+    int secondFg = 0;
+    int thirdFg = 0;
+    int firstMax, secondMax, thirdMax;
+    
+    for (int i=0; i<numsSize; i++) {
+        if (firstFg == 0) {
+            firstFg = 1;
+            firstMax = nums[i];
+        }
+        else if (nums[i] > firstMax) {
+            thirdMax = secondMax;
+            secondMax = firstMax;
+            firstMax = nums[i];
+            
+            thirdFg = secondFg;
+            secondFg = firstFg;            
+        }
+        else if (secondFg == 0 && nums[i] != firstMax) {
+            secondFg = 1;
+            secondMax = nums[i];
+        }
+        else if (secondFg == 1 && nums[i] > secondMax && nums[i] < firstMax) {
+            thirdMax = secondMax;
+            secondMax = nums[i];
+            
+            thirdFg = secondFg;
+        }
+        else if (thirdFg == 0 && nums[i] != secondMax && nums[i] != firstMax) {
+            thirdFg = 1;
+            thirdMax = nums[i];
+        }
+        else if (thirdFg == 1 && nums[i] > thirdMax && nums[i] < secondMax) {
+            thirdMax = nums[i];
+        }
+    }
+    
+    return (thirdFg == 1) ? thirdMax : firstMax;
+}
