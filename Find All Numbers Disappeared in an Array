@@ -1,0 +1,34 @@
+This question is very tricky. If you know the solution, you can get the answer easily. Otherwise, you won't get the right solution.
+
+The tricky part is, there is a connection between value and index. Value-1 --> index; index+1 --> value
+So, we can solve the question with two passes.
+
+First pass: go through elements in the array, get the index based on the value of elements. Set the corresponding element to negative for marking.
+After the first pass, the existed elements in the array have been marked on their related index.
+
+Second pass: go throught the array again, if the element is negative, the index corresponding value is missing in the array.
+
+Time complexity: O(n)
+Space complexity: O(1)
+
+int* findDisappearedNumbers(int* nums, int numsSize, int* returnSize){
+	int index = 0;
+	*returnSize = numsSize;
+	for(int i=0; i<numsSize; i++) {
+		index = abs(nums[i])-1;
+		if (nums[index] > 0) {
+			(*returnSize)--;
+			nums[index] *= -1;
+		}
+	}
+	
+	int *output = (int *)malloc(*returnSize * sizeof(int));
+	int j = 0;
+	for (int i=0; i<numsSize; i++) {
+		if (nums[i] > 0) {
+			output[j] = i+1;
+			j++;
+		}
+	}
+	return output;
+}
