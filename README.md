@@ -39,6 +39,11 @@ In this project, I will document all the C coding questions.
   * Question: https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Find%20All%20Numbers%20Disappeared%20in%20an%20Array
 
+## Array
+* Single List
+  * Orinial: https://www.geeksforgeeks.org/linked-list-set-1-introduction/
+  * Improvement:  
+
 ## HashTable
 * Hash Table
   * Original Solution: https://www.tutorialspoint.com/data_structures_algorithms/hash_table_program_in_c.htm
