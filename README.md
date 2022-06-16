@@ -42,7 +42,7 @@ In this project, I will document all the C coding questions.
 ## Array
 * Single List
   * Orinial: https://www.geeksforgeeks.org/linked-list-set-1-introduction/
-  * Improvement:  
+  * Improvement:  https://github.com/HuanLuLu/C-Solution/blob/main/Single%20List
 
 ## HashTable
 * Hash Table
