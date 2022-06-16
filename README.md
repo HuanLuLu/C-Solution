@@ -35,6 +35,9 @@ In this project, I will document all the C coding questions.
 * Third Maximum Number
   * Question: https://leetcode.com/problems/third-maximum-number/
   * Solution: https://github.com/HuanLuLu/C-Solution/commit/396cea0f888156ccec03b7d7eb05a9e5e434ef37
+* Find All Numbers Disappeared in an Array
+  * Question: https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Find%20All%20Numbers%20Disappeared%20in%20an%20Array
 
 ## HashTable
 * Hash Table
