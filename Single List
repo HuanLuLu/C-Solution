@@ -1,0 +1,105 @@
+Some improvement:
+1. modify the single list to save sorted value nodes.
+2. add insert and delete function.
+3. add Linked List Traversal function.
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int val;
+    struct Node *next;
+};
+
+void printList(struct Node *head) {
+    struct Node *node = head->next;
+    while (node != NULL) {
+        printf("Node value is %d \n", node->val);
+        node = node->next;
+    }
+}
+
+void insertNode(struct Node *head, struct Node *node) {
+    struct Node *prevnode = head;
+    struct Node *currnode = head->next;
+    
+    while (currnode != NULL) {
+        if (currnode->val > node->val) {
+            prevnode->next = node;
+            node->next = currnode;
+            return;
+        }
+        currnode = currnode->next;
+        prevnode = prevnode->next;
+    }
+    prevnode->next = node;
+    node->next = currnode;
+    return;
+}
+
+struct Node * searchNode(struct Node *head, int val, struct Node **prevNode) {
+    struct Node *node = head->next;
+    if (prevNode != NULL) {*prevNode = head;}
+    while(node != NULL) {
+        if (node->val == val) {
+            return node;
+        }
+        node = node->next;
+        if (prevNode != NULL) {*prevNode = (*prevNode)->next;}
+    }
+    return NULL;
+}
+
+void deleteNode(struct Node *head, int val) {
+    struct Node *prev = NULL;
+    struct Node *node = searchNode(head, val, &prev);
+    
+    if (node == NULL) {return;}
+    
+    prev->next = node->next;
+    free(node);
+    return;
+}
+
+int main() {
+    struct Node *head;
+    struct Node *first;
+    struct Node *second;
+    struct Node *third;
+    struct Node *rslt = NULL;
+    
+    head = (struct Node *)malloc(sizeof(struct Node));
+    first = (struct Node *)malloc(sizeof(struct Node));
+    second = (struct Node *)malloc(sizeof(struct Node));
+    third = (struct Node *)malloc(sizeof(struct Node));
+    
+    head->val = -1;
+    head->next = NULL;
+    
+    first->val = 1;
+    first->next = NULL;
+    
+    second->val = 2;
+    second->next = NULL;
+    
+    third->val = 3;
+    third->next = NULL;
+    
+    insertNode(head, first);
+    insertNode(head, third);
+    insertNode(head, second);
+    
+    printList(head);
+    
+    rslt = searchNode(head, 4, NULL);
+    printf("search reuslt: %p\n",rslt);
+    
+    rslt = searchNode(head, 2, NULL);
+    printf("search reuslt: %p\n",rslt);
+    
+    deleteNode(head, 1);
+    printList(head);
+    
+    return 0;
+}
