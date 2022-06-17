@@ -1,0 +1,119 @@
+Improvement:
+Like singly linked list, we used an extra node as head to avoid using double pointer.
+
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int val;
+    struct Node *prev;
+    struct Node *next;
+};
+
+void printNode(struct Node *head) {
+    struct Node *node = head;
+    while(node != NULL) {
+        printf("the node value is %d\n", node->val);
+        node = node->next;
+    }
+    return;
+}
+
+//insert function3:
+//insertAfter: add item after node
+//push: add node in the front
+//append: add node in the end
+
+void push(struct Node *head, struct Node *node) {
+    node->next = head->next;
+    node->prev = head;
+    
+    if (head->next != NULL) {
+        head->next->prev = node;
+    }
+    head->next = node;
+    return;
+}
+
+void append(struct Node *head, struct Node *node) {
+    struct Node *curr = head;
+    while (curr->next != NULL) {
+        curr = curr->next;
+    }
+    curr->next = node;
+    node->prev = curr;
+    return;
+}
+
+void insertAfter(struct Node *curr, struct Node *node) {
+    node->next = curr->next;
+    node->prev = curr;
+    
+    if (node->next != NULL) {
+        node->next->prev = node;
+    }
+    curr->next = node;
+}
+
+void delete(struct Node *head, int val) {
+    struct Node *node = head;
+    while(node != NULL) {
+        if (node->val == val) {
+            node->prev->next = node->next;
+            if (node->next != NULL) {
+                node->next->prev = node->prev;
+            }
+            free(node);
+        }
+        node = node->next;
+    }
+    return;
+}
+
+int main() {
+    struct Node *head = (struct Node *)malloc(sizeof(struct Node));
+    struct Node *node1 = (struct Node *)malloc(sizeof(struct Node));
+    struct Node *node2 = (struct Node *)malloc(sizeof(struct Node));
+    struct Node *node3 = (struct Node *)malloc(sizeof(struct Node));
+    struct Node *node4 = (struct Node *)malloc(sizeof(struct Node));
+    struct Node *node5 = (struct Node *)malloc(sizeof(struct Node));
+    
+    head->val = -1;
+    head->prev = NULL;
+    head->next = NULL;
+    
+    node1->val = 1;
+    node1->prev = NULL;
+    node1->next = NULL;
+    
+    node2->val = 2;
+    node2->prev = NULL;
+    node2->next = NULL;
+    
+    node3->val = 3;
+    node3->prev = NULL;
+    node3->next = NULL;
+    
+    node4->val = 4;
+    node4->prev = NULL;
+    node4->next = NULL;
+    
+    node5->val = 5;
+    node5->prev = NULL;
+    node5->next = NULL;
+    
+    append(head, node3);
+    push(head, node1);
+    push(head, node2);
+    append(head, node4);
+    insertAfter(head, node5);
+    printNode(head);
+    
+    delete(head, 4);
+    delete(head, 5);
+    delete(head, 5);
+    delete(head, 1);
+    delete(head, 2);
+    delete(head, 3);
+    printNode(head);
+}
