@@ -40,9 +40,12 @@ In this project, I will document all the C coding questions.
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Find%20All%20Numbers%20Disappeared%20in%20an%20Array
 
 ## List
-* Single List
-  * Orinial: https://www.geeksforgeeks.org/linked-list-set-1-introduction/
+* Singly Linked List
+  * Original: https://www.geeksforgeeks.org/linked-list-set-1-introduction/
   * Improvement:  https://github.com/HuanLuLu/C-Solution/blob/main/Single%20List
+* Doubly Linked List
+  * Original: https://www.geeksforgeeks.org/doubly-linked-list/?ref=lbp
+  * Improvement:
 
 ## HashTable
 * Hash Table
