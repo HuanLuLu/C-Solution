@@ -103,3 +103,105 @@ int main() {
     
     return 0;
 }
+
+Same method of reference, but instead of using first element as head, here we use a dummy node as head node to avid the double pointer.
+#include <stdio.h>
+#include <stdlib.h>
+//for this single list, we will have a head, the first node will be the next of head node.
+
+
+//insert function:
+//push: insert element at the head
+//append: insert element at the end
+//insert: insert a node behind an exist node
+
+struct Node {
+    int val;
+    struct Node *next;
+};
+
+void printNode(struct Node *head){
+    struct Node *node = head;
+    while(node != NULL) {
+        printf("the node value = %d\n", node->val);
+        node = node->next;
+    }
+    return;
+}
+
+void push(struct Node *head, struct Node *node){
+    node->next = head->next;
+    head->next = node;
+    return;
+}
+
+void append(struct Node *head, struct Node *node) {
+    struct Node *curr = head;
+    while(curr->next!= NULL){
+        curr = curr->next;
+    }
+    curr->next = node;
+    return;
+}
+
+void insert(struct Node *prev, struct Node *node) {
+    node->next = prev->next;
+    prev->next = node;
+    return;
+}
+
+//delete node: delete the node with value
+void delete(struct Node *head, int val) {
+    struct Node *prev = head;
+    struct Node *curr = head->next;
+    
+    while(curr != NULL) {
+        if (curr->val == val) {
+            prev->next = curr->next;
+            free(curr);
+        }
+        prev = prev->next;
+        curr = curr->next;
+    }
+    return;
+}
+
+
+int main() {
+    struct Node *head = (struct Node *)malloc(sizeof(struct Node));
+    struct Node *node1 = (struct Node *)malloc(sizeof(struct Node));
+    struct Node *node2 = (struct Node *)malloc(sizeof(struct Node));
+    struct Node *node3 = (struct Node *)malloc(sizeof(struct Node));
+    struct Node *node4 = (struct Node *)malloc(sizeof(struct Node));
+    
+    head->val = -1;
+    head->next = NULL;
+    
+    node1->val = 1;
+    node1->next = NULL;
+    
+    node2->val = 2;
+    node2->next = NULL;
+    
+    node3->val = 3;
+    node3->next = NULL;
+    
+    node4->val = 4;
+    node4->next = NULL;
+        
+    push(head, node1);//head->node1
+    push(head, node2);//head->node2->node1
+    append(head, node3);//head->node2->node1->node3
+    insert(node1, node4);//head->node2->node1->node4->node3
+    
+    printNode(head);
+    
+    delete(head, 4);
+    
+    delete(head, 2);
+    
+    delete(head, 3);
+    printNode(head);
+    return 0;
+}
+
