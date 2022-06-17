@@ -45,7 +45,7 @@ In this project, I will document all the C coding questions.
   * Improvement:  https://github.com/HuanLuLu/C-Solution/blob/main/Single%20List
 * Doubly Linked List
   * Original: https://www.geeksforgeeks.org/doubly-linked-list/?ref=lbp
-  * Improvement:
+  * Improvement: https://github.com/HuanLuLu/C-Solution/blob/main/Doubly%20Linked%20List
 
 ## HashTable
 * Hash Table
