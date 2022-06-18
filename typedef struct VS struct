@@ -1,0 +1,63 @@
+===========================================================================================================================
+Basic definition:
+Reference 1: https://stackoverflow.com/questions/1675351/typedef-struct-vs-struct-definitions
+
+struct myStruct{
+    int one;
+    int two;
+};
+
+vs
+
+typedef struct{
+    int one;
+    int two;
+}myStruct;
+
+Explaination:
+typedef struct S { 
+    int x; 
+} S;
+The struct has two differenct definitions inside:
+typedef struct S { 
+    int x; 
+};
+and
+struct S S;
+
+The first one, we define a structure anf give the struct a name. When using it, we need to define a new variable.
+struct S new_s;
+
+The second one, we alias this stuct with S in the global name space. So we can use it as follow:
+S new_s; 
+
+Noted that:
+Since struct Name and typedef have difference scope and are kept in differenct space, we can use the same name S without
+conflicts.
+But, if we define another function with the name S:
+void S(){
+  return;
+ }
+ The function name and typedef will have a identifiers collision. 
+ ===========================================================================================================================
+ Question, if the following code is correct:
+ typedef struct {
+  int val;
+  Node *next;
+ }Node;
+ 
+ Wrong!
+ 
+  typedef struct {
+  int val;
+  struct Node *next;
+ }Node;
+ is correct. 
+ 
+ Not recommended, the more right way is:
+  typedef struct node{
+  int val;
+  struct node *next;
+ }Node;
+ 
+ 
