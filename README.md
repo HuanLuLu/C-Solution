@@ -58,3 +58,4 @@ In this project, I will document all the C coding questions.
 * Bit Flags and Bit Masks: https://github.com/HuanLuLu/C-Solution/blob/main/Bit%20Flags%20and%20Bit%20Masks
 * Quick Sort in C library: https://github.com/HuanLuLu/C-Solution/commit/f045354cd559d481e938e5532e2a431fa03ff426
 * Counting Sort in c: https://github.com/HuanLuLu/C-Solution/blob/main/Counting%20Sort
+* typedef struct vs struct: https://github.com/HuanLuLu/C-Solution/blob/main/typedef%20struct%20VS%20struct
