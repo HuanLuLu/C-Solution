@@ -1,0 +1,120 @@
+Notice:
+BEFORE USING ALL POINTERS, CHECK IF THE POINTER IS NULL!!!
+
+The C code function is slightly differenct with the instruction:
+We do use extra node as head. index of head doesn't count.
+So, we create count, start from 0. It means we make head with count == 0. The function add/dele at index then, becomes
+add/dele after count(head is 0)
+
+#include <stdlib.h>
+
+
+typedef struct myLinkedList{
+    int val;
+    struct myLinkedList *next;
+} MyLinkedList;
+
+
+MyLinkedList* myLinkedListCreate() {
+    MyLinkedList *head = (MyLinkedList *)malloc(sizeof(MyLinkedList));
+    head->next = NULL;
+    return head;
+}
+
+int myLinkedListGet(MyLinkedList* obj, int index) {
+    obj = obj->next;
+    int id = 0;
+    while(obj!=NULL) {
+        if(id == index) {
+            return obj->val;
+        }
+        id++;
+        obj = obj->next;
+    }
+    return -1;
+}
+
+void myLinkedListAddAtHead(MyLinkedList* obj, int val) {
+    MyLinkedList *node = (MyLinkedList *)malloc(sizeof(MyLinkedList));
+    node->val = val;
+    
+    node->next = obj->next;
+    obj->next = node;
+    return;
+}
+
+void myLinkedListAddAtTail(MyLinkedList* obj, int val) {
+    MyLinkedList *node = (MyLinkedList *)malloc(sizeof(MyLinkedList));
+    node->val = val;
+    node->next = NULL;
+    
+    while(obj->next != NULL) {
+        obj = obj->next;
+    }
+    obj->next = node;
+    return;
+}
+
+void myLinkedListAddAtIndex(MyLinkedList* obj, int index, int val) {
+    MyLinkedList *node = (MyLinkedList *)malloc(sizeof(MyLinkedList));
+    node->val = val;
+    node->next = NULL;
+    
+    int count = 0;
+    while(obj!=NULL) {
+        if (count == index) {
+            node->next = obj->next;
+            obj->next = node;
+            return;
+        }
+        count++;
+        obj = obj->next;
+    }
+    return;
+}
+
+void myLinkedListDeleteAtIndex(MyLinkedList* obj, int index) {
+    int count = 0;
+    MyLinkedList *next;
+    while(obj!=NULL) {
+        if (count == index) {
+            next = obj->next;
+            if (next) {
+                obj->next = next->next;
+            }
+            else {
+                obj->next = NULL;
+            }
+            free(next);
+        }
+        count++;
+        obj = obj->next;
+    }
+    return;
+}
+
+void myLinkedListFree(MyLinkedList* obj) {
+    MyLinkedList *next;
+    while(obj != NULL) {
+        next = obj->next;
+        free(obj);
+        obj = next;
+    }
+    return;
+}
+
+/**
+ * Your MyLinkedList struct will be instantiated and called as such:
+ * MyLinkedList* obj = myLinkedListCreate();
+ * int param_1 = myLinkedListGet(obj, index);
+ 
+ * myLinkedListAddAtHead(obj, val);
+ 
+ * myLinkedListAddAtTail(obj, val);
+ 
+ * myLinkedListAddAtIndex(obj, index, val);
+ 
+ * myLinkedListDeleteAtIndex(obj, index);
+ 
+ * myLinkedListFree(obj);
+*/
