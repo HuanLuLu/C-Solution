@@ -1,0 +1,55 @@
+Question: Now, after checking if the linked list has cycle, we need also to find out the start of the cycle.
+
+Method: We need go through the linked list twice.
+
+In the first iteration: create two pointers: slow and fast. 
+Slow move forward one node each time. Fast move forward two nodes at the same time. Just like what we did in Linked List Cycle.
+If the linked list has the cycle, fast and slow will meet each other at a node incide the cycle, which we name it as interSection.
+
+In the second iteration: 
+Let's analyze how to find the start of the cycle.
+Let's assume there are M nodes outside the cycle and N nodes inside the cycle. And when fast met slow, slow has went through L nodes inside the cycle.
+N: The number of nodes inside the cycle;
+M: The number of nodes outside the cycle;
+L: The number of the nodes, from the beginning of the cycle to the intersection node. 
+When the fast meet the slow, the number of nodes that the fast has already went through is N+M+L, and the number of nodes that the slow has already
+went through is M+L, we could get the following equation:
+M+L = (N+M+L)/2------------------(1)
+From equation(1), we could get M+L=N  -->  M=N-L--------------------(2)
+Now, notice the equation(2), it means, the number of M equals to the the  number of nodes from the node after intersection to the end of the linked list
+without cycle. In another word, if we set two pointers, one starts from the head, the other one starts from the instersection, they will meet each other
+at the start of the cycle.
+
+Code:
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+struct ListNode *detectCycle(struct ListNode *head) {
+    struct ListNode *slow = head;
+	struct ListNode *fast = head;
+	struct ListNode *interSection = NULL;
+
+	while ((fast != NULL) && (fast->next != NULL)) {
+		fast = fast->next->next;
+		slow = slow->next;
+		if (fast == slow) {
+			interSection = fast;
+			break;
+		}
+	}
+	if ((fast == NULL) || (fast->next == NULL)) {
+		return NULL;
+	}
+	
+	struct ListNode *ptr1 = head;
+	struct ListNode *ptr2 = interSection;
+	while (ptr1 != ptr2) {
+		ptr1 = ptr1->next;
+		ptr2 = ptr2->next;
+	}
+	return ptr1;
+}
