@@ -1,0 +1,39 @@
+Question: Finding if the linked list is a cycle.
+Method: Create two pointers: fast and slow. Fast move two nodes at once. Slow only move one node. 
+Result: if fast catch up with slow on one node, it means there is a circle in the linked list, and the fast has already gone through the loop and caught up
+with the slow.
+The question is, is it even possible for fast to be in the same position as slow?
+Dynamic programming--bottom-up thinking:
+case1: fast is one node behind the slow: fast->slow
+       fast will be at the same position as slow in the next iteration.
+case2: fast is two nodes behind the slow: fast->node->slow
+       in the next iteration, fast will be one node behind the slow, just like case1.
+case3: fast is three nodes behind the slow: fast->node->node->slow.
+       in the next iteration, we will have fast and slow positions just like in case 2
+
+The reason is that fast is always one step faster than slow, so in the cycle linked list situation, fast will catch up with the slow by one in each iteration.
+The time complexity is O(M+N), in which M is the number of elements in non-cycle, and N is the number of elements in the cycle.
+
+Code: Notice that there is no FALSE and TRUE in C
+#define FALSE 0
+#define TRUE 1
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+bool hasCycle(struct ListNode *head) {
+    struct ListNode *slow = head;
+	struct ListNode *fast = head;
+
+	while((fast != NULL) && (fast->next != NULL)) {
+		fast = fast->next->next;
+		slow = slow->next;
+
+		if (slow == fast) {return TRUE;}
+	}
+	return FALSE;
+}
