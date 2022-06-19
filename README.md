@@ -55,6 +55,9 @@ In this project, I will document all the C coding questions.
 * Linked List Cycle II
   * Question: https://leetcode.com/problems/linked-list-cycle-ii/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Linked%20List%20Cycle%20II
+* Intersection of Two Linked Lists
+  * Question: https://leetcode.com/problems/intersection-of-two-linked-lists/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Intersection%20of%20Two%20Linked%20Lists
 
 ## HashTable
 * Hash Table
