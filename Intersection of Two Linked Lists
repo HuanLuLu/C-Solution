@@ -1,0 +1,36 @@
+The question is interesting:
+We know if linked list A and linked list B have an intersection, then all the node in both lists, from the intersection to the end, will be the same.
+
+Method 1:
+First, traverse the linked list A and B, count the number of lists O(m+n)
+Second, traverse the two lists again, record all node address: O(m+n), extra space: O(m+n)
+Third, traverse the linked lists value arraies backwards, count how many nodes are the same O(m+n)
+
+Method 2:
+Let's asume, linked list A is formed by the number of N unique nodes and the number of L common nodes
+Similarly, linked list B is formed by the numver of M unique nodes and the number of L common nodes
+
+Let's define two pointers: ptrA and ptrB, point to the headA and headB separately. ptrA traverse linked list A first then continue to traverse list B.
+ptrB traverse the list B first, then traverse list A. ptrA will meet ptrB at the the intersection in the second iteration. 
+The math is that: at the intersection in the second iteration, ptrA has traversed: N+L+M nodes, ptrB also has traversed: M+L+N nodes.
+
+What if two lists don't have intersecion? ptrA and ptrB will be the same value NULL at the end of the second iteration.
+At that point, ptrA has traversed M+N+2L nodes, ptrB has traversed M+N+2L nodes too.
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+struct ListNode *getIntersectionNode(struct ListNode *headA, struct ListNode *headB) {
+    struct ListNode *ptrA = headA;
+	struct ListNode *ptrB = headB;
+
+	while(ptrA != ptrB) {
+		ptrA = (ptrA == NULL) ? headB : ptrA->next;
+		ptrB = (ptrB == NULL) ? headA : ptrB->next;
+	}
+	return ptrA;
+}
