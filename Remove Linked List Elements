@@ -1,0 +1,35 @@
+Doing while, need to pay attention to traverse the node.
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+#include <stdlib.h>
+
+struct ListNode* removeElements(struct ListNode* head, int val){
+	struct ListNode *dummy = (struct ListNode *)malloc(sizeof(struct ListNode));
+	dummy->next = head;
+	dummy->val = -1;
+	
+	struct ListNode *prev = dummy;
+	struct ListNode *curr = head;
+
+	while(curr != NULL) {
+		if (curr->val == val) {
+			prev->next = curr->next;
+			free(curr);
+			curr = prev->next;
+		}
+        else {
+            curr = curr->next;
+            prev = prev->next;
+        }
+	}
+
+	struct ListNode *new_head = dummy->next;
+	free(dummy);
+	return new_head;
+}
