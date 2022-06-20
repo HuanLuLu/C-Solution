@@ -1,0 +1,49 @@
+Method1: 
+Straightforward
+Make sure odd and even could move the next.
+Then based on the which is missing connect the nodes
+struct ListNode* oddEvenList(struct ListNode* head){
+    if ((head == NULL) || (head->next == NULL)) {return head;}
+
+    struct ListNode *even_head = head->next;
+    struct ListNode *odd = head;
+    struct ListNode *even = head->next;
+
+    while ((even->next != NULL) && (even->next->next != NULL)) {
+        odd->next = even->next;
+        odd = odd->next;
+        even->next = odd->next;
+        even =even->next;
+    }
+
+    if (even->next == NULL) {
+        odd->next = even_head;
+    }
+    else {
+        odd->next = even->next;
+        odd = odd->next;
+        odd->next = even_head;
+        even->next = NULL;
+    }
+    return head;
+}
+
+Method2:
+Considering NULL as the last node, then we will figure out that we only need check even and even->next:
+struct ListNode* oddEvenList(struct ListNode* head){
+	if (head == NULL) {return head;}
+
+	struct ListNode *even_head = head->next;
+	struct ListNode *odd = head;
+	struct ListNode *even = head->next;
+
+	while ((even != NULL) && (even->next != NULL)) {
+		odd->next = even->next;
+		odd = odd->next;
+		even->next = odd->next;
+		even =even->next;
+	}
+
+	odd->next = even_head;
+	return head;
+}
