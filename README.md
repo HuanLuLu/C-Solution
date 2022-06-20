@@ -61,6 +61,9 @@ In this project, I will document all the C coding questions.
 * Remove Nth Node From End of List
   * Question: https://leetcode.com/problems/remove-nth-node-from-end-of-list/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Remove%20Nth%20Node%20From%20End%20of%20List
+* Reverse Linked List
+  * Question: https://leetcode.com/problems/reverse-linked-list/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Reverse%20Linked%20List
 
 ## HashTable
 * Hash Table
