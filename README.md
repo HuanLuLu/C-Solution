@@ -64,6 +64,9 @@ In this project, I will document all the C coding questions.
 * Reverse Linked List
   * Question: https://leetcode.com/problems/reverse-linked-list/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Reverse%20Linked%20List
+* Remove Linked List Elements
+  * Question: https://leetcode.com/problems/remove-linked-list-elements/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Remove%20Linked%20List%20Elements
 
 ## HashTable
 * Hash Table
