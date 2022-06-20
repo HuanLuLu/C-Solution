@@ -1,0 +1,39 @@
+Using two pointers.
+One pointer traverse n nodes ahead. The other pointer will be the previous of the node to be deleted.
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+
+
+struct ListNode* removeNthFromEnd(struct ListNode* head, int n){
+	struct ListNode *prev = head;
+	struct ListNode *ptr = head;
+	int count = 0;
+	
+	//move ptr n nodes ahead
+	while (count != n) {
+		ptr = ptr->next;
+		count++;
+	}
+	
+	if (ptr == NULL) {
+        //delete the head
+        struct ListNode *new_head = head->next;
+        free(head);
+        return new_head;
+	}
+
+	while(ptr->next != NULL) {
+		ptr = ptr->next;
+		prev = prev->next;
+	}
+	struct ListNode *temp = prev->next;
+	prev->next = prev->next->next;
+	free(temp);
+	return head;
+}
