@@ -58,6 +58,9 @@ In this project, I will document all the C coding questions.
 * Intersection of Two Linked Lists
   * Question: https://leetcode.com/problems/intersection-of-two-linked-lists/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Intersection%20of%20Two%20Linked%20Lists
+* Remove Nth Node From End of List
+  * Question: https://leetcode.com/problems/remove-nth-node-from-end-of-list/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Remove%20Nth%20Node%20From%20End%20of%20List
 
 ## HashTable
 * Hash Table
