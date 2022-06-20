@@ -16,3 +16,20 @@ struct ListNode* reverseList(struct ListNode* head){
 	}
 	return prev;
 }
+
+Better way to do that is set prev to NULL, curr to head:
+
+struct ListNode* reverseList(struct ListNode* head){
+	struct ListNode *prev = NULL;
+	struct ListNode *curr = head;
+	struct ListNode *next = NULL; 
+
+	while (curr != NULL) {
+		next = curr->next;
+		curr->next = prev;
+		
+		prev = curr;
+		curr = next;
+	}
+	return prev;
+}
