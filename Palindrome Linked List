@@ -61,3 +61,35 @@ int count = 0;
 
 }
 ====================================
+Method 2:
+Create an array to save the val, then use two pointers to traverse and compare the elements
+
+#define True 1
+#define False 0
+
+bool isPalindrome(struct ListNode* head){
+	struct ListNode *node = head;
+	int num = 0;
+	while (node != NULL) {
+		node = node->next;
+		num++;
+	}
+	int arr[num];
+
+	int i = 0;
+    node = head;
+	while (node != NULL) {
+		arr[i] = node->val;
+		i++;
+		node = node->next;		
+	}
+
+	i = 0;
+	int  j=num-1;
+	while (j >= i) {
+		if(arr[i]!=arr[j]) { return False;}
+		i++;
+		j--;
+	}
+	return True;
+}
