@@ -1,0 +1,63 @@
+Method 1:
+Reverse the second half of the array. 
+Time complexity: O(n)
+Space complexity: O(1)
+
+#define True 1
+#define False 0
+
+void reverse(struct ListNode* head) {
+	struct ListNode *prev = head;
+	struct ListNode *curr = head->next;
+	struct ListNode *next = NULL;
+
+	while(curr != NULL) {
+		next = curr->next;
+		curr->next = prev;
+		prev = curr;
+		curr = next;
+	}
+	return;
+}
+
+
+bool isPalindrome(struct ListNode* head){
+int count = 0;
+	struct ListNode *node = head;
+	struct ListNode *end = NULL;
+	
+	//count the number of nodes, and find the end node
+	while (node != NULL) {
+		end = node;
+		node = node->next;
+		count++;
+	}
+	int numNodes = count;
+	if(numNodes == 1) {return head;}
+	if(numNodes == 2) {
+		return (head->val == head->next->val) ? True : False;
+	}
+
+	int mid = numNodes / 2;
+	struct ListNode *midNode = NULL;
+	count = 0;
+	node = head;
+	//find the middle node
+	while (count != mid) {
+		node = node->next;
+		count++;
+	}
+	midNode = node;
+	
+	reverse(midNode);
+	count = 0;
+	while (count != mid) {
+		if (head->val != end->val) { return False;}
+		head = head->next;
+		end = end->next;
+		count++;
+	}
+	return True;
+
+}
+====================================
