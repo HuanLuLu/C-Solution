@@ -70,6 +70,9 @@ In this project, I will document all the C coding questions.
 * Odd Even Linked List
   * Question: https://leetcode.com/problems/odd-even-linked-list/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Odd%20Even%20Linked%20List
+* Palindrome Linked List
+  * Question: https://leetcode.com/problems/palindrome-linked-list/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Palindrome%20Linked%20List
 
 ## HashTable
 * Hash Table
