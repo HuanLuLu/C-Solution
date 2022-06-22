@@ -1,0 +1,107 @@
+Same method as design singly linked list. 
+Some notes:
+1. create some common funtion to decrease the chance of error
+2. create node just before adding to avoid memory leak
+3. be caution about null pointers, especially in doubly linked list. 
+4. potentional improvement: add a end node.
+
+Code:
+typedef struct myLinkedList{
+	int val;
+    struct myLinkedList *prev;
+	struct myLinkedList *next;
+} MyLinkedList;
+
+
+MyLinkedList* myLinkedListCreate() {
+	MyLinkedList *head = (MyLinkedList *)malloc(sizeof(MyLinkedList));
+	head->val = -1;
+	head->prev = NULL;
+	head->next = NULL;
+	return head;
+}
+
+MyLinkedList *getNode(MyLinkedList* obj, int index) {
+	int count = -1;
+	
+	while(obj != NULL) {
+		if (count==index) {
+			return obj;
+		}
+		count++;
+		obj = obj->next;
+	}
+	return NULL;
+}
+
+MyLinkedList *createNode(int val) {
+	MyLinkedList *node = (MyLinkedList *)malloc(sizeof(MyLinkedList));
+	node->val = val;
+	node->next = NULL;
+	node->prev = NULL;
+	return node;
+}
+
+void addNode(MyLinkedList *prev, MyLinkedList *node) {
+	node->prev = prev;
+	node->next = prev->next;
+
+	if(prev->next != NULL) {
+		prev->next->prev = node;
+	}
+	prev->next = node;
+	return;
+}
+
+int myLinkedListGet(MyLinkedList* obj, int index) {
+	MyLinkedList *node = getNode(obj, index);
+	return (node == NULL) ? -1 : node->val;
+}
+
+void myLinkedListAddAtHead(MyLinkedList* obj, int val) {
+	MyLinkedList *node = createNode(val);	
+	addNode(obj, node);
+	return;
+}
+
+void myLinkedListAddAtTail(MyLinkedList* obj, int val) {
+	while(obj->next != NULL) {
+		obj = obj->next;
+	}
+
+	MyLinkedList *node = createNode(val);
+	addNode(obj, node);
+	return;
+}
+
+void myLinkedListAddAtIndex(MyLinkedList* obj, int index, int val) {
+	MyLinkedList *prev = getNode(obj, index-1);
+	if (prev == NULL) {return;}
+	
+	MyLinkedList *node = createNode(val);
+	addNode(prev, node);
+	return;
+}
+
+void myLinkedListDeleteAtIndex(MyLinkedList* obj, int index) {
+	MyLinkedList *node = getNode(obj, index);
+	if(node == NULL) {return;}
+
+	node->prev->next = node->next;
+	if (node->next != NULL) {
+		node->next->prev = node->prev;
+	}
+	free(node);
+	return;
+}
+
+void myLinkedListFree(MyLinkedList* obj) {
+	MyLinkedList *new_head = NULL;
+	while(obj != NULL) {
+		new_head = obj->next;
+		free(obj);
+		obj = new_head;
+	}
+	return;
+}
+
