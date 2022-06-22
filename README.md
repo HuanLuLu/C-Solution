@@ -46,7 +46,10 @@ In this project, I will document all the C coding questions.
 * Doubly Linked List
   * Original: https://www.geeksforgeeks.org/doubly-linked-list/?ref=lbp
   * Improvement: https://github.com/HuanLuLu/C-Solution/blob/main/Doubly%20Linked%20List
-* Design Linked List
+* Design Singly Linked List
+  * Question: https://leetcode.com/problems/design-linked-list/solution/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Design%20Linked%20List
+* Design Doubly Linked List
   * Question: https://leetcode.com/problems/design-linked-list/solution/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Design%20Linked%20List
 * Linked List Cycle
