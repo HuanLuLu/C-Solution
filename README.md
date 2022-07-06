@@ -79,6 +79,9 @@ In this project, I will document all the C coding questions.
 * Merge Two Sorted Lists
   * Question: https://leetcode.com/problems/merge-two-sorted-lists/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Merge%20Two%20Sorted%20Lists
+* Add Two Numbers
+  * Question: https://leetcode.com/problems/add-two-numbers/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Add%20Two%20Numbers
 
 ## HashTable
 * Hash Table
