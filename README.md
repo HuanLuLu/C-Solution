@@ -76,6 +76,9 @@ In this project, I will document all the C coding questions.
 * Palindrome Linked List
   * Question: https://leetcode.com/problems/palindrome-linked-list/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Palindrome%20Linked%20List
+* Merge Two Sorted Lists
+  * Question: https://leetcode.com/problems/merge-two-sorted-lists/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Merge%20Two%20Sorted%20Lists
 
 ## HashTable
 * Hash Table
