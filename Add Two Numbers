@@ -1,0 +1,70 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+#include <stdlib.h>
+
+int addVals(int val1, int val2, int *carry) {
+	int sum = val1+val2+*carry;
+	if (sum>9) {
+		sum -= 10;
+		*carry = 1;
+	}
+	else {
+		*carry = 0;
+	}
+	return sum;
+}
+
+void addNodeAfter(int val, struct ListNode *curr) {
+	struct ListNode *node = (struct ListNode *)malloc(sizeof(struct ListNode));
+	node->val = val;
+	node->next = NULL;
+	
+	curr->next = node;
+	return;
+}
+
+struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2){
+	int sum = 0;
+	int carry = 0;
+
+	struct ListNode head;
+	struct ListNode *curr = &head;
+
+	head.val = -1;
+	head.next = NULL;
+
+	while (l1 && l2) {
+		sum = addVals(l1->val, l2->val, &carry);
+		addNodeAfter(sum, curr);
+		
+		l1= l1->next;
+		l2 = l2->next;
+		curr = curr->next;
+	}
+
+	while(l1) {
+		sum = addVals(l1->val, 0, &carry);
+		addNodeAfter(sum, curr);
+		l1= l1->next;
+		curr = curr->next;
+	}
+
+	while(l2) {
+		sum = addVals(l2->val, 0, &carry);
+		addNodeAfter(sum, curr);
+		l2= l2->next;
+		curr = curr->next;
+	}
+
+	if(carry == 1) {
+		addNodeAfter(carry, curr);
+		curr = curr->next;
+	}
+
+	return head.next;
+}
