@@ -82,6 +82,9 @@ In this project, I will document all the C coding questions.
 * Add Two Numbers
   * Question: https://leetcode.com/problems/add-two-numbers/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Add%20Two%20Numbers
+* Insert into a Sorted Circular Linked List
+  * Question: https://leetcode.com/problems/insert-into-a-sorted-circular-linked-list/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Insert%20into%20a%20Sorted%20Circular%20Linked%20List
 
 ## HashTable
 * Hash Table
