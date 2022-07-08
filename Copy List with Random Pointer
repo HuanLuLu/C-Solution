@@ -1,0 +1,50 @@
+Method: 
+1. Create copy code between origianl node and the next node after original node;
+2. Add random link: copy node will be the next node after original node. So, curr->next->random = curr->random->next;
+3. Separate the copy linked list and original linked list
+
+/**
+ * Definition for a Node.
+ * struct Node {
+ *     int val;
+ *     struct Node *next;
+ *     struct Node *random;
+ * };
+ */
+void addCopyAfter(struct Node *curr) {
+	struct Node *node = (struct Node *)malloc(sizeof(struct Node));
+	node->val = curr->val;
+	node->random = NULL;
+
+	node->next = curr->next;
+	curr->next = node;
+	return;
+}
+
+struct Node* copyRandomList(struct Node* head) {
+	if (head == NULL) {return NULL;}
+	
+	struct Node *curr = head;
+	while(curr != NULL) {
+		addCopyAfter(curr);
+		curr = curr->next->next;
+	}
+
+	curr = head;
+	while(curr != NULL){
+		curr->next->random = (curr->random == NULL) ? NULL : curr->random->next;
+		curr = curr->next->next;
+	}
+
+	struct Node *copyHead = head->next;
+	struct Node *copyCurr = copyHead;
+	curr = head;
+
+	while(curr != NULL) {
+		curr->next = copyCurr->next;
+		curr = curr->next;
+		copyCurr->next = (curr == NULL) ? NULL : curr->next;
+		copyCurr = copyCurr->next;
+	}
+	return copyHead;
+}
