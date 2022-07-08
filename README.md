@@ -85,6 +85,9 @@ In this project, I will document all the C coding questions.
 * Insert into a Sorted Circular Linked List
   * Question: https://leetcode.com/problems/insert-into-a-sorted-circular-linked-list/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Insert%20into%20a%20Sorted%20Circular%20Linked%20List
+* Copy List with Random Pointer 
+  * Question: https://leetcode.com/problems/copy-list-with-random-pointer/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Copy%20List%20with%20Random%20Pointer
 
 ## HashTable
 * Hash Table
