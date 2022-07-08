@@ -88,6 +88,9 @@ In this project, I will document all the C coding questions.
 * Copy List with Random Pointer 
   * Question: https://leetcode.com/problems/copy-list-with-random-pointer/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Copy%20List%20with%20Random%20Pointer
+* Rotate List
+  * Question: https://leetcode.com/problems/rotate-list/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Rotate%20List
 
 ## HashTable
 * Hash Table
