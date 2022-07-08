@@ -1,0 +1,42 @@
+Two things need to be addressed:
+1. linked list could be null
+2. k could be very large. We should count number than recalculate the k
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+
+
+struct ListNode* rotateRight(struct ListNode* head, int k){
+    if (head == NULL) {return head;}
+
+	struct ListNode *rotate = head;
+	struct ListNode *curr = head;
+	int count = 0;
+
+	while (curr != NULL) {
+		curr = curr->next;
+		count += 1;
+	}
+	
+    curr = head;
+	k %= count;
+	for(; k>0; k--) {
+		rotate = rotate->next;
+	}
+
+	while (rotate->next != NULL) {
+		rotate = rotate->next;
+		curr = curr->next;
+	}
+	
+	rotate->next = head;
+	struct ListNode *newHead = curr->next;
+	curr->next = NULL;
+
+	return newHead;
+}
