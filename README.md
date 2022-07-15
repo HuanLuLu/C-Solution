@@ -91,6 +91,10 @@ In this project, I will document all the C coding questions.
 * Rotate List
   * Question: https://leetcode.com/problems/rotate-list/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Rotate%20List
+  
+## Binary Tree
+* Binary Tree Insert, Search, Traverse
+  * https://github.com/HuanLuLu/C-Solution/blob/main/BinaryInsertSearchTraverse
 
 ## HashTable
 * Hash Table
