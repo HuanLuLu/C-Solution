@@ -1,0 +1,62 @@
+In my solution, the code can dynamically calculate the array size. But in the question, we actually know the maximum number of
+array. We can malloc fixed size of memory for the array.
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     struct TreeNode *left;
+ *     struct TreeNode *right;
+ * };
+ */
+
+
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+void countTreeNodes(struct TreeNode *node, int *returnSize) {
+	if (node == NULL) {return;}
+	countTreeNodes(node->left, *returnSize);
+	*returnSize += 1;
+	countTreeNodes(node->right, *returnSize);
+	return;
+}
+
+void preorderTrav(struct TreeNode* node, int *index, int *arr) {
+	if (node == NULL) {return;}
+
+	arr[*index] = node->val;
+	*index += 1;
+
+	preorderTrav(node->left, index, arr);
+	preorderTrav(node->right, index, arr);	
+	return;
+}
+
+int* preorderTraversal(struct TreeNode* root, int* returnSize){
+	int size = 0;
+	countTreeNodes(root, &size);
+	if (size == 0) {
+		*returnSize = 0;
+		return NULL;
+	}
+	
+	int *arr = (int *)malloc( size * sizeof(int) );
+	int index = 0;
+	preorderTrav(root, &index, arr);
+
+	*returnSize = size;
+	return arr;
+}
+
+
+
+
+
+
+
+
+
+
+
+
