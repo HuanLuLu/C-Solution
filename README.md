@@ -95,6 +95,9 @@ In this project, I will document all the C coding questions.
 ## Binary Tree
 * Binary Tree Insert, Search, Traverse
   * https://github.com/HuanLuLu/C-Solution/blob/main/BinaryInsertSearchTraverse
+* Binary Tree Preorder Traversal
+  * Question: https://leetcode.com/problems/binary-tree-preorder-traversal/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Binary%20Tree%20Preorder%20Traversal
 
 ## HashTable
 * Hash Table
