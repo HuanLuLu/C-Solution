@@ -1,0 +1,107 @@
+In this code, we will insert node into binary tree and search node.
+Also, we will apply three different tree traverse algorithms.
+
+#include <stdio.h>
+#include <stdlib.h>
+
+#define TRUE 1
+
+typedef struct TreeNodes {
+    int val;
+    
+    struct TreeNodes *left;
+    struct TreeNodes *right;
+}treeNode;
+
+treeNode *insertNode(int val, treeNode *root) {
+    treeNode *node = (treeNode *)malloc(sizeof(treeNode));
+    node->val = val;
+    node->left=NULL;
+    node->right=NULL;
+    
+    if (root == NULL) {return node;}
+    
+    treeNode *parent = root;
+    treeNode *child = NULL;
+    while(TRUE) {
+        if (val < parent->val) {
+            child = parent->left;
+            if (child == NULL) {
+                parent->left = node;
+                return root;
+            }
+        }
+        else {
+            child = parent->right;
+            if (child == NULL) {
+                parent->right = node;
+                return root;
+            }
+        }
+        parent = child;
+    }
+}
+
+treeNode *searchNode(int val, treeNode *root) {
+    treeNode *curr = root;
+    
+    while(curr != NULL) {
+        if (curr->val == val) {return curr;}
+        curr = (val < curr->val)? curr->left : curr->right;
+    }
+    return NULL;
+}
+
+void preOrderTraverse(treeNode *node) {
+    if (node == NULL) {return;}
+    printf(" %d", node->val);
+    preOrderTraverse(node->left);
+    preOrderTraverse(node->right);
+    return;
+}
+
+void inOrderTraverse(treeNode *node) {
+    if (node == NULL) {return;}
+    inOrderTraverse(node->left);
+    printf(" %d", node->val);
+    inOrderTraverse(node->right);
+    return;
+}
+
+void postOrderTraverse(treeNode *node) {
+    if (node == NULL) {return;}
+    postOrderTraverse(node->left);
+    postOrderTraverse(node->right);
+    printf(" %d", node->val);
+    return;
+}
+
+
+
+int main() {
+    treeNode *root = NULL;
+    
+    int a[7] = { 27, 14, 35, 10, 19, 31, 42 };
+    
+    for(int i = 0; i<7; i++) {
+        root = insertNode(a[i], root);
+    }
+    
+    treeNode *result = NULL;
+    result = searchNode(11, root);
+    if (result == NULL) {
+        printf("Did not find the node\n");
+    }
+    else {
+        printf("Found the node, the node value is %d\n", result->val);
+    }
+    
+    printf("\nPreorder traversal: ");
+    preOrderTraverse(root);
+    printf("\nInorder traversal: ");
+    inOrderTraverse(root);
+    printf("\nPostorder traversal: ");
+    postOrderTraverse(root);
+    printf("\n");
+    return 0;
+}
