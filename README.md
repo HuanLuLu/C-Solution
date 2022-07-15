@@ -98,6 +98,9 @@ In this project, I will document all the C coding questions.
 * Binary Tree Preorder Traversal
   * Question: https://leetcode.com/problems/binary-tree-preorder-traversal/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Binary%20Tree%20Preorder%20Traversal
+* Binary Tree Inorder Traversal
+  * Question: https://leetcode.com/problems/binary-tree-inorder-traversal/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Binary%20Tree%20Inorder%20Traversal
 
 ## HashTable
 * Hash Table
