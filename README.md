@@ -101,6 +101,9 @@ In this project, I will document all the C coding questions.
 * Binary Tree Inorder Traversal
   * Question: https://leetcode.com/problems/binary-tree-inorder-traversal/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Binary%20Tree%20Inorder%20Traversal
+* Binary Tree Postorder Traversal
+  * Question: https://leetcode.com/explore/learn/card/data-structure-tree/134/traverse-a-tree/930
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Binary%20Tree%20Postorder%20Traversal
 
 ## HashTable
 * Hash Table
