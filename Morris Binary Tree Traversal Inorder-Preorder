@@ -1,0 +1,124 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define TRUE  1
+#define FALSE 0
+#define bool  int
+
+typedef struct TreeNodes {
+    int val;
+    
+    struct TreeNodes *left;
+    struct TreeNodes *right;
+}treeNode;
+
+treeNode *insertNode(int val, treeNode *root) {
+    treeNode *node = (treeNode *)malloc(sizeof(treeNode));
+    node->val = val;
+    node->left=NULL;
+    node->right=NULL;
+    
+    if (root == NULL) {return node;}
+    
+    treeNode *parent = root;
+    treeNode *child = NULL;
+    while(TRUE) {
+        if (val < parent->val) {
+            child = parent->left;
+            if (child == NULL) {
+                parent->left = node;
+                return root;
+            }
+        }
+        else {
+            child = parent->right;
+            if (child == NULL) {
+                parent->right = node;
+                return root;
+            }
+        }
+        parent = child;
+    }
+}
+
+treeNode *searchNode(int val, treeNode *root) {
+    treeNode *curr = root;
+    
+    while(curr != NULL) {
+        if (curr->val == val) {return curr;}
+        curr = (val < curr->val)? curr->left : curr->right;
+    }
+    return NULL;
+}
+
+void inOrderMorrisTraversal(treeNode *root) {
+    treeNode *curr = root;
+    treeNode *prev = NULL;
+    
+    while(curr != NULL) {
+        if (curr->left == NULL) {
+            printf("the node value is: %d\n", curr->val);
+            curr = curr->right;
+        }
+        else {
+            prev = curr->left;
+            while((prev->right != NULL) && (prev->right != curr)){
+                prev = prev->right;
+            }
+            
+            if (prev->right == NULL) {
+                prev->right = curr;
+                curr = curr->left;
+            }
+            else {
+                //prev->right == curr
+                printf("the node value is: %d\n", curr->val);
+                prev->right = NULL;
+                curr = curr->right;
+            }
+        }
+    }
+}
+
+void preOrderMorrisTraversal(treeNode *root) {
+    treeNode *curr = root;
+    treeNode *prev = NULL;
+    
+    while(curr != NULL) {
+        if (curr->left == NULL) {
+            printf("the node value is: %d\n", curr->val);
+            curr = curr->right;
+        }
+        else {
+            prev = curr->left;
+            while((prev->right != NULL) && (prev->right != curr)){
+                prev = prev->right;
+            }
+            
+            if (prev->right == NULL) {
+                printf("the node value is: %d\n", curr->val);
+                prev->right = curr;
+                curr = curr->left;
+            }
+            else {
+                prev->right = NULL;
+                curr = curr->right;
+            }
+        }
+    }
+}
+
+
+int main() {
+    treeNode *root = NULL;
+    
+    int a[7] = { 27, 14, 35, 10, 19, 31, 42 };
+    
+    for(int i = 0; i<7; i++) {
+        root = insertNode(a[i], root);
+    }
+    
+    //inOrderMorrisTraversal(root);
+    preOrderMorrisTraversal(root);
+    return 0;
+}
