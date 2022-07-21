@@ -1,0 +1,206 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define TRUE  1
+#define FALSE 0
+#define bool  int
+
+typedef struct TreeNodes {
+    int val;
+    
+    struct TreeNodes *left;
+    struct TreeNodes *right;
+}treeNode;
+
+treeNode *insertNode(int val, treeNode *root) {
+    treeNode *node = (treeNode *)malloc(sizeof(treeNode));
+    node->val = val;
+    node->left=NULL;
+    node->right=NULL;
+    
+    if (root == NULL) {return node;}
+    
+    treeNode *parent = root;
+    treeNode *child = NULL;
+    while(TRUE) {
+        if (val < parent->val) {
+            child = parent->left;
+            if (child == NULL) {
+                parent->left = node;
+                return root;
+            }
+        }
+        else {
+            child = parent->right;
+            if (child == NULL) {
+                parent->right = node;
+                return root;
+            }
+        }
+        parent = child;
+    }
+}
+
+treeNode *searchNode(int val, treeNode *root) {
+    treeNode *curr = root;
+    
+    while(curr != NULL) {
+        if (curr->val == val) {return curr;}
+        curr = (val < curr->val)? curr->left : curr->right;
+    }
+    return NULL;
+}
+
+/*Stack:
+ Pop
+ Push
+ IsStackEmpty*/
+typedef struct StackNodes{
+    struct StackNodes *next; //point to the next stack node;
+    struct TreeNodes  *t_Node;
+}stackNode;
+
+bool isStackEmpty(stackNode *top) {
+    return (top == NULL) ? TRUE : FALSE;
+}
+
+//pop out the top tree node on the top of stack, update the stack
+//if stack is empty, pop out NULL
+treeNode *pop(stackNode **s_Node) {
+    if (isStackEmpty(*s_Node)) {return NULL;}
+    
+    stackNode *curr_sNode = *s_Node;
+    treeNode *t_Node = curr_sNode->t_Node;
+    *s_Node = curr_sNode->next;
+    
+    free(curr_sNode);
+    return t_Node;
+}
+
+stackNode *push(treeNode *t_Node, stackNode *s_Node){
+    stackNode *new_sNode = (stackNode *)malloc(sizeof(stackNode));
+    new_sNode->t_Node = t_Node;
+    new_sNode->next = s_Node;
+    return new_sNode;
+}
+
+//binary tree preorder traverse without recursion
+void preOder_trav(treeNode *root) {
+    if (root == NULL) {
+        printf("Empty Tree \n");
+        return;
+    }
+    
+    stackNode *top = NULL;
+    treeNode *treeCurr = NULL;
+    
+    top = push(root, top);
+    while(top != NULL) {
+        treeCurr = top->t_Node;
+        printf("Tree Node Value is: %d\n", treeCurr->val);
+        
+        if (treeCurr->left != NULL) {
+            top = push(treeCurr->left, top);
+        }
+        else {
+            while(top != NULL) {
+                treeCurr = pop(&top);
+                if (treeCurr->right != NULL) {
+                    top = push(treeCurr->right, top);
+                    break;
+                }
+            }
+        }
+    }
+    return;
+}
+
+//binary tree inorder traverse without recursion
+void inOder_trav(treeNode *root) {
+    stackNode *top = NULL;
+    treeNode *treeCurr = NULL;
+    
+    top = push(root, top);
+    while(top != NULL) {
+        treeCurr = top->t_Node;
+        if (treeCurr->left != NULL) {
+            top = push(treeCurr->left, top);
+        }
+        else {
+            while(top != NULL) {
+                treeCurr = pop(&top);
+                printf("Tree Node Value is: %d\n", treeCurr->val);
+                if (treeCurr->right != NULL) {
+                    top = push(treeCurr->right, top);
+                    break;
+                }
+            }
+        }
+    }
+}
+
+//binary tree postorder traverse without recursion
+bool isSubtreeFinished(stackNode *top, treeNode *prev) {
+    treeNode *curr = top->t_Node;
+    if (curr->left != NULL) {
+        if (prev == curr->left) {return TRUE;}
+    }
+    
+    if (curr->right != NULL) {
+        if (prev == curr->right) {return TRUE;}
+    }
+    
+    return FALSE;
+}
+
+bool isLeaf(stackNode *top) {
+    treeNode *curr = top->t_Node;
+    if ((curr->left == NULL) && (curr->right == NULL)) {
+        return TRUE;
+    }
+    else {
+        return FALSE;
+    }
+}
+
+void postOrder_trav(treeNode *root) {
+    stackNode *top = NULL;
+    treeNode *treePrev = NULL;
+    treeNode *treeCurr = NULL;
+    
+    top = push(root, top);
+    while (top!=NULL) {
+        if ( (isLeaf(top)) || (isSubtreeFinished(top, treePrev)) ) {
+            treePrev = pop(&top);
+            printf("postorder travese node value: %d\n", treePrev->val);
+        }
+        else {
+            treeCurr = top->t_Node;
+            if (treeCurr->right != NULL) {
+                top = push(treeCurr->right, top);
+            }
+            
+            if (treeCurr->left != NULL) {
+                top = push(treeCurr->left, top);
+            }
+        }
+    }
+    return;
+}
+
+
+
+int main() {
+    treeNode *root = NULL;
+    
+    int a[7] = { 27, 14, 35, 10, 19, 31, 42 };
+    
+    for(int i = 0; i<7; i++) {
+        root = insertNode(a[i], root);
+    }
+    
+    //preOder_trav(NULL);
+    //inOder_trav(root);
+    postOrder_trav(root);
+    return 0;
+}
