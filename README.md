@@ -106,6 +106,8 @@ In this project, I will document all the C coding questions.
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Binary%20Tree%20Postorder%20Traversal
 * Traverse binary tree without recursion
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/traversal%20binary%20tree%20without%20recursion
+* Morris Binary Tree Traversal Inorder/Preorder
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Morris%20Binary%20Tree%20Traversal%20Inorder-Preorder
 
 ## HashTable
 * Hash Table
