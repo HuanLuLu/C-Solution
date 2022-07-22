@@ -1,0 +1,13 @@
+The depth: consider the tree as a root, the depth of the root node of the tree will be 0
+The height: consider the tree as a tree, the height of the leaf node of the tree will be 0
+
+Please note that, when reach the leaf, the function will return -1
+
+int maxDepth(treeNode *node){
+    if (node == NULL) {return -1;}
+    
+    int left = maxDepth(node->left);
+    int right = maxDepth(node->right);
+    
+    return (left > right) ? (left + 1) : (right + 1);
+}
