@@ -1,0 +1,113 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct Queue_Str {
+    int front;
+    int rear;
+    int size;
+    int capacity;
+    int *array;
+}Queue;
+
+typedef int bool;
+#define TRUE 1
+#define FALSE 0
+
+#define INVALID_VAL -1
+
+Queue createQueue(int capacity) {
+    Queue queue;
+
+    queue.front = 0;
+    queue.rear = capacity - 1;
+    queue.capacity = capacity;
+    queue.size =0;
+
+    queue.array = (int *)malloc(capacity * sizeof(int));
+    return queue;
+}
+
+bool isEmpty(Queue queue) {
+    return (queue.size == 0) ? TRUE : FALSE;
+}
+
+bool isFull(Queue queue) {
+    return (queue.size == queue.capacity) ? TRUE : FALSE;
+}
+
+void enQueue(int val, Queue *queue) {
+    if ( isFull(*queue) ) {return;}
+
+    //add the val at rear
+    //move to the next rear spot, then add the value
+    //increase the size by 1
+    queue->rear = (queue->rear + 1) % queue->capacity;
+    (queue->array)[queue->rear] = val;
+
+    queue->size += 1;
+    return;
+}
+
+int deQueue(Queue *queue) {
+    if ( isEmpty(*queue) ) {return INVALID_VAL;}
+
+    //return the val from the front
+    //get the val first, then move the front to the nexr
+    //decrease the size by 1
+    int val = (queue->array)[queue->front];
+    queue->front = (queue->front + 1) % queue->capacity;
+
+    queue->size -= 1;
+    return val;
+}
+
+void printQueue(Queue queue) {
+    printf("\nThe size of queue is %d\n", queue.size);
+    printf("The front is at: %d\n", queue.front);
+    printf("The rear is at: %d\n", queue.rear);
+    return;
+}
+
+void printQueueVal(Queue queue) {
+    int size = queue.size;
+    if (size == 0) {return;}
+
+    printf("The val of queue is: ");
+    int index = queue.front;
+    while(size > 0) {
+        printf("%d, ", (queue.array)[index]);
+        index = (index + 1) % queue.capacity;
+        size -= 1;
+    }
+    printf("\n");
+}
+
+int main() {
+    Queue queue = createQueue(3);
+    int val = 0;
+
+    val = deQueue(&queue);
+    printf("The dequeue val is %d\n", val);
+    printQueue(queue);
+
+    enQueue(10, &queue);
+    printQueue(queue);
+
+
+    enQueue(20, &queue);
+    printQueue(queue);
+
+    enQueue(30, &queue);
+    printQueue(queue);
+
+    enQueue(40, &queue);
+    printQueue(queue);
+
+    printQueueVal(queue);
+
+    val = deQueue(&queue);
+    printQueue(queue);
+    printf("The dequeue val is %d\n", val);
+    printQueueVal(queue);
+    return 0;
+}
