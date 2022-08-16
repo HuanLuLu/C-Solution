@@ -119,7 +119,7 @@ In this project, I will document all the C coding questions.
 ## Queue
 * Circular Queue
  * Reference: https://www.geeksforgeeks.org/queue-set-1introduction-and-array-implementation/
- * Solution: 
+ * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Circular%20Queue
 
 ## Others:
 * Enumaration: https://github.com/HuanLuLu/C-Solution/blob/main/Boolean%20Type%20In%20C
