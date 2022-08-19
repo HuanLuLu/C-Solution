@@ -1,0 +1,119 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     struct TreeNode *left;
+ *     struct TreeNode *right;
+ * };
+ */
+
+
+/**
+ * Return an array of arrays of size *returnSize.
+ * The sizes of the arrays are returned as *returnColumnSizes array.
+ * Note: Both returned array and *columnSizes array must be malloced, assume caller calls free().
+ */
+/*int** levelOrder(struct TreeNode* root, int* returnSize, int** returnColumnSizes){
+
+}*/
+
+
+#define TRUE 1
+#define FALSE 0
+#define MAX_NODE_NUM 2000
+
+typedef struct Queue_Struct {
+    int front;
+    int rear;
+    int size;
+    int capacity;
+
+    struct TreeNode **nodeArr;
+}Queue;
+
+Queue createQueue() {
+    Queue queue;
+    
+    queue.capacity = MAX_NODE_NUM;
+    queue.size = 0;
+    queue.front = 0;
+    queue.rear = - 1;
+
+    queue.nodeArr = malloc(sizeof(struct TreeNode *) * queue.capacity);
+
+    return queue;
+}
+
+bool isEmpty(Queue queue) {
+    return (queue.size == 0);
+}
+
+bool isFull(Queue queue) {
+    return (queue.size == queue.capacity);
+}
+
+void enQueue(struct TreeNode *node, Queue *pQueue) {
+    if (isFull(*pQueue)) {return;}
+
+    pQueue->rear += 1;
+    (pQueue->nodeArr)[pQueue->rear] = node;
+    pQueue->size += 1;
+    
+    return;
+}
+
+struct TreeNode * deQueue(Queue *pQueue) {
+    if(isEmpty(*pQueue)) {return NULL;}
+
+    struct TreeNode *node = (pQueue->nodeArr)[pQueue->front];
+    pQueue->front += 1;
+    pQueue->size -= 1;
+
+    return node;
+}
+
+
+int** levelOrder(struct TreeNode* root, int* returnSize, int** returnColumnSizes){
+    if (root == NULL) {
+        *returnSize = 0;
+        returnColumnSizes = NULL;
+        return NULL;
+    }
+
+    int **ret = malloc(sizeof(int *) * MAX_NODE_NUM);
+    *returnColumnSizes = malloc(sizeof(int) * MAX_NODE_NUM);
+
+    Queue queue  = createQueue();
+
+    enQueue(root, &queue);
+
+    int ret_index = 0;
+    int size, old_rear, val_index;
+    struct TreeNode *node;
+    int *node_val;
+
+    while (!isEmpty(queue)) {
+        size = queue.size;
+        old_rear = queue.rear;
+        val_index = 0;
+
+        node_val = malloc( sizeof(int) * size );
+
+        while(queue.front <= old_rear) {
+            node = deQueue(&queue);
+
+            node_val[val_index] = node->val;
+            val_index += 1;
+
+            if(node->left) { enQueue(node->left, &queue); }
+            if(node->right) { enQueue(node->right, &queue); }
+        }
+
+        ret[ret_index] = node_val;
+        (*returnColumnSizes)[ret_index] = size;
+        ret_index += 1;
+    }
+
+    *returnSize = ret_index;
+    return ret;
+}
