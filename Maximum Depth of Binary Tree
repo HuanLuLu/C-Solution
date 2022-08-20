@@ -1,0 +1,40 @@
+Reference: https://leetcode.com/explore/learn/card/data-structure-tree/17/solve-problems-recursively/534/
+
+There are two ways to solve the question:
+"Top-down" Solution
+When we visit the nodes, we will calculate and potentially update some data frist, then pass the value to the children by calling
+the funtion recursively.
+
+"Bottom-up" Solution
+In each recursive call, we fisrt call the function recursively for children, then calcualte the answer based on the returned values
+.
+
+Some Conclusion:
+When you meet a tree problem, ask yourself two questions: 
+Can you determine some parameters to help the node know its answer? 
+Can you use these parameters and the value of the node itself to determine what should be the parameters passed to its children? 
+If the answers are both yes, try to solve this problem using a "top-down" recursive solution.
+
+Or, you can think of the problem in this way: for a node in a tree, if you know the answer of its children, 
+can you calculate the answer of that node? If the answer is yes, solving the problem recursively using a bottom up approach might be a good idea.
+
+"Top-down" Solution:
+void getDepth(struct TreeNode* node, int depth, int *maxDepth) {
+	if (node == NULL) {return;}
+
+	if ( (depth + 1) > *maxDepth ) {*maxDepth = depth + 1;}
+
+	getDepth(node->left, depth+1, maxDepth);
+	getDepth(node->right, depth+1, maxDepth);
+	return;
+}
+
+
+int maxDepth(struct TreeNode* root){
+	int maxDepth = 0;	
+
+	getDepth(root, 0, &maxDepth);
+	return maxDepth;
+}
+
+"Bottom-up" Solution:
