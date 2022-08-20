@@ -1,0 +1,27 @@
+ Symmetric Tree
+ 
+ /**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     struct TreeNode *left;
+ *     struct TreeNode *right;
+ * };
+ */
+#define TRUE 1
+#define FALSE 0
+
+bool isTreesSym(struct TreeNode* root1, struct TreeNode* root2) {
+	if ( (root1 == NULL) && (root2 == NULL) ) {return TRUE;}
+
+    if (root1 && root2) {
+		if ( isTreesSym(root1->left, root2->right) && isTreesSym(root1->right, root2->left) ) {
+			if (root1->val == root2->val) {return TRUE;}
+		}
+	}
+	return FALSE;
+}
+
+bool isSymmetric(struct TreeNode* root){
+	return isTreesSym(root->left, root->right);
+}
