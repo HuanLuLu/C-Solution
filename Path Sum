@@ -1,0 +1,22 @@
+Path Sum
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     struct TreeNode *left;
+ *     struct TreeNode *right;
+ * };
+ */
+#define TRUE 1
+#define FALSE 0
+bool hasPathSum(struct TreeNode* root, int targetSum){
+	if (root == NULL) {return FALSE;}
+
+	if ( (root->left == NULL) && (root->right == NULL) ) {
+		return (root->val == targetSum) ? TRUE: FALSE;
+	}
+
+	return ( ( hasPathSum(root->left, targetSum-root->val) ) || \
+		     ( hasPathSum(root->right, targetSum-root->val) ) );
+}
