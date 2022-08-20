@@ -113,6 +113,9 @@ In this project, I will document all the C coding questions.
 *  Binary Tree Level Order Traversal
   * Question: https://leetcode.com/problems/binary-tree-level-order-traversal/submissions/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Binary%20Tree%20Level%20Order%20Traversal
+* Maximum Depth of Binary Tree
+  * Questioin: https://leetcode.com/explore/learn/card/data-structure-tree/17/solve-problems-recursively/535/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Maximum%20Depth%20of%20Binary%20Tree 
 
 ## HashTable
 * Hash Table
