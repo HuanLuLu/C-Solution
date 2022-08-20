@@ -119,6 +119,9 @@ In this project, I will document all the C coding questions.
 * Symmetric Tree  
   * Question: https://leetcode.com/explore/learn/card/data-structure-tree/17/solve-problems-recursively/536/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Symmetric%20Tree
+* Path Sum
+  * Questioin: https://leetcode.com/explore/learn/card/data-structure-tree/17/solve-problems-recursively/537/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Path%20Sum
 
 ## HashTable
 * Hash Table
