@@ -116,6 +116,9 @@ In this project, I will document all the C coding questions.
 * Maximum Depth of Binary Tree
   * Questioin: https://leetcode.com/explore/learn/card/data-structure-tree/17/solve-problems-recursively/535/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Maximum%20Depth%20of%20Binary%20Tree 
+* Symmetric Tree  
+  * Question: https://leetcode.com/explore/learn/card/data-structure-tree/17/solve-problems-recursively/536/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Symmetric%20Tree
 
 ## HashTable
 * Hash Table
