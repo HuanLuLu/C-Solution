@@ -1,0 +1,36 @@
+Note:
+When running the function in if...else.., the code will not run the second condition if the first one got false. So the following code made mistake.
+if ( isUnivalSubTree(root->left, count) && isUnivalSubTree(root->right, count) )
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     struct TreeNode *left;
+ *     struct TreeNode *right;
+ * };
+ */
+#define TRUE 1
+#define FALSE 0
+
+bool isUnivalSubTree(struct TreeNode* root, int *count) {
+	if (root == NULL) {return TRUE;}
+    
+    bool l_flag = isUnivalSubTree(root->left, count);
+    bool r_flag = isUnivalSubTree(root->right, count);
+
+	if ( l_flag && r_flag ) {
+		if ( (root->left) && (root->left->val != root->val) ) {return FALSE;}
+		if ( (root->right) && (root->right->val != root->val) ) {return FALSE;}
+
+		*count += 1;
+		return TRUE;
+	}
+	return FALSE;
+}
+
+int countUnivalSubtrees(struct TreeNode* root){
+	int count = 0;
+	bool _ = isUnivalSubTree(root, &count);
+	return count;
+}
