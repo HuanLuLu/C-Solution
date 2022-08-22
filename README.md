@@ -120,8 +120,11 @@ In this project, I will document all the C coding questions.
   * Question: https://leetcode.com/explore/learn/card/data-structure-tree/17/solve-problems-recursively/536/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Symmetric%20Tree
 * Path Sum
-  * Questioin: https://leetcode.com/explore/learn/card/data-structure-tree/17/solve-problems-recursively/537/
+  * Question: https://leetcode.com/explore/learn/card/data-structure-tree/17/solve-problems-recursively/537/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Path%20Sum
+* Count Univalue Subtrees
+  * Question: https://leetcode.com/explore/learn/card/data-structure-tree/17/solve-problems-recursively/538/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Count%20Univalue%20Subtrees
 
 ## HashTable
 * Hash Table
