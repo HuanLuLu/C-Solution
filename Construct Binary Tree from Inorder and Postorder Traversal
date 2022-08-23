@@ -1,0 +1,61 @@
+Solution 1:
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     struct TreeNode *left;
+ *     struct TreeNode *right;
+ * };
+ */
+struct TreeNode *buildHelper(int *inorder, int start_inorder, int end_inorder, \
+                                               int * postorder, int start_postorder, int end_postorder) {
+	if (start_inorder > end_inorder) {return NULL;}
+
+	int root_val = postorder[end_postorder];
+
+	int root_index = 0;
+	for (int i = start_inorder; i <= end_inorder; i++) {
+		if(inorder[i] == root_val) {
+			root_index = i;
+			break;
+		}
+	}
+
+	int left_size = root_index -1 - start_inorder + 1;
+
+	struct TreeNode *left = buildHelper(inorder, start_inorder, root_index-1, postorder, start_postorder, start_postorder + left_size - 1);
+	struct TreeNode *right = buildHelper(inorder, root_index+1, end_inorder, postorder, start_postorder + left_size, end_postorder-1);
+
+	struct TreeNode *root = (struct TreeNode *)malloc(sizeof(struct TreeNode));
+	root->val = root_val;
+	root->left = left;
+	root->right = right;
+	return root;
+}
+
+struct TreeNode* buildTree(int* inorder, int inorderSize, int* postorder, int postorderSize){
+	return buildHelper(inorder, 0, inorderSize-1, postorder, 0, postorderSize-1);
+}
+In the worst scenario, the time complexity will be O(n^2) (go through the all the nodes and find the root at the end of
+inorder arr everytimee).
+================================================================================================================================================
+Optimal solution:
+Let's optimize the function first.
+We don't need helper function in our case:
+struct TreeNode* buildTree(int* inorder, int inorderSize, int* postorder, int postorderSize){
+	if (inorderSize <= 0) {return NULL;}
+
+	int root_val = postorder[postorderSize - 1];
+	
+	int root_index = 0;
+	while (inorder[root_index] != root_val) {root_index += 1;}
+
+	struct TreeNode *root = (struct TreeNode *)malloc(sizeof(struct TreeNode));
+	root->val = root_val;
+
+	root->left = buildTree(inorder, root_index, postorder, root_index);
+	root->right = buildTree(inorder+root_index+1, inorderSize-root_index-1, \
+                            postorder+root_index, inorderSize-root_index-1);
+
+	return root;
+}
