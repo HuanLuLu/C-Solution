@@ -125,6 +125,9 @@ In this project, I will document all the C coding questions.
 * Count Univalue Subtrees
   * Question: https://leetcode.com/explore/learn/card/data-structure-tree/17/solve-problems-recursively/538/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Count%20Univalue%20Subtrees
+* Construct Binary Tree from Inorder and Postorder Traversal
+  * Question: https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Construct%20Binary%20Tree%20from%20Inorder%20and%20Postorder%20Traversal
 
 ## HashTable
 * Hash Table
