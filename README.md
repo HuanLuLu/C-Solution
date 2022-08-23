@@ -130,7 +130,7 @@ In this project, I will document all the C coding questions.
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Construct%20Binary%20Tree%20from%20Inorder%20and%20Postorder%20Traversal
 * Construct Binary Tree from Preorder and Inorder Traversal
   * Question: https://leetcode.com/explore/learn/card/data-structure-tree/133/conclusion/943/
-  * Solution:
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Construct%20Binary%20Tree%20from%20Preorder%20and%20Inorder%20Traversal
 
 ## HashTable
 * Hash Table
