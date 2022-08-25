@@ -131,6 +131,9 @@ In this project, I will document all the C coding questions.
 * Construct Binary Tree from Preorder and Inorder Traversal
   * Question: https://leetcode.com/explore/learn/card/data-structure-tree/133/conclusion/943/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Construct%20Binary%20Tree%20from%20Preorder%20and%20Inorder%20Traversal
+* Populating Next Right Pointers in Each Node
+  * Question: https://leetcode.com/problems/populating-next-right-pointers-in-each-node/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Populating%20Next%20Right%20Pointers%20in%20Each%20Node
 
 ## HashTable
 * Hash Table
