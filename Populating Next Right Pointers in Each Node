@@ -1,0 +1,30 @@
+Explaination: https://leetcode.com/problems/populating-next-right-pointers-in-each-node/solution/
+
+Basic Idea:
+At each parents: connect the left child and right child. Also, since on the current level, the node has been connected to 
+the next by parents' level, we can use the connected next pointer to find the right neighbour trees. 
+As the result, at current level, we can connect all children if needed.
+
+Code:
+/**
+ * Definition for a Node.
+ * struct Node {
+ *     int val;
+ *     struct Node *left;
+ *     struct Node *right;
+ *     struct Node *next;
+ * };
+ */
+
+
+struct Node* connect(struct Node* root) {
+	if (root == NULL) {return NULL;}
+
+	if (root->left) {
+		root->left->next = root->right;
+		if (root->next) { root->right->next = root->next->left; }
+		connect(root->left);
+		connect(root->right);
+	}
+	return root;
+}
