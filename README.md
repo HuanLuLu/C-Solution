@@ -134,6 +134,9 @@ In this project, I will document all the C coding questions.
 * Populating Next Right Pointers in Each Node
   * Question: https://leetcode.com/problems/populating-next-right-pointers-in-each-node/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Populating%20Next%20Right%20Pointers%20in%20Each%20Node
+* Populating Next Right Pointers in Each Node II
+  * Question: https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/submissions/ 
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Populating%20Next%20Right%20Pointers%20in%20Each%20Node%20II
 
 ## HashTable
 * Hash Table
