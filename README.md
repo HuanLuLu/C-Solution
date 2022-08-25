@@ -137,6 +137,9 @@ In this project, I will document all the C coding questions.
 * Populating Next Right Pointers in Each Node II
   * Question: https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/submissions/ 
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Populating%20Next%20Right%20Pointers%20in%20Each%20Node%20II
+* Lowest Common Ancestor of a Binary Tree
+  * Question: https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Lowest%20Common%20Ancestor%20of%20a%20Binary%20Tree
 
 ## HashTable
 * Hash Table
