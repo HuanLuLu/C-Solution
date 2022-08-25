@@ -110,7 +110,7 @@ In this project, I will document all the C coding questions.
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Morris%20Binary%20Tree%20Traversal%20Inorder-Preorder
 * Find the Maximum Depth of The Tree
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Max%20Depth%20of%20the%20Tree
-*  Binary Tree Level Order Traversal
+*  Binary Tree Level Order Traversal  
   * Question: https://leetcode.com/problems/binary-tree-level-order-traversal/submissions/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Binary%20Tree%20Level%20Order%20Traversal
 * Maximum Depth of Binary Tree
