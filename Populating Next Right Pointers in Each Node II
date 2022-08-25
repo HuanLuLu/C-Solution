@@ -1,0 +1,99 @@
+Now, the tree is not a perfect tree. We need to traversal the whole level than move the next level.
+
+The wrong code: https://leetcode.com/submissions/detail/783253929/
+Here we didn't finish traversalling the level. As the result, we didn't build the next connection in the 
+right part of the tree
+struct Node *getStart(struct Node* root) {
+	if (root->right) {return root->right;}
+	return (root->left) ? root->left : NULL;
+}
+
+struct Node *getEnd(struct Node* root) {
+	while(root->next) {
+		if (root->next->left) {return root->next->left;}
+		if (root->next->right) {return root->next->right;}
+		root = root->next;
+	}
+	return NULL;
+}
+
+
+struct Node* connect(struct Node* root) {
+	if (root == NULL) {return NULL;}
+
+	if (root->left && root->right) {
+		root->left->next = root->right;
+	}
+
+	if (root->next) {
+		struct Node *start = getStart(root);
+		struct Node *end = getEnd(root);
+		if (start && end) {start->next = end;}
+	}
+
+	connect(root->left);
+	connect(root->right);
+	return root;
+}
+
+===========================
+The right code:
+/**
+ * Definition for a Node.
+ * struct Node {
+ *     int val;
+ *     struct Node *left;
+ *     struct Node *right;
+ *     struct Node *next;
+ * };
+ */
+
+
+struct Node *getStart(struct Node* root) {
+	if (root->right) {return root->right;}
+	return (root->left) ? root->left : NULL;
+}
+
+struct Node *getEnd(struct Node* root) {
+	while(root->next) {
+		if (root->next->left) {return root->next->left;}
+		if (root->next->right) {return root->next->right;}
+		root = root->next;
+	}
+	return NULL;
+}
+
+void connect_left(struct Node* root) {
+	if (root == NULL) {return NULL;}
+
+	if (root->left && root->right) {
+		root->left->next = root->right;
+	}
+
+	if (root->next) {
+		struct Node *start = getStart(root);
+		struct Node *end = getEnd(root);
+		if (start && end) {start->next = end;}
+	}
+	
+	connect_left(root->next);
+	return;
+}
+
+struct Node* getNextMostLeft(struct Node* node) {
+	while(node) {
+		if (node->left) {return node->left;}
+		if (node->right) {return node->right;}
+		node = node->next;
+	}
+	return NULL;
+}
+
+struct Node* connect(struct Node* root) {
+	struct Node* nextMostLeft = root;
+	while (nextMostLeft){
+		connect_left(nextMostLeft);
+		nextMostLeft = getNextMostLeft(nextMostLeft);
+	}
+	return root;
+}
