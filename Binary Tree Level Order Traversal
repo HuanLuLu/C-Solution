@@ -117,3 +117,41 @@ int** levelOrder(struct TreeNode* root, int* returnSize, int** returnColumnSizes
     *returnSize = ret_index;
     return ret;
 }
+
+===========================
+integrate the queue into the code to make code more readable:
+int** levelOrder(struct TreeNode* root, int* returnSize, int** returnColumnSizes){
+	if (root == NULL) {
+		*returnSize = 0;
+		*returnColumnSizes = NULL;
+		return NULL;
+	}
+	int **ret = (int **)malloc(sizeof(int *) * 2000);
+	*returnColumnSizes = (int *)malloc(sizeof(int) * 2000);
+	*returnSize = 0;
+
+	struct TreeNode *queue[2000];
+	queue[0] = root;
+	int front = 0;
+	int end = 0;
+	int i =0;
+    int size = 0;
+	int *node_values = NULL;
+    struct TreeNode *node = NULL;
+	
+	while(front <= end) {
+		size = end-front+1;
+		node_values = malloc(sizeof(int) * size);
+		for(i=0; i<size; i++) {
+            node = queue[front++];
+			node_values[i] = node->val;	
+			if (node->left) {queue[++end] = node->left;}	
+            if (node->right) {queue[++end] = node->right;}
+		}
+		ret[*returnSize] = node_values;
+		(*returnColumnSizes)[*returnSize] = size;
+		*returnSize += 1;
+	}
+	return ret;
+}
+
