@@ -1,0 +1,52 @@
+My solution:
+Set two flags for left and right. return the node only when two flags are both true.
+
+#define TRUE 1
+#define FALSE 0
+
+struct TreeNode* getLCA(struct TreeNode* root, struct TreeNode* p, struct TreeNode* q, bool *pFg, bool *qFg) {
+	if (root == NULL) {return NULL;}
+	
+	struct TreeNode* lca = NULL;
+	bool pFg_left = FALSE;
+	bool qFg_left = FALSE;
+	bool pFg_right = FALSE;
+	bool qFg_right = FALSE;
+
+	lca = getLCA(root->left, p, q, &pFg_left, &qFg_left);
+	if (lca) {return lca;}
+
+	lca = getLCA(root->right, p, q, &pFg_right, &qFg_right);
+	if (lca) {return lca;}
+
+	if ((root->val == p->val) || pFg_left || pFg_right)  {*pFg = TRUE;}
+	if ((root->val == q->val) || qFg_left || qFg_right) {*qFg = TRUE;}
+
+	return (*pFg && *qFg) ? root : NULL;
+}
+
+struct TreeNode* lowestCommonAncestor(struct TreeNode* root, struct TreeNode* p, struct TreeNode* q) {
+    bool pFg = FALSE;
+	bool qFg = FALSE;
+	return getLCA(root, p, q, &pFg, &qFg);
+}
+
+==============================================================
+optimal solution:
+In the description, p and q will exist in the tree. So if we campare the node value from the bottom to the top, the last 
+node, which either have left kids and right kids first time both math the node p and q, or the node itself have the value
+of p and q, will be our answer.
+
+struct TreeNode* lowestCommonAncestor(struct TreeNode* root, struct TreeNode* p, struct TreeNode* q) {
+	if (root == NULL) {return NULL;}
+
+	if ((root->val == p->val) || (root->val == q->val)) {return root;}
+	
+	struct TreeNode* left = lowestCommonAncestor(root->left, p,q);
+	struct TreeNode* right = lowestCommonAncestor(root->right, p,q);
+
+	if(left && right) {return root;}
+	if (left) {return left;}
+    if(right) {return right;}
+	return NULL;
+}
