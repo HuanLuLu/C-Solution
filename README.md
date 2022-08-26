@@ -161,7 +161,9 @@ In this project, I will document all the C coding questions.
 * Stack
   * Reference: https://www.geeksforgeeks.org/stack-data-structure-introduction-program/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Stack
-
+* Min Stack  
+  * Reference: https://leetcode.com/explore/learn/card/queue-stack/230/usage-stack/1360/
+  * Solutioin: https://github.com/HuanLuLu/C-Solution/blob/main/Min%20Stack
 
 
 ## Others:
