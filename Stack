@@ -1,0 +1,61 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+typedef int bool;
+
+#define TRUE 1
+#define FALSE 0
+#define INVALID -1
+
+typedef struct Stack_struct{
+    int top;
+    int capability;
+    int *arr;
+}Stack;
+
+Stack *createStack(int size) {
+    Stack *stack = (Stack *)malloc(sizeof(Stack));
+    stack->capability = size;
+    stack->top = -1;
+    stack->arr = (int *)malloc(sizeof(int) * size);
+    return stack;
+}
+
+bool isEmpty(Stack *stack) {
+    return (stack->top == -1) ? TRUE : FALSE;
+}
+
+bool isFull(Stack *stack) {
+    return (stack->top == stack->capability-1) ? TRUE : FALSE;
+}
+
+int pop(Stack *stack) {
+    if (isEmpty(stack)) {
+        printf("the stack is empty \n");
+        return INVALID;
+    }
+    return stack->arr[stack->top--];
+}
+
+void push(Stack *stack, int val) {
+    if(isFull(stack)) {
+        printf("the stack is full \n");
+        return;
+    }
+    stack->arr[++stack->top] = val;
+    return;
+}
+int main() {
+    Stack *stack = createStack(3);
+    printf("Stack is Empty? : %d\n", isEmpty(stack));
+    
+    pop(stack);
+    push(stack, 1);
+    push(stack, 2);
+    push(stack, 3);
+    push(stack, 4);
+    printf("Stack is Full? : %d\n", isFull(stack));
+    printf("elements are: %d, %d, %d\n", pop(stack), pop(stack), pop(stack));
+    printf("Stack is Empty? : %d\n", isEmpty(stack));
+    return 0;
+}
