@@ -150,6 +150,8 @@ In this project, I will document all the C coding questions.
 * Circular Queue
  * Reference: https://www.geeksforgeeks.org/queue-set-1introduction-and-array-implementation/
  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Circular%20Queue
+ * Question: https://leetcode.com/explore/learn/card/queue-stack/228/first-in-first-out-data-structure/1337/
+ * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Design%20Circular%20Queue
 
 ## Others:
 * Enumaration: https://github.com/HuanLuLu/C-Solution/blob/main/Boolean%20Type%20In%20C
