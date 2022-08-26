@@ -160,7 +160,7 @@ In this project, I will document all the C coding questions.
 ## Stack  
 * Stack
   * Reference: https://www.geeksforgeeks.org/stack-data-structure-introduction-program/
-  * Solution: 
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Stack
 
 
 
