@@ -156,6 +156,14 @@ In this project, I will document all the C coding questions.
    *  Questioin: https://leetcode.com/problems/moving-average-from-data-stream/
    *  Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Moving%20Average%20from%20Data%20Stream
 
+  
+## Stack  
+* Stack
+  * Reference: https://www.geeksforgeeks.org/stack-data-structure-introduction-program/
+  * Solution: 
+
+
+
 ## Others:
 * Enumaration: https://github.com/HuanLuLu/C-Solution/blob/main/Boolean%20Type%20In%20C
 * Endianness: https://github.com/HuanLuLu/C-Solution/blob/main/Endianness
