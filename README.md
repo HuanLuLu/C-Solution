@@ -152,6 +152,9 @@ In this project, I will document all the C coding questions.
  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Circular%20Queue
  * Question: https://leetcode.com/explore/learn/card/queue-stack/228/first-in-first-out-data-structure/1337/
  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Design%20Circular%20Queue
+*  Moving Average from Data Stream
+ * Questioin: https://leetcode.com/problems/moving-average-from-data-stream/
+ * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Moving%20Average%20from%20Data%20Stream
 
 ## Others:
 * Enumaration: https://github.com/HuanLuLu/C-Solution/blob/main/Boolean%20Type%20In%20C
