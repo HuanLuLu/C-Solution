@@ -1,0 +1,89 @@
+#define TRUE 1
+#define FALSE 0
+
+typedef struct {
+	int front;
+	int rear;
+	int size;
+	int capability;
+	int *arr;
+} MyCircularQueue;
+
+bool myCircularQueueIsEmpty(MyCircularQueue* obj);
+bool myCircularQueueIsFull(MyCircularQueue* obj);
+
+
+MyCircularQueue* myCircularQueueCreate(int k) {
+	MyCircularQueue *queue = (MyCircularQueue *)malloc(sizeof(MyCircularQueue));
+	queue->capability = k;
+	queue->size = 0;
+	queue->front = 0;
+	queue->rear = k-1;
+	queue->arr = (int *)malloc(sizeof(int) * queue->capability);
+	return queue;
+}
+
+bool myCircularQueueEnQueue(MyCircularQueue* obj, int value) {
+	if (myCircularQueueIsFull(obj)) {return FALSE;}
+	
+	obj->rear = (obj->rear + 1) % obj->capability;
+	obj->arr[obj->rear] = value;
+	obj->size += 1;
+	return TRUE;	
+}
+
+bool myCircularQueueDeQueue(MyCircularQueue* obj) {
+	if (myCircularQueueIsEmpty(obj)) {return FALSE;}
+	
+	obj->front = (obj->front + 1) % obj->capability;
+	obj->size -= 1;
+	return TRUE;
+}
+
+int myCircularQueueFront(MyCircularQueue* obj) {
+	return (myCircularQueueIsEmpty(obj)) ? -1 : obj->arr[obj->front];
+}
+
+int myCircularQueueRear(MyCircularQueue* obj) {
+	return (myCircularQueueIsEmpty(obj)) ? -1 : obj->arr[obj->rear];
+}
+
+bool myCircularQueueIsEmpty(MyCircularQueue* obj) {
+	return (obj->size == 0) ? TRUE : FALSE;
+}
+
+bool myCircularQueueIsFull(MyCircularQueue* obj) {
+	return (obj->size == obj->capability) ? TRUE : FALSE;
+}
+
+void myCircularQueueFree(MyCircularQueue* obj) {
+	if (obj) {
+		if (obj->arr) {free(obj->arr);}
+		free(obj);
+	}
+	return;
+}
+
+
+
+
+
+
+
+/**
+ * Your MyCircularQueue struct will be instantiated and called as such:
+ * MyCircularQueue* obj = myCircularQueueCreate(k);
+ * bool param_1 = myCircularQueueEnQueue(obj, value);
+ 
+ * bool param_2 = myCircularQueueDeQueue(obj);
+ 
+ * int param_3 = myCircularQueueFront(obj);
+ 
+ * int param_4 = myCircularQueueRear(obj);
+ 
+ * bool param_5 = myCircularQueueIsEmpty(obj);
+ 
+ * bool param_6 = myCircularQueueIsFull(obj);
+ 
+ * myCircularQueueFree(obj);
+*/
