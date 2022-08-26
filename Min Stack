@@ -1,0 +1,56 @@
+#define MAX_CALL 30000
+
+typedef struct {
+	int top;
+	int *arr;    
+} MinStack;
+
+
+MinStack* minStackCreate() {
+	MinStack* stack = (MinStack *)malloc(sizeof(MinStack));
+
+	stack->top = -1;	stack->arr = (int *)malloc(sizeof(int) * MAX_CALL);
+	return stack;
+}
+
+void minStackPush(MinStack* obj, int val) {
+	obj->arr[++obj->top] = val;
+	return;
+}
+
+void minStackPop(MinStack* obj) {
+	obj->top -= 1;
+	return;
+}
+
+int minStackTop(MinStack* obj) {
+	return obj->arr[obj->top];
+}
+
+int minStackGetMin(MinStack* obj) {
+	int min = obj->arr[0];
+	for (int i = 0; i <= obj->top; i++) {
+		min = (obj->arr[i] < min)? obj->arr[i] : min;
+	}
+	return min;
+}
+
+void minStackFree(MinStack* obj) {
+	free(obj->arr);
+	free(obj);
+}
+
+
+/**
+ * Your MinStack struct will be instantiated and called as such:
+ * MinStack* obj = minStackCreate();
+ * minStackPush(obj, val);
+ 
+ * minStackPop(obj);
+ 
+ * int param_3 = minStackTop(obj);
+ 
+ * int param_4 = minStackGetMin(obj);
+ 
+ * minStackFree(obj);
+*/
