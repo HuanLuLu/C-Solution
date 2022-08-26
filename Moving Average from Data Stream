@@ -1,0 +1,100 @@
+Using queue to solve the problem.
+
+First Solution: Using Queue to store the value. 
+Issue: slow, since we have to calcualte the sum every time, which is not necessary.
+
+
+
+typedef struct {
+    int front, end, size, capability;
+	int *arr;
+} MovingAverage;
+
+
+MovingAverage* movingAverageCreate(int size) {
+	MovingAverage* obj = (MovingAverage *)malloc(sizeof(MovingAverage));
+
+	obj->capability = size;
+	obj->size = 0;
+	obj->front = 0;
+	obj->end = obj->capability-1;
+	obj->arr = (int *)malloc(sizeof(int) * obj->capability);
+
+	return obj;    
+}
+
+double movingAverageNext(MovingAverage* obj, int val) {
+    int sum, index;
+
+	if (obj->size >= obj->capability) {
+		obj->front = (obj->front + 1) % obj->capability;
+		obj->size -= 1;
+	}
+	obj->end = (obj->end + 1) % obj->capability;
+	obj->arr[obj->end] = val;
+  	obj->size += 1;
+
+	sum = 0;
+	index = obj->front;
+	for(int i = obj->size; i > 0; i--) {
+		sum += obj->arr[index];
+		index = (index+1) % obj->capability;
+	}
+	return (double)sum/obj->size;
+}
+
+void movingAverageFree(MovingAverage* obj) {
+	if (obj) {
+		if (obj->arr) {free(obj->arr);}
+		free(obj);
+	}
+	return;
+}
+
+====================
+Solution2: store the current sum value in the queue structure.
+
+
+typedef struct {
+	int sum;
+	int front, end, size, capability;
+	int *arr;
+} MovingAverage;
+
+
+MovingAverage* movingAverageCreate(int size) {
+	MovingAverage* obj = (MovingAverage *)malloc(sizeof(MovingAverage));
+
+	obj->sum = 0;
+	obj->capability = size;
+	obj->size = 0;
+	obj->front = 0;
+	obj->end = obj->capability - 1;
+	obj->arr = (int *)malloc(sizeof(int) * obj->capability);
+
+	return obj; 
+}
+
+double movingAverageNext(MovingAverage* obj, int val) {
+	if (obj->size == obj->capability) {
+		obj->sum -= obj->arr[obj->front];
+		obj->front = (obj->front + 1) % obj->capability;
+		obj->size -= 1;
+	}
+	obj->end = (obj->end + 1) % obj->capability;
+	obj->arr[obj->end] = val;
+	obj->sum += val;
+	obj->size += 1;
+	
+	return (double)obj->sum/obj->size;
+}
+
+void movingAverageFree(MovingAverage* obj) {
+	if (obj) {
+		if (obj->arr) {free(obj->arr);}
+		free(obj);
+	}
+	return;
+}
+
+
