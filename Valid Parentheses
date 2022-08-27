@@ -1,0 +1,42 @@
+For stack, be causion about pop empty stack. And also, notice that at the end of the program, return TRUE only if the stack is empty.
+
+#define MAX_STACK_SIZE 10000
+#define TRUE 1
+#define FALSE 0
+
+typedef struct StackStruct{
+	int top;
+	int capability;
+	int arr[MAX_STACK_SIZE];
+}Stack;
+
+bool isValid(char * s){
+	Stack stack;
+	stack.top = -1;
+	stack.capability = MAX_STACK_SIZE;
+
+	while(*s != '\0') {
+		if ((*s == '(') || (*s == '[') || (*s=='{')) {
+			stack.arr[++stack.top] = *s;
+		}
+		else {
+            if (stack.top == -1) {return FALSE;}
+            
+			switch(stack.arr[stack.top--]) {
+				case '(':
+					if (*s != ')') {return FALSE;}
+ 					break;
+				case '{':
+					if (*s != '}') {return FALSE;} 
+					break;
+				case '[':
+					if (*s != ']') {return FALSE;}
+					break;				
+				default:
+					return FALSE;
+			}
+		}
+        s++;
+	}
+	return (stack.top == -1) ? TRUE: FALSE;
+}
