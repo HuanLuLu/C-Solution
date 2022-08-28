@@ -1,0 +1,112 @@
+Three solutions:
+===============================================================
+1)brutal force search:
+int* dailyTemperatures(int* temperatures, int temperaturesSize, int* returnSize){
+	int *ret = (int *)malloc( sizeof(int) * temperaturesSize );
+	ret[temperaturesSize-1] = 0;
+	*returnSize = temperaturesSize;
+
+	if (temperaturesSize == 1) {return ret;}
+
+	int i,j,sum;
+
+	int diff[temperaturesSize-1];
+	for (i = 1; i < temperaturesSize; i++) {
+		diff[i-1] = temperatures[i] - temperatures[i-1];
+	}
+
+	for (i = 0; i < temperaturesSize - 1; i++) {
+		if (diff[i] > 0) {
+			ret[i] = 1;
+		}
+		else {
+			sum = diff[i];
+            ret[i] = 0;
+			for (j = i+1; j < temperaturesSize - 1; j++) {
+				sum += diff[j];
+				if (sum > 0) {
+					ret[i] = j-i+1;
+					break;
+				}
+			}
+			
+		}
+	}
+	return ret;
+}
+=======================================================================
+2) Use stack. 
+In the stack, we only push when the element is smaller than the top.
+After doing that, we are iterating the array forward, but when temperature drops, we are going to search the 
+element backwards by using the stack
+
+
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+
+#define MAX_LEN 100000
+
+typedef struct Buff_Struct{
+	int index;
+	int temp;
+}Buff;
+
+typedef struct Stack_Struct{
+	int top;
+	Buff buffs[MAX_LEN];
+}Stack;
+
+
+int* dailyTemperatures(int* temperatures, int temperaturesSize, int* returnSize){
+	Stack stack;
+	stack.top = -1;
+
+	int *ret = (int *)malloc(sizeof(int) * temperaturesSize);
+	*returnSize = temperaturesSize;
+
+	for (int i = 0; i < temperaturesSize; i++) {
+		while ( ( stack.top >= 0 ) && ( stack.buffs[stack.top].temp < temperatures[i] ) ) {
+			ret[stack.buffs[stack.top].index] = i - stack.buffs[stack.top].index;
+			stack.top--;
+		}	
+		stack.top += 1;
+		stack.buffs[stack.top].index = i;
+		stack.buffs[stack.top].temp = temperatures[i];
+	}
+	while (stack.top >= 0) {
+		ret[stack.buffs[stack.top--].index] = 0;
+	}
+	return ret;
+}
+===============================================================
+3) Now, if we could back interating the array, and search forward, we could utilize the information we have got.
+When we iterate backwards, we will have the known on which position, the temperature will be larger than the current one.
+So the information will helo us jump to the next warmer location.
+One thing need to be noticed, is that, we can not handle the hottest temperature in our case. We will keep jumping to the 
+current largest day, since the next warmer day is 0, we will stuck here. We need to keep the hottest value.
+int* dailyTemperatures(int* temperatures, int temperaturesSize, int* returnSize){
+	*returnSize = temperaturesSize;
+	int *ret = (int *)malloc(sizeof(int)*temperaturesSize);
+	
+	int hottest = temperatures[temperaturesSize-1];
+	ret[temperaturesSize-1] = 0;
+	int j, days;
+
+	for (int i = temperaturesSize - 2; i >= 0; i--) {
+		if (temperatures[i] >= hottest) {
+			hottest = temperatures[i];
+			ret[i] = 0;
+            continue;
+		}
+		j = i+1;
+		days = 0;
+		while(temperatures[i] >= temperatures[j]) {
+			days += ret[j];
+            j += ret[j];
+		}
+		ret[i] = days+1;
+	}
+	return ret;
+}
+===============================================================
