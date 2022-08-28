@@ -167,6 +167,9 @@ In this project, I will document all the C coding questions.
 * Valid Parentheses
   * Question: https://leetcode.com/explore/learn/card/queue-stack/230/usage-stack/1361/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Valid%20Parentheses
+* Daily Temperatures
+  * Question: https://leetcode.com/problems/daily-temperatures/
+  * Solution: 
 
 
 ## Others:
