@@ -1,0 +1,79 @@
+Explaination:
+In this question, we only have stack functions, but need to accomplish queue function output. In other words, we need to use stack functions to
+emulate queue.
+
+Push: have the same resulr.
+Pop: Stack will pop last node, meanwhile, queue will pop the oldest node
+Peep: Stack will return the value of top, the last node. Queue will return the value of oldest one. Both will return the value like pop, except, 
+      we won't pop the node out here.
+
+
+#define MAX_CALL_NUM 100
+#define TRUE 1
+#define FALSE 0
+
+typedef struct {
+	int top;
+	int capacity;
+	int *arr;    
+} MyQueue;
+
+
+MyQueue* myQueueCreate() {
+	MyQueue *obj = (MyQueue *)malloc(sizeof(MyQueue));
+	obj->top = -1;
+	obj->capacity = MAX_CALL_NUM;
+	obj->arr = (int *)malloc(sizeof(int) * MAX_CALL_NUM);
+	return obj;
+}
+
+void myQueuePush(MyQueue* obj, int x) {
+	obj->arr[++obj->top] = x;
+	return;
+}
+
+int myQueuePop(MyQueue* obj) {
+	MyQueue *temp = (MyQueue *)malloc(sizeof(MyQueue));
+	temp->top = -1;
+	temp->capacity = MAX_CALL_NUM;
+	temp->arr = (int *)malloc(sizeof(int) * MAX_CALL_NUM);
+
+	int val;
+	while(obj->top >= 0) {
+		val = obj->arr[obj->top--];
+		myQueuePush(temp, val);
+	}
+	int ret = temp->arr[temp->top--];
+	while(temp->top >= 0) {
+		val = temp->arr[temp->top--];
+		myQueuePush(obj, val);
+	}
+	return ret;
+}
+
+int myQueuePeek(MyQueue* obj) {
+	return obj->arr[0];
+}
+
+bool myQueueEmpty(MyQueue* obj) {
+	return (obj->top == -1) ? TRUE : FALSE;
+}
+
+void myQueueFree(MyQueue* obj) {
+	free(obj->arr);
+	free(obj);
+}
+
+/**
+ * Your MyQueue struct will be instantiated and called as such:
+ * MyQueue* obj = myQueueCreate();
+ * myQueuePush(obj, x);
+ 
+ * int param_2 = myQueuePop(obj);
+ 
+ * int param_3 = myQueuePeek(obj);
+ 
+ * bool param_4 = myQueueEmpty(obj);
+ 
+ * myQueueFree(obj);
+*/
