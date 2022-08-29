@@ -1,0 +1,72 @@
+#include <string.h>
+#include <ctype.h>
+
+#define MAX_LEN 10000
+
+typedef struct Stack_Struct{
+	int top;
+	int *arr;
+}Stack;
+
+int evalRPN(char ** tokens, int tokensSize){
+Stack stack;
+	stack.top = -1;
+	stack.arr = (int *)malloc( sizeof(int) * MAX_LEN );
+
+	int a,b, number;
+	for(int i = 0; i < tokensSize; i++) {
+		if ( ( strlen(tokens[i]) == 1 ) && ( !isdigit(*tokens[i]) ) ) {
+			b = stack.arr[stack.top--];
+			a = stack.arr[stack.top--];
+			switch (*tokens[i]) {
+				case '+':
+					number = a + b;
+					break;
+				case '-':
+					number = a - b;
+					break;
+				case '*':
+					number = a * b;
+					break;
+                case '/':
+					number = a / b;
+                    break;
+				default:
+					return 0;
+			}
+		}
+		else {
+			sscanf(tokens[i], "%d", &number);
+		}
+		stack.arr[++stack.top] = number;
+	}
+	return stack.arr[0];
+}
+
+=======================================================
+more elite writing way:
+#include <string.h>
+#include <ctype.h>
+
+int evalRPN(char ** tokens, int tokensSize){
+	int stack[10000], top = -1, n, a, b;
+
+	for(int i = 0; i < tokensSize; i++) {
+		if ( ( strlen(tokens[i])==1 ) && ( !isdigit(tokens[i][0]) ) ) {
+			b = stack[top--];
+			a = stack[top--];
+			switch (tokens[i][0]) {
+				case '+': n = a+b; 	break;
+				case '-':  n = a-b; break;
+				case '*': n = a*b; break;
+				case '/': n = a/b; break;
+				default: return 0;			
+            }
+		}
+		else {
+			sscanf(tokens[i], "%d", &n);
+		}
+		stack[++top] = n;
+	}
+	return stack[0];
+}
