@@ -176,6 +176,9 @@ In this project, I will document all the C coding questions.
 * Implement Queue using Stacks  
   * Question: https://leetcode.com/problems/implement-queue-using-stacks/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Implement%20Queue%20using%20Stacks
+* Implement Stack using Queues
+  * Question: https://leetcode.com/problems/implement-stack-using-queues/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Implement%20Stack%20using%20Queues
 
 
 ## Others:
