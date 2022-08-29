@@ -170,6 +170,9 @@ In this project, I will document all the C coding questions.
 * Daily Temperatures
   * Question: https://leetcode.com/problems/daily-temperatures/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Daily%20Temperatures
+* Evaluate Reverse Polish Notation  
+  * Question: https://leetcode.com/problems/evaluate-reverse-polish-notation/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Evaluate%20Reverse%20Polish%20Notation
 
 
 ## Others:
