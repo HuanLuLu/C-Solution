@@ -173,6 +173,9 @@ In this project, I will document all the C coding questions.
 * Evaluate Reverse Polish Notation  
   * Question: https://leetcode.com/problems/evaluate-reverse-polish-notation/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Evaluate%20Reverse%20Polish%20Notation
+* Implement Queue using Stacks  
+  * Question: https://leetcode.com/problems/implement-queue-using-stacks/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Implement%20Queue%20using%20Stacks
 
 
 ## Others:
