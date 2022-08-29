@@ -1,0 +1,79 @@
+#define MAX_CALL_NUM 100
+#define TRUE 1
+#define FALSE 0
+
+typedef struct {
+	int front, rear, size, capacity;
+	int *arr;
+} MyStack;
+
+
+MyStack* myStackCreate() {
+	MyStack *obj = (MyStack *)malloc(sizeof(MyStack));
+	obj->capacity = MAX_CALL_NUM;
+	obj->size = 0;
+	obj->front = 0;
+	obj->rear = obj->capacity-1;
+	obj->arr = (int *)malloc(sizeof(int) * obj->capacity);
+	return obj;
+}
+
+void myStackPush(MyStack* obj, int x) {
+	obj->rear = (obj->rear + 1) % obj->capacity;
+	obj->arr[obj->rear] = x;
+	obj->size += 1;
+	return;
+}
+
+int myStackPop(MyStack* obj) {
+	MyStack *temp = myStackCreate();
+
+	int val;
+	while (obj->size > 1) {
+		val = obj->arr[obj->front];
+		obj->front = (obj->front + 1) % obj->capacity;
+		obj->size -= 1;
+
+		myStackPush(temp, val);
+	}
+
+	int ret = obj->arr[obj->front];
+	obj->front = (obj->front + 1) % obj->capacity;
+	obj->size -= 1;
+
+	while(temp->size > 0) {
+		val = temp->arr[temp->front];
+		temp->front = (temp->front + 1)%temp->capacity;
+		temp->size -= 1;
+		myStackPush(obj, val);
+	}
+	return ret;
+}
+
+int myStackTop(MyStack* obj) {
+	return obj->arr[obj->rear];
+}
+
+bool myStackEmpty(MyStack* obj) {
+	return (obj->size == 0) ? TRUE : FALSE;
+}
+
+void myStackFree(MyStack* obj) {
+	free(obj->arr);
+	free(obj);
+	return;
+}
+
+/**
+ * Your MyStack struct will be instantiated and called as such:
+ * MyStack* obj = myStackCreate();
+ * myStackPush(obj, x);
+ 
+ * int param_2 = myStackPop(obj);
+ 
+ * int param_3 = myStackTop(obj);
+ 
+ * bool param_4 = myStackEmpty(obj);
+ 
+ * myStackFree(obj);
+*/
