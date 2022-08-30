@@ -1,0 +1,74 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef int bool;
+#define TRUE 1
+#define FALSE 0
+
+typedef struct Node_Struct{
+    char ch;
+    struct Node_Struct *next;
+}Node;
+
+typedef struct Queue_Struct {
+    int size;
+    Node *front;
+    Node *rear;
+}Queue;
+
+Queue *createQueue() {
+    Queue *queue = (Queue *)malloc(sizeof(Queue));
+    queue->size = 0;
+    queue->front = NULL;
+    queue->rear = NULL;
+    return queue;
+}
+
+void push(char ch, Queue *queue){
+    Node *node = (Node *)malloc(sizeof(Node));
+    node->ch = ch;
+    if(queue->size == 0) {
+        queue->front = queue->rear = node;
+    }
+    else {
+        queue->rear->next = node;
+        queue->rear = node;
+    }
+    
+    queue->size++;
+    return;
+}
+
+char pop(Queue *queue) {
+    if(queue->size == 0) {return '\0';}
+
+    char ch = queue->front->ch;
+    Node *new_front = queue->front->next;
+    free(queue->front);
+    queue->front = new_front;
+    queue->size -=1;
+    return ch;
+}
+
+bool isEmpty(Queue *queue){
+    return (queue->size == 0) ? TRUE : FALSE;
+}
+
+char peek(Queue *queue) {
+    if (queue->size == 0) {return '\0';}
+    return queue->front->ch;
+}
+
+
+
+
+int main() {
+    Queue *queue = createQueue();
+    push('H', queue);
+    push('i', queue);
+    push('!', queue);
+    printf("the front char is: %c\n", peek(queue));
+    printf("the queue is empty? %s\n", (isEmpty(queue))?"TRUE":"FALSE");
+    printf("%c%c%c\n", pop(queue), pop(queue), pop(queue));
+    printf("the queue is empty? %s\n", (isEmpty(queue))?"TRUE":"FALSE");
+}
