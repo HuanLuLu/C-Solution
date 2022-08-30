@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef int bool;
+#define TRUE 1
+#define FALSE 0
+typedef struct Stack_Node {
+    char ch;
+    struct Stack_Node *next;
+}Stack;
+
+void push(char ch, Stack **stack) {
+    Stack *node = (Stack *)malloc(sizeof(Stack));
+    node->ch = ch;
+    node->next = *stack;
+    *stack = node;
+    return;
+}
+
+char pop(Stack **stack) {
+    char ch = (*stack)->ch;
+    *stack = (*stack)->next;
+    return ch;
+}
+
+bool isEmpty(Stack *stack) {
+    return (stack == NULL) ? TRUE : FALSE;
+}
+
+char peek(Stack *stack) {
+    return (stack != NULL) ? stack->ch : '\0';
+}
+
+int main() {
+    Stack *stack = NULL;
+    push('!', &stack);
+    push('i', &stack);
+    push('H', &stack);
+    printf("the top char is: %c\n", stack->ch);
+    printf("the stack is empty? %s\n", (isEmpty(stack))?"TRUE":"FALSE");
+    printf("%c%c%c\n", pop(&stack), pop(&stack), pop(&stack));
+    printf("the stack is empty? %s\n", (isEmpty(stack))?"TRUE":"FALSE");
+}
