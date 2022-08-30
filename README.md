@@ -155,6 +155,9 @@ In this project, I will document all the C coding questions.
 *  Moving Average from Data Stream   
    *  Questioin: https://leetcode.com/problems/moving-average-from-data-stream/
    *  Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Moving%20Average%20from%20Data%20Stream
+* Queue implement by using linked list
+   * Reference: https://www.codesdope.com/blog/article/making-a-queue-using-linked-list-in-c/
+   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Queue%20implement%20using%20linked%20list
 
   
 ## Stack  
