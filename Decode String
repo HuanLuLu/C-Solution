@@ -1,0 +1,115 @@
+The first solution is to use one stack.
+Also, at the beginning, I didn't find the final size limitation in the question. So, I use the linked list to implement stack.
+
+Code:
+typedef struct Node_Stack{
+    char ch;
+    struct Node_Stack *next;
+}Node;
+
+typedef struct Stack_Str{
+    long size;
+    Node *top;
+}Stack;
+
+
+void push(char ch, Stack *stack) {
+    Node *node = (Node *)malloc(sizeof(Node));
+    node->ch = ch;
+    node->next = stack->top;
+
+    stack->size += 1;
+    stack->top = node;
+
+    return;
+}
+
+char pop(Stack *stack) {
+    char ch = stack->top->ch;
+
+    Node *temp = stack->top;
+    stack->top = stack->top->next;
+    stack->size -= 1;
+    free(temp);
+
+    return ch;
+}
+
+int getSize(Stack *stack) {
+    int size = 0;
+    Node *node = stack->top; 
+    while(node->ch != '[') {
+        size+=1;
+        node = node->next;
+    }
+    return size;
+}
+
+
+char * decodeString(char * s){
+    //create a stack;
+    Stack stack;
+    stack.size = 0;
+    stack.top = NULL;
+
+    //push char into the stack
+    int i = 0;
+    int num, p, arrSize;
+    char *arr = NULL;
+
+    while(s[i] != '\0') {
+        if (s[i] == ']') {
+            if (arr != NULL) {
+                free(arr);
+                arr = NULL;
+            }
+            arrSize = 0;
+            arr = (char *)malloc(sizeof(char) * getSize(&stack));
+            while(stack.top->ch != '[') {
+                arr[arrSize++] = pop(&stack);
+            }
+
+            //pop '['
+            pop(&stack);
+
+            //get the number indicating repeatings
+            num = 0;
+            p = 0;
+            while(stack.size > 0 && stack.top->ch >= '0' && stack.top->ch <= '9') {
+                num += (pop(&stack) - '0') * pow(10, p++);
+            }
+            for (int i = 0; i < num; i++) {
+                for (int j = arrSize-1; j >= 0; j--) {
+                    push(arr[j], &stack);
+                }
+            }
+        }
+        else {
+            //push s[i] into stack
+            push(s[i], &stack);
+        }
+
+        i++;
+    }
+    
+    if (arr != NULL) {
+        free(arr);
+        arr = NULL;
+    }
+
+    char *ret = (char *)malloc(sizeof(char) * (stack.size+1));
+    ret[stack.size] = '\0';
+    for (long i = stack.size-1; i >= 0; i--) {
+        ret[i] = pop(&stack);
+    }
+    return ret;
+}
+Time complexcity:
+20[10[40[abc]]], 20*10*40, we will push character into our stack, where is the double loop in our code. The worst scenario is multiple nested patterns.
+So we assume all numbers belong to K. Then the maximum nested number is maxK^countK. Since n represent the number of our string. 
+O(n) = maxK^countK * n
+
+Space complexcity:
+O(n) is the finale length of out result
+
+================================================================
