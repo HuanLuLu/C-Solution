@@ -185,6 +185,9 @@ In this project, I will document all the C coding questions.
 * Stack implement using linked list
   * Reference: https://www.educative.io/answers/how-to-implement-a-stack-in-c-using-a-linked-list
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Stack%20implement%20using%20linked%20list
+*  Decode String
+  * Question: https://leetcode.com/problems/decode-string/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Decode%20String
 
 
 ## Others:
