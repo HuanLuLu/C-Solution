@@ -113,3 +113,57 @@ Space complexcity:
 O(n) is the finale length of out result
 
 ================================================================
+Recursion
+
+char *decode(char *s, int *index){
+    int i = 0;
+    char *ret = (char *)malloc(sizeof(char)*100000);
+    while(s[*index] != '\0') {
+        if ( isalpha(s[*index]) ){
+            while ( isalpha(s[*index]) ) {
+                ret[i++] = s[(*index)++];
+            }
+        }
+        else if (s[*index] == ']' )  {
+            (*index)++;
+            ret[i] = '\0';
+            return ret;
+        }
+        else {
+            //number
+            int num = 0;
+            while( isdigit(s[*index]) ) {
+                num = num*10 + s[(*index)++] - '0';
+            }
+            (*index)++; //ignore '['
+            char *s_in = decode(s, index);
+            int str_len = strlen(s_in);
+            for(int j = 0; j < num; j++) {
+                strcpy(&ret[i], s_in);
+                i += str_len;
+            }
+            free(s_in);
+        }
+    }
+
+    ret[i] = '\0';
+    return ret;
+}
+
+
+char * decodeString(char * s){
+    int index = 0;
+    return decode(s, &index);
+}
+
+Time Complexity:
+How many recursion we could have? n
+In each recursion, we have a for loop, the maximub loop number we could have is maxK
+Time complexity: O(maxK * k)
+
+Space Complexcity:
+How many recursion? n
+In each recursion, we have 1000000 memomry malloced
+O(n * 1000000)
+
+
