@@ -1,0 +1,45 @@
+Solution 1:
+Time Complexity: O(m*n*k), where m,n is the size of matrix, k is the number of zero in the matrix.
+Space Complexity: O(m*n)
+Basic solution:
+For each 0 in the matrix, check all the distance from all elements to 0. Update the distance matrix if and only if we can find a smaller distance
+/**
+ * Return an array of arrays of size *returnSize.
+ * The sizes of the arrays are returned as *returnColumnSizes array.
+ * Note: Both returned array and *columnSizes array must be malloced, assume caller calls free().
+ */
+void fillDistance(int** distance, int row, int col, int row_zero, int col_zero) {
+	int temp = 0;
+	for (int i = 0; i < row; i++) {
+		for(int j = 0; j < col; j++) {
+			temp = abs(i - row_zero) + abs(j - col_zero);
+			if (temp < distance[i][j]) {distance[i][j] = temp;}
+		}
+	}
+	return;
+}
+
+int** updateMatrix(int** mat, int matSize, int* matColSize, int* returnSize, int** returnColumnSizes){
+	int **distance = (int **)malloc(sizeof(int *) * matSize);
+	for(int i = 0; i < matSize; i++) { distance[i] = (int *)malloc(sizeof(int) * matColSize[0]); }
+
+	*returnSize = matSize;
+
+	*returnColumnSizes = (int *)malloc(sizeof(int) * matSize);
+	for(int i = 0; i < matSize; i++) { returnColumnSizes[i] = matColSize[0]; }
+
+	for(int i = 0; i < matSize; i++) {
+		for(int j = 0; j < matColSize[0]; j++) {
+			distance[i][j] = matSize + matColSize[0];
+		}
+	}
+
+	for(int i = 0; i < matSize; i++) {
+		for(int j = 0; j < matColSize[0]; j++) {
+			if (mat[i][j] == 0) {
+				fillDistance(distance, matSize, matColSize[0], i, j);
+			}
+		}
+	}	
+	return distance;
+}
