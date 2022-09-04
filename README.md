@@ -193,6 +193,11 @@ In this project, I will document all the C coding questions.
 * Flood Fill
   * Question: https://leetcode.com/problems/flood-fill/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Flood%20Fill
+  
+## Other:
+* 01 Matrix
+  * Question: https://leetcode.com/problems/01-matrix/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/01%20Matrix
 
 
 ## Others:
