@@ -11,3 +11,17 @@ int maxDepth(treeNode *node){
     
     return (left > right) ? (left + 1) : (right + 1);
 }
+
+
+Note:
+First, the definition of depth of binary tree: The edges from the node to the root. 
+Root: 0; the next level: 1....and so on so force.
+
+One question:
+How about Null root tree? -1
+
+So in the code, when "node == NULL", the return value should be 1 less than root. 
+
+Pay attention to the leetCode solution:
+https://leetcode.com/explore/learn/card/data-structure-tree/17/solve-problems-recursively/534/
+root depth is 1.
