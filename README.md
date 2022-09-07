@@ -188,6 +188,10 @@ In this project, I will document all the C coding questions.
 *  Decode String
   * Question: https://leetcode.com/problems/decode-string/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Decode%20String
+  
+## Heap
+  * Reference: https://www.programiz.com/dsa/heap-data-structure
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Heap_basic
 
 ## Recursion
 * Flood Fill
