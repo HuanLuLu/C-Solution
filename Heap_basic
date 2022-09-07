@@ -73,3 +73,14 @@ int main() {
     printArr(arr, size);
     
 }
+
+============
+Time complexity:
+https://iq.opengenus.org/time-and-space-complexity-of-heap/
+
+Inserting and Deleting:
+O(logn): The worst case is that after inserting/deleting a node, we have to move other from bottom to the top. Since for a complete tree, 
+the level of the tree is logN, the average time is O(logN)
+
+For creating a Heap:
+We need to insert all nodes into the tree. The average insert is O(logN), then to insert all nodes, we need n*longN time. 
