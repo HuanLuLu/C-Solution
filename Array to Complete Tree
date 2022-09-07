@@ -1,0 +1,14 @@
+Reference:
+https://leetcode.com/explore/learn/card/heap/643/heap/4017/
+
+Dependents on how the array in our design.
+
+If we use the array only to save the value of node, then 
+for node i, 
+the parent of the node will be (i-1)/2, 
+the children of the node will be: left: 2i+1; right 2i+2
+
+If we use the array[0] to store the number of the element in the array, then
+for node i,
+the parent of the node will be i/2
+the children of the node will be : left: 2i; right: 2i+1
