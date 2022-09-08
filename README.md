@@ -190,11 +190,12 @@ In this project, I will document all the C coding questions.
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Decode%20String
   
 ## Heap  
-  * Reference: https://www.programiz.com/dsa/heap-data-structure
+* Basic
+  * Question: https://www.programiz.com/dsa/heap-data-structure
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Heap_basic  
-*  HeapSort
-  * Reference: https://leetcode.com/explore/learn/card/heap/645/applications-of-heap/4030/
-  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/HeapSort  
+* HeapSort 
+  * Question: https://leetcode.com/explore/learn/card/heap/645/applications-of-heap/4030/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/HeapSort   
 
 ## Recursion
 * Flood Fill
