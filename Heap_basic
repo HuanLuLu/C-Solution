@@ -84,3 +84,20 @@ the level of the tree is logN, the average time is O(logN)
 
 For creating a Heap:
 We need to insert all nodes into the tree. The average insert is O(logN), then to insert all nodes, we need n*longN time. 
+
+Insertion
+Best Case: O(1)
+Worst Case: O(logN)
+Average Case: O(logN)
+Deletion
+Best Case: O(1)
+Worst Case: O(logN)
+Average Case: O(logN)
+Searching
+Best Case: O(1)
+Worst Case: O(N)
+Average Case: O(N)
+Getting max value & min value
+Sorting O(NlogN)
+Creating a Heap O(NlogN)
+Heapify O(N)
