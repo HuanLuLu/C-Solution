@@ -5,7 +5,7 @@ So the basic idea is that if we want to sort the array ascendently, we could mak
 Then remake the array again to the max heap expcept the last one.
 
 Since we are deleting the top of heap, so that is O(logN). For the whole array, the time complexity will be O(nLogN)
-
+===========================================================================================================================
 Code:
 #include <string.h>
 #include <stdio.h>
