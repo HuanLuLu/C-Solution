@@ -1,0 +1,103 @@
+Reference:
+https://leetcode.com/explore/learn/card/heap/645/applications-of-heap/4030/
+
+So the basic idea is that if we want to sort the array ascendently, we could make a max heap, than get the max by swapping the top and the bottom. 
+Then remake the array again to the max heap expcept the last one.
+
+Since we are deleting the top of heap, so that is O(logN). For the whole array, the time complexity will be O(nLogN)
+
+Code:
+#include <string.h>
+#include <stdio.h>
+#include <ctype.h>
+#include <stdlib.h>
+
+void swap(int *a, int *b) {
+    int temp =*a;
+    *a = *b; *b = temp;
+    return;
+}
+
+void heapify(int *arr, int size, int i) {
+    int large = i;
+    int l = 2*i+1;
+    int r = 2*i+2;
+    
+    //max heap
+    if (l < size && arr[l] > arr[large]) { large = l; }
+    if (r < size && arr[r] > arr[large]) { large = r; }
+    
+    if (large == i) {return;}
+    
+    swap(&arr[i], &arr[large]);
+    heapify(arr, size, large);
+    return;
+}
+
+void heapifyWholeArr(int *arr, int size) {
+    for (int i = size/2 - 1; i >= 0; i--) {
+        heapify(arr, size, i);
+    }
+    return;
+}
+
+
+void insert(int *arr, int num, int *size) {
+    arr[*size] = num;
+    *size += 1;
+
+    heapifyWholeArr(arr, *size);
+    return;
+}
+
+void delete(int *arr, int num, int *size) {
+    int i = 0;
+    for (i = 0; i < *size; i++) {
+        if(arr[i] == num) {break;}
+    }
+    swap(&arr[i], &arr[*size-1]);
+    *size -= 1;
+    
+    heapifyWholeArr(arr, *size);
+    return;
+}
+
+void printArr(int *arr, int size){
+    for(int i = 0; i<size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+void heapSort(int *arr, int size) {
+    for (int i = size; i >0; i--) {
+        heapifyWholeArr(arr, i);
+        swap(&arr[0], &arr[i-1]);
+    }
+    return;
+}
+
+
+int main() {
+    int size = 6;
+    int arr[7] = {3,9,2,1,4,5};
+    heapifyWholeArr(arr, size);
+    printArr(arr, size);
+    
+    insert(arr, 10, &size);
+    printArr(arr, size);
+    
+    delete(arr, 10, &size);
+    printArr(arr, size);
+    
+    int old_arr[7] = {1,2,3,4,5,6,7};
+    size = 0;
+    for (int i = 0; i< 7; i++){
+        insert(arr, old_arr[i], &size);
+    }
+    printArr(arr, size);
+    
+    heapSort(arr, size);
+    printArr(arr, size);
+}
+
