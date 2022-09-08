@@ -117,3 +117,12 @@ int main() {
     printArr(result, 3);
 }
 
++++++++++++++++++++++++++++++++++++++++++
+If we want to get the kth element in the array. We can use the same slotuion we mentioned above. But instead of returning the whole array,
+we only return the top of the topK heap.
+
+code:
+int getKth(int *arr, int size, int k){
+    int *top = topK(arr, size, k);
+    return top[0];
+}
