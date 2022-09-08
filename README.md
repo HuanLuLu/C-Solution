@@ -196,6 +196,9 @@ In this project, I will document all the C coding questions.
 * HeapSort 
   * Question: https://leetcode.com/explore/learn/card/heap/645/applications-of-heap/4030/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/HeapSort   
+* Top K
+  * Question: https://leetcode.com/explore/learn/card/heap/645/applications-of-heap/4031/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Top%20K
 
 ## Recursion
 * Flood Fill
