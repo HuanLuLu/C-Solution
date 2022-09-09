@@ -1,0 +1,60 @@
+Quick sort solution:
+pick one element as the pivot, then sort the array in the way that all elements before the pivot are smaller than the pivor. All the elements after 
+the pivot is bigger than the pivot.
+Apply the same solution on the first part and second part of the array until we check all the elements in the array.
+
+Time complexity:
+Unstable.
+The worst case: O(N^2)
+The best case: O(nlogn)
+Average case: O(nlogn)
+
+Space: O(logn) for calling stack
+==========================================================
+Code:
+#include <stdio.h>
+
+void swap(int *a, int *b){
+    int temp = *a;
+    *a = *b; *b = temp;
+    return;
+}
+
+int partition(int *arr, int start, int end) {
+    int pivot = arr[end];
+    int pi = start;
+
+    for (int i = start; i < end; i++) {
+        if (arr[i]  < pivot) {
+            swap(&arr[pi++], &arr[i]);
+        }
+    }
+    swap(&arr[pi], &arr[end]);
+    return pi;
+}
+
+
+void quickSort(int *arr, int start, int end) {
+    if (start > end) {return;}
+
+    int pi = partition(arr, start, end);
+    quickSort(arr, start, pi-1);
+    quickSort(arr, pi+1, end);
+    return;
+}
+
+void printArr(int *arr, int size){
+    for(int i = 0; i<size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+
+int main() {
+    int size = 11;
+    int arr[] = {-5, -6, -7, 0, 0, 0, 0, -8, 1, 2, 3 };
+    quickSort(arr, 0, size-1);
+    printArr(arr, size);
+}
+
