@@ -1,0 +1,33 @@
+#include <stdlib.h>
+===================================================
+void qsort(void *base, size_t nitems, size_t size, int (*compar)(const void *, const void*))
+
+base: the input you want to sort
+nitems: number of items
+size: size of each elements
+compar: the function to compare elements
+===================================================
+int comparator(const void* p1, const void* p2);
+Return value meaning
+<0 The element pointed by p1 goes before the element pointed by p2
+0  The element pointed by p1 is equivalent to the element pointed by p2
+>0 The element pointed by p1 goes after the element pointed by p2
+
+So, if want to ascend, make p1 < p2. If want to desecnd, make negtive than return.
+===================================================
+Code:
+
+int cmp(const void *a, const void *b) {
+    return -(*(int *)a - *(int *)b);
+}
+
+
+int main() {
+    int size = 11;
+    int arr[] = {-5, -6, -7, 0, 0, 0, 0, -8, 1, 2, 3 };
+    //quickSort(arr, 0, size-1);
+    //printArr(arr, size);
+    
+    qsort(arr, 11, sizeof(int), cmp);
+    printArr(arr, size);
+}
