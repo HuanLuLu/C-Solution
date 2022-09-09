@@ -203,7 +203,7 @@ In this project, I will document all the C coding questions.
 ## Sort
 * QucikSort
   * Reference: https://www.programiz.com/dsa/quick-sort
-  * Solution: 
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/QuickSort%20in%20C%20Solution
   
      
 ## Recursion
