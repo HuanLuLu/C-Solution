@@ -1,5 +1,11 @@
 Utilize qsort in <stdlib.h>
 
+Another Note:
+If we have multiple numbers, want to count and restore the counting number, using qusort to sort first could be a good solution.
+Since after sorting, all the duplucated elements will be together, we could count easier (do not need to go forth and back finding if the current
+number has been counted or not, and where the counting number is in our counting structure.)
+
+
 Code:
 
 
