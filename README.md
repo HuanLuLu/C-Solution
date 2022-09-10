@@ -214,6 +214,9 @@ In this project, I will document all the C coding questions.
 * Kth Largest Element in an Array
   * Question: https://leetcode.com/explore/learn/card/heap/646/practices/4014/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Kth%20Largest%20Element%20in%20an%20Array
+* Last Stone Weight
+  * Question: https://leetcode.com/explore/learn/card/heap/646/practices/4084/
+  * Solution: Last Stone Weight
   
      
 ## Recursion
