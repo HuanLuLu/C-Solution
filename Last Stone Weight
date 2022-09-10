@@ -1,0 +1,16 @@
+int cmp(const void *a, const void *b) {
+	return *(int *)b - *(int *)a;
+}
+
+int lastStoneWeight(int* stones, int stonesSize){
+	qsort(stones, stonesSize, sizeof(int), cmp);
+
+	for(int i = 0; i < stonesSize -1; i++) {
+		stones[i+1] = abs(stones[i] - stones[i+1]);
+		qsort(stones+i+1, stonesSize-i-1, sizeof(int), cmp);
+	}
+	return stones[stonesSize-1];
+}
+
+Time Complexity:
+O(n * nlogn)
