@@ -207,7 +207,7 @@ In this project, I will document all the C coding questions.
   * qsort: https://github.com/HuanLuLu/C-Solution/blob/main/qsort
 * Top K Frequent Elements
   * Question: https://leetcode.com/explore/learn/card/heap/646/practices/4015/
-  * Solution: 
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Top%20K%20Frequent%20Elements
   
      
 ## Recursion
