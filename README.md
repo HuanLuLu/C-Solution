@@ -199,9 +199,6 @@ In this project, I will document all the C coding questions.
 * Top K
   * Question: https://leetcode.com/explore/learn/card/heap/645/applications-of-heap/4031/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Top%20K
-* Kth Largest Element in an Array
-  * Question: https://leetcode.com/explore/learn/card/heap/646/practices/4014/
-  * Solution: 
   
 ## Sort
 * QucikSort
@@ -211,6 +208,9 @@ In this project, I will document all the C coding questions.
 * Top K Frequent Elements
   * Question: https://leetcode.com/explore/learn/card/heap/646/practices/4015/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Top%20K%20Frequent%20Elements
+* Kth Largest Element in an Array
+  * Question: https://leetcode.com/explore/learn/card/heap/646/practices/4014/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Kth%20Largest%20Element%20in%20an%20Array
   
      
 ## Recursion
