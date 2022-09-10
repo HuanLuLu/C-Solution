@@ -201,7 +201,7 @@ In this project, I will document all the C coding questions.
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Top%20K
 * Kth Largest Element in a Stream
   * Question: https://leetcode.com/explore/learn/card/heap/646/practices/4016/
-  * Soliution:
+  * Soliution: https://github.com/HuanLuLu/C-Solution/blob/main/Kth%20Largest%20Element%20in%20a%20Stream
   
 ## Sort
 * QucikSort
