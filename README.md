@@ -217,6 +217,9 @@ In this project, I will document all the C coding questions.
 * Last Stone Weight
   * Question: https://leetcode.com/explore/learn/card/heap/646/practices/4084/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Last%20Stone%20Weight
+* 1337. The K Weakest Rows in a Matrix
+  * Question: https://leetcode.com/problems/the-k-weakest-rows-in-a-matrix/solution/
+  * Solution: 
   
      
 ## Recursion
