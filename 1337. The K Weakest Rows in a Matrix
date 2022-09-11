@@ -43,3 +43,36 @@ int* kWeakestRows(int** mat, int matSize, int* matColSize, int k, int* returnSiz
 	return ret;
 }
 ==================================================
+Approach 2:
+Check cols instead of rows. First 0 will be the weakest.
+Time complexity: The worst case is we have to go through the whole matrix to fill the return array. So it will be O(m*n)
+Space complexity: O(1)
+
+int* kWeakestRows(int** mat, int matSize, int* matColSize, int k, int* returnSize){
+	int rows = matSize;
+	int cols = matColSize[0];
+
+	int *ret = (int *)malloc(sizeof(int) * k);
+	*returnSize =k;
+	int fg[rows];
+	memset(fg, 0, sizeof(int)*rows);
+
+	int index = 0;
+	for (int c = 0; c < cols; c++) {
+		for (int r = 0; r < rows; r++) {
+			if (mat[r][c] == 0 && fg[r] == 0) {
+				fg[r] = 1;
+				ret[index++] = r;
+				if(index >= k) {return ret;}
+			}		
+		}
+	}
+	for (int i = 0; i < rows; i++) {
+		if(fg[i] == 0) {
+			ret[index++] = i;
+			if(index >= k) {return ret;}
+		}
+	}
+	return ret;
+}
+
