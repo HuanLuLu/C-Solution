@@ -219,7 +219,7 @@ In this project, I will document all the C coding questions.
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Last%20Stone%20Weight
 * 1337. The K Weakest Rows in a Matrix
   * Question: https://leetcode.com/problems/the-k-weakest-rows-in-a-matrix/solution/
-  * Solution: 
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/1337.%20The%20K%20Weakest%20Rows%20in%20a%20Matrix
   
      
 ## Recursion
