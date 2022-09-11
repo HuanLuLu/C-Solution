@@ -1,0 +1,45 @@
+Approach 1: linear sort
+Time complexity: calculating sums: O(m*n); sort: O(mlogm). Total time comlexity: O(m*(n+logm))
+Space: O(m)
+
+Code:
+
+typedef struct {
+	int row;
+	int val;
+}Strength;
+
+int cmp(const void *a, const void *b) {
+	if ( ((Strength *)a)->val ==  ((Strength *)b)->val ) {
+		return ((Strength *)a)->row -  ((Strength *)b)->row;
+	}
+	else {
+		return ((Strength *)a)->val -  ((Strength *)b)->val;
+	}
+}
+
+int* kWeakestRows(int** mat, int matSize, int* matColSize, int k, int* returnSize){
+	int rows = matSize;
+	int cols = matColSize[0];
+
+	Strength strength[rows];
+	int sum;
+	for(int i = 0; i < rows; i ++){
+		sum = 0;
+		for (int j = 0; j < cols; j++) {
+			sum += mat[i][j];
+		}
+		strength[i].row = i;
+		strength[i].val = sum;
+	}
+
+	qsort(&strength, rows, sizeof(Strength), cmp);
+	
+	int *ret = (int *)malloc(sizeof(int) * k);
+	for(int i = 0; i < k; i++) {
+		ret[i] = strength[i].row;
+	}
+	*returnSize = k;
+	return ret;
+}
+==================================================
