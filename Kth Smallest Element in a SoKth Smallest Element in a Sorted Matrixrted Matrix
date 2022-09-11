@@ -1,0 +1,71 @@
+Method 1:
+Min heap. 
+Time complexity: O(mnlogk)
+Space complexity: O(k)
+
+void swap(int *a, int *b){
+	int temp = *a;
+	*a = *b; *b = temp;
+	return;
+}
+
+void heapifyNode(int *arr, int size, int i) {
+	int large = i;
+	int l = 2*i + 1;
+	int r = 2*i + 2;
+
+	if (l < size && arr[l] > arr[large]) {large = l;}
+	if (r < size && arr[r] > arr[large]) {large = r;}
+
+	if(large == i) {return;}
+	
+	swap(&arr[i], &arr[large]);
+	heapifyNode(arr, size, large);
+	return;
+}
+
+void heapify(int *arr, int size){
+	for (int i = size/2 -1; i >= 0; i--) {
+		heapifyNode(arr, size, i);
+	}
+	return;
+}
+
+void insert(int *arr, int *size, int num) {
+	arr[(*size)++] = num;
+	heapify(arr, *size);
+	return;
+}
+
+void insertTop(int *arr, int size, int num) {
+	arr[0] = num;
+	heapify(arr, size);
+	return;
+}
+
+
+int kthSmallest(int** matrix, int matrixSize, int* matrixColSize, int k){
+	int ret[k];
+	int size = 0;
+
+	for (int i = 0; i < matrixSize; i++) {
+		for (int j = 0; j < matrixColSize[0]; j++) {
+			if (size < k) {
+				insert(ret, &size, matrix[i][j]);
+			}
+			else {
+				if (matrix[i][j] < ret[0]) {insertTop(ret, size, matrix[i][j]);}
+			}
+		}
+	}
+	return ret[0];
+}
+
+============================================================================================
+
+
+
+
+
+
+
