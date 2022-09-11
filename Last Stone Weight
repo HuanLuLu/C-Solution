@@ -14,3 +14,63 @@ int lastStoneWeight(int* stones, int stonesSize){
 
 Time Complexity:
 O(n * nlogn)
+===================================================================
+Heap solution:
+Each dele or insert is O(logn), we have n element, so totally: O(nlogn)
+Creare the heap at the beginning: O(n)
+Total: O(n+nlog)-->O(nlogn)
+
+void swap(int *a, int *b){
+	int temp = *a;
+	*a = *b; *b = temp;
+	return;
+}
+
+void heapNode(int *arr, int size, int i){
+	int large = i;
+	int left = 2*i+1;
+	int right =2*i+2;
+
+	if(left < size && arr[left] > arr[large]) {large = left;}
+	if(right < size && arr[right] > arr[large]) {large = right;}
+
+	if (large == i) {return;}
+
+	swap(&arr[i], &arr[large]);
+	heapNode(arr, size, large);
+	return;	
+}
+
+void heapify(int *arr, int size) {
+	for (int i = size/2 - 1; i >=0; i--) {
+		heapNode(arr, size, i);
+	}
+}
+
+void insert(int *arr, int *size, int num) {
+	arr[(*size)++] = num;
+	heapify(arr, *size);
+	return;
+}
+
+void deleteTop(int *arr, int *size) {
+	swap(&arr[0], &arr[*size-1]);
+	heapify(arr, --*size);
+	return;
+}
+
+int lastStoneWeight(int* stones, int stonesSize){
+	heapify(stones, stonesSize);
+
+	int size = stonesSize,a,b;
+	for (int i = 0; i < stonesSize - 1; i++) {
+		a = stones[0];
+		deleteTop(stones, &size);
+		b = stones[0];
+		deleteTop(stones, &size);
+		insert(stones, &size, abs(a-b));
+	}
+	return stones[0];
+}
+
+
