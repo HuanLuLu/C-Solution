@@ -202,6 +202,9 @@ In this project, I will document all the C coding questions.
 * Kth Largest Element in a Stream
   * Question: https://leetcode.com/explore/learn/card/heap/646/practices/4016/
   * Soliution: https://github.com/HuanLuLu/C-Solution/blob/main/Kth%20Largest%20Element%20in%20a%20Stream
+* Kth Smallest Element in a Sorted Matrix
+  * Question: https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Kth%20Smallest%20Element%20in%20a%20SoKth%20Smallest%20Element%20in%20a%20Sorted%20Matrixrted%20Matrix
   
 ## Sort
 * QucikSort
