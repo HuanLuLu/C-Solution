@@ -223,6 +223,9 @@ In this project, I will document all the C coding questions.
 * The K Weakest Rows in a Matrix
   * Question: https://leetcode.com/problems/the-k-weakest-rows-in-a-matrix/solution/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/1337.%20The%20K%20Weakest%20Rows%20in%20a%20Matrix
+* Meeting Rooms II
+  * Question: https://leetcode.com/problems/meeting-rooms-ii/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Meeting%20Rooms%20II
   
      
 ## Recursion
