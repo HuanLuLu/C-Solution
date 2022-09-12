@@ -62,6 +62,119 @@ int kthSmallest(int** matrix, int matrixSize, int* matrixColSize, int k){
 }
 
 ============================================================================================
+Method2: create the heap to store the pointer of each array. 
+Time complexity: Let m be min(n, k). Our heap's size will be m. Creare the heap, we insert m element in. O(mlogm)-->can be smaller o(m)
+		we need find kth smallest, so we need took k-1 element from our min heap. So the time complexity will be O(klogm)
+		Ideally, our time complexity will be O(m+klogm)
+Space complexity: heap O(m)
+
+
+typedef struct {
+	int val;
+	int row;
+	int col;
+}Heap;
+
+void swap(Heap *a, Heap *b) {
+	Heap temp;
+	temp.val = a->val; temp.row = a->row; temp.col = a->col;
+	a->val = b->val;     a->row = b->row;    a->col = b->col;
+	b->val = temp.val; b->row = temp.row; b->col = temp.col;
+	return;
+}
+
+void heapifyNode(Heap *heap, int size, int i) {
+	int small = i;
+	int left = 2*i +1;
+	int right = 2*i + 2;
+
+	if (left < size && heap[small].val > heap[left].val) {small = left;}
+	if(right < size && heap[small].val > heap[right].val) {small = right;}
+	
+	if(small == i) {return;}
+	swap(&heap[i], &heap[small]);
+	heapifyNode(heap, size, small);
+}
+
+void heapify(Heap *heap, int size) {
+	for (int i = size/2 -1; i >= 0; i--) {
+		heapifyNode(heap, size, i);
+	}
+}
+
+void deleteTop(Heap *heap, int *size) {
+	swap(&heap[0], &heap[*size-1]);
+	heapify(heap, --*size);
+	return;
+}
+
+void replaceTop(Heap *heap, int size, int val, int row, int col){
+	heap[0].val = val; heap[0].row = row; heap[0].col = col;
+	heapify(heap, size);
+}
+
+void insert(Heap *heap, int *size, int val, int row, int col) {
+	heap[*size].val = val;
+	heap[*size].row = row;
+	heap[*size].col = col;
+
+	heapify(heap, ++*size);
+	return;
+}
+
+
+
+int kthSmallest(int** matrix, int matrixSize, int* matrixColSize, int k){
+	int capacity = (matrixSize > k) ? k : matrixSize;	
+
+	Heap heap[capacity];
+	int size = 0;
+	for (int i = 0; i < capacity; i++) {
+		insert(heap, &size, matrix[i][0], i, 0);
+	}
+
+	for (int i = 0; i < k-1; i++) {		
+		int row = heap[0].row, col = heap[0].col; 		
+        if (col+1 >= matrixColSize[0]) {
+            deleteTop(heap, &size);
+        }        
+        else {
+            replaceTop(heap, size, matrix[row][col+1], row, col+1);
+        }
+		
+	}
+	return heap[0].val;
+}
+ 
+==============================
+time complexity: copy data into buff: O(n*n); quicksort: O(nlogn) Total: O(n*nlogn*n)
+Space complexity: O(n*n)
+Quick sort:
+int cmp(const void *a, const void *b) {
+    return *(int *)a - *(int *)b;
+}
+
+int kthSmallest(int** matrix, int matrixSize, int* matrixColSize, int k){
+    int buff[matrixSize*matrixColSize[0]];
+    for(int i = 0;  i < matrixSize; i++) {
+        for (int j = 0; j < matrixColSize[0]; j++) {
+            buff[i*matrixSize + j] = matrix[i][j];
+        }
+    }
+    qsort(buff, matrixSize*matrixColSize[0], sizeof(int), cmp);
+    return buff[k-1];
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
