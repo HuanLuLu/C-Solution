@@ -226,6 +226,9 @@ In this project, I will document all the C coding questions.
 * Meeting Rooms II
   * Question: https://leetcode.com/problems/meeting-rooms-ii/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Meeting%20Rooms%20II
+* K Closest Points to Origin
+  * Question: https://leetcode.com/problems/k-closest-points-to-origin/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/K%20Closest%20Points%20to%20Origin
   
      
 ## Recursion
