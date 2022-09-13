@@ -1,0 +1,52 @@
+Solution1: Min Heap
+time complexity: heapify: O(N). for every element in the array, we need to delete and insert. O(2NlogN). Totally: O(N+2NlogN)
+
+void swap(int *a, int *b) {
+	int temp = *a;
+	*a = *b; *b = temp;
+	return;
+}
+
+void heapifyNode(int *arr, int size, int i) {
+	int min = i;
+	int left = 2*i+1;
+	int right = 2*i+2;
+
+	if (left < size && arr[left] < arr[min]) {min = left;}
+	if (right < size && arr[right] < arr[min]) {min = right;}
+
+	if(min == i) {return;}
+	
+	swap(&arr[i], &arr[min]);
+	heapifyNode(arr, size, min);
+	return;
+}
+
+void heapify(int *arr, int size) {
+	for (int i = size/2 - 1; i >=0; i--) {
+		heapifyNode(arr, size, i);
+	}
+	return;
+}
+
+void deleteTop(int *arr, int *size) {
+	swap(&arr[0], &arr[*size - 1]);
+	heapify(arr, --*size);
+	return;
+}
+
+int connectSticks(int* sticks, int sticksSize){
+	heapify(sticks, sticksSize);
+	int top = 0, size = sticksSize;
+    int cost = 0;
+	
+	while(size > 1) {
+		top = sticks[0];
+		deleteTop(sticks, &size);
+		sticks[0] += top;
+        cost += sticks[0];
+		heapifyNode(sticks, size, 0);
+	}
+	return cost;
+}
+
