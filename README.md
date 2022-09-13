@@ -205,6 +205,9 @@ In this project, I will document all the C coding questions.
 * Kth Smallest Element in a Sorted Matrix
   * Question: https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Kth%20Smallest%20Element%20in%20a%20SoKth%20Smallest%20Element%20in%20a%20Sorted%20Matrixrted%20Matrix
+* Minimum Cost to Connect Sticks
+  * Question: https://leetcode.com/problems/minimum-cost-to-connect-sticks/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Minimum%20Cost%20to%20Connect%20Sticks
   
 ## Sort
 * QucikSort
