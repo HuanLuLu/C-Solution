@@ -1,5 +1,5 @@
 Solution1: Min Heap
-time complexity: heapify: O(N). for every element in the array, we need to delete and insert. O(2NlogN). Totally: O(N+2NlogN)
+time complexity: heapify: O(N). for every element in the array, we need to delete and insert. O(2NlogN). Totally: roughly O(nlogn)
 
 void swap(int *a, int *b) {
 	int temp = *a;
