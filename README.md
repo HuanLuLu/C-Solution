@@ -235,6 +235,9 @@ In this project, I will document all the C coding questions.
 * K Closest Points to Origin
   * Question: https://leetcode.com/problems/k-closest-points-to-origin/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/K%20Closest%20Points%20to%20Origin
+* Find Median from Data Stream
+  * Question: https://leetcode.com/problems/find-median-from-data-stream/solution/
+  * Solution: 
   
      
 ## Recursion
