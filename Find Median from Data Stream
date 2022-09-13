@@ -1,3 +1,6 @@
+time complexity: O(nlogn) Sort
+space complexity: O(n)
+
 typedef struct {
 	int size;
 	int *buff;
