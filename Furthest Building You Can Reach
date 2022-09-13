@@ -1,0 +1,93 @@
+time complexity: insert O(logK). For n buildings: O(Nlogk)
+space complexity: heap: O(k)
+
+
+void swap(int *a, int *b) {
+	int temp = *a;
+	*a = *b; *b = temp;
+	return;
+}
+
+void heapifyNode(int *arr, int size, int i) {
+	int min = i;
+	int left = 2*i+1;
+	int right = 2*i+2;
+
+	if (left < size && arr[left] < arr[min]) {min = left;}
+	if (right < size && arr[right] < arr[min]) {min = right;}
+
+	if(i == min) {return;}
+
+	swap(&arr[i], &arr[min]);
+	heapifyNode(arr, size, min);
+}
+
+void heapify(int *arr, int size) {
+	for (int i = size/2 - 1; i >= 0; i--) {
+		heapifyNode(arr, size, i);
+	}
+	return;
+}
+
+void insert(int *arr, int *size, int num) {
+	arr[(*size)++] = num;
+	heapify(arr, *size);
+}
+
+int furthestBuilding(int* heights, int heightsSize, int bricks, int ladders){
+	int bricksNeed = 0;
+	int diff = 0;
+	int *arr = NULL;
+	int size = 0;
+
+	if (ladders != 0) {
+		arr = (int *)malloc(sizeof(int) * ladders);
+	}
+	
+	for (int i = 1; i < heightsSize; i++) {
+		diff = heights[i] - heights[i-1];
+		if (diff <= 0) {continue;}
+
+		if (size < ladders) {
+			insert(arr, &size, diff);
+		}
+		else {
+			if (ladders == 0 || diff <= arr[0]) {
+				bricksNeed += diff;
+			}
+			else {
+				bricksNeed += arr[0];
+				arr[0] = diff;
+				heapify(arr, size);
+			}
+
+			if (bricksNeed > bricks) {
+				free(arr);
+				return i-1;
+			}
+		}		
+	}
+	free(arr);
+	return heightsSize-1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
