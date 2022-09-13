@@ -208,6 +208,9 @@ In this project, I will document all the C coding questions.
 * Minimum Cost to Connect Sticks
   * Question: https://leetcode.com/problems/minimum-cost-to-connect-sticks/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Minimum%20Cost%20to%20Connect%20Sticks
+* Furthest Building You Can Reach
+  * Question: https://leetcode.com/problems/furthest-building-you-can-reach/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Furthest%20Building%20You%20Can%20Reach
   
 ## Sort
 * QucikSort
