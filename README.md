@@ -237,7 +237,7 @@ In this project, I will document all the C coding questions.
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/K%20Closest%20Points%20to%20Origin
 * Find Median from Data Stream
   * Question: https://leetcode.com/problems/find-median-from-data-stream/solution/
-  * Solution: 
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Find%20Median%20from%20Data%20Stream
   
      
 ## Recursion
