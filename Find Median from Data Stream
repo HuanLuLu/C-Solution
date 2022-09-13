@@ -1,0 +1,46 @@
+typedef struct {
+	int size;
+	int *buff;
+} MedianFinder;
+
+
+MedianFinder* medianFinderCreate() {
+	MedianFinder *ret = (MedianFinder *)malloc(sizeof(MedianFinder));
+	ret->size = 0;
+	ret->buff = (int *)malloc(sizeof(int) * 50000);
+	return ret;
+}
+
+int cmp(const int *a, const int *b) {
+	return *a-*b;
+}
+
+void medianFinderAddNum(MedianFinder* obj, int num) {
+	obj->buff[obj->size++] = num;
+	qsort(obj->buff, obj->size, sizeof(int), cmp);
+}
+
+double medianFinderFindMedian(MedianFinder* obj) {
+	if (obj->size % 2) {
+		return obj->buff[obj->size/2];
+	}
+	else 
+	{
+		return ( (double)obj->buff[obj->size/2] + obj->buff[obj->size/2 - 1] )/2;
+	}
+}
+
+void medianFinderFree(MedianFinder* obj) {
+	free(obj->buff);
+	free(obj);
+}
+
+/**
+ * Your MedianFinder struct will be instantiated and called as such:
+ * MedianFinder* obj = medianFinderCreate();
+ * medianFinderAddNum(obj, num);
+ 
+ * double param_2 = medianFinderFindMedian(obj);
+ 
+ * medianFinderFree(obj);
+*/
