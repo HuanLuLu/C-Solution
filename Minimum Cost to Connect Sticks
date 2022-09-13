@@ -49,4 +49,24 @@ int connectSticks(int* sticks, int sticksSize){
 	}
 	return cost;
 }
+===================
+Solution 2: QuickSort
+time complexity: O(NNlogN)
+
+
+int cmp(const int *a, const int *b) {
+	return *a - *b;
+}
+
+int connectSticks(int* sticks, int sticksSize){
+	qsort(sticks, sticksSize, sizeof(int), cmp);
+	
+	int ret = 0;
+	for (int i = 1; i < sticksSize; i++) {
+		sticks[i] += sticks[i-1];
+		ret += sticks[i];
+		qsort(sticks+i, sticksSize-i, sizeof(int), cmp);
+	}
+	return ret;
+}
 
