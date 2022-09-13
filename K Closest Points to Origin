@@ -1,0 +1,67 @@
+Several mistakes made so far:
+1) function cmp: the input is the same as base(1st parameter in qsort)
+2) int **. We have two int **. 
+    First, it is asked to return array of array. Each ret[i] will be a pointer, store a array.
+    Second, we need to output an array. int ** means, outside of the function, we have a pointer, and we use the address of the pointer as the input.
+            now, inside the function, we *returnColumnSizes to store the buffer. (*returnColumnSizes)[i] to get the element in the array.
+=====================================
+
+int cmp(const void *a, const void *b) {
+	return ((int **)a)[0][0]*((int **)a)[0][0] + ((int **)a)[0][1]*((int **)a)[0][1] - ((int **)b)[0][0]*((int **)b)[0][0] - ((int **)b)[0][1]*((int **)b)[0][1];
+}
+
+int** kClosest(int** points, int pointsSize, int* pointsColSize, int k, int* returnSize, int** returnColumnSizes){
+	qsort(points, pointsSize, sizeof(int *), cmp);
+
+	*returnSize = k;
+	*returnColumnSizes = (int *)malloc(sizeof(int) * k);
+	int **ret = (int **)malloc(sizeof(int *)*k);
+	for(int i = 0; i < k; i++) {
+		(*returnColumnSizes)[i] = 2;
+		ret[i] = (int *)malloc(sizeof(int)*2);
+		ret[i][0] = points[i][0];
+		ret[i][1] = points[i][1];
+	}
+	return ret;
+}
+
+===============================
+
+typedef struct {
+	int point[2];
+	int distance;
+}Point;
+
+int cmp(const void *a, const void *b) {
+	return ((Point *)a)->distance - ((Point *)b)->distance;
+}
+
+
+/**
+ * Return an array of arrays of size *returnSize.
+ * The sizes of the arrays are returned as *returnColumnSizes array.
+ * Note: Both returned array and *columnSizes array must be malloced, assume caller calls free().
+ */
+int** kClosest(int** points, int pointsSize, int* pointsColSize, int k, int* returnSize, int** returnColumnSizes){
+	Point p[pointsSize];	
+	
+	for (int i = 0; i < pointsSize; i++) {
+		p[i].point[0] = points[i][0];
+		p[i].point[1] = points[i][1];
+
+		p[i].distance = points[i][0]*points[i][0] + points[i][1]*points[i][1];
+	}
+
+	qsort(p, pointsSize, sizeof(Point), cmp);
+
+	int **ret = (int **)malloc(sizeof(int *) * k);
+	*returnSize = k;
+	*returnColumnSizes = (int *)malloc(sizeof(int) * k);
+	for(int i = 0; i < k; i++) {
+		ret[i] = (int *)malloc(sizeof(int) * 2);
+		ret[i][0] = p[i].point[0];
+		ret[i][1] = p[i].point[1];
+		(*returnColumnSizes)[i] = 2;
+	}
+	return ret;
+}
