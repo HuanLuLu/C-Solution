@@ -218,7 +218,7 @@ In this project, I will document all the C coding questions.
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Validate%20Binary%20Search%20Tree
 * Inorder Successor in BST 
   * Question: https://leetcode.com/problems/inorder-successor-in-bst/submissions/
-  * Solution: 
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Inorder%20Successor%20in%20BST
   
 ## Sort
 * QucikSort
