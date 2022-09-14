@@ -212,6 +212,11 @@ In this project, I will document all the C coding questions.
   * Question: https://leetcode.com/problems/furthest-building-you-can-reach/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Furthest%20Building%20You%20Can%20Reach
   
+## Tree
+* Validate Binary Search Tree
+  * Question: https://github.com/HuanLuLu/C-Solution/blob/main/Validate%20Binary%20Search%20Tree
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Validate%20Binary%20Search%20Tree
+  
 ## Sort
 * QucikSort
   * Reference: https://www.programiz.com/dsa/quick-sort
