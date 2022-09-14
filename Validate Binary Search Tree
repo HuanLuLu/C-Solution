@@ -1,0 +1,62 @@
+Solution 1:
+From bottom to top: bing the subtree's max and min back to the node, and then check the node based on the subtree max and min value.
+
+#define TRUE 1
+#define FALSE 0
+
+
+bool helper(struct TreeNode* root, int *max, int * min) {
+	if (root == NULL) {return TRUE;}
+
+	int lmin,lmax,rmin,rmax;
+	if ( helper(root->left, &lmax, &lmin) && helper(root->right, &rmax, &rmin) ) {
+		*max = root->val;
+		*min = root->val;
+	
+		if (root->left) {
+			if (root->val <= lmax) {return FALSE;}
+			*min = lmin;
+		}
+
+		if (root->right) {
+			if (root->val >= rmin) {return FALSE;}
+			*max = rmax;
+		}
+		return TRUE;
+	}
+	return FALSE;
+}
+
+bool isValidBST(struct TreeNode* root){
+	int max, min;
+	return helper(root, &max, &min);
+}
+
+
+Solution2:
+top to bottom. We could also thing the node in the way that define the max of left and min of the right subtree. 
+At the beginning, we use the LONG_MAX and LONG_MIN as our original range.
+Then every recursion, node will be the new max value for left subtree, and the new min value for the right subtree
+#include <limits.h>
+
+#define TRUE 1
+#define FALSE 0
+
+long helper(struct TreeNode* root, long min, long max) {
+	if (root == NULL) {return TRUE;}
+
+	if (root->val <= min || root->val >= max) {
+		return FALSE;
+	}
+
+	return helper(root->left, min, root->val) && helper(root->right, root->val, max);
+}
+
+
+bool isValidBST(struct TreeNode* root){
+	return helper(root, LONG_MIN, LONG_MAX);
+}
+
+===========
+time complexity: O(N)
+space: O(N)
