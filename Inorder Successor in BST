@@ -1,0 +1,64 @@
+Solution 1:
+Recursion, in straight forward way:
+Before found the node, go through the tree, document the smallest parent
+After found the node, go the right child, try to find the smallest bigger child
+
+Time complexity: O(N) worst case. Average: O(logN)
+Space complexoty: stack of calling function, O(N) worst case and O(logN) for average case
+
+struct TreeNode *getSmallestChild(struct TreeNode* root) {	
+    if (!root->left) {return root;}
+	return getSmallestChild(root->left);
+}
+
+struct TreeNode *helper(struct TreeNode* root, struct TreeNode* p, struct TreeNode* smallestParent){
+	if (root->val > p->val) {
+		return helper(root->left, p, root);
+	}
+	else if (root->val < p->val) {
+		return helper(root->right, p, smallestParent);
+	}
+	else {
+		if (root->right) {
+			return getSmallestChild(root->right);
+		}
+		else {
+			return smallestParent;
+		}
+	}
+}
+
+struct TreeNode* inorderSuccessor(struct TreeNode* root, struct TreeNode* p) {
+	return helper(root, p, NULL);
+}
+===========================================
+Check more carefully:
+When we are finding the node, 
+  If node < root go left also we will update the smallest parent. 
+  If node > root go right we won't update the parent.
+When we found the node(root == node):
+  We go right;
+When we try to find the smallest largest child:
+  Notice that, all right subTree kids will be larger than node we found,
+  So we still keep going left try to find the most left kid in the right subTree.
+  And if right subTree exist, it will be the return node instead of smallest parent.
+As the result:
+  if node >= root, go right, don't update the return node;
+  if node < root, ro left, update the return node.
+  
+Since we can use the while loop instead of recursion, space complexity will be O(1)
+
+struct TreeNode* inorderSuccessor(struct TreeNode* root, struct TreeNode* p) {
+	struct TreeNode* ret = NULL;
+
+	while (root) {
+		if (p->val  >= root->val) {
+			root = root->right;
+		}
+		else {
+			ret = root;
+			root = root->left;
+		}
+	}
+	return ret;
+}
