@@ -219,6 +219,9 @@ In this project, I will document all the C coding questions.
 * Inorder Successor in BST 
   * Question: https://leetcode.com/problems/inorder-successor-in-bst/submissions/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Inorder%20Successor%20in%20BST
+* Binary Search Tree Iterator  
+  * Question: https://leetcode.com/problems/binary-search-tree-iterator/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Binary%20Search%20Tree%20Iterator
   
 ## Sort
 * QucikSort
