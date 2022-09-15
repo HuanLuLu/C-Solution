@@ -224,7 +224,7 @@ In this project, I will document all the C coding questions.
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Binary%20Search%20Tree%20Iterator
 * Search in a Binary Search Tree
   * Question: https://leetcode.com/explore/learn/card/introduction-to-data-structure-binary-search-tree/141/basic-operations-in-a-bst/1000/
-  * Solution: 
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Search%20in%20a%20Binary%20Search%20Tree
 * Insert into a Binary Search Tree
   * Question: https://leetcode.com/problems/insert-into-a-binary-search-tree/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/701.%20Insert%20into%20a%20Binary%20Search%20Tree
