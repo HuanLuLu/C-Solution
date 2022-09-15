@@ -1,0 +1,64 @@
+Solution:
+Inorder traverse the binary tree. Then  hasNext() and Next() will have O(1) time complexity; Since we have to store the binary tree, the 
+space complexity will be O(100000)
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     struct TreeNode *left;
+ *     struct TreeNode *right;
+ * };
+ */
+
+#define TRUE 1
+#define FALSE 0
+
+typedef struct {
+	int *arr;
+	int size;
+	int current;
+} BSTIterator;
+
+void inorderTrav(struct TreeNode* root, int *arr, int *size) {
+	if (root == NULL) {return;}
+
+	inorderTrav(root->left, arr, size);
+	arr[(*size)++] = root->val;
+	inorderTrav(root->right, arr, size);
+	return;
+}
+
+
+BSTIterator* bSTIteratorCreate(struct TreeNode* root) {
+	BSTIterator *ret = (BSTIterator *)malloc(sizeof(BSTIterator));	
+    ret->current = 0;
+	ret->size = 0;
+	ret->arr = (int *)malloc(sizeof(int) * 100000);
+	inorderTrav(root, ret->arr, &ret->size);
+	return ret;
+}
+
+int bSTIteratorNext(BSTIterator* obj) {
+	return obj->arr[obj->current++];  
+}
+
+bool bSTIteratorHasNext(BSTIterator* obj) {
+	return (obj->current < obj->size) ? TRUE : FALSE;
+}
+
+void bSTIteratorFree(BSTIterator* obj) {
+	free(obj->arr);
+	free(obj);
+	return;
+}
+
+/**
+ * Your BSTIterator struct will be instantiated and called as such:
+ * BSTIterator* obj = bSTIteratorCreate(root);
+ * int param_1 = bSTIteratorNext(obj);
+ 
+ * bool param_2 = bSTIteratorHasNext(obj);
+ 
+ * bSTIteratorFree(obj);
+*/
