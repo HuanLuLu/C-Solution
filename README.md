@@ -222,6 +222,9 @@ In this project, I will document all the C coding questions.
 * Binary Search Tree Iterator  
   * Question: https://leetcode.com/problems/binary-search-tree-iterator/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Binary%20Search%20Tree%20Iterator
+* Search in a Binary Search Tree
+  * Question: https://leetcode.com/explore/learn/card/introduction-to-data-structure-binary-search-tree/141/basic-operations-in-a-bst/1000/
+  * Solution: 
   
 ## Sort
 * QucikSort
