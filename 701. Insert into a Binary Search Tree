@@ -1,0 +1,63 @@
+Two solution. both time complexity are O(logN) on average and O(N) for the worst case.
+
+Solution1:
+Recursion
+struct TreeNode* insertIntoBST(struct TreeNode* root, int val){
+	struct TreeNode *node = (struct TreeNode *)malloc(sizeof(struct TreeNode));
+	node->val = val;
+	node->left = NULL;
+	node->right = NULL;
+    	
+	if (root == NULL) {return node;}
+	
+	struct TreeNode *parent;
+    struct TreeNode *curr = root;
+	while(curr) {
+		parent = curr;
+
+		if (curr->val > val) {
+			curr = curr->left;
+		}
+		else {
+			curr = curr->right;
+		}		
+	}
+	
+	if (parent->val > val) {
+		parent->left = node;
+	}
+	else {
+		parent->right = node;
+	}
+	return root;
+}
+
+Solution2:
+Iteration
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     struct TreeNode *left;
+ *     struct TreeNode *right;
+ * };
+ */
+
+
+struct TreeNode* insertIntoBST(struct TreeNode* root, int val){
+	if (root == NULL) {
+		struct TreeNode *node = (struct TreeNode *)malloc(sizeof(struct TreeNode));
+		node->val = val;
+		node->left = NULL;
+		node->right = NULL;
+		return node;
+	}
+	
+	if (root->val > val) {
+		root->left =  insertIntoBST(root->left , val);
+	}
+	else {
+		root->right = insertIntoBST(root->right , val);
+	}
+	return root;
+}
