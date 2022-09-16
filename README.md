@@ -228,6 +228,9 @@ In this project, I will document all the C coding questions.
 * Insert into a Binary Search Tree
   * Question: https://leetcode.com/problems/insert-into-a-binary-search-tree/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/701.%20Insert%20into%20a%20Binary%20Search%20Tree
+* Delete Node in a BST  
+  * Question: https://leetcode.com/explore/learn/card/introduction-to-data-structure-binary-search-tree/141/basic-operations-in-a-bst/1006/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Delete%20Node%20in%20a%20BST
   
 ## Sort
 * QucikSort
