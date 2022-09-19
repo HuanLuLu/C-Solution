@@ -234,6 +234,9 @@ In this project, I will document all the C coding questions.
 * Lowest Common Ancestor of a Binary Search Tree  
   * Question: https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/ 
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Lowest%20Common%20Ancestor%20of%20a%20Binary%20Search%20Tree
+* Balanced Binary Tree  
+  * Question: https://leetcode.com/problems/balanced-binary-tree/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Balanced%20Binary%20Tree
   
 ## Sort
 * QucikSort
