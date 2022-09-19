@@ -237,6 +237,9 @@ In this project, I will document all the C coding questions.
 * Balanced Binary Tree  
   * Question: https://leetcode.com/problems/balanced-binary-tree/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Balanced%20Binary%20Tree
+* Convert Sorted Array to Binary Search Tree
+  * Question: https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/solution/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Convert%20Sorted%20Array%20to%20Binary%20Search%20Tree
   
 ## Sort
 * QucikSort
