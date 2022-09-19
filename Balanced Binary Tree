@@ -1,0 +1,33 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     struct TreeNode *left;
+ *     struct TreeNode *right;
+ * };
+ */
+#include <math.h>
+
+#define TRUE 1
+#define FALSE 0
+
+bool helper(struct TreeNode* root, int *height) {
+	if (root == NULL) {
+		*height = 0;
+		return TRUE;
+	}
+	
+	int heightL, heightR;
+	
+	if( helper(root->left, &heightL) && helper(root->right, &heightR) ) {
+		*height = (heightL > heightR) ? heightL : heightR;
+		*height += 1;
+		return ( abs(heightL - heightR) > 1 ) ? FALSE : TRUE;
+	}
+	return FALSE;
+}
+
+bool isBalanced(struct TreeNode* root){
+	int height;
+	return helper(root, &height);
+}
