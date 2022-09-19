@@ -1,0 +1,31 @@
+Solution:
+Thinking from top to bottom:
+If p and q are both smaller/greater than the node, continue searching the relative subtree.
+If p and q first time, not both smaller/greater than the node, it means q and p are going to split into two different subtrees. And the current node
+will be the answer.
+
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     struct TreeNode *left;
+ *     struct TreeNode *right;
+ * };
+ */
+
+
+struct TreeNode* lowestCommonAncestor(struct TreeNode* root, struct TreeNode* p, struct TreeNode* q) {
+	while (root) {
+		if (p->val < root->val && q->val < root->val) {
+			root = root->left;
+		}
+		else if (p->val > root->val && q->val > root->val) {
+			root = root->right;
+		}
+		else {
+			return root;
+		}
+	}
+	return NULL;
+}
