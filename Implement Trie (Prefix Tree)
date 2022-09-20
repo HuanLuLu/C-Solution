@@ -1,0 +1,71 @@
+
+#define MAX_ALPHA_NUM 26
+
+#define CHAR_TO_INDEX(c)  ( (int)c - (int)'a' )
+
+typedef struct Trie_Structure{
+	struct Trie_Structure *children[MAX_ALPHA_NUM];
+	bool isEndofWord;    
+} Trie;
+
+
+Trie* trieCreate() {
+	Trie *pNode = (Trie *)malloc(sizeof(Trie));
+	pNode->isEndofWord = false;
+	for (int i=0; i<MAX_ALPHA_NUM; i++){
+		pNode->children[i] = NULL;
+	}
+	return pNode;
+}
+
+void trieInsert(Trie* obj, char * word) {
+	int index;
+	for (int i=0; i<strlen(word); i++) {
+		index = CHAR_TO_INDEX(word[i]);
+		if (!obj->children[index]) {
+			obj->children[index] = trieCreate();
+		}
+		obj = obj->children[index];
+	}
+	obj->isEndofWord = true;
+	return;
+}
+
+bool trieSearch(Trie* obj, char * word) {
+	int index;
+	for (int i=0; i<strlen(word); i++) {
+		index = CHAR_TO_INDEX(word[i]);
+		if (!obj->children[index]) { return false;}
+		obj = obj->children[index];
+	}
+	return obj->isEndofWord; //true or false
+}
+
+bool trieStartsWith(Trie* obj, char * prefix) {
+	int index;
+	for (int i=0; i<strlen(prefix); i++) {
+		index = CHAR_TO_INDEX(prefix[i]);
+		if (!obj->children[index]) { return false;}
+		obj = obj->children[index];
+	}
+	return true;
+}
+
+void trieFree(Trie* obj) {
+	for (int i=0; i<MAX_ALPHA_NUM; i++) {
+		if(obj->children[i]) {trieFree(obj->children[i]);}
+	}
+	free(obj);
+}
+
+/**
+ * Your Trie struct will be instantiated and called as such:
+ * Trie* obj = trieCreate();
+ * trieInsert(obj, word);
+ 
+ * bool param_2 = trieSearch(obj, word);
+ 
+ * bool param_3 = trieStartsWith(obj, prefix);
+ 
+ * trieFree(obj);
+*/
