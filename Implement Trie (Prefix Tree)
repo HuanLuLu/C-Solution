@@ -1,3 +1,6 @@
+Time complexity: Insert: O(n), search: O(N)
+Space complexity: M words, Maximun Len:N, Maximum number of alphabet: K: O(M*N*K)
+
 
 #define MAX_ALPHA_NUM 26
 
