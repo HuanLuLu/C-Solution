@@ -245,8 +245,8 @@ In this project, I will document all the C coding questions.
 * Trie
   * Reference: https://www.geeksforgeeks.org/trie-insert-and-search/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Trie
-*
-  * Reference: 
+* Implement Trie (Prefix Tree)
+  * Reference: https://leetcode.com/explore/learn/card/trie/147/basic-operations/1047/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Implement%20Trie%20(Prefix%20Tree)
   
 ## Sort
