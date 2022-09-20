@@ -240,6 +240,11 @@ In this project, I will document all the C coding questions.
 * Convert Sorted Array to Binary Search Tree
   * Question: https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/solution/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Convert%20Sorted%20Array%20to%20Binary%20Search%20Tree
+
+## Trie
+* Trie
+  * Reference: https://www.geeksforgeeks.org/trie-insert-and-search/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Trie
   
 ## Sort
 * QucikSort
