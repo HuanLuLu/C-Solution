@@ -245,6 +245,9 @@ In this project, I will document all the C coding questions.
 * Trie
   * Reference: https://www.geeksforgeeks.org/trie-insert-and-search/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Trie
+*
+  * Reference: 
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Implement%20Trie%20(Prefix%20Tree)
   
 ## Sort
 * QucikSort
