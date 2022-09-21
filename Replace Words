@@ -1,0 +1,102 @@
+Solution:
+Using trie. 
+First store the dictionaty in trie data structure. time complexity: O(n1*m1), space: O(m1*n1*26)
+
+Second go through the sentence: 
+if the we found the first element in the trie: continue search, until: 1) end of sentence, 2) end of word in sentence, 3) didn't find prefix; 4) found the prefix
+we will skip the rest if it is 4), others will copy the rest of the word until the end.
+O(N), the length of sentence. Space: O(1)
+
+
+#define MAX_ALPHA_NUM 26
+
+#define CHAR_TO_NUM(c) ( (int)c - (int)'a' )
+
+typedef struct Trie_Str {
+	struct Trie_Str *children[MAX_ALPHA_NUM];
+    bool isEndofWord;
+}Trie;
+
+Trie *createNode() {
+	Trie *node = (Trie *)malloc(sizeof(Trie));
+	memset(node->children, 0, sizeof(node->children[0])*MAX_ALPHA_NUM);
+    node->isEndofWord = false;
+	return node;
+}
+
+void insert(Trie *root, char *string) {
+	int index;
+	for(int i=0; i<strlen(string); i++) {
+		index = CHAR_TO_NUM(string[i]);
+		if(!root->children[index]) {root->children[index] = createNode();}
+		root = root->children[index];
+	}
+    root->isEndofWord = true;
+	return;
+}
+
+void freeTrie(Trie *root) {
+	for (int i = 0; i < MAX_ALPHA_NUM; i++) {
+		if (root->children[i]) {freeTrie(root->children[i]);}
+	}
+	free(root);
+	return;
+}
+
+int moveToNextWord(char * sentence, int index, int len) {	
+	while (index < len) {
+		if (sentence[index] == ' ') {return index+1;}
+		index++;
+	}
+	return index;
+}
+
+void storeWord(char *sentence, char *ret, int *indexSen, int *indexRet, int len) {
+    while (*indexSen < len && sentence[*indexSen] != ' ') {
+        ret[(*indexRet)++] = sentence[(*indexSen)++];
+    }
+}
+
+char * replaceWords(char ** dictionary, int dictionarySize, char * sentence){
+	char *ret = (char *)malloc( sizeof(char) * (strlen(sentence)+1) );
+	Trie *root = createNode();
+	for (int i = 0; i < dictionarySize; i++) {
+		insert(root, dictionary[i]);
+	}
+
+	int indexRet = 0, indexSen = 0;
+	int len = strlen(sentence);
+	int indexTrie;
+	Trie *node;
+	while (indexSen < len) {
+		node = root;
+		indexTrie = CHAR_TO_NUM(sentence[indexSen]);
+
+		if (node->children[indexTrie]) {			
+			while(indexSen < len && sentence[indexSen] != ' ' && node->children[indexTrie] && node->isEndofWord==false) {
+				ret[indexRet++] = sentence[indexSen++];
+				node = node->children[indexTrie];                
+                indexTrie = CHAR_TO_NUM(sentence[indexSen]);
+			}
+			if (node->isEndofWord!=true) {
+				storeWord(sentence, ret, &indexSen, &indexRet, len);
+			}
+			indexSen = moveToNextWord(sentence, indexSen, len);
+			if (indexSen < len) {ret[indexRet++] = ' ';}
+		}
+		else {
+			storeWord(sentence, ret, &indexSen, &indexRet, len);
+			if (indexSen < len) {ret[indexRet++] = sentence[indexSen++];}
+		}		
+	}
+	ret[indexRet] = '\0';
+	return ret;
+}
+
+
+
+
+
+
+
+
