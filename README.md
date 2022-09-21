@@ -253,7 +253,7 @@ In this project, I will document all the C coding questions.
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Map%20Sum%20Pairs
 * Replace Words
   * Question: https://leetcode.com/problems/replace-words/
-  * Solution: Replace Words
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Replace%20Words
   
 ## Sort
 * QucikSort
