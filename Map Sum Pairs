@@ -1,0 +1,76 @@
+Time complexity: insert O(n), that n is the length of string. 
+                 sum: worst case is that we need to sum all the values in the trie: O(m*n*26)
+Space complexity: O(m*n*26)
+
+
+#define MAX_ALPHA_NUM 26
+
+#define CHAR_TO_INDEX(c) ( (int)c - (int)'a' )
+
+typedef struct Map_Sum{
+	struct Map_Sum *children[MAX_ALPHA_NUM];
+	int val; //0: not the end of word    
+} MapSum;
+
+
+MapSum* mapSumCreate() {
+	MapSum *node = (MapSum *)malloc(sizeof(MapSum));
+	node->val = 0;
+	for(int i = 0; i < MAX_ALPHA_NUM; i++) {
+		node->children[i] = NULL;
+	}   
+	return node;
+}
+
+void mapSumInsert(MapSum* obj, char * key, int val) {
+	int index;
+	for(int i; i<strlen(key); i++) {
+		index = CHAR_TO_INDEX(key[i]);
+		if (!obj->children[index]) {
+			obj->children[index] = mapSumCreate();
+		}
+		obj = obj->children[index];
+	}
+	obj->val = val;
+	return;
+}
+
+int sumAll(MapSum* obj) {
+	int sum = obj->val;
+	for (int i = 0; i < MAX_ALPHA_NUM; i++) {
+		if (obj->children[i]) {
+			sum+=sumAll(obj->children[i]);
+		}
+	}
+	return sum;
+}
+
+int mapSumSum(MapSum* obj, char * prefix) {
+	int index;
+	for(int i; i<strlen(prefix); i++) {
+		index = CHAR_TO_INDEX(prefix[i]);
+		if (!obj->children[index]) { return 0;}
+		obj = obj->children[index];
+	}
+	return sumAll(obj);
+}
+
+void mapSumFree(MapSum* obj) {
+	for(int i=0; i<MAX_ALPHA_NUM; i++) {
+		if(obj->children[i]) {
+			mapSumFree(obj->children[i]);
+		}
+	}
+	free(obj);
+	return;
+}
+
+/**
+ * Your MapSum struct will be instantiated and called as such:
+ * MapSum* obj = mapSumCreate();
+ * mapSumInsert(obj, key, val);
+ 
+ * int param_2 = mapSumSum(obj, prefix);
+ 
+ * mapSumFree(obj);
+*/
