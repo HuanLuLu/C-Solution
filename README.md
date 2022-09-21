@@ -248,6 +248,9 @@ In this project, I will document all the C coding questions.
 * Implement Trie (Prefix Tree)
   * Reference: https://leetcode.com/explore/learn/card/trie/147/basic-operations/1047/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Implement%20Trie%20(Prefix%20Tree)
+* Map Sum Pairs  
+  * Question: https://leetcode.com/explore/learn/card/trie/148/practical-application-i/1058/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Map%20Sum%20Pairs
   
 ## Sort
 * QucikSort
