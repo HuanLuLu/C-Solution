@@ -251,6 +251,9 @@ In this project, I will document all the C coding questions.
 * Map Sum Pairs  
   * Question: https://leetcode.com/explore/learn/card/trie/148/practical-application-i/1058/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Map%20Sum%20Pairs
+* Replace Words
+  * Question: https://leetcode.com/problems/replace-words/
+  * Solution: Replace Words
   
 ## Sort
 * QucikSort
