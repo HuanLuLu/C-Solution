@@ -1,0 +1,70 @@
+Time complexity: No wild card: Normal trie search O(m), m is the lenght of word. With wild card O(26^m), where m is also the length of word(all wild card)
+Space complexity: No wild card: O(1). With whild card O(m)
+
+
+#define MAX_ALPHA_NUM 26
+
+#define CHAR_TO_NUM(c) ( (int)c - (int)'a' )
+
+typedef struct Word_Dictionary{	
+	struct Word_Dictionary *children[MAX_ALPHA_NUM];
+	bool isEndofWord;
+} WordDictionary;
+
+
+WordDictionary* wordDictionaryCreate() {
+	WordDictionary *node = (WordDictionary *)malloc(sizeof(WordDictionary));
+	node->isEndofWord = false;
+	memset(node->children, 0, sizeof(node->children[0])*MAX_ALPHA_NUM);
+	return node;
+}
+
+void wordDictionaryAddWord(WordDictionary* obj, char * word) {
+	int index;
+	for (int i=0; i<strlen(word); i++) {
+		index = CHAR_TO_NUM(word[i]);
+		if (!obj->children[index]) {
+			obj->children[index] = wordDictionaryCreate();
+		}
+		obj = obj->children[index];
+	}
+	obj->isEndofWord = true;
+	return;
+}
+
+bool wordDictionarySearch(WordDictionary* obj, char * word) {
+	int index;
+	for (int i=0; i<strlen(word); i++) {
+		if (word[i] == '.') {
+			int j;
+			for (j=0; j<MAX_ALPHA_NUM; j++) {
+				if ( obj->children[j] && wordDictionarySearch(obj->children[j], word+i+1) ) {return true;}
+			}
+			return false;
+		}
+		else {
+			index = CHAR_TO_NUM(word[i]);
+			if (!obj->children[index]) {return false;}
+			obj = obj->children[index];
+		}
+	}
+	return obj->isEndofWord;
+}
+
+void wordDictionaryFree(WordDictionary* obj) {
+	for (int i = 0; i < MAX_ALPHA_NUM; i++) {
+		if (obj->children[i]) {wordDictionaryFree(obj->children[i]);}
+	}
+	free(obj);
+	return;
+}
+
+/**
+ * Your WordDictionary struct will be instantiated and called as such:
+ * WordDictionary* obj = wordDictionaryCreate();
+ * wordDictionaryAddWord(obj, word);
+ 
+ * bool param_2 = wordDictionarySearch(obj, word);
+ 
+ * wordDictionaryFree(obj);
+*/
