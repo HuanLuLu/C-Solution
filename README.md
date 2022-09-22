@@ -254,6 +254,9 @@ In this project, I will document all the C coding questions.
 * Replace Words
   * Question: https://leetcode.com/problems/replace-words/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Replace%20Words
+* Design Add and Search Words Data Structure
+  * Question: https://leetcode.com/problems/design-add-and-search-words-data-structure/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Design%20Add%20and%20Search%20Words%20Data%20Structure
   
 ## Sort
 * QucikSort
