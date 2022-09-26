@@ -1,0 +1,71 @@
+int *createDisjointSets(int size, int **rank) {
+	int *root = (int *)malloc(sizeof(int) * size);
+	*rank = (int *)malloc(sizeof(int) * size);
+
+	for (int i = 0; i < size; i++) {
+		root[i] = i;
+		(*rank)[i] = 1;
+	}
+	return root;
+}
+
+int find(int x, int *root) {
+	if (root[x] == x) {return x;}
+	root[x] = find(root[x], root);
+	return root[x];
+}
+
+void connect(int x, int y, int *root, int *rank) {
+	int rootX = find(x, root);
+	int rootY = find(y, root);
+
+	if (rootX == rootY) {return;}
+
+	if (rank[rootX] > rank[rootY]) {
+		root[rootY] = rootX;
+	}
+	else if (rank[rootX] < rank[rootY]) {
+		root[rootX] = rootY;
+	}
+	else {
+		root[rootY] = rootX;
+		rank[rootX] += 1;
+	}
+	return;
+}
+
+int countRoot(int size, int *root) {
+	int flag[size];
+	for (int i = 0; i<size; i++) {
+		flag[i] = 0;
+	}
+
+	int r;
+	for(int i=0; i<size; i++) {
+		r = find(root[i], root);
+		if (flag[r] == 0) {flag[r] = 1;}
+	}
+
+	int ret = 0;
+	for(int i=0; i<size; i++) {
+		ret += flag[i];
+	}
+	return ret;
+}
+
+int countComponents(int n, int** edges, int edgesSize, int* edgesColSize){
+	int *rank;
+	int *root = createDisjointSets(n, &rank);
+	
+	for(int i = 0; i < edgesSize; i++) {
+		connect(edges[i][0], edges[i][1], root, rank);
+	}
+
+	int ret = countRoot(n, root);
+	free(rank);
+	free(root);
+	return ret;
+}
+
+time complexity: O(E*logN)
+space complexoty: O(N)
