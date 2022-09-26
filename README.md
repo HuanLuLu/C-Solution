@@ -285,6 +285,10 @@ In this project, I will document all the C coding questions.
   * Question: https://leetcode.com/problems/find-median-from-data-stream/solution/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Find%20Median%20from%20Data%20Stream
   
+## Graph
+* Number of Provinces
+  * Question: https://leetcode.com/explore/learn/card/graph/618/disjoint-set/3845/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Number%20of%20Provinces
      
 ## Recursion
 * Flood Fill
