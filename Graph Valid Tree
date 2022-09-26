@@ -1,0 +1,62 @@
+int *createDisjoinSets(int size, int **rank){
+	int *root = (int *)malloc(sizeof(int ) * size);
+	*rank = (int *)malloc(sizeof(int ) * size);
+
+	for (int i=0; i<size; i++) {
+		root[i] = i;
+		(*rank)[i] = 1;
+	}
+	return root;
+}
+
+int find(int x, int *root) {
+	if (x== root[x]) {return x;}
+	root[x] = find(root[x], root);
+	return root[x];
+}
+
+bool connect(int x, int y, int *root, int *rank) {
+	int rootX = find(x, root);
+	int rootY = find(y, root);
+
+	if (rootX == rootY) {return false;}
+
+	if (rank[rootX] > rank[rootY]) {
+		root[rootY] = rootX;
+	}
+	else if (rank[rootX] < rank[rootY]) {
+		root[rootX] = rootY;
+	}
+	else {
+		root[rootY] = rootX;
+		rank[rootX] += 1;
+	}
+	return true;
+}
+
+bool isOneRoot(int size, int *root) {
+	int r = find(0, root);
+
+	for (int i = 0; i < size; i++) {
+		if ( find(i, root) != r ) {return false;}
+	}
+	return true;
+}
+
+
+bool validTree(int n, int** edges, int edgesSize, int* edgesColSize){
+	int *rank;
+	int *root = createDisjoinSets(n, &rank);
+
+	for (int i = 0; i < edgesSize; i++) {
+		if (!connect(edges[i][0], edges[i][1], root, rank)) {return false;}
+	}
+
+	int flag = isOneRoot(n, root);
+	free(rank);
+	free(root);
+	return flag;
+}
+
+time complexity: N*O(logN)
+space complexity: O(N)
