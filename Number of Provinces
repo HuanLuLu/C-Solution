@@ -1,0 +1,74 @@
+Disjoint sets
+Time complexity: create O(N); for half of the matrix, we apply connect, single connect is O(logn) total will be: O(n^2*lonN)
+Space: O(N)
+
+int *createDisjointSet(int size, int **rank) {
+	int *root = (int *)malloc(sizeof(int)*size);	
+	*rank = (int *)malloc(sizeof(int)*size);
+
+	for (int i = 0; i < size; i++) {
+		(*rank)[i] = 1;
+		root[i] = i;
+	}
+	return root;
+}
+
+int find(int x, int *root) {
+	if (x == root[x]) {return x;}
+	root[x] = find(root[x], root);
+	return root[x];
+}
+
+void connect(int x, int y, int *root, int *rank) {
+	int rootX = find(x, root);
+	int rootY = find(y, root);
+	
+	if (rootX == rootY) {return;}
+
+	if (rank[rootX] > rank[rootY]) {
+		root[rootY] = rootX;
+	}
+	else if (rank[rootX] < rank[rootY]) {
+		root[rootX] = rootY;
+	}
+	else {
+		root[rootY] = rootX;
+		rank[rootX] += 1;
+	}
+	return;
+}
+
+int countRoot(int *root, int size){
+	int flag[size];
+	int r;
+
+	for (int i=0; i<size; i++) {
+		flag[i] = 0;
+	}
+
+	for (int i=0; i<size; i++) {
+		r = find(root[i], root);
+		if (flag[r] == 0) {flag[r]=1;}
+	}
+
+	int ret = 0;
+	for(int i = 0; i < size; i++) {
+		if (flag[i] == 1) {ret += 1;}
+	}
+	return ret;
+}
+
+int findCircleNum(int** isConnected, int isConnectedSize, int* isConnectedColSize){
+	int *rank;
+	int *root = createDisjointSet(isConnectedSize, &rank);
+
+	for(int i = 0; i < isConnectedSize; i++) {
+		for (int j = i; j < isConnectedSize; j++) {
+			if (isConnected[i][j] == 1) {
+				connect(i, j, root, rank);
+			}
+		}
+	}
+
+	return countRoot(root, isConnectedSize);	
+}
