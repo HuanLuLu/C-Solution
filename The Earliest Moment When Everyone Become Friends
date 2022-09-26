@@ -1,0 +1,64 @@
+int * createDisjointSets(int size, int **rank) {
+	int *root = (int *)malloc(sizeof(int) * size);
+	*rank = (int *)malloc(sizeof(int) * size);
+
+	for (int i=0; i<size; i++) {
+		root[i] = i;
+		(*rank)[i] = 1;
+	}
+	return root;
+}
+
+int find(int x, int *root) {
+	if (x == root[x]) {return x;}
+	return root[x] = find(root[x], root);
+}
+
+int connect(int x, int y, int *root, int *rank, int num) {
+	int rootX = find(x, root);
+	int rootY = find(y, root);
+
+	if (rootX == rootY) {return num;}
+	
+	if (rank[rootX] > rank[rootY]) {
+		root[rootY] = rootX;
+	}
+	else if (rank[rootX] < rank[rootY]) {
+		root[rootX] = rootY;
+	}
+	else {
+		root[rootY] = rootX;
+		rank[rootX] += 1;
+	}
+	return num+1;
+}
+
+int cmp(const void *ppa, const void *ppb) {
+    int *pa = *(int **)ppa;
+    int *pb = *(int **)ppb;
+    return pa[0] - pb[0];    
+}
+
+int earliestAcq(int** logs, int logsSize, int* logsColSize, int n){
+    qsort(logs, logsSize, sizeof(logs[0]), cmp);
+    
+	int *rank;
+	int *root = createDisjointSets(n, &rank);
+	int numSides = 0;
+
+	for (int i = 0; i < logsSize; i++) {
+		numSides = connect(logs[i][1], logs[i][2], root, rank, numSides);
+		if (numSides == n -1) {
+			free(root);
+			free(rank);
+			return logs[i][0];
+		}
+	}
+
+	free(root);
+	free(rank);
+	return -1;
+}
+
+time complexity: O(e*logn) + O(eloge)
+Space complexity: O(n) + O(loge) 
