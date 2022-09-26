@@ -292,6 +292,12 @@ In this project, I will document all the C coding questions.
 * Graph Valid Tree
   * Question: https://leetcode.com/problems/graph-valid-tree/solution/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Graph%20Valid%20Tree
+* Number of Connected Components in an Undirected Graph
+  * Qeustion: https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/solution/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Number%20of%20Connected%20Components%20in%20an%20Undirected%20Graph
+* The Earliest Moment When Everyone Become Friends
+  * Question: https://leetcode.com/explore/learn/card/graph/618/disjoint-set/3912/
+  * Solution: 
      
 ## Recursion
 * Flood Fill
