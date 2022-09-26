@@ -297,7 +297,7 @@ In this project, I will document all the C coding questions.
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Number%20of%20Connected%20Components%20in%20an%20Undirected%20Graph
 * The Earliest Moment When Everyone Become Friends
   * Question: https://leetcode.com/explore/learn/card/graph/618/disjoint-set/3912/
-  * Solution: 
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/The%20Earliest%20Moment%20When%20Everyone%20Become%20Friends
      
 ## Recursion
 * Flood Fill
