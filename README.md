@@ -289,6 +289,9 @@ In this project, I will document all the C coding questions.
 * Number of Provinces
   * Question: https://leetcode.com/explore/learn/card/graph/618/disjoint-set/3845/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Number%20of%20Provinces
+* Graph Valid Tree
+  * Question: https://leetcode.com/problems/graph-valid-tree/solution/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Graph%20Valid%20Tree
      
 ## Recursion
 * Flood Fill
