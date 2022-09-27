@@ -1,0 +1,109 @@
+Data structure to store the info:
+CharBuff----size of input string. Each one represent the potential root. The index equal to the input string index. (We will sort the input sting,
+            need a way to retrive the original string. Here we use the index. Also, we could set 26 here to represent 26 alphapets. In this solution,
+            we need to copy the string to maintein the mapping between root and index)
+Inside the charbuff:  int array is the count of alphabet. index is the current index. We can use the index to conver index back to alphabet, also it 
+can be used as our searching indication. 
+
+Pros: We don't need to sort the array, the alpahet array naturally sort the string for us.
+
+Time complexity:O(N) for create the disjoint sets, O(logN) for connect vertices, O(N) for filling the buff and rewrite the string
+Space complexity:O(N) for disjointed sets, O(26*N) for the buff
+
+#define MAX_ALPHA_NUM 26
+
+#define CHAR_TO_NUM(c) ( (int)c - (int)'a' )
+#define NUM_TO_CHAR(n) ( (char)(n+97) )
+
+int *ctreateDisjointSets(int size, int **rank) {
+	int *root = (int *)malloc(sizeof(int) * size);
+	*rank = (int *)malloc(sizeof(int) * size);
+
+	for(int i=0; i<size; i++) {
+		(*rank)[i] = 1;
+		root[i] = i;
+	}
+	return root;
+}
+
+int find(int x, int *root) {
+	if (x == root[x]) {return x;}
+	return root[x]=find(root[x], root);
+}
+
+void connect(int x, int y, int *root, int *rank) {
+	int rootX = find(x, root);
+	int rootY = find(y, root);
+	
+	if(rootX == rootY) {return;}
+
+	if(rootX > rootY) {
+		root[rootY] = rootX;
+	}
+	else if(rootX < rootY) {
+		root[rootX] = rootY;
+	}
+	else {
+		root[rootY] = rootX;
+		rank[rootX] += 1;
+	}
+	return;
+}
+
+typedef struct Char_BUFF {
+	int charCount[MAX_ALPHA_NUM];
+	int index;
+}CharBuff;
+
+char * smallestStringWithSwaps(char * s, int** pairs, int pairsSize, int* pairsColSize){
+	int *rank;
+	int size = strlen(s);
+	int *root = ctreateDisjointSets(size, &rank);
+
+	for (int i = 0; i < pairsSize; i++) {
+		connect(pairs[i][0], pairs[i][1], root, rank);
+	}
+
+	for (int i = 0; i < size; i++) {
+		root[i] = find(i, root);
+	}
+
+	CharBuff charBuff[size];
+	memset( charBuff, 0, sizeof(charBuff[0])*size );
+	
+	int root_id, char_id;
+	char c;
+	for (int i = 0; i < size; i++) {
+		root_id = root[i];	
+		c = s[i];
+		char_id = CHAR_TO_NUM(c);
+		charBuff[root_id].charCount[char_id]++;
+	}
+
+	for (int i = 0; i < size; i++) {
+		root_id = root[i];	
+		while ( charBuff[ root_id ].charCount[ charBuff[root_id].index ] == 0 ) {charBuff[root_id].index++;}
+		s[i] = NUM_TO_CHAR(charBuff[root_id].index);
+		charBuff[ root_id ].charCount[ charBuff[root_id].index ]--;
+	}
+
+	free(rank);
+	free(root);
+
+	return s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
