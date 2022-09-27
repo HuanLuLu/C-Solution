@@ -298,6 +298,9 @@ In this project, I will document all the C coding questions.
 * The Earliest Moment When Everyone Become Friends
   * Question: https://leetcode.com/explore/learn/card/graph/618/disjoint-set/3912/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/The%20Earliest%20Moment%20When%20Everyone%20Become%20Friends
+*  Smallest String With Swaps
+  * Question: https://leetcode.com/explore/learn/card/graph/618/disjoint-set/3913/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Smallest%20String%20With%20Swaps
      
 ## Recursion
 * Flood Fill
