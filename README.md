@@ -304,6 +304,9 @@ In this project, I will document all the C coding questions.
 * Evaluate Division  
   * Question: https://leetcode.com/problems/evaluate-division/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Evaluate%20Division
+* Depth First Search (DFS)  
+  * Reference: https://www.programiz.com/dsa/graph-dfs
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Depth%20First%20Search%20(DFS)
      
 ## Recursion
 * Flood Fill
