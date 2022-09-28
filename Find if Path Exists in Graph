@@ -1,0 +1,89 @@
+typedef struct Node_STR {
+    int vertex;
+    struct Node_STR *next;
+}Node;
+
+typedef struct Graph_STR {
+    int numVertices;
+    int *visited;
+    Node **adjList;
+}Graph;
+
+Graph *createGraph(int numVertices) {
+    Graph *graph = (Graph *)malloc(sizeof(Graph));
+    
+    graph->numVertices = numVertices;
+    graph->visited = (int *)malloc(sizeof(int) * numVertices);
+    graph->adjList = (Node **)malloc(sizeof(Node *) * numVertices);
+    
+    memset(graph->visited, 0, sizeof(int)*numVertices);
+    memset(graph->adjList, 0, sizeof(graph->adjList[0])*numVertices);
+    return graph;
+}
+
+Node *createNode(int vertex) {
+    Node *node = (Node *)malloc(sizeof(Node));
+    
+    node->vertex = vertex;
+    node->next = NULL;
+    
+    return node;
+}
+
+void addEdge(Graph *graph, int n1, int n2) {
+    Node *node1 = createNode(n1);
+    node1->next = graph->adjList[n2];
+    graph->adjList[n2] = node1;
+    
+    Node *node2 = createNode(n2);
+    node2->next = graph->adjList[n1];
+    graph->adjList[n1] = node2;
+    
+    return;
+}
+
+bool isConnect(Graph *graph, int src, int des) {
+    if (src == des) {return true;}
+    graph->visited[src] = 1;
+    
+    Node *adjacent = graph->adjList[src];
+    
+    bool ret = false;
+    while (adjacent) {
+        if (graph->visited[adjacent->vertex] == 0) {
+            ret = isConnect(graph, adjacent->vertex, des);
+            if(ret == true) {return true;}
+        }
+        adjacent = adjacent->next;
+    }
+    return false;
+}
+
+void freeGraph(Graph *graph, int size) {
+    for (int i = 0; i < size; i++) {
+        Node *node = graph->adjList[i];
+        Node *temp = NULL;
+        while(node != NULL) {
+            temp = node;
+            node = node->next;
+            free(temp);
+        }
+    } 
+    
+    free(graph->visited);
+    free(graph->adjList);
+    free(graph);
+}
+
+bool validPath(int n, int** edges, int edgesSize, int* edgesColSize, int source, int destination){
+    Graph *graph = createGraph(n);
+    
+    for(int i = 0; i < edgesSize; i++) {
+        addEdge(graph, edges[i][0], edges[i][1]);
+    }
+    
+    bool ret = isConnect(graph, source, destination);
+    
+    freeGraph(graph, n);
+    return ret;
+}
