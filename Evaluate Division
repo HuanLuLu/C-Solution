@@ -1,0 +1,126 @@
+#define STR_MAX_LEN 5
+#define EQUA_MAX_LEN 20
+
+typedef struct Disjoint_Sets{
+	int rootId;
+	double weight;
+	char key[STR_MAX_LEN+1];
+}DisjointSetMap;
+
+void initialBuff(DisjointSetMap *map, int *rank, int len) {
+	memset(rank, 0, sizeof(int)*len);
+	memset(map, 0, sizeof(map[0])*len);
+	return;
+}
+
+int findNode(char *key, DisjointSetMap *map, int size) {
+	for (int i=0; i<size; i++) {
+		if (strcmp(key, map[i].key) == 0) {return i;}
+	}
+	return -1;
+}
+
+void help(int nodeId, DisjointSetMap *map, int size) {	
+	int rootId = map[nodeId].rootId;
+
+	if(nodeId == rootId) {return;}
+
+	help(rootId, map, size);
+	map[nodeId].weight *= map[map[nodeId].rootId].weight;
+	map[nodeId].rootId = map[map[nodeId].rootId].rootId;
+	return; 
+}
+
+int findRoot(char *key, DisjointSetMap *map, int size) {
+	int nodeId = findNode(key, map, size);
+	if (nodeId == -1) {return -1;}
+
+	help(nodeId, map, size);
+	return map[nodeId].rootId;
+}
+
+int createNode(char *key, DisjointSetMap *map, int *size, int *rank) {
+	map[*size].rootId = *size;
+	map[*size].weight = 1;
+	strcpy(map[*size].key, key);
+	rank[*size] = 1;
+	*size += 1;
+	return *size -1;
+}
+
+void connectRoot(int sub, int parent, double val, DisjointSetMap *map) {
+	map[sub].rootId = parent;
+	map[sub].weight = val;
+	return;
+}
+
+void connect(char *x, char *y, double val, DisjointSetMap *map, int *size, int *rank) {
+	int rootX = findRoot(x, map, *size);
+	if (rootX == -1) {
+		rootX = createNode(x, map, size, rank);
+	}
+
+	int rootY = findRoot(y, map, *size);
+	if (rootY == -1) {
+		rootY = createNode(y, map, size, rank);
+	}
+
+	if(rootX == rootY) {return;}
+
+    int nodeX = findNode(x, map, *size);
+    int nodeY = findNode(y, map, *size);
+    double weightX = map[nodeX].weight;
+    double weightY = map[nodeY].weight;
+    
+    val = val*weightY/weightX;
+    
+	if (rank[rootX] > rank[rootY]) {
+		connectRoot(rootY, rootX, 1/val, map);
+	}
+	else if (rank[rootX] < rank[rootY]) {
+		connectRoot(rootX, rootY, val, map);
+	}
+	else {
+		connectRoot(rootX, rootY, val, map);
+		rank[rootY] += 1;
+	}
+	return;
+}
+
+
+double calQuery(char *x, char *y, DisjointSetMap *map, int size) {
+	int nodeX = findNode(x, map, size);
+	int nodeY = findNode(y, map, size);
+	int rootX = findRoot(x, map, size);
+	int rootY = findRoot(y, map, size);
+
+	if (nodeX == -1 || nodeY == -1) {return -1;}
+	if (rootX != rootY) {return -1;}
+
+	return map[nodeX].weight / map[nodeY].weight;
+}
+
+
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+double* calcEquation(char *** equations, int equationsSize, int* equationsColSize, double* values, int valuesSize, char *** queries, int queriesSize, int* queriesColSize, int* returnSize){
+	int size = 0;
+	int rank[EQUA_MAX_LEN];
+	DisjointSetMap map[EQUA_MAX_LEN];
+	initialBuff(map, rank, EQUA_MAX_LEN);
+
+	for (int i = 0; i<equationsSize; i++) {
+		connect(equations[i][0], equations[i][1], values[i], map, &size, rank);
+	}	
+    	
+	*returnSize = queriesSize;
+    double *ret = (double *)malloc(sizeof(double) * *returnSize);
+
+	for (int i = 0; i < *returnSize; i++) {
+		ret[i] = calQuery(queries[i][0], queries[i][1], map, size);
+	}
+	return ret;
+}
+
+
