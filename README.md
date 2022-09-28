@@ -307,6 +307,9 @@ In this project, I will document all the C coding questions.
 * Depth First Search (DFS)  
   * Reference: https://www.programiz.com/dsa/graph-dfs
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Depth%20First%20Search%20(DFS)
+* Find if Path Exists in Graph
+  * Question: https://leetcode.com/problems/find-if-path-exists-in-graph/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Find%20if%20Path%20Exists%20in%20Graph
      
 ## Recursion
 * Flood Fill
