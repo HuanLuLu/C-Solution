@@ -1,0 +1,94 @@
+Time complexity: O(V+E)
+Space cimplexity:O(E+V), O(V) for adjList, O(E) for recursion stack
+
+
+#define NOT_VISIT 0
+#define PROCESSING 1
+#define VISITED 2
+
+typedef struct Node_STR {
+	int vertex;
+	struct Node_STR *next;
+}Node;
+
+typedef struct Graph_STR {
+	int vertexNum;
+	int *visitFg;
+	Node **adjList;
+}Graph;
+
+Graph *createGraph(int vertexNum) {
+	Graph *graph = (Graph *)malloc(sizeof(Graph));	
+
+	graph->visitFg = (int *)malloc(sizeof(int)*vertexNum);
+	graph->adjList = (Node **)malloc(sizeof(Node *)*vertexNum);
+
+	
+	graph->vertexNum = vertexNum;
+	memset(graph->visitFg, 0, sizeof(int)*vertexNum);
+	memset(graph->adjList, 0, sizeof(graph->adjList[0])*vertexNum);
+
+	return graph;
+}
+
+Node *createNode(int vertex) {
+	Node *node = (Node *)malloc(sizeof(Node));
+	node->vertex = vertex;
+	node->next = NULL;
+	return node;
+}
+
+void addEdge(Graph *graph, int src, int dst) {
+	Node *node = createNode(dst);
+	node->next = graph->adjList[src];
+	graph->adjList[src] = node;
+	return;
+}
+
+void freeGraph(Graph *graph) {
+	for (int i = 0; i < graph->vertexNum; i++) {
+		Node *node = graph->adjList[i];
+		Node *temp;
+		while(node) {
+			temp = node; node = node->next; free(temp);
+		}
+	}
+	free(graph);
+}
+
+bool isPath(Graph *graph, int src, int dst) {
+	if (graph->visitFg[src] != NOT_VISIT) {return graph->visitFg[src] == VISITED;}
+
+	if (graph->adjList[src] == NULL) {return src == dst;}
+
+	graph->visitFg[src] = PROCESSING;
+	Node *node = graph->adjList[src];
+	while (node) {
+		if ( !isPath(graph, node->vertex, dst) ) {return false;}
+		node = node->next;
+	}
+	graph->visitFg[src] = VISITED;
+	return true;
+}
+
+
+bool leadsToDestination(int n, int** edges, int edgesSize, int* edgesColSize, int source, int destination){
+	Graph *graph = createGraph(n);
+
+	for(int i = 0; i < edgesSize; i++) {
+		addEdge(graph, edges[i][0], edges[i][1]);
+	}
+	bool ret = isPath(graph, source, destination);
+	freeGraph(graph);
+	return ret;
+}
+
+
+
+
+
+
+
+
+
+
