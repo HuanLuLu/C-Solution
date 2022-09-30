@@ -313,6 +313,9 @@ In this project, I will document all the C coding questions.
 * All Paths from Source Lead to Destination  
   * Question: https://leetcode.com/explore/learn/card/graph/619/depth-first-search-in-graph/3951/
   * Solition: https://github.com/HuanLuLu/C-Solution/blob/main/All%20Paths%20from%20Source%20Lead%20to%20Destination
+* Breadth first search
+  * Reference: https://www.programiz.com/dsa/graph-bfs
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Breadth%20first%20search
      
 ## Recursion
 * Flood Fill
