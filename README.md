@@ -316,6 +316,9 @@ In this project, I will document all the C coding questions.
 * Breadth first search
   * Reference: https://www.programiz.com/dsa/graph-bfs
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Breadth%20first%20search
+* Find if Path Exists in Graph - BFS
+  * Question: https://leetcode.com/explore/learn/card/graph/620/breadth-first-search-in-graph/4152/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Find%20if%20Path%20Exists%20in%20Graph%20BFS
      
 ## Recursion
 * Flood Fill
