@@ -1,0 +1,171 @@
+Note:
+1. Queue, use the size to check isEmpty
+2. Check if is destiny when we dequeue. dequeue == visit
+
+#define MAX_VERTEX_NUM 200000
+
+typedef struct Node_STR{
+	int vertex;
+	struct Node_STR *next;
+}Node;
+
+typedef struct Graph_STR{
+	int vertexNum;
+	int *visited;
+	Node **adjList;
+}Graph;
+
+typedef struct Queue_STR {
+	int capacity;
+	int front;
+	int rear;
+    int size;
+	int arr[MAX_VERTEX_NUM];
+}Queue;
+
+Queue *createQueue(int capacity) {
+	Queue *queue = (Queue *)malloc(sizeof(Queue));
+	queue->capacity = capacity;
+    queue->size = 0;
+	queue->front = 0;
+	queue->rear = capacity-1;
+	return queue;
+}
+
+bool isEmpty(Queue *queue){
+	return queue->size == 0;
+}
+
+void enqueue(int val, Queue *queue) {
+	queue->rear = (queue->rear + 1)%queue->capacity;
+	queue->arr[queue->rear] = val;
+    queue->size += 1;
+	return;
+}
+
+int dequeue(Queue *queue) {
+	int ret = queue->arr[queue->front];
+	queue->front = (queue->front + 1)%queue->capacity;
+    queue->size -= 1;
+	return ret;
+}
+
+
+Graph *createGraph(int vertexNum) {
+	Graph *graph = (Graph *)malloc(sizeof(Graph));
+	
+	graph->vertexNum = vertexNum;
+	graph->visited = (int *)malloc(sizeof(int) * vertexNum);
+	graph->adjList = (Node **)malloc( sizeof(graph->adjList [0]) * vertexNum );
+
+	memset(graph->visited, 0, sizeof(int)*vertexNum);
+	memset(graph->adjList, 0, sizeof(graph->adjList[0])*vertexNum);
+	return graph;
+}
+
+Node *createNode(int vertex) {
+	Node *node = (Node *)malloc(sizeof(Node));
+	node->vertex = vertex;
+	node->next = NULL;
+	return node;
+}
+
+bool BSF(Graph *graph, int edgesSize, int src, int dst) {
+	Queue *queue = createQueue(edgesSize);
+	
+	enqueue(src, queue);
+
+	while(!isEmpty(queue)) {
+		int vertex = dequeue(queue);
+        if(vertex == dst) {return true;}
+		if (graph->visited[vertex] != 0) {continue;}
+		graph->visited[vertex] = 1;
+
+		Node *node = graph->adjList[vertex];
+		while(node) {
+			if (graph->visited[node->vertex] == 0) {
+				enqueue(node->vertex,queue);
+			}
+			node = node->next;
+		}
+	}
+	return false;
+}
+
+void freeGraph(Graph *graph) {
+	for (int i = 0; i < graph->vertexNum; i++) {
+		Node *node = graph->adjList[i];
+		Node *temp;
+		while(node) {
+			temp = node; node = node->next; free(temp);
+		}
+	}
+	free(graph);
+	return;
+}
+
+void addEdge(Graph *graph, int n1, int n2) {
+    Node *node1 = createNode(n1);
+    node1->next = graph->adjList[n2];
+    graph->adjList[n2] = node1;
+    
+    Node *node2 = createNode(n2);
+    node2->next = graph->adjList[n1];
+    graph->adjList[n1] = node2;
+    
+    return;
+}
+
+void printGraph(Graph* graph) {
+  int v;
+  for (v = 0; v < graph->vertexNum; v++) {
+    Node *temp = graph->adjList[v];
+    printf("\n Adjacency list of vertex %d\n ", v);
+    while (temp) {
+      printf("%d -> ", temp->vertex);
+      temp = temp->next;
+    }
+    printf("\n");
+  }
+}
+
+bool validPath(int n, int** edges, int edgesSize, int* edgesColSize, int source, int destination){
+    if (edgesSize == 0) {return n==1?true:false;}
+	Graph *graph = createGraph(n);
+
+	for(int i = 0; i < edgesSize; i++) {
+		addEdge(graph, edges[i][0], edges[i][1]);
+	}
+    
+    //printGraph(graph);
+	
+	int ret = BSF(graph, edgesSize, source, destination);
+	freeGraph(graph);
+	return ret;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
