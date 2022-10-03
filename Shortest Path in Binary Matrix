@@ -1,0 +1,102 @@
+Time complexity O(n)
+Space complexity O(n)
+
+The queue size should consider the worst case: all nodes in the queue. ..
+=====================================
+typedef struct Grid_STR {
+	int x;
+	int y;
+}Grid;
+
+typedef struct Queue_STR {
+	int capacity;
+	int size;
+	int front;
+	int rear;
+	Grid grid[10000];
+}Queue;
+
+Queue *createQueue(int capacity) {
+	Queue *queue = (Queue *)malloc(sizeof(Queue));
+	queue->capacity = capacity;
+	queue->size = 0;
+	queue->front = 0;
+	queue->rear = capacity-1;
+	return queue;
+}
+
+bool isEmpty(Queue *queue) {
+	return queue->size == 0;
+}
+
+void enqueue(int x, int y, Queue *queue) {
+	queue->size += 1;
+	queue->rear = (queue->rear + 1) % queue->capacity;
+
+	int index = queue->rear;
+	queue->grid[index].x = x;
+	queue->grid[index].y = y;	return;
+}
+
+void dequeue(Queue *queue, int *x, int *y) {
+	queue->size -= 1;
+	
+	int index = queue->front;
+	*x = queue->grid[index].x;
+	*y = queue->grid[index].y;
+	queue->front = (queue->front + 1) % queue->capacity;
+	return;
+}
+
+int BFS(int** grid, int gridSize) {
+    if (grid[0][0] == 1 || grid[gridSize -1][gridSize-1]!= 0) {return -1;}
+	Queue *queue = createQueue(gridSize*gridSize);
+	enqueue(0,0,queue);
+    grid[0][0] = 1;
+    int directions[10][2] = {{-1,-1}, {-1,0}, {-1,1}, {0,-1}, {0,1}, {1,-1}, {1,0}, {1,1}};
+    
+	int x,y;
+	while (!isEmpty(queue)) {
+		dequeue(queue, &x, &y);
+        if (x == gridSize-1 && y == gridSize-1) {
+            return grid[x][y];
+        }
+        for (int i = 0; i < 8; i++) {
+            int newX = directions[i][0] + x;
+            int newY = directions[i][1] + y;           
+            
+            if (newX>=0 && newX<gridSize && newY>=0 && newY<gridSize && grid[newX][newY] == 0) {
+                grid[newX][newY] = grid[x][y]+1;
+                enqueue(newX, newY, queue);
+            }
+        }
+		
+	}
+	free(queue);
+	return -1;
+}
+
+
+
+int shortestPathBinaryMatrix(int** grid, int gridSize, int* gridColSize){
+	return BFS(grid, gridSize);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
