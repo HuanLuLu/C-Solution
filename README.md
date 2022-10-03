@@ -319,6 +319,9 @@ In this project, I will document all the C coding questions.
 * Find if Path Exists in Graph - BFS
   * Question: https://leetcode.com/explore/learn/card/graph/620/breadth-first-search-in-graph/4152/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Find%20if%20Path%20Exists%20in%20Graph%20BFS
+* Shortest Path in Binary Matrix
+  * Question: https://leetcode.com/problems/shortest-path-in-binary-matrix/submissions/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Shortest%20Path%20in%20Binary%20Matrix
      
 ## Recursion
 * Flood Fill
