@@ -336,6 +336,9 @@ In this project, I will document all the C coding questions.
 * Flood Fill
   * Question: https://leetcode.com/problems/flood-fill/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Flood%20Fill
+* Target Sum
+  * Question: https://leetcode.com/explore/learn/card/queue-stack/232/practical-application-stack/1389/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Target%20Sum
   
 ## Other:
 * 01 Matrix
