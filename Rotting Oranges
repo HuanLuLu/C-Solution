@@ -1,0 +1,106 @@
+Complexity: 
+time complexity: O(N)
+space compexity: O(N)
+
+
+#define MAX_GRID_NUM 100
+
+typedef struct Queue_STR{
+	int capacity;
+	int front;
+	int rear;
+	int size;
+	int arr[MAX_GRID_NUM][2];
+}Queue;
+
+Queue *createQueue(int capacity){
+	Queue *queue = (Queue *)malloc(sizeof(Queue));
+    queue->front = 0;
+    queue->rear = capacity-1;
+    queue->size = 0;
+    queue->capacity = capacity;
+	return queue;
+}
+
+bool isEmpty(Queue *queue) {
+	return queue->size == 0;
+}
+
+void enqueue(Queue *queue, int x, int y){
+	queue->rear = (queue->rear + 1)%queue->capacity;
+	queue->size += 1;
+	queue->arr[queue->rear][0] = x;
+	queue->arr[queue->rear][1] = y;
+	return;
+}
+
+void dequeue(Queue *queue, int *x, int *y){
+	queue->size -= 1;
+	*x = queue->arr[queue->front][0];
+	*y = queue->arr[queue->front][1];
+	queue->front = (queue->front + 1)%queue->capacity;
+	return;
+}
+
+int initialQueue(Queue *queue, int **grid, int size_x, int size_y) {
+	int freshNum = 0;
+
+	for(int i=0; i<size_x; i++) {
+		for(int j=0; j<size_y; j++) {
+			if(grid[i][j] == 2) {
+				enqueue(queue,i,j);
+			}
+            if (grid[i][j] == 1) {
+				freshNum += 1;
+            }
+		}
+	}
+	return freshNum;
+}
+
+bool isCoordinateLegal(int coordinate, int max_coordinate) {
+	return (coordinate >= 0 && coordinate < max_coordinate);
+}
+
+int orangesRotting(int** grid, int gridSize, int* gridColSize){
+	Queue *queue = createQueue(MAX_GRID_NUM);
+
+	int freshNum = initialQueue(queue, grid, gridSize, gridColSize[0]);
+	int moves = 0;
+	int currQueueSize = queue->size;
+
+	int direct[4][2] = {{0,-1}, {0,1}, {1,0}, {-1,0}};
+	int x,y,fg=0;
+
+	while(!isEmpty(queue)) {
+		dequeue(queue, &x, &y);
+		currQueueSize -= 1;
+		for (int i = 0; i < 4; i++) {
+			int new_x = x + direct[i][0];
+			int new_y = y + direct[i][1];
+			if (isCoordinateLegal(new_x, gridSize) && isCoordinateLegal(new_y, gridColSize[0])) {
+				if (grid[new_x][new_y] == 1) {
+                    freshNum--;
+					fg = 1;
+					grid[new_x][new_y] = 2;
+					enqueue(queue, new_x, new_y);
+				}
+			}
+		}
+		if (currQueueSize == 0) {
+			moves += fg;
+			fg = 0;
+			currQueueSize = queue->size;
+		}
+	}
+	free(queue);
+	return (freshNum == 0) ? moves : -1;
+}
+
+
+
+
+
+
+
+
