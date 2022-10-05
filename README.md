@@ -325,6 +325,9 @@ In this project, I will document all the C coding questions.
 * N-ary Tree Level Order Traversal  
   * Question: https://leetcode.com/problems/n-ary-tree-level-order-traversal/solution/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/N-ary%20Tree%20Level%20Order%20Traversal
+* Rotting Oranges
+  * Question: https://leetcode.com/explore/learn/card/graph/620/breadth-first-search-in-graph/3898/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Rotting%20Oranges
      
 ## Recursion
 * Flood Fill
