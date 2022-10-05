@@ -1,0 +1,117 @@
+Two methods:
+DFS and BFS
+
+Time complexity: O(N*M)
+Sace complexity: O(N*M)
+
+DFS:
+void dfs(char** grid, int x, int y, int size_x, int size_y) {
+	grid[x][y] = '0';
+
+	int direct[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
+	
+	for(int i=0; i<4; i++) {
+		int new_x = x + direct[i][0];
+		int new_y = y + direct[i][1];
+		
+		if(new_x >=0 && new_x < size_x && new_y >= 0 && new_y < size_y) {
+			if(grid[new_x][new_y] == '1') {dfs(grid, new_x, new_y, size_x, size_y);}
+		}
+	}
+	return;
+}
+
+int numIslands(char** grid, int gridSize, int* gridColSize){
+	int ret = 0;
+	for(int i = 0; i < gridSize; i++) {
+		for(int j = 0; j < gridColSize[0]; j++) {
+			if (grid[i][j] == '1') {
+				ret += 1;
+				dfs(grid, i, j, gridSize, gridColSize[0]);
+			}
+		}
+	}
+	return ret;
+}
+===============
+BFS:
+typedef struct Queue_STR{
+	int capa, front, rear, size;
+	int arr[300*300][2];
+}Queue;
+
+void initialQueue(Queue *queue, int capa){
+    queue->front = 0;
+	queue->rear = capa-1;
+	queue->capa = capa;
+	queue->size = 0;
+    return;
+}
+
+Queue *createQueue(int capa) {
+	Queue *queue = (Queue *)malloc(sizeof(Queue));
+	initialQueue(queue, capa);
+	return queue;
+}
+
+bool isEmpty(Queue *queue) {
+	return queue->size == 0;
+}
+
+void enqueue(Queue *queue, int x, int y) {
+	queue->rear = (queue->rear + 1) % queue->capa;
+	queue->size += 1;
+	queue->arr[queue->rear][0] = x;
+	queue->arr[queue->rear][1] = y;
+	return;
+}
+
+void dequeue(Queue *queue, int *x, int *y) {
+	*x = queue->arr[queue->front][0];
+	*y = queue->arr[queue->front][1];
+	queue->front = (queue->front + 1) % queue->capa;
+	queue->size -= 1;
+	return;
+}
+
+void bfs(char** grid, int x, int y, int size_x, int size_y, Queue *queue) {
+	initialQueue(queue, 300*300);
+	enqueue(queue, x, y);
+
+	int direct[4][2] = {{1,0},{-1,0},{0,1},{0,-1}};
+	int newX,newY;
+	
+	int queueX, queueY;
+	while(!isEmpty(queue)) {
+		dequeue(queue, &queueX, &queueY);
+		if (grid[queueX][queueY]=='1') {
+			grid[queueX][queueY] = '0';
+			
+			for(int i = 0; i < 4; i++) {
+				newX = queueX+direct[i][0];
+				newY = queueY+direct[i][1];
+
+				if ( newX>=0 && newX<size_x && newY>=0 && newY<size_y ){
+					if(grid[newX][newY] == '1') {enqueue(queue, newX, newY);}
+				}
+			}
+		}		
+	}
+	return;
+}
+
+
+int numIslands(char** grid, int gridSize, int* gridColSize){
+    Queue *queue = createQueue(300*300);
+	int ret = 0;
+	for(int i = 0; i < gridSize; i++) {
+		for(int j = 0; j < gridColSize[0]; j++) {
+			if (grid[i][j] == '1') {
+				ret += 1;
+				bfs(grid, i, j, gridSize, gridColSize[0], queue);
+			}
+		}
+	}
+    free(queue);
+	return ret;
+}
