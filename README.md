@@ -328,6 +328,9 @@ In this project, I will document all the C coding questions.
 * Rotting Oranges
   * Question: https://leetcode.com/explore/learn/card/graph/620/breadth-first-search-in-graph/3898/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Rotting%20Oranges
+* Number of Islands
+  * Question: https://leetcode.com/problems/number-of-islands/submissions/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Number%20of%20Islands
      
 ## Recursion
 * Flood Fill
