@@ -1,0 +1,184 @@
+Solution 1: Queue + BFS
+
+/**
+ * Definition for a Node.
+ * struct Node {
+ *     int val;
+ *     int numChildren;
+ *     struct Node** children;
+ * };
+ */
+
+/**
+ * Return an array of arrays of size *returnSize.
+ * The sizes of the arrays are returned as *returnColumnSizes array.
+ * Note: Both returned array and *columnSizes array must be malloced, assume caller calls free().
+ */
+#define MAX_NODE_NUM 10000
+
+
+typedef struct Queue_STR {
+	int capacity;
+	int size;
+	int front;
+	int rear;
+	struct Node *nodes[MAX_NODE_NUM];
+}Queue;
+
+Queue *createQueue(int capacity) {
+	Queue *queue = (Queue *)malloc(sizeof(Queue));
+	queue->capacity = capacity;
+	queue->size = 0;
+	queue->front = 0;
+	queue->rear = capacity-1;
+	return queue;
+}
+
+bool isEmpty(Queue *queue) {
+	return queue->size == 0;
+}
+
+void enqueue(Queue *queue, struct Node *node) {
+	queue->rear = (queue->rear + 1)%queue->capacity;
+	queue->nodes[queue->rear] = node;
+    queue->size += 1;
+	return;
+}
+
+struct Node *dequeue(Queue *queue) {
+	struct Node *node = queue->nodes[queue->front];
+	queue->front = (queue->front + 1)%queue->capacity;
+    queue->size -= 1;
+	return node; 
+}
+
+void freeQueue(Queue *queue) {
+    while (queue->size != 0) {
+        free(queue->nodes[queue->front]);
+        queue->front = (queue->front+1)%queue->capacity;
+        queue->size--;
+    }
+    free(queue);
+}
+
+int** levelOrder(struct Node* root, int* returnSize, int** returnColumnSizes) {
+	if (root == NULL) {
+		*returnSize = 0; 
+        *returnColumnSizes = (int *)malloc(sizeof(int));
+        (*returnColumnSizes)[0] = 0;
+		return NULL;
+	}
+
+	Queue *queue = createQueue(MAX_NODE_NUM);
+
+	int **ret = (int **)malloc(sizeof(int *) * MAX_NODE_NUM);
+	*returnColumnSizes = (int *)malloc(sizeof(int) * MAX_NODE_NUM);	*returnSize = 1;
+
+	int currRetIndex = 0, currColIndex = 0, currLvlNum = 1;
+    ret[currRetIndex] = (int *)malloc(sizeof(int) * MAX_NODE_NUM);
+	(*returnColumnSizes)[currRetIndex] = 1;
+    
+    enqueue(queue, root);    
+	while (!isEmpty(queue)) {
+		struct Node *node = dequeue(queue);
+        
+        ret[currRetIndex][currColIndex++] = node->val;
+        currLvlNum--;
+		
+		for(int i = 0; i < node->numChildren; i++) {
+			enqueue(queue, node->children[i]);
+		}
+        
+		if (currLvlNum == 0 && !isEmpty(queue)) {
+			*returnSize += 1;
+			currRetIndex += 1;
+			ret[currRetIndex] = (int *)malloc(sizeof(int) * MAX_NODE_NUM);
+			(*returnColumnSizes)[currRetIndex] = queue->size;
+			currColIndex = 0;
+			currLvlNum = queue->size;		
+		}		
+	}
+  freeQueue(queue);
+	return ret;
+}
+
+
+
+Solution 2: 
+store the nodes for each iteration. 
+Core algorithm is to define two arrays. One for curr lvl, the other one for the previous lvl. 
+Each time go through the previous one, store the node value into the return arrays. And also generate curr lvl for the next iteration.
+
+/**
+ * Definition for a Node.
+ * struct Node {
+ *     int val;
+ *     int numChildren;
+ *     struct Node** children;
+ * };
+ */
+
+#define MAX_NODE_NUM 10000
+
+
+int** levelOrder(struct Node* root, int* returnSize, int** returnColumnSizes) {
+	*returnSize = 0;
+
+	if (root==NULL) {
+		*returnColumnSizes = (int *)malloc(sizeof(int));
+        (*returnColumnSizes)[0] = 0;
+		return NULL;
+	}
+
+	int **ret = (int **)malloc(sizeof(int *) * MAX_NODE_NUM);
+	*returnColumnSizes = (int *)malloc(sizeof(int) * MAX_NODE_NUM);
+	
+	struct Node **prev = (struct Node **)malloc( sizeof(struct Node *) * MAX_NODE_NUM);
+	struct Node **curr = (struct Node **)malloc( sizeof(struct Node *) * MAX_NODE_NUM);
+	struct Node **temp;
+
+	int prevNum, currNum, tempNum;
+
+	prev[0] = root;
+	prevNum = 1;
+	int index = 0, currIndex = 0;;
+
+	while (prevNum != 0) {
+		//fill the return with prev
+		ret[index] = (int *)malloc(sizeof(int) * prevNum);
+		(*returnColumnSizes)[index] = prevNum;
+
+		for(int i = 0; i < prevNum; i++) {
+			ret[index][i] = prev[i]->val;
+		}
+		index += 1;
+
+		// fill the currNodes list based on prev
+        currIndex = 0;
+		for(int i = 0; i < prevNum; i++) {
+			for(int j=0; j<prev[i]->numChildren; j++) {
+				curr[currIndex++] = prev[i]->children[j];
+			}
+		}
+		currNum = currIndex;
+
+		temp =prev; prev = curr; curr = temp;
+		temp = prev; prevNum = currNum; currNum = temp;
+		}
+
+	//free(prev); free(curr);
+	*returnSize = index;
+	return ret;
+}
+
+
+
+
+
+Time complexity: O(N)
+Space complexity: O(N)
+
+
+
+
+
