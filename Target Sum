@@ -1,0 +1,97 @@
+Queue to memorize the previous sum
+Time complexity O(2^n)
+Space complexity O(2^n)
+
+Not recommend
+
+#define MAX_NODE_NUM 1100000
+
+typedef struct Node_STR{
+	int currIndex;
+	int sum;
+}Node;
+
+typedef struct Queue_STR {
+	int capacity;
+	int size, front, rear;
+	Node nodes[MAX_NODE_NUM];
+}Queue;
+
+
+Queue *createQueue() {
+	Queue *queue = (Queue *)malloc(sizeof(Queue));
+	queue->capacity = MAX_NODE_NUM;
+	queue->size = 0;
+	queue->front = 0;
+	queue->rear = queue->capacity - 1;
+	return queue;
+}
+
+bool isEmpty(Queue *queue) {
+	return queue->size == 0;
+}
+
+void enQueue(Queue *queue, int currIndex, int sum) {
+	queue->rear = (queue->rear+1)%queue->capacity;
+	queue->size += 1;
+	queue->nodes[queue->rear].currIndex = currIndex;
+	queue->nodes[queue->rear].sum = sum;
+	return;
+}
+
+void deQueue(Queue *queue, int *currIndex, int *sum) {
+	*currIndex = queue->nodes[queue->front].currIndex ;
+	*sum = queue->nodes[queue->front].sum;
+	queue->size -= 1;
+	queue->front = (queue->front+1)%queue->capacity;
+	return;
+}
+
+int peekQueueCurrIndex(Queue *queue) {
+	return queue->nodes[queue->front].currIndex;
+}
+
+
+int findTargetSumWays(int* nums, int numsSize, int target){
+	Queue *queue = createQueue();
+
+	enQueue(queue, 1, nums[0]);
+	enQueue(queue, 1, -nums[0]);
+
+	int currIndex, sum;
+
+	while(peekQueueCurrIndex(queue) < numsSize) {
+		deQueue(queue, &currIndex, &sum);
+		
+		enQueue(queue, currIndex+1, sum+nums[currIndex]);
+		enQueue(queue, currIndex+1, sum-nums[currIndex]);
+	}
+
+	int count = 0;
+	while(!isEmpty(queue)) {
+		deQueue(queue, &currIndex, &sum);
+		if (sum == target) {count += 1;}
+	}
+	return count;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
