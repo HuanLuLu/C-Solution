@@ -322,6 +322,9 @@ In this project, I will document all the C coding questions.
 * Shortest Path in Binary Matrix
   * Question: https://leetcode.com/problems/shortest-path-in-binary-matrix/submissions/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Shortest%20Path%20in%20Binary%20Matrix
+* N-ary Tree Level Order Traversal  
+  * Question: https://leetcode.com/problems/n-ary-tree-level-order-traversal/solution/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/N-ary%20Tree%20Level%20Order%20Traversal
      
 ## Recursion
 * Flood Fill
