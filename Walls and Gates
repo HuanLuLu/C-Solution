@@ -1,0 +1,96 @@
+time complexity: O(nm)
+space complexity: O(mn)
+
+#include <limits.h>
+
+#define MAX_GRID_NUM 250*250
+#define GATE 0
+#define WALL -1
+#define EMPTY INT_MAX
+
+typedef struct Queue_STR{
+	int capacity;
+	int size, front, rear;
+	int arr[MAX_GRID_NUM][2];
+}Queue;
+
+Queue *createQueue(){
+	Queue *queue = (Queue *)malloc(sizeof(Queue));
+	queue->capacity = MAX_GRID_NUM;
+	queue->size = 0;
+	queue->front = 0;
+	queue->rear = queue->capacity-1;
+	return queue;
+}
+
+bool isEmpty(Queue *queue) {
+	return queue->size == 0;
+}
+
+void enQueue(Queue *queue, int x, int y) {
+	queue->rear = (queue->rear + 1) % queue->capacity;
+	queue->arr[queue->rear][0] = x;
+	queue->arr[queue->rear][1] = y;
+	queue->size += 1;
+	return;
+}
+
+void deQueue(Queue *queue, int *x, int *y) {
+	*x = queue->arr[queue->front][0];
+	*y = queue->arr[queue->front][1];
+	queue->front = (queue->front + 1) % queue->capacity;
+	queue->size -= 1;
+	return;
+}
+
+void initialQueue(Queue *queue, int **rooms, int size_x, int size_y) {
+	for (int i=0; i<size_x; i++) {
+		for (int j=0; j<size_y; j++) {
+			if (rooms[i][j] == GATE) {
+				enQueue(queue, i, j);
+			} 
+		}
+	}
+	return;
+}
+
+void wallsAndGates(int** rooms, int roomsSize, int* roomsColSize){
+	Queue *queue = createQueue();
+	initialQueue(queue, rooms, roomsSize, roomsColSize[0]);
+
+	int x,y,new_x,new_y;
+	int direct[4][2] = {{0,1},{0,-1},{1,0},{-1,0}};
+	while(!isEmpty(queue)) {
+		deQueue(queue, &x, &y);
+
+		for (int i=0; i<4; i++) {
+			new_x = x+direct[i][0];
+			new_y = y+direct[i][1];
+			if (new_x>=0 && new_x<roomsSize && new_y>=0 && new_y<roomsColSize[0]) {
+				if (rooms[new_x][new_y] == EMPTY) {
+					rooms[new_x][new_y] = rooms[x][y]+1;
+					enQueue(queue, new_x, new_y);
+				}
+			}
+		}
+	}
+	return;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
