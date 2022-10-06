@@ -1,0 +1,132 @@
+When use Queue to do BFS 
+OR
+using recursion to do the DFS
+Design a mechanism for check if visited or invalid or goal.
+
+Here using two array to check if visited and get the previous steps.
+
+Time complexity: O(10000 * 8 + len(deadlist))  total 10000 combinations, for each combiantion, we need to check 4 + 4
+Space complexity: O(10000) queue+visit+count
+
+#define MAX_KEY_NUM 10000
+
+#define CHAR_DIGIT_TO_INT(c) ( (int)c - (int)'0' )
+
+typedef struct Queue_STR {
+	int size, front, rear;
+	char arr[MAX_KEY_NUM][4];
+}Queue;
+
+Queue *createQueue() {
+	Queue *queue = (Queue *)malloc(sizeof(Queue));
+	queue->size = 0;
+	queue->front = 0;
+	queue->rear = MAX_KEY_NUM-1;
+	return queue;
+}
+
+bool isEmpty(Queue *queue) {
+	return queue->size == 0;
+}
+
+void enQueue(Queue *queue, char *string){
+	queue->rear = (queue->rear+1)%MAX_KEY_NUM;
+	queue->size += 1;
+	memcpy(queue->arr[queue->rear], string, sizeof(char)*4);
+	return;
+}
+
+void deQueue(Queue *queue, char *string) {
+	queue->size -= 1;
+	memcpy(string, queue->arr[queue->front], sizeof(char)*4);
+	queue->front = (queue->front+1)%MAX_KEY_NUM;
+	return;
+}
+
+int keyToInt(char *key) {
+	int ret = CHAR_DIGIT_TO_INT(key[0])*1000 +  \
+			   CHAR_DIGIT_TO_INT(key[1])*100 +  \
+              CHAR_DIGIT_TO_INT(key[2])*10 +   \
+              CHAR_DIGIT_TO_INT(key[3]);
+	return ret;
+}
+
+int openLock(char ** deadends, int deadendsSize, char * target){
+	Queue *queue = createQueue();
+	
+	int visit[MAX_KEY_NUM];
+	int count[MAX_KEY_NUM];
+	memset(visit, 0, sizeof(int)*MAX_KEY_NUM);
+	memset(count, 0, sizeof(int)*MAX_KEY_NUM);
+	
+	int index;
+	for(int i=0; i<deadendsSize; i++) {
+		index = keyToInt(deadends[i]);
+		visit[index] = -1;
+	}
+    int targetIndex = keyToInt(target);
+	
+	char key[4];
+	char new_key[4];
+	int new_index;
+	
+	if (visit[0] == 0) {enQueue(queue, "0000");}	
+	
+	while(!isEmpty(queue)) {
+		deQueue(queue, key);
+
+		index = keyToInt(key);
+		if (index == targetIndex) {
+			free(queue);
+			return count[index];
+		}
+
+		if (visit[index] != 0) {continue;}
+
+		visit[index] = 1;
+
+		for (int i=0; i<4; i++) {
+			memcpy(new_key, key, sizeof(char)*4);
+			if (new_key[i] == '9') {
+				new_key[i] = '0';
+			}
+			else {
+				new_key[i] += 1;
+			}
+			new_index = keyToInt(new_key);
+			if (visit[new_index] == 0) {
+				count[new_index] = count[index]+1;
+				enQueue(queue, new_key);
+			}
+			
+		}
+
+		for (int i=0; i<4; i++) {
+			memcpy(new_key, key, sizeof(char)*4);
+			if (new_key[i] == '0') {
+				new_key[i] = '9';
+			}
+			else {
+				new_key[i] -= 1;
+			}
+			new_index = keyToInt(new_key);
+			if (visit[new_index] == 0) {
+				count[new_index] = count[index]+1;
+				enQueue(queue, new_key);
+			}
+		}
+
+	}
+
+	free(queue);
+	return -1;
+}
+
+
+
+
+
+
+
+
+
