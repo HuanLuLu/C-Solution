@@ -337,6 +337,9 @@ In this project, I will document all the C coding questions.
 * Open the Lock
   * Question: https://leetcode.com/problems/open-the-lock/solution/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Open%20the%20Lock
+* Perfect Squares
+  * Question: https://leetcode.com/problems/perfect-squares/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Perfect%20Squares
      
 ## Recursion
 * Flood Fill
