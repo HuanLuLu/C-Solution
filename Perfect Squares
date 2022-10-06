@@ -1,0 +1,84 @@
+BFS
+One thing need to utilize is to store if visited or not. In the question, if we have visited the node, we don't have to add the sum into the 
+queue, since the result definitely will have larger path/steps
+
+Time complexity O(10000)
+Space complexity O(10000)
+
+#define MAX_SQU_NUM 10000
+
+typedef struct Queue_STR{	
+	int size, front, rear;
+	int arr[MAX_SQU_NUM][2];
+}Queue;
+
+Queue *createQueue() {
+	Queue *queue = malloc(sizeof(Queue));	
+	queue->size = 0;
+	queue->front = 0;
+	queue->rear = MAX_SQU_NUM-1;
+	return queue;
+}
+
+bool isEmpty(Queue *queue) {
+	return queue->size == 0;
+}
+
+void enQueue(Queue *queue, int val, int level){
+	queue->rear = (queue->rear+1)%MAX_SQU_NUM;
+	queue->arr[queue->rear][0] = val;
+	queue->arr[queue->rear][1] = level;
+	queue->size += 1;
+	return;
+}
+
+void deQueue(Queue *queue, int *val, int *level) {
+	*val = queue->arr[queue->front][0];
+	*level = queue->arr[queue->front][1];
+	queue->front = (queue->front+1)%MAX_SQU_NUM;
+	queue->size -= 1;
+	return;
+}
+
+int numSquares(int n){
+	int visit[10001];
+	memset(visit, 0, sizeof(int)*10001);
+
+	Queue *queue = createQueue();
+	enQueue(queue, n, 0);
+
+	int currSum, level;
+	while(!isEmpty(queue)) {
+		deQueue(queue, &currSum, &level);
+		for (int i=1; i<101; i++) {
+			if (i*i == currSum) {
+				free(queue);
+				return level+1;
+			}
+			else if (i*i < currSum) {
+                if (visit[currSum-i*i]==0) {
+                    visit[currSum-i*i] += 1;
+				    enQueue(queue, currSum-i*i, level+1);
+                }
+			}
+			else{
+				break;
+			}
+		}
+	}
+	free(queue);
+	return -1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
