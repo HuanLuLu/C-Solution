@@ -331,6 +331,9 @@ In this project, I will document all the C coding questions.
 * Number of Islands
   * Question: https://leetcode.com/problems/number-of-islands/submissions/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Number%20of%20Islands
+* Walls and Gates
+  * Question: https://leetcode.com/problems/walls-and-gates/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Walls%20and%20Gates
      
 ## Recursion
 * Flood Fill
