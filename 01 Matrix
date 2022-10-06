@@ -43,3 +43,112 @@ int** updateMatrix(int** mat, int matSize, int* matColSize, int* returnSize, int
 	}	
 	return distance;
 }
+
+Solution 2: (Accepted)
+BFS
+Algorithm:
+We push all boundaries ones into the queue. And then make other 1's become inf.
+We only enqueue when we found we have smaller dis. So one grid won't be visited by many times.
+Time complexity: O(nm)
+Space complexity: O(nm)
+
+#include <limits.h>
+
+#define MAX_GRID_NUM (10000)
+
+typedef struct Queue_STR{
+	int size, front, rear;
+	int arr[MAX_GRID_NUM][2];
+}Queue;
+
+Queue *createQueue() {
+	Queue *queue = (Queue *)malloc(sizeof(Queue));
+	queue->size = 0;
+	queue->front = 0;
+	queue->rear = MAX_GRID_NUM-1;
+	return queue;
+}
+
+bool isEmpty(Queue *queue) {
+	return queue->size == 0;
+}
+
+void enQueue(Queue *queue, int x, int y) {
+	queue->rear = (queue->rear+1)%MAX_GRID_NUM;
+	queue->arr[queue->rear][0] = x;
+	queue->arr[queue->rear][1] = y;
+	queue->size += 1;
+	return;
+}
+
+void deQueue(Queue *queue, int *x, int *y) {
+	*x = queue->arr[queue->front][0];
+	*y = queue->arr[queue->front][1];
+	queue->front = (queue->front+1)%MAX_GRID_NUM;
+	queue->size -= 1;
+	return;
+}
+
+void initQueueMatrix(Queue *queue, int **mat, int size_x, int size_y) {
+	int direct[4][2] = {{1,0},{-1,0},{0,1},{0,-1}};
+	int new_x, new_y;
+
+	for (int i=0; i<size_x; i++) {
+		for(int j=0; j<size_y; j++) {
+
+			if(mat[i][j] == 1) {
+
+				mat[i][j] = INT_MAX;
+
+				for (int k=0; k<4; k++) {
+
+					new_x = i+direct[k][0];
+					new_y = j+direct[k][1];
+
+					if(new_x>=0 && new_x<size_x && \
+					   new_y>=0 && new_y<size_y && \
+                      mat[new_x][new_y] == 0) {											
+                      mat[i][j] = 1;
+						enQueue(queue, i, j);
+						break;
+					}
+
+				}
+
+			}
+
+		}
+	}
+	return;
+}
+
+
+int** updateMatrix(int** mat, int matSize, int* matColSize, int* returnSize, int** returnColumnSizes){
+	*returnSize = matSize;
+	*returnColumnSizes = (int *)malloc(sizeof(int) * matSize);
+	memcpy(*returnColumnSizes, matColSize, sizeof(int)*matSize);
+
+	Queue *queue = createQueue();
+	initQueueMatrix(queue, mat, matSize, matColSize[0]);
+
+	int x,y,new_x,new_y;
+	int direct[4][2] = {{1,0},{-1,0},{0,1},{0,-1}};
+	while(!isEmpty(queue)) {
+		deQueue(queue, &x, &y);
+		for (int i=0; i<4; i++) {
+			new_x = x+direct[i][0];
+			new_y = y+direct[i][1];
+
+			if(new_x>=0 && new_x<matSize && new_y>=0 && new_y<matColSize[0]) {
+				if (mat[x][y] + 1 < mat[new_x][new_y]) {
+					mat[new_x][new_y] = mat[x][y] + 1;
+					enQueue(queue, new_x, new_y);
+				}
+			}
+		}
+	}
+	//free(queue);
+	return mat;
+}
+
+
