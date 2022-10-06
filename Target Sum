@@ -74,9 +74,24 @@ int findTargetSumWays(int* nums, int numsSize, int target){
 	}
 	return count;
 }
+===========
 
+Recursion with memorization:
 
+every node need to be calculated by twice. 
+Time complexity: O(2^n)
+Space complexity: O(n)
 
+int helper(int *nums, int numsSize, int target, int index, int sum) {
+	if (index == numsSize) {return (sum==target)?1:0;}
+
+    return helper(nums, numsSize, target, index+1, sum+nums[index]) + \
+           helper(nums, numsSize, target, index+1, sum-nums[index]);
+}
+
+int findTargetSumWays(int* nums, int numsSize, int target){
+	return helper(nums, numsSize, target, 0, 0);
+}
 
 
 
