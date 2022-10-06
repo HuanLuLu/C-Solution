@@ -334,6 +334,9 @@ In this project, I will document all the C coding questions.
 * Walls and Gates
   * Question: https://leetcode.com/problems/walls-and-gates/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Walls%20and%20Gates
+* Open the Lock
+  * Question: https://leetcode.com/problems/open-the-lock/solution/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Open%20the%20Lock
      
 ## Recursion
 * Flood Fill
