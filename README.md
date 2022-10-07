@@ -340,6 +340,9 @@ In this project, I will document all the C coding questions.
 * Perfect Squares
   * Question: https://leetcode.com/problems/perfect-squares/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Perfect%20Squares
+* Keys and Rooms
+  * Question: https://leetcode.com/problems/keys-and-rooms/submissions/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Keys%20and%20Rooms
      
 ## Recursion
 * Flood Fill
