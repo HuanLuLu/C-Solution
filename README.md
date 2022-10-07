@@ -343,6 +343,9 @@ In this project, I will document all the C coding questions.
 * Keys and Rooms
   * Question: https://leetcode.com/problems/keys-and-rooms/submissions/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Keys%20and%20Rooms
+* Min Cost to Connect All Points
+  * Question: https://leetcode.com/problems/min-cost-to-connect-all-points/solution/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Min%20Cost%20to%20Connect%20All%20Points
      
 ## Recursion
 * Flood Fill
