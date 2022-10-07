@@ -1,0 +1,26 @@
+DFS
+Time complexity: O(n+e)
+Space compkexity: O(n)
+
+
+void dfs(int** rooms, int* roomsColSize, int *visit, int room){
+	if(visit[room] != 0) {return;}
+	
+	visit[room] = 1;
+	for(int i=0; i<roomsColSize[room]; i++) {
+        if(visit[rooms[room][i]] == 0) {dfs(rooms, roomsColSize, visit, rooms[room][i]);}		
+	}
+	return;
+}
+
+
+bool canVisitAllRooms(int** rooms, int roomsSize, int* roomsColSize){
+	int visit[roomsSize];
+	memset(visit, 0, sizeof(int)*roomsSize);
+	
+	dfs(rooms, roomsColSize, visit, 0);
+	for(int i=0; i<roomsSize; i++) {
+		if (visit[i] == 0) {return false;}
+	}
+	return true;
+}
