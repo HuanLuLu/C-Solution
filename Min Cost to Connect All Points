@@ -1,0 +1,42 @@
+Time complexity: while loop has the n, in each while loop, have n points need to traverse, so O(n^2)
+Space complexity: array to store the distance and visit status. O(n)
+
+
+#define MIN(a,b) ((a<b)?a:b)
+
+int calDist(int *p1, int *p2) {
+	return abs(p1[0]-p2[0]) + abs(p1[1]-p2[1]);
+}
+
+int minCostConnectPoints(int** points, int pointsSize, int* pointsColSize){
+	int visit[pointsSize];
+	int distances[pointsSize];
+	memset(visit, 0, sizeof(int)*pointsSize);
+    for(int i=0; i<pointsSize; i++) {distances[i]=INT_MAX;}
+
+
+	int next_point, minDist, d;
+	int curr_point = 0, pointNum = pointsSize-1;
+
+	while(pointNum>0) {
+		visit[curr_point] = 1;
+		minDist = INT_MAX;
+		for (int i=0; i<pointsSize; i++) {
+			if (visit[i] == 1) {continue;}
+
+			d = calDist(points[curr_point], points[i]);
+			distances[i] = MIN(d, distances[i]);
+			if (distances[i] < minDist) {
+				next_point = i;
+				minDist = distances[i];
+			}		
+		}
+		curr_point = next_point;
+		pointNum -= 1;
+	}
+	int ret = 0;
+	for(int i=0; i<pointsSize; i++) {
+		if (distances[i] != INT_MAX) {ret += distances[i];}
+	}
+	return ret;
+}
