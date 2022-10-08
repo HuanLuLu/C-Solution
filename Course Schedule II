@@ -1,0 +1,116 @@
+time complexity:
+create graph and inDegree: O(V)
+initial graph and inDegree: O(E)
+for the each Vertex in Queue, we used while loop to locata the dst vertices: O(v*v)
+Total: O(v^2+E)
+
+Spcace compleixty: graph: O(V^2); inDegree: O(V); Queue: O(V).
+Total: O(V^2)
+
+
+#define MAX_COURSE_NUM 2000
+
+typedef struct Queue_STR{
+	int size, front, rear;
+	int arr[MAX_COURSE_NUM];
+}Queue;
+
+Queue *createQueue() {
+	Queue *queue = (Queue *)malloc(sizeof(Queue));
+	queue->front = 0;
+	queue->rear = MAX_COURSE_NUM-1;
+	queue->size = 0;
+	return queue;
+}
+
+bool isEmpty(Queue *queue) {
+	return queue->size == 0;
+}
+
+void enQueue(Queue *queue, int course) {
+	queue->rear = (queue->rear+1)%MAX_COURSE_NUM;
+	queue->arr[queue->rear] = course;
+	queue->size += 1;
+	return;
+}
+
+int deQueue(Queue *queue) {
+	int ret = queue->arr[queue->front];
+	queue->front = (queue->front+1)%MAX_COURSE_NUM;
+	queue->size -= 1;
+	return ret;
+}
+
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+int* findOrder(int numCourses, int** prerequisites, int prerequisitesSize, int* prerequisitesColSize, int* returnSize){
+	Queue *queue = createQueue();
+
+	int inDegree[numCourses];
+	int graph[numCourses][numCourses];
+
+	memset(inDegree, 0, sizeof(int)*numCourses);
+	for(int i=0; i<numCourses; i++) {
+		memset(graph[i], 0, sizeof(int)*numCourses);
+	}
+
+	int src, dst;
+	for (int i=0; i<prerequisitesSize; i++) {
+		src = prerequisites[i][1];
+		dst = prerequisites[i][0];
+	
+		inDegree[dst] += 1;
+		graph[src][dst] = 1;
+	}
+
+	*returnSize = 0;
+	int *ret = (int *)malloc(sizeof(int)*numCourses);
+
+	for(int i=0; i<numCourses; i++) {
+		if(inDegree[i] == 0) {enQueue(queue, i);}
+	}
+
+	while(!isEmpty(queue)) {
+		src = deQueue(queue);
+
+		ret[*returnSize] = src;
+		*returnSize += 1;
+		
+		for(int i=0; i<numCourses; i++) {
+			if (graph[src][i] == 1) {
+				inDegree[i] -= 1;
+				if (inDegree[i] == 0) {enQueue(queue, i);}
+			}
+		}
+	}
+    
+    free(queue);
+
+	if (*returnSize != numCourses) {
+		free(ret);
+		*returnSize = 0;
+		return NULL;
+	}
+	else {
+		return ret;
+	}
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
