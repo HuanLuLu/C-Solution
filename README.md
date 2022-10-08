@@ -346,6 +346,9 @@ In this project, I will document all the C coding questions.
 * Min Cost to Connect All Points
   * Question: https://leetcode.com/problems/min-cost-to-connect-all-points/solution/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Min%20Cost%20to%20Connect%20All%20Points
+* Course Schedule II
+  * Question: https://leetcode.com/problems/course-schedule-ii/solution/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Course%20Schedule%20II
      
 ## Recursion
 * Flood Fill
