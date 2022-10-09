@@ -352,6 +352,9 @@ In this project, I will document all the C coding questions.
 * Minimum Height Trees
   * Question: https://leetcode.com/problems/minimum-height-trees/solution/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Minimum%20Height%20Trees
+* Parallel Courses
+  * Question: https://leetcode.com/problems/parallel-courses/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Parallel%20Courses
      
 ## Recursion
 * Flood Fill
