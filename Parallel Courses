@@ -1,0 +1,87 @@
+#define MAX_COURSE_NUM 5000
+
+typedef struct Queue_STR{
+	int size, front, rear;
+	int arr[MAX_COURSE_NUM];
+}Queue;
+
+Queue *createQueue() {
+	Queue *queue = (Queue *)malloc(sizeof(Queue));
+	queue->size = 0;
+	queue->front = 0;
+	queue->rear = MAX_COURSE_NUM-1;
+	return queue;
+}
+
+bool isEmpty(Queue *queue){
+	return queue->size == 0;
+}
+
+void enQueue(Queue *queue, int course) {
+	queue->rear = (queue->rear+1)%MAX_COURSE_NUM;
+	queue->arr[queue->rear] = course;
+	queue->size += 1;
+	return;
+}
+
+int deQueue(Queue *queue) {
+	int ret = queue->arr[queue->front];
+	queue->front = (queue->front+1)%MAX_COURSE_NUM;
+	queue->size -= 1;
+	return ret;
+}
+
+
+int minimumSemesters(int n, int** relations, int relationsSize, int* relationsColSize){
+	Queue *queue = createQueue();
+
+	int inDegree[n];
+	int graph[n][n];
+	memset(inDegree, 0, sizeof(int)*n);
+	for(int i=0; i<n; i++) {
+		memset(graph[i], 0, sizeof(int)*n);
+	}
+
+	int src, dst;
+	for (int i=0; i<relationsSize; i++) {
+		src = relations[i][0] - 1;
+		dst = relations[i][1] - 1;
+		inDegree[dst] += 1;
+		graph[src][dst] = 1;
+	}
+
+	for(int i=0; i<n; i++) {
+		if (inDegree[i] == 0) {enQueue(queue, i);}
+	}
+
+	int ret=0, currLeaves, courseTaken=0; 
+	while(!isEmpty(queue)) {
+		currLeaves = queue->size;
+		while(currLeaves>0) {
+			src = deQueue(queue);
+			currLeaves -= 1;
+			courseTaken += 1;
+			for(int i=0; i<n; i++) {
+				if (graph[src][i] == 1) {
+					inDegree[i] -= 1;
+					if(inDegree[i]==0) {enQueue(queue, i);}
+				}
+			}
+
+		}
+		ret += 1;
+	}
+	return (courseTaken == n) ? ret : -1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
