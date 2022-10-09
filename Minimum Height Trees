@@ -1,0 +1,112 @@
+#define MAX_NODE_NUM 20000
+
+typedef struct Queue_STR {
+	int size, front, rear;
+	int arr[MAX_NODE_NUM];
+}Queue;
+
+Queue *createQueue(){
+	Queue *queue = (Queue *)malloc(sizeof(Queue));
+	queue->size = 0;
+	queue->front = 0;
+	queue->rear = MAX_NODE_NUM-1;
+	return queue;
+}
+
+void enQueue(Queue *queue, int node) {
+	queue->rear = (queue->rear+1)%MAX_NODE_NUM;
+	queue->arr[queue->rear] = node;
+	queue->size += 1;
+	return;
+}
+
+int deQueue(Queue *queue) {
+	int ret = queue->arr[queue->front];
+	queue->front = (queue->front+1)%MAX_NODE_NUM;
+	queue->size -= 1;
+	return ret;
+}
+
+bool isEmpty(Queue *queue){
+	return queue->size == 0;
+}
+
+
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+int* findMinHeightTrees(int n, int** edges, int edgesSize, int* edgesColSize, int* returnSize){
+	int inDegree[n];
+	int graph[n][n];
+	memset(inDegree, 0, sizeof(int)*n);
+	for(int i=0; i<n; i++){
+		memset(graph[i], 0, sizeof(int)*n);
+	}
+
+    Queue *queue = createQueue();
+    
+	int n1, n2;
+	for(int i=0; i<edgesSize; i++){
+		n1 = edges[i][0];
+		n2 = edges[i][1];
+		
+		inDegree[n1] += 1;
+		inDegree[n2] += 1;
+		graph[n1][n2] = 1;
+		graph[n2][n1] = 1;
+	}
+
+	for(int i=0; i<n; i++) {
+		if(inDegree[i] == 1 || inDegree[i] == 0) {
+			inDegree[i] = -1;
+			enQueue(queue, i);
+		}
+	}
+
+	int currNum = n;
+	int leavesNode;
+	int node;
+	while(currNum != 1 && currNum != 2) {
+		leavesNode = queue->size;
+		while(leavesNode!=0) {
+			node = deQueue(queue);
+			currNum -= 1;
+			leavesNode -= 1;
+			for(int i=0; i<n; i++) {
+				if(graph[node][i] == 1) {
+					inDegree[i] -= 1;
+					if(inDegree[i] == 1 || inDegree[i] == 0) {
+						enQueue(queue, i);
+						inDegree[i] = -1;
+					}
+				}
+			}
+		}
+	}
+
+	*returnSize=0;
+	int *ret = (int *)malloc(sizeof(int)*currNum);
+	while(!isEmpty(queue)) {
+		ret[(*returnSize)++] = deQueue(queue);
+	}
+	free(queue);
+	return ret;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
