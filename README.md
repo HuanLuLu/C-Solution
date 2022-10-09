@@ -349,6 +349,9 @@ In this project, I will document all the C coding questions.
 * Course Schedule II
   * Question: https://leetcode.com/problems/course-schedule-ii/solution/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Course%20Schedule%20II
+* Minimum Height Trees
+  * Question: https://leetcode.com/problems/minimum-height-trees/solution/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Minimum%20Height%20Trees
      
 ## Recursion
 * Flood Fill
