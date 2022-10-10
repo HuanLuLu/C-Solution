@@ -38,6 +38,9 @@ In this project, I will document all the C coding questions.
 * Find All Numbers Disappeared in an Array
   * Question: https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Find%20All%20Numbers%20Disappeared%20in%20an%20Array
+* Find Pivot Index
+  * Question: https://leetcode.com/problems/find-pivot-index/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Find%20Pivot%20Index
 
 ## List
 * Singly Linked List
