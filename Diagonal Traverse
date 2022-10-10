@@ -1,0 +1,38 @@
+time : O(n)
+space: O(n) //return size of n array. other than that, o(1)
+
+bool isLegal(int x, int y, int size_x, int size_y) {
+	return (x>=0 && x<size_x && y>=0 && y<size_y);
+}
+
+
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+int* findDiagonalOrder(int** mat, int matSize, int* matColSize, int* returnSize){
+	int direct[2][2] = {{-1,1},{1,-1}};
+	int directIndex = 0;
+
+	int size_x = matSize, size_y = matColSize[0];
+	*returnSize = size_x*size_y;
+	int *ret = (int *)malloc(sizeof(int) * *returnSize);
+	int x=0, y=0, index=0;
+
+	while(index < *returnSize) {
+		if(!isLegal(x,y,size_x,size_y)) {
+			directIndex = (directIndex + 1)%2;
+			y += 1;
+			while (!isLegal(x,y,size_x,size_y)) {
+				x += direct[directIndex][0];
+				y += direct[directIndex][1];
+			}
+		}
+		
+		ret[index] = mat[x][y];
+		index++;
+		x += direct[directIndex][0];
+		y += direct[directIndex][1];
+	}
+	return ret;
+	
+}
