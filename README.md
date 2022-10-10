@@ -53,6 +53,9 @@ In this project, I will document all the C coding questions.
 * Spiral Matrix
   * Question: https://leetcode.com/problems/spiral-matrix/solution/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Spiral%20Matrix
+* Pascal's Triangle
+  * Question: https://leetcode.com/problems/pascals-triangle/solution/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Pascal's%20Triangle
 
 ## List
 * Singly Linked List
