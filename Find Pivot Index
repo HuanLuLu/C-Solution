@@ -1,0 +1,15 @@
+time: O(n); space: O(1)
+
+int pivotIndex(int* nums, int numsSize){
+	int sum_l=0, sum_r=0;
+	for (int i=1; i<numsSize; i++) {
+		sum_r += nums[i];
+	}
+	int pivot = 0;
+	while (sum_l != sum_r && pivot+1 < numsSize) {
+		sum_l += nums[pivot];
+		sum_r -= nums[pivot+1];
+        pivot += 1;
+	}
+	return (sum_l == sum_r) ? pivot : -1;	
+}
