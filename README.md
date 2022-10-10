@@ -50,6 +50,9 @@ In this project, I will document all the C coding questions.
 * Diagonal Traverse
   * Question: https://leetcode.com/explore/learn/card/array-and-string/202/introduction-to-2d-array/1167/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Diagonal%20Traverse
+* Spiral Matrix
+  * Question: https://leetcode.com/problems/spiral-matrix/solution/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Spiral%20Matrix
 
 ## List
 * Singly Linked List
