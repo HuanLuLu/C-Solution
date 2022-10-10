@@ -41,6 +41,9 @@ In this project, I will document all the C coding questions.
 * Find Pivot Index
   * Question: https://leetcode.com/problems/find-pivot-index/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Find%20Pivot%20Index
+* Largest Number At Least Twice of Others
+  * Question: https://leetcode.com/problems/largest-number-at-least-twice-of-others/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Largest%20Number%20At%20Least%20Twice%20of%20Others
 
 ## List
 * Singly Linked List
