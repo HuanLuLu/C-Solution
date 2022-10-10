@@ -1,0 +1,19 @@
+time complexity: O(n)
+space compexity: O(1)
+
+
+int dominantIndex(int* nums, int numsSize){
+	int max_num = -1, sec_num = -2, temp, index;
+	for (int i=0; i<numsSize; i++) {
+		if (nums[i] > max_num) {
+			temp = max_num;
+			max_num = nums[i]; 
+			sec_num = temp;	
+			index = i;
+		}
+		else if(nums[i] > sec_num) {
+			sec_num = nums[i];
+		}
+	}
+	return (sec_num*2 <= max_num)? index:-1;
+}
