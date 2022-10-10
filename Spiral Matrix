@@ -1,0 +1,31 @@
+Time complexity: O(nm)
+Space Complexity: O(mn) //for return. Other than that O(1)
+
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+int* spiralOrder(int** matrix, int matrixSize, int* matrixColSize, int* returnSize){
+	int direct[4][2] = {{0,1}, {1,0}, {0,-1}, {-1,0}};
+	int directIndex = 0;
+
+	int size_x = matrixSize, size_y = matrixColSize[0];
+	int range[2] = {size_y, size_x};
+	int rangeIndex = 0;
+
+	*returnSize = size_x*size_y;
+	int *ret = (int *)malloc(sizeof(int)* *returnSize);
+	int retIndex = 0;
+
+	int x=0, y=-1;
+	while(range[rangeIndex] > 0) {
+		for (int i=0; i<range[rangeIndex]; i++) {
+			x += direct[directIndex][0];
+			y += direct[directIndex][1];
+            ret[retIndex++] = matrix[x][y];
+		}
+		directIndex = (directIndex+1)%4;
+		rangeIndex = (rangeIndex+1)%2;
+		range[rangeIndex] -= 1;
+	}
+	return ret;
+}
