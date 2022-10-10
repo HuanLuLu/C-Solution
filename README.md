@@ -44,6 +44,9 @@ In this project, I will document all the C coding questions.
 * Largest Number At Least Twice of Others
   * Question: https://leetcode.com/problems/largest-number-at-least-twice-of-others/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Largest%20Number%20At%20Least%20Twice%20of%20Others
+* Plus One
+  * Question: https://leetcode.com/problems/plus-one/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Plus%20One
 
 ## List
 * Singly Linked List
