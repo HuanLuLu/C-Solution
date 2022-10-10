@@ -47,6 +47,9 @@ In this project, I will document all the C coding questions.
 * Plus One
   * Question: https://leetcode.com/problems/plus-one/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Plus%20One
+* Diagonal Traverse
+  * Question: https://leetcode.com/explore/learn/card/array-and-string/202/introduction-to-2d-array/1167/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Diagonal%20Traverse
 
 ## List
 * Singly Linked List
