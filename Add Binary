@@ -40,3 +40,52 @@ char * addBinary(char * a, char * b){
 method2: bit manipulation
 XOR is the sum of two bits without considering carry;
 AND is the carray of two bits;
+
+Drawback: 0. a or b equal to 0, some for loop won't go in.
+The result could larger than int range. 
+
+
+char *strrev(char *str)
+{
+      char *p1, *p2;
+
+      if (! str || ! *str)
+            return str;
+      for (p1 = str, p2 = str + strlen(str) - 1; p2 > p1; ++p1, --p2)
+      {
+            *p1 ^= *p2;
+            *p2 ^= *p1;
+            *p1 ^= *p2;
+      }
+      return str;
+}
+
+char * addBinary(char * a, char * b){
+	int x = strtol(a, NULL, 2), y = strtol(b, NULL, 2);
+	int carry;
+	while(y!= 0) {
+		carry = x&y;
+		x = x^y;
+		y = carry << 1;
+	}
+
+	int ret_len = strlen(a)>strlen(b) ? strlen(a) : strlen(b);
+	ret_len++;
+    ret_len++;
+	char *ret = (char *)malloc(ret_len);
+	int ret_index=0;
+    
+    if (strlen(a) == 1 && strlen(b) == 1 && a[0] == '0' && b[0] == '0') {
+        ret[0] = '0';
+        ret[1] = '\0';
+        return ret;
+    }
+	
+	
+	while(x != 0) {
+		ret[ret_index++] = (char)(x%2+(int)'0');
+		x = x/2;
+	}
+    ret[ret_index] = '\0';
+	return strrev(ret);
+}
