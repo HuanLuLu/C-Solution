@@ -56,6 +56,9 @@ In this project, I will document all the C coding questions.
 * Pascal's Triangle
   * Question: https://leetcode.com/problems/pascals-triangle/solution/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Pascal's%20Triangle
+* Add Binary
+  * Question: https://leetcode.com/problems/add-binary/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Add%20Binary
 
 ## List
 * Singly Linked List
