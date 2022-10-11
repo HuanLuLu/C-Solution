@@ -395,3 +395,4 @@ In this project, I will document all the C coding questions.
 * Quick Sort in C library: https://github.com/HuanLuLu/C-Solution/commit/f045354cd559d481e938e5532e2a431fa03ff426
 * Counting Sort in c: https://github.com/HuanLuLu/C-Solution/blob/main/Counting%20Sort
 * typedef struct vs struct: https://github.com/HuanLuLu/C-Solution/blob/main/typedef%20struct%20VS%20struct
+* bianry convert to decimal and back: https://github.com/HuanLuLu/C-Solution/blob/main/Decimal%20and%20Binary
