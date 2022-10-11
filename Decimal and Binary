@@ -5,6 +5,8 @@ Decimal to Binary:
 Bianry to Decimal:
 1) power
 2) strtol
+
+Reference: https://www.geeksforgeeks.org/program-decimal-binary-conversion/
 ===============================================================
 #include <stdio.h>
 #include <stdlib.h>
