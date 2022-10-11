@@ -1,0 +1,42 @@
+Method1:
+Bit-by-bit computation:
+Time complexity: O(max(n+m))
+space complexity: O(max(n,m))
+
+#define CHAR_TO_NUM(c) ((int)c-(int)'0')
+#define NUM_TO_CHAR(n) ((char)(n+(int)'0'))
+
+
+char * addBinary(char * a, char * b){
+	int len_a = strlen(a), len_b = strlen(b);
+	if (len_a < len_b ) {return addBinary(b,a);}
+
+	char *ret = (char *)malloc(sizeof(char)*(len_a+2));
+	ret[len_a+1] = '\0';
+	int ret_index = len_a;
+	int a_index = len_a-1;
+
+	int carry = 0;
+	for (int i = len_b-1; i>=0; i--) {
+		carry += CHAR_TO_NUM(a[a_index--]) + CHAR_TO_NUM(b[i]);
+		ret[ret_index--] = NUM_TO_CHAR(carry%2);
+		carry = carry/2;
+	}
+
+	while(a_index>=0) {
+		carry += CHAR_TO_NUM(a[a_index--]);
+		ret[ret_index--] = NUM_TO_CHAR(carry%2);
+		carry = carry/2;
+	}
+
+	ret[0] = NUM_TO_CHAR(carry);
+	if(ret[0] == '0') {
+		memmove(&ret[0], &ret[1], sizeof(char)*(len_a+1));
+	}
+	return ret;
+}
+
+==============
+method2: bit manipulation
+XOR is the sum of two bits without considering carry;
+AND is the carray of two bits;
