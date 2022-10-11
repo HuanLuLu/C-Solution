@@ -6,6 +6,10 @@ Bianry to Decimal:
 1) power
 2) strtol
 
+Additioin without operation
+XOR: addition without carry
+AND: addition carry
+
 Reference: https://www.geeksforgeeks.org/program-decimal-binary-conversion/
 ===============================================================
 #include <stdio.h>
@@ -52,6 +56,12 @@ void binary2Deci(int *binary, int size){
         if(binary[i] == 1) {ret += pow(2, p);}
         p--;
     }
+    printf("the decimal number is %d\n", ret);
+}
+
+//string binary to decimal
+void binarySting2Deci(char *str) {
+    int ret = (int)strtol(str, NULL, 2);
     printf("the decimal number is %d\n", ret);
 }
 
