@@ -388,7 +388,7 @@ In this project, I will document all the C coding questions.
 ## String
 * Pattern Search
   * reference: https://www.geeksforgeeks.org/kmp-algorithm-for-pattern-searching/?ref=lbp
-  * Solution: 
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/PatternSearch
   
 ## Other:
 * 01 Matrix
