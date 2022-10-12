@@ -384,6 +384,11 @@ In this project, I will document all the C coding questions.
 * Target Sum
   * Question: https://leetcode.com/explore/learn/card/queue-stack/232/practical-application-stack/1389/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Target%20Sum
+       
+## String
+* Pattern Search
+  * reference: https://www.geeksforgeeks.org/kmp-algorithm-for-pattern-searching/?ref=lbp
+  * Solution: 
   
 ## Other:
 * 01 Matrix
