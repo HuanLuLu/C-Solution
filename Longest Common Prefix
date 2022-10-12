@@ -1,0 +1,31 @@
+time: O(n*m)
+space: O(1)
+
+char * longestCommonPrefix(char ** strs, int strsSize){
+    int minLen = 201,temp;
+    
+    for(int i=0; i<strsSize; i++) {
+        temp = strlen(strs[i]);
+        if(temp < minLen) {minLen = temp;}
+    }
+    
+    char *ret = (char *)malloc(sizeof(char)*(minLen+1));
+    
+    int row, col;
+    char c;
+    for(col=0; col<minLen; col++) {
+        c = strs[0][col];
+        for(row=1; row<strsSize; row++) {
+            if(c != strs[row][col]) {break;}
+        }
+        if(row == strsSize) {
+            ret[col] = c;
+        }
+        else {
+            ret[col] = '\0';
+            return ret;
+        }
+    }
+    ret[col] = '\0';
+    return ret;
+}
