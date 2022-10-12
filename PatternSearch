@@ -24,3 +24,53 @@ int main() {
 ====================
 KMP Algorithm
 Study note: https://docs.google.com/document/d/1RbzlWA_lWFGyJkGbkRumAIIrjEX0PX8Q8b2ppGr2WDI/edit#
+
+Time complexity: 
+constructing the lps need O(2m)
+Searching O(n)
+Total: O(n+2m)-->O(n+m)
+
+Space comlexity: extra room for lps array: O(m)
+
+void initialLps(char *needle, int *lps) {
+	lps[0] = 0;
+	int curr = 1, previous = 0;
+	while(curr < strlen(needle)) {
+		if (needle[curr] == needle[previous]) {
+			lps[curr++] = (previous++) + 1;
+		}
+		else if (previous == 0) {
+			lps[curr++] = 0;
+		}
+		else {
+			previous = lps[previous-1];
+		}
+	}
+	return;
+}
+
+int search(char * haystack, char * needle, int *lps) {
+	int i=0; //index for haystack
+	int j=0; //index for needle
+
+	while(i<strlen(haystack)) {
+		if (haystack[i] == needle[j]) {
+			i++; j++;
+		}
+		else if(j == 0) {
+			i++;
+		}
+		else {
+			j=lps[j-1];
+		}
+
+		if (j == strlen(needle)) {return i-j;}
+	}
+	return -1;
+}
+
+int strStr(char * haystack, char * needle){
+	int lps[strlen(needle)];
+	initialLps(needle, lps);
+	return search(haystack, needle, lps);
+}
