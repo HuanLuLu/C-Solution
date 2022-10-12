@@ -392,6 +392,9 @@ In this project, I will document all the C coding questions.
 * Longest Common Prefix
   * Question: https://leetcode.com/problems/longest-common-prefix/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Longest%20Common%20Prefix
+* Reverse String
+  * Question: https://leetcode.com/problems/reverse-string/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Reverse%20String
   
 ## Other:
 * 01 Matrix
