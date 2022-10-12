@@ -389,6 +389,9 @@ In this project, I will document all the C coding questions.
 * Pattern Search
   * reference: https://www.geeksforgeeks.org/kmp-algorithm-for-pattern-searching/?ref=lbp
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/PatternSearch
+* Longest Common Prefix
+  * Question: https://leetcode.com/problems/longest-common-prefix/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Longest%20Common%20Prefix
   
 ## Other:
 * 01 Matrix
