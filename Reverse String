@@ -1,0 +1,13 @@
+time: O(n)
+space O(1)
+
+void reverseString(char* s, int sSize){
+	int front = 0, rear = sSize - 1;
+	char temp;
+	while(front <= rear) {
+		temp = s[front]; 
+		s[front] = s[rear];
+		s[rear] = temp;
+		front++; rear--;
+	}
+}
