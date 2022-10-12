@@ -1,0 +1,16 @@
+time complexity: O(nlogn)--quick sort
+space complexity: O(logn)--quick sort
+
+int cmp(const void *a, const void *b) {
+	return *(int *)a - *(int *)b;
+}
+
+int arrayPairSum(int* nums, int numsSize){
+	qsort(nums, numsSize, sizeof(int), cmp);
+
+	int ret = 0;
+	for(int i=0; i<numsSize; i=i+2) {
+		ret += nums[i];
+	}
+	return ret;
+}
