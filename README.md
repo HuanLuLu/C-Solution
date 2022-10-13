@@ -59,6 +59,10 @@ In this project, I will document all the C coding questions.
 * Add Binary
   * Question: https://leetcode.com/problems/add-binary/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Add%20Binary
+*  Two Sum II - Input array is sorted   
+  * Question: https://leetcode.com/explore/learn/card/array-and-string/205/array-two-pointer-technique/1153/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Two%20Sum%20II%20-%20Input%20Array%20Is%20Sorted
+  
 
 ## List
 * Singly Linked List
