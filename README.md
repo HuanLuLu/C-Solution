@@ -62,7 +62,9 @@ In this project, I will document all the C coding questions.
 *  Two Sum II - Input array is sorted   
   * Question: https://leetcode.com/explore/learn/card/array-and-string/205/array-two-pointer-technique/1153/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Two%20Sum%20II%20-%20Input%20Array%20Is%20Sorted
-  
+* Max Consecutive Ones
+  * Question: https://leetcode.com/problems/max-consecutive-ones/submissions/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Max%20Consecutive%20Ones
 
 ## List
 * Singly Linked List
