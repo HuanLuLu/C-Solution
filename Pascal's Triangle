@@ -29,7 +29,30 @@ int** generate(int numRows, int* returnSize, int** returnColumnSizes){
 	return ret;
 }
 
+=======
+space O(rowIndex) //only space for return, nothing else.
+time: O(rowIndex*rowIndex)
 
+int* getRow(int rowIndex, int* returnSize){
+    rowIndex += 1;
+	*returnSize = rowIndex;
+	int *ret = (int *)malloc(sizeof(int)*rowIndex);
+
+	ret[0] = 1;
+	if (rowIndex == 1) {return ret;}
+	ret[1] = 1;
+
+	int prev = ret[0], curr, i;
+	for (int level = 3; level <= rowIndex; level++) {
+		for (i = 1; i < level-1; i++) {
+			curr = ret[i];
+			ret[i] = prev + curr;
+			prev = curr;
+		}
+		ret[i] = 1;
+	}
+	return ret;
+}
 
 
 
