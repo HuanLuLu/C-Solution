@@ -65,6 +65,9 @@ In this project, I will document all the C coding questions.
 * Max Consecutive Ones
   * Question: https://leetcode.com/problems/max-consecutive-ones/submissions/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Max%20Consecutive%20Ones
+* Minimum Size Subarray Sum
+  * Question: https://leetcode.com/problems/minimum-size-subarray-sum/solution/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Minimum%20Size%20Subarray%20Sum
 
 ## List
 * Singly Linked List
