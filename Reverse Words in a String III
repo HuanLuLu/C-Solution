@@ -1,0 +1,30 @@
+time: O(n)
+space: O(1)
+
+void reverse(char *s, int start, int end) {
+	int temp;
+	while (start <= end) {
+		temp = s[start];
+		s[start] = s[end];
+		s[end] = temp;
+		start++; end--;
+	}
+	return;
+}
+
+char * reverseWords(char * s){
+	int start = 0, end = 0;
+	while (start < strlen(s)) {
+		while( end <= strlen(s) ) {
+			if ( s[end] == ' ' || end == strlen(s) ) {
+				reverse(s, start, end-1);
+				end += 1;
+				start = end;
+			}
+			else {
+				end += 1;
+			}
+		}
+	}
+    return s;
+}
