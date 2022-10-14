@@ -68,6 +68,9 @@ In this project, I will document all the C coding questions.
 * Minimum Size Subarray Sum
   * Question: https://leetcode.com/problems/minimum-size-subarray-sum/solution/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Minimum%20Size%20Subarray%20Sum
+*  Rotate Array
+  * Question: https://leetcode.com/problems/rotate-array/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Rotate%20Array
 
 ## List
 * Singly Linked List
