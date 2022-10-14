@@ -59,16 +59,16 @@ In this project, I will document all the C coding questions.
 * Add Binary
   * Question: https://leetcode.com/problems/add-binary/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Add%20Binary
-*  Two Sum II - Input array is sorted   
+*  Two Sum II - Input array is sorted.         
   * Question: https://leetcode.com/explore/learn/card/array-and-string/205/array-two-pointer-technique/1153/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Two%20Sum%20II%20-%20Input%20Array%20Is%20Sorted
-* Max Consecutive Ones
+* Max Consecutive Ones.      
   * Question: https://leetcode.com/problems/max-consecutive-ones/submissions/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Max%20Consecutive%20Ones
-* Minimum Size Subarray Sum
+* Minimum Size Subarray Sum.       
   * Question: https://leetcode.com/problems/minimum-size-subarray-sum/solution/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Minimum%20Size%20Subarray%20Sum
-*  Rotate Array
+*  Rotate Array.           
   * Question: https://leetcode.com/problems/rotate-array/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Rotate%20Array
 
