@@ -1,0 +1,36 @@
+time O(n); space O(1)
+
+void reverse(int *nums, int start, int end) {
+    int temp;
+    while(start <= end){
+        temp = nums[start];
+        nums[start] = nums[end];
+        nums[end] = temp;
+        start++; end--;
+    }
+    return;
+}
+//123456
+//654321
+//561234
+void rotate(int* nums, int numsSize, int k){
+    k = k%numsSize;
+    reverse(nums, 0, numsSize-1);
+    reverse(nums, 0, k-1);
+    reverse(nums, k, numsSize-1);
+    return;
+}
+
+===============
+extra array
+time: O(n) space O(n)
+
+void rotate(int* nums, int numsSize, int k){
+	int temp[numsSize];
+	memcpy(temp, nums, sizeof(int)*numsSize);
+
+	for(int i=0; i<numsSize; i++) {
+		nums[(i+k)%numsSize] = temp[i];
+	}
+	return;
+}
