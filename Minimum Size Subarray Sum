@@ -1,0 +1,17 @@
+Every elements will be checked at most twice. Time: O(n)
+Space: O(1)
+
+int minSubArrayLen(int target, int* nums, int numsSize){
+	int left = 0, sum = 0, ret = INT_MAX;
+	for(int i=0; i<numsSize; i++){
+		sum += nums[i];
+
+		while (sum >= target) {
+			ret = ret < (i-left+1) ? ret : (i-left+1);
+			sum -= nums[left];
+			left += 1;
+		}
+	}
+	if (ret == INT_MAX) {ret = 0;}
+	return ret;
+}
