@@ -71,6 +71,9 @@ In this project, I will document all the C coding questions.
 *  Rotate Array.           
   * Question: https://leetcode.com/problems/rotate-array/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Rotate%20Array
+* Reverse Words in a String  
+  * Question: https://leetcode.com/problems/reverse-words-in-a-string/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Reverse%20Words%20in%20a%20String
 
 ## List
 * Singly Linked List
