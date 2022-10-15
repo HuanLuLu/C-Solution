@@ -414,6 +414,10 @@ In this project, I will document all the C coding questions.
   * Question: https://leetcode.com/problems/reverse-string/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Reverse%20String
   
+## Hash
+* Hash Solution:    
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Hash%20Solution
+  
 ## Other:
 * 01 Matrix
   * Question: https://leetcode.com/problems/01-matrix/
