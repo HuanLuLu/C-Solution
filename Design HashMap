@@ -1,0 +1,45 @@
+
+#define MAX_HASH_SIZE 1000001
+
+typedef struct Hash_Node {
+	bool fg;
+	int val;
+}HashNode;
+
+typedef struct {
+    HashNode hashSet[MAX_HASH_SIZE];
+} MyHashMap;
+
+
+MyHashMap* myHashMapCreate() {
+    return (MyHashMap *)calloc(1, sizeof(MyHashMap));
+}
+
+void myHashMapPut(MyHashMap* obj, int key, int value) {
+	obj->hashSet[key].fg = true;
+	obj->hashSet[key].val = value;
+}
+
+int myHashMapGet(MyHashMap* obj, int key) {
+	return (obj->hashSet[key].fg == true) ? obj->hashSet[key].val : -1;   
+}
+
+void myHashMapRemove(MyHashMap* obj, int key) {
+	  obj->hashSet[key].fg = 0;
+}
+
+void myHashMapFree(MyHashMap* obj) {
+  free(obj);  
+}
+
+/**
+ * Your MyHashMap struct will be instantiated and called as such:
+ * MyHashMap* obj = myHashMapCreate();
+ * myHashMapPut(obj, key, value);
+ 
+ * int param_2 = myHashMapGet(obj, key);
+ 
+ * myHashMapRemove(obj, key);
+ 
+ * myHashMapFree(obj);
+*/
