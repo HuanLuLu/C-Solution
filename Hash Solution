@@ -1,0 +1,115 @@
+Reference: https://leetcode.com/problems/design-hashset/discuss/1841103/C-Hash-Function-%2B-Linked-List
+
+Code:
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
+#define HASH_SIZE 20
+
+#define HASH_KEY(n) (n % HASH_SIZE)
+
+typedef struct Hash_Node {
+    int key;
+    int val;
+    struct Hash_Node *next;
+}HashNode;
+
+HashNode **createHash(void) {
+    HashNode **hashSet = (HashNode **)calloc(HASH_SIZE, sizeof(HashNode *));
+    return hashSet;
+}
+
+bool isKeyExist(int key, HashNode **hashSet) {
+    int hashKey = HASH_KEY(key);
+    HashNode *node = hashSet[hashKey];
+    
+    while(node != NULL) {
+        if (node->key == key) {
+            return true;
+        }
+        else {
+            node = node->next;
+        }
+    }
+    return false;
+}
+
+HashNode *createHashNode(int key, int val) {
+    HashNode *node = (HashNode *)malloc(sizeof(HashNode));
+    node->key = key;
+    node->val = val;
+    node->next = NULL;
+    return node;
+}
+
+void insert(int key, int val, HashNode **hashSet) {
+    int hashKey = HASH_KEY(key);
+    
+    if (hashSet[hashKey] == NULL) {
+        hashSet[hashKey] = createHashNode(key, val);
+        return;
+    }
+    
+    HashNode *node = hashSet[hashKey];
+    while(node->key != key && node->next != NULL) {
+        node = node->next;
+    }
+    
+    if (node->key == key) {
+        node->val = val;
+    }
+    else {
+        node->next = createHashNode(key, val);
+    }
+    return;
+}
+
+void delete(int key, HashNode **hashSet) {
+    HashNode *node = hashSet[ HASH_KEY(key) ];
+    
+    if (node == NULL) {return;}
+    
+    if (node->key == key) {
+        hashSet[HASH_KEY(key)] = node->next;
+        free(node);
+        return;
+    }
+    
+    while(node->next != NULL) {
+        if (node->next->key == key) {
+            HashNode *temp = node->next;
+            node->next = node->next->next;
+            free(temp);
+            return;
+        }
+        else {
+            node = node->next;
+        }
+    }
+    return;
+}
+
+void printAllHash(HashNode **hashSet) {
+    HashNode *node = NULL;
+    for (int i = 0; i < HASH_SIZE; i++) {
+        node = hashSet[i];
+        while(node != NULL) {
+            printf("Hash Node Key: %d, Val %d\n", node->key, node->val);
+            node = node->next;
+        }
+    }
+}
+
+int main() {
+    HashNode **hashSet = createHash();
+    insert(2,1,hashSet);
+    insert(22,2,hashSet);
+    insert(42,3,hashSet);
+    printAllHash(hashSet);
+    
+    delete(3, hashSet);
+    delete(22,hashSet);
+    printAllHash(hashSet);
+    return 0;
+}
