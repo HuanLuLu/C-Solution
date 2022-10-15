@@ -417,6 +417,9 @@ In this project, I will document all the C coding questions.
 ## Hash
 * Hash Solution:    
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Hash%20Solution
+* Design HashSet:  
+  * Question: https://leetcode.com/explore/learn/card/hash-table/182/practical-applications/1139/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Design%20HashSet
   
 ## Other:
 * 01 Matrix
