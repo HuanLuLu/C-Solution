@@ -420,6 +420,9 @@ In this project, I will document all the C coding questions.
 * Design HashSet:  
   * Question: https://leetcode.com/explore/learn/card/hash-table/182/practical-applications/1139/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Design%20HashSet
+* Design HashMap
+  * Question: https://leetcode.com/explore/learn/card/hash-table/182/practical-applications/1140/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Design%20HashMap
   
 ## Other:
 * 01 Matrix
