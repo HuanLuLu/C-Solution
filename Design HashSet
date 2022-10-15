@@ -1,0 +1,38 @@
+#define MAX_KEY_NUM 1000001
+
+typedef struct {
+    int arr[MAX_KEY_NUM];
+} MyHashSet;
+
+
+MyHashSet* myHashSetCreate() {
+	return (MyHashSet*)calloc(MAX_KEY_NUM, sizeof(int));
+}
+
+void myHashSetAdd(MyHashSet* obj, int key) {
+	obj->arr[key] = 1;
+}
+
+void myHashSetRemove(MyHashSet* obj, int key) {
+	obj->arr[key] = 0;
+}
+
+bool myHashSetContains(MyHashSet* obj, int key) {
+	 return obj->arr[key];
+}
+
+void myHashSetFree(MyHashSet* obj) {
+    free(obj);
+}
+
+/**
+ * Your MyHashSet struct will be instantiated and called as such:
+ * MyHashSet* obj = myHashSetCreate();
+ * myHashSetAdd(obj, key);
+ 
+ * myHashSetRemove(obj, key);
+ 
+ * bool param_3 = myHashSetContains(obj, key);
+ 
+ * myHashSetFree(obj);
+*/
