@@ -36,3 +36,97 @@ void myHashSetFree(MyHashSet* obj) {
  
  * myHashSetFree(obj);
 */
+===================
+singly linked list:
+#define MAX_HASH_SIZE 10000
+
+#define HASH_KEY(n) (n % MAX_HASH_SIZE)
+
+typedef struct Hash_Node {
+	int key;
+	struct Hash_Node *next;
+}HashNode;
+
+typedef struct {
+	HashNode **hashSet;
+} MyHashSet;
+
+
+MyHashSet* myHashSetCreate() {
+	MyHashSet *hash = (MyHashSet *)malloc(sizeof(MyHashSet));
+	hash->hashSet = (HashNode **)calloc(MAX_HASH_SIZE, sizeof(HashNode *));
+	return hash;
+}
+
+void myHashSetAdd(MyHashSet* obj, int key) {
+	int hashKey = HASH_KEY(key);
+	HashNode *curr = obj->hashSet[hashKey];
+	
+	if(!curr) {
+		obj->hashSet[hashKey] = (HashNode *)malloc(sizeof(HashNode));
+		obj->hashSet[hashKey]->key = key;
+		obj->hashSet[hashKey]->next = NULL;
+        return;
+	}
+
+	while(curr->next && curr->key != key) {
+		curr = curr->next;
+	}
+
+	if (curr->key == key) {return;}
+	
+	curr->next = (HashNode *)malloc(sizeof(HashNode));
+	curr->next->key = key;
+	curr->next->next = NULL;
+	return;
+}
+
+void myHashSetRemove(MyHashSet* obj, int key) {
+	int hashKey = HASH_KEY(key);
+	HashNode *curr = obj->hashSet[hashKey];
+
+	if (!curr) {return;}
+
+	if (curr->key == key) {
+		obj->hashSet[hashKey] = curr->next;
+		free(curr);
+		return;
+	}
+
+	HashNode *prev;
+	while(curr && curr->key != key) {
+		prev = curr;
+		curr = curr->next;
+	}
+
+	if (curr) {
+		prev->next = curr->next;
+		free(curr);
+	}
+	return;
+}
+
+bool myHashSetContains(MyHashSet* obj, int key) {
+	int hashKey = HASH_KEY(key);
+	HashNode *curr = obj->hashSet[hashKey];
+
+	while(curr) {
+		if (curr->key == key) {return true;}
+		curr = curr->next;
+	}
+	return false;
+}
+
+void myHashSetFree(MyHashSet* obj) {
+	HashNode *node, *temp;
+	for (int i=0; i<MAX_HASH_SIZE; i++) {
+		node = obj->hashSet[i];
+		while(node) {
+			temp = node;
+			node = node->next;
+			free(temp);
+		}
+	}
+	free(obj->hashSet);
+	free(obj);
+}
