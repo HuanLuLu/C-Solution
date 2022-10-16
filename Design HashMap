@@ -43,3 +43,113 @@ void myHashMapFree(MyHashMap* obj) {
  
  * myHashMapFree(obj);
 */
+========================
+singly linked list
+#define MAX_HASH_SIZE 10000
+
+#define HASH_KEY(n) (n % MAX_HASH_SIZE)
+
+typedef struct Hash_Node {
+	int key;
+	int val;
+	struct Hash_Node *next;
+}HashNode;
+
+typedef struct {
+	HashNode **hashSet;
+} MyHashMap;
+
+
+MyHashMap* myHashMapCreate() {
+	MyHashMap *hash = (MyHashMap *)malloc(sizeof(MyHashMap));
+	hash->hashSet = (HashNode **)calloc(MAX_HASH_SIZE, sizeof(HashNode *));
+	return hash;
+}
+
+void myHashMapPut(MyHashMap* obj, int key, int value) {
+	int hashKey = HASH_KEY(key);
+	HashNode *curr = obj->hashSet[hashKey];
+
+	if (!curr) {
+		obj->hashSet[hashKey] = (HashNode *)malloc(sizeof(HashNode));
+		obj->hashSet[hashKey]->key = key;
+		obj->hashSet[hashKey]->val = value;
+        obj->hashSet[hashKey]->next = NULL;
+		return;
+	}
+
+	while(curr->next && curr->key != key) {
+		curr = curr->next;
+	}
+	if (curr->key == key) {
+		curr->val = value;
+		return;
+	}
+	curr->next = (HashNode *)malloc(sizeof(HashNode));
+	curr->next->key = key;
+	curr->next->val = value;
+    curr->next->next = NULL;
+	return;
+}
+
+int myHashMapGet(MyHashMap* obj, int key) {
+	int hashKey = HASH_KEY(key);
+	HashNode *curr = obj->hashSet[hashKey];
+
+	while(curr) {
+		if (curr->key == key) {return curr->val;}
+		curr = curr->next;
+	}
+	return -1;
+}
+
+void myHashMapRemove(MyHashMap* obj, int key) {
+	int hashKey = HASH_KEY(key);
+	HashNode *curr = obj->hashSet[hashKey];
+
+	if(!curr) {return;}
+
+	if(curr->key == key) {
+		obj->hashSet[hashKey] = curr->next;	
+		free(curr);
+		return;
+	}
+
+	HashNode *prev;
+	while(curr && curr->key != key) {
+		prev = curr;
+		curr = curr->next;
+	}
+	if (curr) {
+		prev->next = curr->next;
+		free(curr);
+	}
+	return;
+}
+
+void myHashMapFree(MyHashMap* obj) {
+	HashNode *node, *temp;
+
+	for (int i=0; i<MAX_HASH_SIZE; i++) {
+		node = obj->hashSet[i];
+		while (node){
+			temp = node;
+			node = node->next;
+			free(temp);
+		}
+	}
+	free(obj->hashSet);
+	free(obj);
+}
+
+/**
+ * Your MyHashMap struct will be instantiated and called as such:
+ * MyHashMap* obj = myHashMapCreate();
+ * myHashMapPut(obj, key, value);
+ 
+ * int param_2 = myHashMapGet(obj, key);
+ 
+ * myHashMapRemove(obj, key);
+ 
+ * myHashMapFree(obj);
+*/
