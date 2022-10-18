@@ -413,6 +413,9 @@ In this project, I will document all the C coding questions.
 * Reverse String
   * Question: https://leetcode.com/problems/reverse-string/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Reverse%20String
+* Contains Duplicate
+  * Question: https://leetcode.com/problems/contains-duplicate/solution/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Contains%20Duplicate
   
 ## Hash
 * Hash Solution:    
