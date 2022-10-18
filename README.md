@@ -426,6 +426,11 @@ In this project, I will document all the C coding questions.
 * Design HashMap
   * Question: https://leetcode.com/explore/learn/card/hash-table/182/practical-applications/1140/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Design%20HashMap
+ 
+## Bit Manipulation
+* Single Number
+  * Question: https://leetcode.com/problems/single-number/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Single%20Number
   
 ## Other:
 * 01 Matrix
