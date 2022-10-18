@@ -77,6 +77,9 @@ In this project, I will document all the C coding questions.
 * Reverse Words in a String III
   * Question: https://leetcode.com/problems/reverse-words-in-a-string-iii/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Reverse%20Words%20in%20a%20String%20III
+* Intersection of Two Arrays  
+  * Question: https://leetcode.com/explore/learn/card/hash-table/183/combination-with-other-algorithms/1105/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Intersection%20of%20Two%20Arrays
 
 ## List
 * Singly Linked List
