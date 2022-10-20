@@ -151,6 +151,9 @@ In this project, I will document all the C coding questions.
 * Contains Duplicate II
   * Solution: https://leetcode.com/explore/learn/card/hash-table/184/comparison-with-other-data-structures/1121/
   * Question: https://github.com/HuanLuLu/C-Solution/blob/main/Contains%20Duplicate%20II
+* Valid Sudoku
+  * Question: https://leetcode.com/problems/valid-sudoku/solution/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Valid%20Sudoku
   
 ## Binary Tree
 * Binary Tree Insert, Search, Traverse
