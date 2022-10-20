@@ -80,6 +80,9 @@ In this project, I will document all the C coding questions.
 * Intersection of Two Arrays  
   * Question: https://leetcode.com/explore/learn/card/hash-table/183/combination-with-other-algorithms/1105/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Intersection%20of%20Two%20Arrays
+* Happy Number
+  * Qustion: https://leetcode.com/problems/happy-number/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Happy%20Number
 
 ## List
 * Singly Linked List
