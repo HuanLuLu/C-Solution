@@ -1,0 +1,24 @@
+time: O(n+m)
+space: O(52)
+
+int charToInt(char c) {
+	if (c <= 'Z') {
+		return (int)c - (int)'A';
+	}
+	else {
+		return 26 + (int)c - (int)'a';
+	}
+}
+
+int numJewelsInStones(char * jewels, char * stones){
+	int fg[52] = {false};
+	int count = 0;
+
+	for(int i = 0; i < strlen(jewels); i++) {
+		fg[ charToInt(jewels[i]) ] = 1;
+	}
+	for(int i=0; i < strlen(stones); i++) {
+		if (fg[ charToInt(stones[i]) ] == 1) {count++;}
+	}
+	return count;
+}
