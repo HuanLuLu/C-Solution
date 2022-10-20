@@ -145,6 +145,9 @@ In this project, I will document all the C coding questions.
 *  First Unique Character in a String
   * Question: https://leetcode.com/problems/first-unique-character-in-a-string/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/First%20Unique%20Character%20in%20a%20String
+* Intersection of Two Arrays II
+  * Question: https://leetcode.com/problems/intersection-of-two-arrays-ii/solution/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Intersection%20of%20Two%20Arrays%20II
   
 ## Binary Tree
 * Binary Tree Insert, Search, Traverse
