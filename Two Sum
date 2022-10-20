@@ -1,0 +1,44 @@
+time complexity: O(longN) + O(n)
+space comlexity: O(n)
+
+typedef struct Nums_Map{
+	int index;
+	int val;
+}NumsMap;
+
+int cmp(const void *a, const void *b) {
+	NumsMap *first = (NumsMap *)a;
+	NumsMap *second = (NumsMap *)b;
+	return first->val - second->val;
+}
+
+int* twoSum(int* nums, int numsSize, int target, int* returnSize){
+	NumsMap map[numsSize];
+	for(int i=0; i<numsSize; i++) {
+		map[i].val = nums[i];
+		map[i].index = i;
+	}
+
+	qsort(map, numsSize, sizeof(NumsMap), cmp);
+	
+	
+	int sum, front = 0, rear = numsSize - 1;
+	while(front < rear) {
+		sum = map[front].val + map[rear].val;
+		if (sum < target) {
+			front++;
+		}
+		else if (sum > target) {
+			rear--;
+		}
+		else {
+			int *ret = (int *)malloc(sizeof(int)*2);
+			ret[0] = map[front].index;
+			ret[1] = map[rear].index;
+			*returnSize = 2;
+			return ret;
+		}
+	}
+	*returnSize = 0;
+	return NULL;
+}
