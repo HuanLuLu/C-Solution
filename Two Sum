@@ -1,5 +1,5 @@
-time complexity: O(longN) + O(n)
-space comlexity: O(n)
+time complexity: O(nlgN) + O(n)
+space comlexity: O(n) + O(lgN)
 
 typedef struct Nums_Map{
 	int index;
