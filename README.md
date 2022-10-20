@@ -136,6 +136,9 @@ In this project, I will document all the C coding questions.
 * Rotate List
   * Question: https://leetcode.com/problems/rotate-list/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Rotate%20List
+* Two Sum
+  * Question: https://leetcode.com/problems/two-sum/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Two%20Sum
   
 ## Binary Tree
 * Binary Tree Insert, Search, Traverse
