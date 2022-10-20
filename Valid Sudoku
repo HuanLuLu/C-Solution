@@ -1,0 +1,24 @@
+time O(1)
+space O(1)
+
+bool isValidSudoku(char** board, int boardSize, int* boardColSize){
+	int rows[9][9] = {0};
+	int cols[9][9] = {0};
+	int boxes[9][9] = {0};
+
+	int r,c,n;
+	for (r=0; r<9; r++) {
+		for (c=0; c<9; c++) {
+			if (board[r][c] != '.') {
+				n = (int)board[r][c] - (int)'0';
+				if(rows[r][n-1] == 1 || cols[c][n-1] == 1 || boxes[3*(r/3)+(c/3)][n-1] == 1) {
+					return false;
+				}
+				rows[r][n-1] = 1;
+				cols[c][n-1] = 1;
+				boxes[3*(r/3)+(c/3)][n-1] = 1;
+			}
+		}
+	}
+	return true;
+}
