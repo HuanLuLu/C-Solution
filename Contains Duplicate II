@@ -1,0 +1,31 @@
+time: O(nlogn) + O(n)
+space: O(n) + O(logn)
+
+typedef struct Hash_Map {
+	int index;
+	int val;
+}HashMap;
+
+int cmp(const void *a, const void *b) {
+	HashMap *x = (HashMap *)a;
+	HashMap *y = (HashMap *)b;
+	return x->val - y->val;
+}
+
+bool containsNearbyDuplicate(int* nums, int numsSize, int k){
+	HashMap hashMap[numsSize];
+	for(int i=0; i<numsSize; i++) {
+		hashMap[i].index = i;
+		hashMap[i].val = nums[i];
+	}
+
+	qsort(hashMap, numsSize, sizeof(HashMap), cmp);
+
+	int ret = INT_MAX;
+	for(int i=1; i<numsSize; i++) {
+		if (hashMap[i].val == hashMap[i-1].val) {
+			ret = ( ret < abs(hashMap[i].index - hashMap[i-1].index) ) ? ret : abs(hashMap[i].index - hashMap[i-1].index);
+		}
+	}
+	return ret <= k ? true : false;
+}
