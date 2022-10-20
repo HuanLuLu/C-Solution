@@ -1,0 +1,20 @@
+Time complexity: O(n)
+Space complexity: O(1)
+
+bool isIsomorphic(char * s, char * t){
+	char map1[130] = {'\0'};
+	char map2[130] = {'\0'};
+
+	int index1, index2;
+	for(int i=0; i<strlen(s); i++) {
+		index1 = (int)s[i];
+		index2 = (int)t[i];
+
+		if(map1[index1] != '\0' && map1[index1]!=t[i]) {return false;}
+		if(map2[index2] != '\0' && map2[index2]!=s[i]) {return false;}
+
+		map1[index1] = t[i];
+		map2[index2] = s[i];
+	}
+	return true;
+}
