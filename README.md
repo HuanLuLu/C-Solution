@@ -148,6 +148,9 @@ In this project, I will document all the C coding questions.
 * Intersection of Two Arrays II
   * Question: https://leetcode.com/problems/intersection-of-two-arrays-ii/solution/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Intersection%20of%20Two%20Arrays%20II
+* Contains Duplicate II
+  * Solution: https://leetcode.com/explore/learn/card/hash-table/184/comparison-with-other-data-structures/1121/
+  * Question: https://github.com/HuanLuLu/C-Solution/blob/main/Contains%20Duplicate%20II
   
 ## Binary Tree
 * Binary Tree Insert, Search, Traverse
