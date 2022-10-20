@@ -86,6 +86,9 @@ In this project, I will document all the C coding questions.
 * Jewels and Stones
   * Question: https://leetcode.com/problems/jewels-and-stones/solution/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Jewels%20and%20Stones
+* Longest Substring Without Repeating Characters
+  * Question: https://leetcode.com/problems/longest-substring-without-repeating-characters/solution/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Longest%20Substring%20Without%20Repeating%20Characters
 
 ## List
 * Singly Linked List
