@@ -83,6 +83,9 @@ In this project, I will document all the C coding questions.
 * Happy Number
   * Qustion: https://leetcode.com/problems/happy-number/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Happy%20Number
+* Jewels and Stones
+  * Question: https://leetcode.com/problems/jewels-and-stones/solution/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Jewels%20and%20Stones
 
 ## List
 * Singly Linked List
