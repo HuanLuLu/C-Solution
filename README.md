@@ -139,6 +139,9 @@ In this project, I will document all the C coding questions.
 * Two Sum
   * Question: https://leetcode.com/problems/two-sum/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Two%20Sum
+*  Isomorphic Strings
+  * Question: https://leetcode.com/explore/learn/card/hash-table/184/comparison-with-other-data-structures/1117/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Isomorphic%20Strings
   
 ## Binary Tree
 * Binary Tree Insert, Search, Traverse
