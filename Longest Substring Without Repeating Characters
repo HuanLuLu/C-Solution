@@ -1,0 +1,31 @@
+time: O(n)
+Space: O(1)
+
+int lengthOfLongestSubstring(char * s){
+    if (strlen(s) == 0) {return 0;}
+	int start=0, rear=1;
+	int fg[130] = {false};
+	fg[(int)s[0]] = true;
+
+	int count = 1, max_len = 1;
+	char temp;
+	while(rear < strlen(s)) {
+		if (fg[ (int)s[rear] ] == 1) {
+			while (start < rear) {
+				temp = s[start];
+				count--;
+				fg[ (int)s[start] ] = 0;
+				start++;
+
+				if (temp == s[rear]) { 
+					break;
+				}
+			}
+		}
+		fg[ (int)s[rear] ] = 1;
+		count += 1;
+		max_len = (max_len > count) ? max_len : count;
+        rear += 1;
+	}
+	return max_len;
+}
