@@ -1,0 +1,61 @@
+
+typedef struct {
+	int isSorted;
+	int size;
+    int arr[10000];
+} TwoSum;
+
+
+TwoSum* twoSumCreate() {
+    TwoSum *twoSum = (TwoSum *)malloc(sizeof(TwoSum));
+	twoSum->size = 0;
+	twoSum->isSorted = false;
+	return twoSum;
+}
+
+void twoSumAdd(TwoSum* obj, int number) {
+	obj->isSorted = false;
+	obj->arr[obj->size++] = number;
+}
+
+int cmp(const void *a, const void *b) {
+	return *(int *)a - *(int *)b;
+}
+
+
+bool twoSumFind(TwoSum* obj, int value) {
+	if (!obj->isSorted) {
+		obj->isSorted = true;
+		qsort(obj->arr, obj->size, sizeof(int), cmp);
+	}
+
+	int front = 0, rear = obj->size - 1;
+	int sum;
+	while(front < rear) {
+		sum = obj->arr[front] + obj->arr[rear];
+		if(sum < value) {
+			front++;
+		}
+		else if (sum > value) {
+			rear--;
+		}
+		else {
+			return true;
+		}
+	}
+	return false;
+}
+
+void twoSumFree(TwoSum* obj) {
+    free(obj);
+}
+
+/**
+ * Your TwoSum struct will be instantiated and called as such:
+ * TwoSum* obj = twoSumCreate();
+ * twoSumAdd(obj, number);
+ 
+ * bool param_2 = twoSumFind(obj, value);
+ 
+ * twoSumFree(obj);
+*/
