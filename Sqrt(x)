@@ -1,0 +1,45 @@
+Be careful the issue of out of range. 
+two ways to avoid the issue:
+1. mid = front + (rear - front) / 2; this way could avoid the sum in (front+rear)/2 which causing out of range
+2.  mid <= x/mid && (mid+1)>x/(mid+1) using division instead of multiplication to avoid the issue.
+
+int mySqrt(int x){
+    if (x < 2) {return x;}
+    
+	int front = 1, rear = x;
+	int mid=0;
+	while(front <= rear) {
+		mid = front + (rear - front) / 2;
+		if ( mid <= x/mid && (mid+1)>x/(mid+1) ) {
+			return mid;
+		}
+		else if (mid > x/mid) {
+			rear = mid - 1;
+		}
+		else {
+			front = mid + 1;
+		}
+	}	
+	return mid;
+}
+=======
+bit manipulation
+To use recursion, we need to find two thing:
+1. stop point
+2. shink the size
+
+sqrt(X) = 2 * sqrt(x/4) where we can find the shrinking method.
+when x<2 x = sqrt(x), here is when recursion will stop.
+
+x << y = x * pow(2,y)
+x >> y = x / pow(2,y)
+
+
+int mySqrt(int x){
+	if (x < 2) {return x;}
+
+	int left = mySqrt((x>>2))<<1;
+	int right = left + 1;	
+
+	return (right > x/right) ? left : right;
+}
