@@ -1,0 +1,26 @@
+time O(logn)
+space O(1)
+
+// The API isBadVersion is defined for you.
+// bool isBadVersion(int version);
+
+int firstBadVersion(int n) {
+    int front = 1, rear = n;
+	int mid;
+	
+	if (isBadVersion(1)) {return 1;}
+
+	while (front <= rear) {
+		mid = front + (rear - front) / 2;
+		if (isBadVersion(mid) && !isBadVersion(mid-1)) {
+			return mid;
+		}
+		else if (isBadVersion(mid)) {
+			rear = mid - 1;
+		}
+		else { // !isBadVersion(mid)
+			front = mid + 1;
+		}
+	}
+	return -1; 
+}
