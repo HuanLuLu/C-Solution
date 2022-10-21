@@ -479,7 +479,10 @@ In this project, I will document all the C coding questions.
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Sqrt(x)
 * Guess Number Higher or Lower
   * Question: https://leetcode.com/problems/guess-number-higher-or-lower/solution/
-  * https://github.com/HuanLuLu/C-Solution/blob/main/Guess%20Number%20Higher%20or%20Lower
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Guess%20Number%20Higher%20or%20Lower
+* Search in Rotated Sorted Array
+  * Question: https://leetcode.com/problems/search-in-rotated-sorted-array/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Search%20in%20Rotated%20Sorted%20Array
 
 
 ## Others:
