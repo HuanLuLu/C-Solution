@@ -474,6 +474,9 @@ In this project, I will document all the C coding questions.
 * Binary Search
   * Question: https://leetcode.com/explore/learn/card/binary-search/138/background/1038/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Binary%20Search
+* Sqrt(x)
+  * Quedtion: https://leetcode.com/problems/sqrtx/submissions/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Sqrt(x)
 
 
 ## Others:
