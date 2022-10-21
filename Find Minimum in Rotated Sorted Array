@@ -1,0 +1,25 @@
+Method:
+if the whole seq is in seq, return front
+if any disorder exists, minimum value is in that part, shrink the range.
+Notice one case: when mid < front, mid could be the minimum value, so we need to include the mid by using rear = mid;
+
+Main idea is keep front <= mid < rear.
+So return front at the end.
+
+int findMin(int* nums, int numsSize){
+	int front = 0, rear = numsSize - 1;
+	int mid;
+	while (front < rear) {
+        mid = front + (rear - front)/2;
+		if (nums[mid] >= nums[front] && nums[mid] <= nums[rear]) {
+			return nums[front];
+		}
+		else if (nums[mid] > nums[rear]) {
+			front = mid + 1;
+		}
+		else {
+			rear = mid;
+		}
+	}
+	return nums[front];
+}
