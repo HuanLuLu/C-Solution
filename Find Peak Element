@@ -1,0 +1,65 @@
+How to find peak:
+1) peak is the point which bigger than both left and right
+2) how to find it?
+
+Solution1:
+foucus on the criteria, find the mid which is bigger than both left and right. 
+Since mid need to campare to the left and right, we need to exclude two cases: size 1 and size 2
+
+
+int findPeakElement(int* nums, int numsSize){
+	int front = 0, rear = numsSize - 1;
+	int mid;
+
+	while (front <= rear) {
+		mid = front + (rear - front)/2;
+
+		if (front == rear) {return front;}
+		if (front == mid) { return (nums[front] > nums[rear]) ? front : rear;}	
+		
+		if (nums[mid] > nums[mid-1] && nums[mid] > nums[mid+1]) {
+			return mid;
+		}
+		else if (nums[mid] > nums[mid-1]) {
+			front = mid + 1;
+		}
+		else {
+			rear = mid - 1;
+		}
+    }
+	return -1;
+}
+
+================
+solution 2:
+use the binary search algorithm to shink the range. While shinking, make the mid on the uphill. It means
+if mid < right, keep climbing, front-->mid+1. (mid could not be the peak) 
+if mid >right, go back. rear = mid. (mid could be the peak)
+When stop?
+let consider when we have 3 elements left:
+a,b,c. mid will be b. 
+if b < c, front will be c-->c is the peak
+if b > c, rear will be b --> two left.
+
+a b, mid front will be a, rear will be b.
+if a < b, front will be b --> b is the peak
+if a > b, rear will be mid, a --> a is the peak.
+
+
+int findPeakElement(int* nums, int numsSize){
+	int front = 0, rear = numsSize - 1;
+	int mid;
+
+	while (front < rear) {
+		mid = front + (rear - front)/2;
+
+		if (nums[mid] > nums[mid+1]) {
+			rear = mid;
+		}
+		else {
+			front = mid + 1; 
+		}
+	}
+	return front;
+}
+
