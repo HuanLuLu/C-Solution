@@ -1,0 +1,33 @@
+be causion: nums[front] <= nums[mid]
+One mistake made before: nums[front] < nums[mid]
+The mistake is mid tend to be smaller than real mid. It means that nums[mid] tends to be equal to nums[front] instead of 
+nums[rear]. Missing the equal sign, we will miss finding the match.
+
+int search(int* nums, int numsSize, int target){
+	int front = 0, rear = numsSize - 1;
+	int mid, ret;
+
+	while(front <= rear) {
+		mid = front + (rear - front)/2;
+		if (nums[mid] == target) {
+			return mid;
+		}
+		else if (nums[front] <= nums[mid]) {
+			if (nums[mid] > target && nums[front] <= target) {
+				rear = mid - 1;
+			} else 
+			{
+				front = mid + 1;
+			}
+		}
+		else { // (nums[mid] < nums[rear]) 
+			if (nums[mid] < target && nums[rear] >= target) {
+				front = mid + 1;
+			}
+			else {
+				rear = mid - 1;
+			}
+		}
+	}
+	return -1;
+}
