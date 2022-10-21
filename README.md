@@ -483,6 +483,9 @@ In this project, I will document all the C coding questions.
 * Search in Rotated Sorted Array
   * Question: https://leetcode.com/problems/search-in-rotated-sorted-array/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Search%20in%20Rotated%20Sorted%20Array
+*  First Bad Version
+  * Question: https://leetcode.com/explore/learn/card/binary-search/126/template-ii/947/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/First%20Bad%20Version
 
 
 ## Others:
