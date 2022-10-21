@@ -469,6 +469,11 @@ In this project, I will document all the C coding questions.
 * 01 Matrix
   * Question: https://leetcode.com/problems/01-matrix/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/01%20Matrix
+  
+## Binary Search:
+* Binary Search
+  * Question: https://leetcode.com/explore/learn/card/binary-search/138/background/1038/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Binary%20Search
 
 
 ## Others:
