@@ -1,0 +1,22 @@
+time complexity: O(logn)
+space: O(1)
+
+int helper(int* nums, int front, int rear, int target) {
+		while(front <= rear) {
+		int mid = front + (rear-front)/2;
+		if (nums[mid] == target) {
+			return mid;
+		}	
+		else if (nums[mid] > target) {
+			return helper(nums, front, mid-1, target);
+		}
+		else {
+			return helper(nums, mid+1, rear, target);
+		}
+	}
+	return -1;
+}
+
+int search(int* nums, int numsSize, int target){
+	return helper(nums, 0, numsSize - 1, target);
+}
