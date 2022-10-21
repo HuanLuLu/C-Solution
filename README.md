@@ -89,6 +89,9 @@ In this project, I will document all the C coding questions.
 * Longest Substring Without Repeating Characters
   * Question: https://leetcode.com/problems/longest-substring-without-repeating-characters/solution/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Longest%20Substring%20Without%20Repeating%20Characters
+* Two Sum III - Data structure design
+  * Question: https://leetcode.com/problems/two-sum-iii-data-structure-design/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Two%20Sum%20III%20-%20Data%20structure%20design
 
 ## List
 * Singly Linked List
