@@ -486,6 +486,9 @@ In this project, I will document all the C coding questions.
 *  First Bad Version
   * Question: https://leetcode.com/explore/learn/card/binary-search/126/template-ii/947/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/First%20Bad%20Version
+* Find Peak Element
+  * Question: https://leetcode.com/problems/find-peak-element/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Find%20Peak%20Element
 
 
 ## Others:
