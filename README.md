@@ -492,6 +492,9 @@ In this project, I will document all the C coding questions.
 *  Find Minimum in Rotated Sorted Array
   * Question: https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Find%20Minimum%20in%20Rotated%20Sorted%20Array
+* Find First and Last Position of Element in Sorted Array
+  * Question: https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/solution/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Find%20First%20and%20Last%20Position%20of%20Element%20in%20Sorted%20Array
 
 
 ## Others:
