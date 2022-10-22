@@ -1,0 +1,68 @@
+Method: 2 times binary search.  First for finding start. Second for finding the end.
+
+time: O(lgn)
+space: O(1)
+
+
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+int* searchRange(int* nums, int numsSize, int target, int* returnSize){
+	int front = 0, rear = numsSize - 1;
+	int mid;
+	int start = -1, end = -1;
+    
+    *returnSize = 2;
+    int *ret = (int *)malloc(sizeof(int) * 2);
+    
+    if (numsSize == 0) {
+        ret[0] = -1; ret[1] = -1;
+        return ret;
+    }
+    
+	//first binary search for locating the head
+	if (nums[0] == target) {
+		start = 0;
+	}
+	else {
+		while (front <= rear) {
+			mid = front + (rear - front)/2;
+			if (nums[mid] == target && nums[mid-1] != target) {
+				start = mid;
+				break;
+			}
+			else if ( (nums[mid] > target) || (nums[mid] == target) ) {
+				rear = mid - 1;
+			}
+			else {
+				front = mid + 1;
+			}
+		}
+	}
+
+	//second binary seach to find the location of the end
+	front = 0; rear = numsSize - 1;
+	if (nums[rear] == target) {
+		end = rear;
+	}
+	else {
+		while(front <= rear) {
+			mid = front + (rear - front)/2;
+			if (nums[mid] == target && nums[mid+1] != target) {
+				end = mid;
+				break;
+			}
+			else if (nums[mid] < target || nums[mid] == target) {
+				front = mid + 1;
+			}
+			else {
+				rear = mid - 1;
+			}
+		}
+	}
+    
+    
+    ret[0] = start;
+    ret[1] = end;
+	return ret;
+}
