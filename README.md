@@ -501,6 +501,9 @@ In this project, I will document all the C coding questions.
 * Closest Binary Search Tree Value
   * Question: https://leetcode.com/problems/closest-binary-search-tree-value/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Closest%20Binary%20Search%20Tree%20Value
+* Search in a Sorted Array of Unknown Size
+  * Question: https://leetcode.com/problems/search-in-a-sorted-array-of-unknown-size/submissions/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Search%20in%20a%20Sorted%20Array%20of%20Unknown%20Size
 
 
 ## Others:
