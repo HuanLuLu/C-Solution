@@ -1,0 +1,129 @@
+Method:
+Binary search finding the closest item. Then increase the range until we have all items in the return.
+Notice one thing: This is a possible case which the closest item is at the end or start, not around the mid. So we need to use start and end to
+shrink the range then use mid - 1 and mid + 1 to find the next.
+
+Time: O(logn + k)
+Space: O(1)
+
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+int* findClosestElements(int* arr, int arrSize, int k, int x, int* returnSize){
+	int front = 0, rear = arrSize - 1;
+	int mid, mid_diff, left_diff, right_diff;
+
+	while(front + 1 < rear) {
+		mid = front + (rear - front) / 2;
+
+		mid_diff = abs(arr[mid] - x);
+    left_diff = abs(arr[front] - x);
+		right_diff = abs(arr[rear] - x);
+        
+        if (mid_diff < left_diff && mid_diff <= right_diff) {
+			left_diff = abs(arr[mid-1] - x);
+            right_diff = abs(arr[mid+1] - x);
+
+            if (mid_diff < left_diff && mid_diff <= right_diff) {
+                break;
+            }
+            else if (left_diff <= mid_diff && left_diff <= right_diff) {
+                rear = mid;
+            }
+            else {
+                front = mid;
+            }
+		}
+		else if (left_diff <= mid_diff && left_diff <= right_diff) {
+			rear = mid;
+		}
+		else {
+			front = mid;
+		}
+	}
+
+	if (arrSize == 1) { mid = front; }
+	if (arrSize == 2) { mid = abs(arr[0] - x) <= abs(arr[1] - x) ? 0 : 1; }
+
+	*returnSize = 1;
+	int start = mid, end = mid;
+	while (*returnSize < k) {
+		if (start -1 >= 0 && end + 1 < arrSize) {
+			left_diff = abs(arr[start - 1] - x);
+			right_diff = abs(arr[end + 1] - x);
+			if (left_diff <= right_diff) {
+				start--;
+			}
+			else {
+				end++;
+			}
+			*returnSize += 1;
+		}
+		else {
+			if (start > 0) {
+				start = start - (k - *returnSize);
+			}
+			else {
+				end = end + (k - *returnSize);
+			}
+			*returnSize = k;
+		}
+	}
+
+	int *ret = (int *)malloc(sizeof(int) * *returnSize);
+	for (int i = 0; i < *returnSize; i++) {
+		ret[i] = arr[start + i];
+	}
+	return ret;
+}
+
+===================
+Method2: Always first try to asort the array first. 
+Quick sort the array based on the diff; 
+Get first k items;
+Quick sort again before return
+
+Time O(nlogn+klogk)
+Space O(logn + logk + n)
+
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+typedef struct {
+	int index;
+	int diff;
+}Map;
+
+int cmp(const void *a, const void *b) {
+	Map *x = (Map *)a; Map *y = (Map *)b;
+	return x->diff - y->diff;	
+}
+
+int cmpVal(const void *a, const void *b) {
+    return *(int *)a - *(int *)b;
+}
+    
+    
+int* findClosestElements(int* arr, int arrSize, int k, int x, int* returnSize){
+	Map map[arrSize];
+
+	for(int i=0; i<arrSize; i++) {
+		map[i].diff = abs(arr[i] - x);
+		map[i].index = i;
+	}
+	
+	qsort(map, arrSize, sizeof(Map), cmp);	
+
+	*returnSize = k;
+	int *ret = (int *)malloc(sizeof(int) * *returnSize);
+	for (int i=0; i<k; i++) {
+		ret[i] = arr[map[i].index];
+	}
+    qsort(ret, k, sizeof(int), cmpVal);
+	return ret;
+}
+
+
+
+
+
