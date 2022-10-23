@@ -1,0 +1,93 @@
+Algorithm: Simply apply binary search. Since the index is int type, actually it imply the range.
+
+/**
+ * *********************************************************************
+ * // This is the ArrayReader's API interface.
+ * // You should not implement it, or speculate about its implementation
+ * *********************************************************************
+ *
+ * int getElement(ArrayReader *, int index);
+ */
+int g_invalid = pow(2, 31) -1;
+
+int search(struct ArrayReader* reader, int target) {
+    int front = 0, rear = INT_MAX;
+	int mid;
+	
+	while (front <= rear) {
+		mid = front + (rear - front)/2;
+
+		if ( getElement(reader, mid) == g_invalid) {
+			rear = mid - 1;
+		}	
+		else if (getElement(reader, mid) == target) {
+			return mid;
+		}
+		else if (getElement(reader, mid) < target) {
+			front = mid + 1;
+		}
+		else {
+			rear = mid - 1;
+		}
+	}
+
+	return -1;
+}
+
+
+========================
+Real question is can apply the binart search purly based on the condition of unknow length?
+Yes!
+Solution 1:
+Since it is a sorted array, the end we need is just larger than target, so the rear can be: target - getElement(reader, 0)
+
+int search(struct ArrayReader* reader, int target) {
+    int front = 0, rear = target - getElement(reader, 0);
+	int mid;
+	
+	while (front <= rear) {
+		mid = front + (rear - front)/2;
+
+		if (getElement(reader, mid) == target) {
+			return mid;
+		}
+		else if (getElement(reader, mid) < target) {
+			front = mid + 1;
+		}
+		else {
+			rear = mid - 1;
+		}
+	}
+
+	return -1;
+}
+
+Solution 2:
+get 0, as long as rear < target, increase rear, and make the front be the previous rear.
+Notice here that, the rear need to be 1 other wise rear << 1 will be 0
+
+int search(struct ArrayReader* reader, int target) {
+    int front = 0, rear = 1;
+	int mid;
+    
+    while (getElement(reader, rear) < target) {
+        front = rear;
+        rear = rear << 1;
+    }
+	
+	while (front <= rear) {
+		mid = front + (rear - front)/2;
+
+		if (getElement(reader, mid) == target) {
+			return mid;
+		}
+		else if (getElement(reader, mid) < target) {
+			front = mid + 1;
+		}
+		else {
+			rear = mid - 1;
+		}
+	}
+
+	return -1;
+}
