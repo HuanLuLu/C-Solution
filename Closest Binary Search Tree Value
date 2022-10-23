@@ -1,0 +1,19 @@
+Notice here, we need use float variables
+
+time O(logN)
+space O(1)
+
+int closestValue(struct TreeNode* root, double target){
+	float min_diff = 1000000000, diff;
+	int min_node;
+	struct TreeNode *node = root;
+	while (node) {
+		diff = fabs(node->val - target);
+		if (diff < min_diff) {
+			min_diff = diff;
+			min_node = node->val;
+		} 
+		node = node->val < target ? node->right : node->left;
+	}
+	return min_node;
+}
