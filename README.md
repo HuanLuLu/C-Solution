@@ -498,6 +498,9 @@ In this project, I will document all the C coding questions.
 * Find K Closest Elements
   * Question: https://leetcode.com/problems/find-k-closest-elements/solution/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Find%20K%20Closest%20Elements
+* Closest Binary Search Tree Value
+  * Question: https://leetcode.com/problems/closest-binary-search-tree-value/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Closest%20Binary%20Search%20Tree%20Value
 
 
 ## Others:
