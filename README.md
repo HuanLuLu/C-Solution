@@ -507,6 +507,9 @@ In this project, I will document all the C coding questions.
 * Pow(x, n)
   * Question: https://leetcode.com/problems/powx-n/submissions/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Pow(x%2C%20n)
+* Valid Perfect Square
+  * Question: https://leetcode.com/problems/valid-perfect-square/solution/
+  * solution: https://github.com/HuanLuLu/C-Solution/blob/main/Valid%20Perfect%20Square
 
 
 ## Others:
