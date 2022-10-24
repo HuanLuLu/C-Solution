@@ -1,0 +1,67 @@
+Overflow is another key point for this question:
+1) since we want to clean the negative power first, and the abs(INT_MIN) is larger than INT_MAX, we need long type variable to catch the result.
+2) how to catch is another key point. For example:
+    long p = -x.
+    The previous code is wrong. We normally use two's complement to get the negative number, which is flip all bits except the msb(XOR). Then plus 1.
+    so when x equals to INT_MIN, flip +1 will cause overflow. The correct code is shown as follows:
+    
+    long p = x;
+    p = -p; 
+
+=================
+
+time O(logn)
+space O(logn)
+
+======================
+Recursion:
+
+double helper(double x, long n) {
+	if (n == 0) {return 1;}
+	
+	double half = helper(x, n/2);
+	if (n % 2 == 1) {
+		return x * half * half;
+	}
+	else {
+		return half * half;
+	}
+}
+
+double myPow(double x, int n){
+	long p = (long)n;
+	if (p < 0) {
+		x = 1/x;
+		p = -p; 
+	}
+	return helper(x, p);
+}
+
+==================
+Iteration:
+
+Algorithm: 
+X^11, the power is 11. In binary is 1011. so X^11 can be rewritten as X^8 * X^2 * X^1
+So the algorithm will be as follows:
+we move power 1 bit to the left each time. This we could think it as a queue/stack, each time push the lsb out. If the lsb is 1, it means we
+need times a number.
+How to decide the number? x->x^2->(X^2)^2->....each time power 2. 
+So let us make return as 1 at the beginning. if current lsb is 1, return * current number, which is x.
+power>>1, check new lsb. If it is 1 again. return * current number, which is x * x
+.....
+
+double myPow(double x, int n){
+	long p = n;
+	if (p < 0) {
+		x = 1/x;
+		p = -p;
+	}
+
+	double ret = 1;
+	while (p > 0) {
+		if ( p % 2 == 1 ) {ret *= x;}
+		x *= x;
+		p = p >> 1;
+	}
+	return ret;
+}
