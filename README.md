@@ -504,6 +504,9 @@ In this project, I will document all the C coding questions.
 * Search in a Sorted Array of Unknown Size
   * Question: https://leetcode.com/problems/search-in-a-sorted-array-of-unknown-size/submissions/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Search%20in%20a%20Sorted%20Array%20of%20Unknown%20Size
+* Pow(x, n)
+  * Question: https://leetcode.com/problems/powx-n/submissions/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Pow(x%2C%20n)
 
 
 ## Others:
