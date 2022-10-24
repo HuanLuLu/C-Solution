@@ -1,0 +1,54 @@
+There are three temples for the algorithm. It all depends how many element you will keep in the final result.
+
+For case 1:
+we need match our target. So we need to go through all the element, and shink the size of array to zero. 
+while (front <= end) {
+  if (==) {return;}
+  else if (<) {front = mid + 1}
+  else (>) {end = mid - 1}
+}
+
+For case 2:
+In some cases, we may not find our targer. We need keep at least two elements in the final.
+To avoid to infinite loop, since mid tends to equal to front. When we move front, we need to make sure front will not stay at mid.
+
+while (front < end) {                  //front < end make our final size be 1.
+  if (==) {return;}
+  else if (<) {front = mid + 1}.       // or if (<=). the reason here is when front < target, front move mid + 1; in the next loop, the front will 
+                                          be guareented to be changed. 
+                                          if mid == front, we also need to move the front, otherwise we will have infinite loop
+  else (>) {end = mid}
+}
+
+For case 3:
+We may also need keep three elements in the final. So we cooudl compare mid - 1, mid, mid + 1. 
+Since in this case, mid won't be equal to front or rear. So we could use front = mid and end = mid as our if condition
+
+while (front + 1 < end) {
+  if (==) {return;}
+  else if (<) {front = mid}
+  else (>) {end = mid}
+}
+
+==============
+in the following case, we want to keep front <= targer, so the rear could be our answer.
+Time O(logn)
+Space O(1)
+
+
+char nextGreatestLetter(char* letters, int lettersSize, char target){
+	int front = 0, rear = lettersSize - 1;
+    int mid;
+
+	while (front < rear) {
+		mid = front + (rear - front) / 2;
+
+		if (letters[mid] <= target) {
+			front = mid + 1;
+		}
+		else {
+			rear = mid;
+		}
+	}
+	return letters[rear] > target ? letters[rear] : letters[0];
+}
