@@ -1,0 +1,22 @@
+time:O(lgN)
+space:O(1)
+
+bool isPerfectSquare(int num){
+	int front = 1, rear = num;
+	int mid;
+	
+	while (front <= rear) {
+		mid = front + (rear - front) / 2;
+
+		if (num % mid == 0 && mid == num / mid) {
+			return true;
+		}
+		else if (mid <= num / mid){
+			front = mid + 1;
+		}
+		else {
+			rear = mid - 1;
+		}
+	}
+	return false;
+}
