@@ -510,6 +510,9 @@ In this project, I will document all the C coding questions.
 * Valid Perfect Square
   * Question: https://leetcode.com/problems/valid-perfect-square/solution/
   * solution: https://github.com/HuanLuLu/C-Solution/blob/main/Valid%20Perfect%20Square
+*  Find Smallest Letter Greater Than Target 
+  * Question: https://leetcode.com/explore/learn/card/binary-search/137/conclusion/977/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Find%20Smallest%20Letter%20Greater%20Than%20Target
 
 
 ## Others:
