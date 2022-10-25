@@ -1,0 +1,26 @@
+time O((m+n)/2)
+space O(1)
+
+double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Size){
+	int mid, prev;
+	int i = 0, j = 0;
+  int prev_count = (nums1Size+nums2Size)%2 == 0 ? ((nums1Size+nums2Size)/2 -1) : (nums1Size+nums2Size)/2;
+
+	for (int count=0; count < (nums1Size+nums2Size)/2+1; count++) {
+		if (i == nums1Size) {
+			mid = nums2[j++];
+		}
+		else if (j == nums2Size) {
+			mid = nums1[i++];
+		}
+		else {
+			mid = nums1[i] < nums2[j] ? nums1[i++] : nums2[j++];
+		}
+
+		if (count == prev_count) {
+			prev = mid;
+		}
+	}
+	
+	return (prev + mid) / (double)2.0;
+}
