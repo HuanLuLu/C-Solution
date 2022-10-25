@@ -513,6 +513,9 @@ In this project, I will document all the C coding questions.
 *  Find Smallest Letter Greater Than Target 
   * Question: https://leetcode.com/explore/learn/card/binary-search/137/conclusion/977/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Find%20Smallest%20Letter%20Greater%20Than%20Target
+* Find Minimum in Rotated Sorted Array II 
+  * Question: https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Find%20Minimum%20in%20Rotated%20Sorted%20Array%20II
 
 
 ## Others:
