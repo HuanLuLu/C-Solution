@@ -1,0 +1,50 @@
+Using hash:
+Time O(n)
+Space O(100001)---it is a arguably constant space complexity.
+
+int findDuplicate(int* nums, int numsSize){
+	int fg[100001] = {false};
+
+	for (int i = 0; i < numsSize; i++) {
+		if (!fg[nums[i]]) {
+			fg[nums[i]] = true;
+		}
+		else {
+			return nums[i];
+		}
+	}
+	return -1;
+}
+
+=============
+fast and slow pointers. Here since the question, we can oberseve it is a circle list. We need to find the entrance of the circle. 
+Two step methods:
+1) use slow and fast, find the insectioin.
+2) slow go back to zero. slow fast move one step, and the second intersection will be the entrance.
+
+Explain. 
+Let's assume L node before the circle entrance. After move M nodes will be the first intersection. N is the number of rest nodes in the circle.
+fast will be two times fastert than slow. 
+So  2(L+M) = L+M+N ===> L = M
+Now we notice that, if slow go back to the start, and fast continue move but only one step at each time, then we will meet when slow move L steps,
+In other words at the entrance of the circle.
+
+
+Time :O(N)
+Space O(1)
+
+int findDuplicate(int* nums, int numsSize){
+	int fast = 0, slow = 0;
+	
+	do {
+		slow = nums[slow];
+		fast = nums[nums[fast]];
+	}while (nums[slow] != nums[fast]);
+
+	slow = 0;
+	while (nums[slow] != nums[fast]) {
+		slow = nums[slow];
+		fast = nums[fast];
+	}
+	return nums[slow];
+}
