@@ -359,6 +359,9 @@ In this project, I will document all the C coding questions.
 * Sort Colors
   * Question: https://leetcode.com/problems/sort-colors/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Sort%20Colors
+* Insertion Sort List
+  * Question: https://leetcode.com/problems/insertion-sort-list/solution/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Insertion%20Sort%20List
   
 ## Graph
 * Number of Provinces
