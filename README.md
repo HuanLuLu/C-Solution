@@ -362,6 +362,9 @@ In this project, I will document all the C coding questions.
 * Insertion Sort List
   * Question: https://leetcode.com/problems/insertion-sort-list/solution/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Insertion%20Sort%20List
+*  Sort an Array(quick sort and merge sort)
+  * Question: https://leetcode.com/problems/sort-an-array/submissions/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Sort%20an%20Array%20(Qucik%20Sort%20%2B%20Merge%20Sort)
   
 ## Graph
 * Number of Provinces
