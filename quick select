@@ -1,0 +1,53 @@
+Reference: 
+https://www.geeksforgeeks.org/quickselect-algorithm/
+
+Time complexity: Since we only need to do one side, the size will be 
+N + N/2 + N/4 + .... = (1 + 1/2 + 1/4 + ...)N = constant * N---> O(N)
+Worst case, the same as quick sort: O(N^2)
+
+Space: still the same as quick sort, O(logN) and the worst case: O(n^2)
+
+#include <limits.h>
+#include <stdio.h>
+
+void swap(int *arr, int i, int j) {
+    int temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+}
+
+int partition(int *arr, int start, int end) {
+    int pivot = arr[end];
+    int pi_loc = start;
+
+    for (int i = start; i < end; i++) {
+        if (arr[i] < pivot) {
+            swap(arr, i, pi_loc++);
+        }
+    }
+    swap(arr, pi_loc, end);
+    return pi_loc;
+}
+
+int quickSelect(int *arr, int start, int end, int k) {
+    if (start > end) {return INT_MAX;}
+
+    int pi_loc = partition(arr, start, end);
+
+    if (pi_loc == k-1) {
+        return arr[pi_loc];
+    }
+    else if (pi_loc > k-1) {
+        return quickSelect(arr, start, pi_loc-1, k);
+    }
+    else {
+        return quickSelect(arr, pi_loc+1, end, k);
+    }
+}
+
+int main() {
+    int arr[] = {3,2,1,5,6,4};
+    
+    printf("answer is %d\n", quickSelect(arr, 0, 5, 6));
+    return 0;
+}
