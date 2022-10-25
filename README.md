@@ -356,6 +356,9 @@ In this project, I will document all the C coding questions.
 * Find Median from Data Stream
   * Question: https://leetcode.com/problems/find-median-from-data-stream/solution/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Find%20Median%20from%20Data%20Stream
+* Sort Colors
+  * Question: https://leetcode.com/problems/sort-colors/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Sort%20Colors
   
 ## Graph
 * Number of Provinces
