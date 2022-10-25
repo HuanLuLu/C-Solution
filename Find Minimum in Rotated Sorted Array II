@@ -1,0 +1,29 @@
+analyze the all possible cases based on the front and end:
+1) When front < rear, the seq will be in order. return front
+2) When front > rear, exist disorder. the lowest number must be in that section. shink the range based on that.
+3) other than that. we could either use recursion to get the min from both side or just shink the range by 1. Here we just shink the range by 1
+
+time O(logn) on average. Worst case O(n)
+space O(1)
+
+int findMin(int* nums, int numsSize){
+	int front = 0, rear = numsSize - 1;
+	int mid;
+
+	while (front < rear) {
+		mid = front + (rear - front) / 2;
+        if (nums[front] < nums[rear]) {return nums[front];}
+        
+		if (nums[mid] < nums[front]) {
+			rear = mid;
+		}
+		else if (nums[mid] > nums[rear]){
+			front = mid+1;
+		}
+        else {
+            front += 1;
+        }
+	}
+
+	return nums[front];
+}
