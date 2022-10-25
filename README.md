@@ -365,6 +365,10 @@ In this project, I will document all the C coding questions.
 *  Sort an Array(quick sort and merge sort)
   * Question: https://leetcode.com/problems/sort-an-array/submissions/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Sort%20an%20Array%20(Qucik%20Sort%20%2B%20Merge%20Sort)
+*  Quick Sort  
+  * Question: https://leetcode.com/explore/learn/card/sorting/694/comparison-based-sorts/4487/
+  * Reference: https://www.geeksforgeeks.org/quickselect-algorithm/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/quick%20select
   
 ## Graph
 * Number of Provinces
