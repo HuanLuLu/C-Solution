@@ -1,0 +1,92 @@
+Algorithm 1:
+Quick Sort
+
+void swap(int *nums, int i, int j) {
+	int temp = nums[i];
+	nums[i] = nums[j];
+	nums[j] = temp;
+}
+
+int partition(int *nums, int start, int end) {
+	int pivot = nums[end];
+	int pi_loc = start;
+
+	for (int i = start; i <= end; i++) {
+		if (nums[i] < pivot) {
+			swap(nums, i, pi_loc++);
+		}
+	}
+	swap(nums, pi_loc, end);
+	return pi_loc;
+}
+
+void quicksort(int *nums, int start, int end) {
+	if (start > end) { return;}
+
+	int pi_loc = partition(nums, start, end);
+	
+	quicksort(nums, start, pi_loc-1);
+	quicksort(nums, pi_loc+1, end);
+
+	return;
+}
+
+int* sortArray(int* nums, int numsSize, int* returnSize){
+	quicksort(nums, 0, numsSize-1);
+	*returnSize = numsSize;
+	return nums;
+}
+
+Algorithm 2:
+Merge Sort
+Notice: When we are doing divide and conqure, the quick sort will sort the mid in divide step. So the size of the divided parts will natually
+be shrinked by 1. So the stop criteria can be start <= end.
+But in merge sort, we need to sort the mid in the merging step. So we the criteria of stop should not include the start == end to prevent infinite
+loop.
+void merge(int *nums, int start, int mid, int end) {
+	int left[mid - start + 1];
+	int right[end - mid];
+
+	memcpy(left, &(nums[start]), sizeof(int)*(mid - start + 1));
+	memcpy(right, &(nums[mid+1]), sizeof(int)*(end-mid));
+
+	int i = 0, j = 0, curr = start;
+
+	while( i < (mid - start + 1) && j < (end-mid) ) {
+		if (left[i] < right[j]) {
+			nums[curr++] = left[i++];
+		}
+		else if (left[i] > right[j]) {
+			nums[curr++] = right[j++];
+		}
+		else {
+			nums[curr++] = left[i++];
+			nums[curr++] = right[j++];
+		}
+	}
+
+	while (i < (mid - start + 1)) {
+		nums[curr++] = left[i++];
+	}
+	while (j < (end-mid)) {
+		nums[curr++] = right[j++];
+	}
+
+	return;
+}
+
+void mergeSort(int *nums, int start, int end) {
+	if (start >= end) {return;}
+	
+	int mid = start + (end - start) / 2;
+	mergeSort(nums, start, mid);
+	mergeSort(nums, mid+1, end);
+
+	return merge(nums, start, mid, end);
+}
+
+int* sortArray(int* nums, int numsSize, int* returnSize){
+	mergeSort(nums, 0, numsSize-1);
+	*returnSize = numsSize;
+	return nums;
+}
