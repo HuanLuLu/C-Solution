@@ -519,6 +519,9 @@ In this project, I will document all the C coding questions.
 * Find the Duplicate Number 
   * Question: https://leetcode.com/problems/find-the-duplicate-number/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Find%20the%20Duplicate%20Number
+* Median of Two Sorted Arrays 
+  * Question: https://leetcode.com/problems/median-of-two-sorted-arrays/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Median%20of%20Two%20Sorted%20Arrays
 
 
 ## Others:
