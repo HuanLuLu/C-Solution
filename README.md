@@ -376,6 +376,9 @@ In this project, I will document all the C coding questions.
 * Minimum Absolute Difference
   * Question: https://leetcode.com/explore/learn/card/sorting/695/non-comparison-based-sorts/4489/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Minimum%20Absolute%20Difference
+*  Maximum Gap  
+  * Question: https://leetcode.com/problems/maximum-gap/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Maximum%20Gap
   
   
 ## Graph
