@@ -373,6 +373,10 @@ In this project, I will document all the C coding questions.
   * Reference: https://www.geeksforgeeks.org/counting-sort/
   * Question: https://leetcode.com/problems/sort-colors/submissions/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Count%20Sorting
+* Minimum Absolute Difference
+  * Question: https://leetcode.com/explore/learn/card/sorting/695/non-comparison-based-sorts/4489/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Minimum%20Absolute%20Difference
+  
   
 ## Graph
 * Number of Provinces
