@@ -369,6 +369,10 @@ In this project, I will document all the C coding questions.
   * Question: https://leetcode.com/explore/learn/card/sorting/694/comparison-based-sorts/4487/
   * Reference: https://www.geeksforgeeks.org/quickselect-algorithm/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/quick%20select
+* Count sort  
+  * Reference: https://www.geeksforgeeks.org/counting-sort/
+  * Question: https://leetcode.com/problems/sort-colors/submissions/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Count%20Sorting
   
 ## Graph
 * Number of Provinces
