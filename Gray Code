@@ -1,0 +1,30 @@
+With pattern, consider recursion.
+time: we need to put every element into the array. O(2^n)
+space: O(n) + O(2^n)
+
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+void helper(int n, int *arr) {
+	if (n == 1) {
+		arr[0] = 0;
+		arr[1] = 1;
+		return;
+	}
+
+	helper(n-1, arr);
+	int val = pow(2,n-1);
+	int index = pow(2, n-1);
+	for(int i= pow(2, n-1) - 1; i >= 0; i--) {
+		arr[index++] = arr[i] + val;
+	}
+	return;
+}
+
+int* grayCode(int n, int* returnSize){
+	int *ret = (int *)malloc(sizeof(int) * pow(2,n));
+
+	*returnSize = pow(2,n);
+	helper(n, ret);
+	return ret;
+}                                                      
