@@ -1,0 +1,23 @@
+uint32_t reverseBits(uint32_t n) {
+	uint32_t ret = 0;
+	int p = 31;
+	while(n > 0) {
+		if(n%2 == 1) {
+			ret += pow(2, p);
+		}
+		p--;
+		n /= 2;
+	}
+	return ret;
+}
+
+method 2:
+bit manipulation
+uint32_t reverseBits(uint32_t n) {
+	n = n << 16 | n >> 16;      //inverse first 16 and last 16
+	n = ((n & 0x00ff00ff) << 8) | ((n & 0xff00ff00) >> 8);  //in every 16 bits, reverse first and second 8 bits
+	n = ((n & 0x0f0f0f0f) << 4) | ((n & 0xf0f0f0f0) >> 4);  //in every 8 bits, reverse first and second 4 bits
+    n = ((n & 0x33333333) << 2) | ((n & 0xcccccccc) >> 2); //in every 4 bits, reverse firsrt and second 2 bits
+	n = ((n & 0x55555555) << 1) | ((n & 0xaaaaaaaa) >> 1); //in every 2 bits, reverse first and second 1 bit.
+	return n;
+}
