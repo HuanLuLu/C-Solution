@@ -488,6 +488,9 @@ In this project, I will document all the C coding questions.
 * Single Number
   * Question: https://leetcode.com/problems/single-number/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Single%20Number
+* Base 7  
+  * Question: https://leetcode.com/explore/learn/card/bit-manipulation/670/bit-manipulation-practice/4254/
+  * Solution: 
   
 ## Other:
 * 01 Matrix
