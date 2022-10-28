@@ -1,0 +1,28 @@
+Notice the zero.
+So we use "do...while"
+
+
+char * convertToBase7(int num){
+    char *ret = (char *)malloc(sizeof(char) * 12);
+	int ngFg = (num < 0) ? true : false;
+	num = (num < 0) ? -num : num;
+
+	int index = 0;
+	 do {
+		ret[index++] = (char)(num%7) + '0';
+		num /= 7;
+	}while (num > 0);
+
+	if (ngFg) {ret[index++] = '-';}
+	ret[index] = '\0';
+
+	int left = 0, right = index-1;
+	char temp;
+	while(left <= right) {
+		temp = ret[left];
+		ret[left] = ret[right];
+		ret[right] = temp;
+		left++; right--;
+	}
+	return ret;
+}
