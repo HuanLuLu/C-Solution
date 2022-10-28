@@ -497,6 +497,9 @@ In this project, I will document all the C coding questions.
 * Number of 1 Bits  
   * Question: https://leetcode.com/explore/learn/card/bit-manipulation/670/bit-manipulation-practice/4258/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Number%20of%201%20Bits
+* Reverse Bits
+  * Question: https://leetcode.com/explore/learn/card/bit-manipulation/670/bit-manipulation-practice/4259/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Reverse%20Bits
   
 ## Other:
 * 01 Matrix
