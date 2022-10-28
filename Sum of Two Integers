@@ -1,0 +1,14 @@
+Notice that since left shift on signed number is undefined. We need to avoid that. Simplis way is using unsigned number
+
+int getSum(int a, int b){
+	unsigned int temp;
+	unsigned int aa = (unsigned int) a;
+	unsigned int bb = (unsigned int) b;
+
+	while(bb != 0) {
+		temp = aa ^ bb;
+		bb = (aa & bb) << 1;
+		aa = temp;
+	}
+	return (int)(aa);
+}
