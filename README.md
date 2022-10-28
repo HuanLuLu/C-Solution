@@ -491,6 +491,9 @@ In this project, I will document all the C coding questions.
 * Base 7  
   * Question: https://leetcode.com/explore/learn/card/bit-manipulation/670/bit-manipulation-practice/4254/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Base%207
+* Convert a Number to Hexadecimal
+  * Question: https://leetcode.com/explore/learn/card/bit-manipulation/670/bit-manipulation-practice/4256/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Convert%20a%20Number%20to%20Hexadecimal
   
 ## Other:
 * 01 Matrix
