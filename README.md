@@ -500,6 +500,9 @@ In this project, I will document all the C coding questions.
 * Reverse Bits
   * Question: https://leetcode.com/explore/learn/card/bit-manipulation/670/bit-manipulation-practice/4259/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Reverse%20Bits
+*  Sum of Two Integers  
+  * Question: https://leetcode.com/problems/sum-of-two-integers/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Sum%20of%20Two%20Integers
   
 ## Other:
 * 01 Matrix
