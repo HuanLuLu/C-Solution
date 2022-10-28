@@ -494,6 +494,9 @@ In this project, I will document all the C coding questions.
 * Convert a Number to Hexadecimal
   * Question: https://leetcode.com/explore/learn/card/bit-manipulation/670/bit-manipulation-practice/4256/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Convert%20a%20Number%20to%20Hexadecimal
+* Number of 1 Bits  
+  * Question: https://leetcode.com/explore/learn/card/bit-manipulation/670/bit-manipulation-practice/4258/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Number%20of%201%20Bits
   
 ## Other:
 * 01 Matrix
