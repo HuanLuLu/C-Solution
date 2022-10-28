@@ -503,6 +503,9 @@ In this project, I will document all the C coding questions.
 *  Sum of Two Integers  
   * Question: https://leetcode.com/problems/sum-of-two-integers/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Sum%20of%20Two%20Integers
+* Gray Code
+  * Question: https://leetcode.com/problems/gray-code/solution/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Gray%20Code
   
 ## Other:
 * 01 Matrix
