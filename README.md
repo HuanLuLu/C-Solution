@@ -506,6 +506,9 @@ In this project, I will document all the C coding questions.
 * Gray Code
   * Question: https://leetcode.com/problems/gray-code/solution/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Gray%20Code
+* Bitwise AND of Numbers Range
+  * Question: https://leetcode.com/problems/bitwise-and-of-numbers-range/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Bitwise%20AND%20of%20Numbers%20Range
   
 ## Other:
 * 01 Matrix
