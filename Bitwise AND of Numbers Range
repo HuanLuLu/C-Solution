@@ -1,0 +1,24 @@
+Method 1:
+finding the common prefix. Shift left and right until they are equal.
+
+int rangeBitwiseAnd(int left, int right){
+	int shift = 0;
+	while (right > left) {
+		right = right >> 1;
+		left = left >> 1;
+		shift++;
+	}
+	return right<<shift;
+}
+
+Method 2:
+Since we know n & (n-1) will set the most left siginificant one to zero. We can keep doing it until right < left
+
+
+
+int rangeBitwiseAnd(int left, int right){
+	while (right > left) {
+		right = right & (right - 1);
+	}
+	return right;
+}
