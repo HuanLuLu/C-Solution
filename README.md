@@ -459,6 +459,9 @@ In this project, I will document all the C coding questions.
 * Target Sum
   * Question: https://leetcode.com/explore/learn/card/queue-stack/232/practical-application-stack/1389/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Target%20Sum
+* Swap Nodes in Pairs
+  * Question: https://leetcode.com/problems/swap-nodes-in-pairs/solution/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Swap%20Nodes%20in%20Pairs
        
 ## String
 * Pattern Search
