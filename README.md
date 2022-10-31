@@ -585,6 +585,9 @@ In this project, I will document all the C coding questions.
 *  K-th Symbol in Grammar
   * Question: https://leetcode.com/problems/k-th-symbol-in-grammar/solution/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/K-th%20Symbol%20in%20Grammar
+* Unique Binary Search Trees II
+  * Question: https://leetcode.com/problems/unique-binary-search-trees-ii/solution/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Unique%20Binary%20Search%20Trees%20II
   
 
 ## Others:
