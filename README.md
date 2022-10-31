@@ -451,17 +451,6 @@ In this project, I will document all the C coding questions.
 * Parallel Courses
   * Question: https://leetcode.com/problems/parallel-courses/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Parallel%20Courses
-     
-## Recursion
-* Flood Fill
-  * Question: https://leetcode.com/problems/flood-fill/
-  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Flood%20Fill
-* Target Sum
-  * Question: https://leetcode.com/explore/learn/card/queue-stack/232/practical-application-stack/1389/
-  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Target%20Sum
-* Swap Nodes in Pairs
-  * Question: https://leetcode.com/problems/swap-nodes-in-pairs/solution/
-  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Swap%20Nodes%20in%20Pairs
        
 ## String
 * Pattern Search
@@ -574,6 +563,19 @@ In this project, I will document all the C coding questions.
   * Question: https://leetcode.com/problems/median-of-two-sorted-arrays/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Median%20of%20Two%20Sorted%20Arrays
 
+## Recursion
+* Flood Fill
+  * Question: https://leetcode.com/problems/flood-fill/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Flood%20Fill
+* Target Sum
+  * Question: https://leetcode.com/explore/learn/card/queue-stack/232/practical-application-stack/1389/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Target%20Sum
+* Swap Nodes in Pairs
+  * Question: https://leetcode.com/problems/swap-nodes-in-pairs/solution/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Swap%20Nodes%20in%20Pairs
+* Pascal's Triangle II
+  * Question: https://leetcode.com/explore/learn/card/recursion-i/251/scenario-i-recurrence-relation/3234/
+  * Solution: 
 
 ## Others:
 * Enumaration: https://github.com/HuanLuLu/C-Solution/blob/main/Boolean%20Type%20In%20C
