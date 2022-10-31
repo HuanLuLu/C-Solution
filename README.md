@@ -582,6 +582,10 @@ In this project, I will document all the C coding questions.
 * Climbing Stairs
   * Question: https://leetcode.com/explore/learn/card/recursion-i/255/recursion-memoization/1662/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Climbing%20Stairs
+*  K-th Symbol in Grammar
+  * Question: https://leetcode.com/problems/k-th-symbol-in-grammar/solution/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/K-th%20Symbol%20in%20Grammar
+  
 
 ## Others:
 * Enumaration: https://github.com/HuanLuLu/C-Solution/blob/main/Boolean%20Type%20In%20C
