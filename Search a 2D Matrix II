@@ -1,0 +1,45 @@
+Method 1: Divide and Conquer
+a = 4, b = 4, d = 1
+O(nlogn)
+O(logn)
+
+bool helper(int **matrix, int startRow, int startCol, int endRow, int endCol, int target) {
+	if (startRow > endRow || startCol > endCol) {return false;}
+	if (target < matrix[startRow][startCol] || target > matrix[endRow][endCol]) {return false;}
+	if (target == matrix[startRow][startCol] || target == matrix[endRow][endCol]) {return true;}
+
+	int midRow = startRow + (endRow - startRow) / 2;
+	int midCol = startCol + (endCol - startCol) / 2;
+
+	return helper(matrix, startRow, startCol, midRow, midCol, target) || \
+			helper(matrix, midRow+1, midCol+1, endRow, endCol, target) || \
+			helper(matrix, startRow, midCol+1, midRow, endCol, target) || \
+			helper(matrix, midRow+1, startCol, endRow, midCol, target);
+}
+
+bool searchMatrix(int** matrix, int matrixSize, int* matrixColSize, int target){
+	return helper(matrix, 0, 0, matrixSize-1, matrixColSize[0]-1, target);
+}
+
+Method 2: Math
+start from matrix[max_row][0], if current element is smaller than target, col++, else row--
+time O(m+n)
+space O(1)
+
+bool searchMatrix(int** matrix, int matrixSize, int* matrixColSize, int target){
+	int r = matrixSize-1;
+	int c = 0;
+
+	while(r >= 0 && c < matrixColSize[0]) {
+		if (matrix[r][c] == target) {
+			return true;
+		}
+		else if(matrix[r][c] < target) {
+			c++;
+		}
+		else {
+			r--;
+		}
+	}
+	return false;
+}
