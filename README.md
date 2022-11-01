@@ -588,6 +588,9 @@ In this project, I will document all the C coding questions.
 * Unique Binary Search Trees II
   * Question: https://leetcode.com/problems/unique-binary-search-trees-ii/solution/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Unique%20Binary%20Search%20Trees%20II
+* Search a 2D Matrix II
+  * Question: https://leetcode.com/problems/search-a-2d-matrix-ii/solution/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Search%20a%202D%20Matrix%20II
   
 
 ## Others:
