@@ -591,6 +591,9 @@ In this project, I will document all the C coding questions.
 * Search a 2D Matrix II
   * Question: https://leetcode.com/problems/search-a-2d-matrix-ii/solution/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Search%20a%202D%20Matrix%20II
+* Same Tree
+  * Question: https://leetcode.com/problems/same-tree/solution/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Same%20Tree
   
 
 ## Others:
