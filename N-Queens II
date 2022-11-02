@@ -1,0 +1,63 @@
+Similar to N Queuens
+time: O(N^N). But we will stop  recursion when we found current board is illegal. So, time complexity actually is O(n * (n-4) * (n - 4 - ...)), which
+roughly is O(N!)
+space: O(n) function stack + O(n) boardFg
+
+#define MAX_ANS_NUM 500000
+#define MAX_N_NUM 9
+
+typedef struct BoardFg_Str{
+	int size;
+	int col[MAX_N_NUM];
+	int posDiag[MAX_N_NUM];
+	int negDiag[MAX_N_NUM];
+}BoardFg;
+
+bool isNewColLegal(BoardFg *boardFg) {
+	int index = boardFg->size - 1;
+	int c = boardFg->col[index];
+	int pD = boardFg->posDiag[index];
+	int nD = boardFg->negDiag[index];
+
+	for (int i=0; i < index; i++) {
+		if (c == boardFg->col[i] || pD == boardFg->posDiag[i] ||nD == boardFg->negDiag[i]) {
+			return false;
+		}
+	}
+	return true;
+}
+
+void backTrack(int row, int n, int *count, BoardFg *boardFg){
+	//criteria of stopping and increase count
+	if (row == n) {
+		*count += 1;
+		return;
+	}
+	
+	//for all possible curr steps, try next step
+	for (int col = 0; col < n; col++) {
+		//update boardFg
+		boardFg->col[boardFg->size] = col;
+		boardFg->posDiag[boardFg->size] = row + col;
+		boardFg->negDiag[boardFg->size] = row - col;
+		boardFg->size += 1;
+		
+		//if new col is leagal, go to next row
+		if (isNewColLegal(boardFg)) {
+			backTrack(row + 1, n, count, boardFg);
+		}
+		//redo boardFg, ready for next col or back track to the previous
+		boardFg->size -= 1;
+	}
+	return;
+}
+
+int totalNQueens(int n){
+	int count = 0;
+
+	BoardFg boardFg;
+	boardFg.size = 0;
+
+	backTrack(0, n, &count, &boardFg);
+	return count;
+}
