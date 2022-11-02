@@ -594,6 +594,9 @@ In this project, I will document all the C coding questions.
 * Same Tree
   * Question: https://leetcode.com/problems/same-tree/solution/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Same%20Tree
+* N-Queens
+  * Question: https://leetcode.com/problems/n-queens/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/N-Queens
   
 
 ## Others:
