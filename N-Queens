@@ -1,0 +1,137 @@
+BackTrack Algorithm
+When we use backTack? 
+Typically, when we need to find all the solution. BackTracking is an algorithm for brute forcing by using recursion. 
+
+How to imply:
+1) set up a goal; We need to know when the recursion will stop;
+2) we need to design a mechanism to store the status; when failed, we could use it to back track the previous status.
+
+The template of BackTrack Algorithm is:
+======================================================
+func backTrack(currStep) {
+  if (satisfy ending condition) {
+    return;
+  }
+  
+  for(all possible choices at current step) {
+    update current status;
+    if (current status legal) {
+      backTrack(currStep + 1)
+    }
+    undo the current status, and ready for either next possible choice or back tack to the previous one;
+  }
+}
+======================================================
+time complexity: O(n^2) we need to traverse all the nodes in the matrix. But when the code actually running,
+for each row, we will have less legal choices. So the actual time complexity is roughly O(n!)
+
+space complexity: except the output, we need: O(n) function call stack, O(n) board status
+O(n)
+
+
+/**
+ * Return an array of arrays of size *returnSize.
+ * The sizes of the arrays are returned as *returnColumnSizes array.
+ * Note: Both returned array and *columnSizes array must be malloced, assume caller calls free().
+ */
+/**
+ * Return an array of arrays of size *returnSize.
+ * The sizes of the arrays are returned as *returnColumnSizes array.
+ * Note: Both returned array and *columnSizes array must be malloced, assume caller calls free().
+ */
+#define MAX_RET_NUM 500000
+
+typedef struct BoardFg_Str {
+	int size;
+	int col[9];
+	int posDiag[9];
+	int negDiag[9];
+}BoardFg;
+
+char **initialBoard(int n) {
+	char **board = (char **)malloc(sizeof(char *) * n);
+	char *row;	
+
+	for (int i = 0; i < n; i++) {
+		row = (char *)malloc(sizeof(char) * (n+1));
+        row[n] = '\0';
+		memset(row, '.', sizeof(char) * n);	
+		board[i] = row;
+	}
+	return board;
+}
+
+void fillBoard(int n, char ***ret, int **returnColumnSizes, int *returnSize, BoardFg *boardFg) {
+	char **board = initialBoard(n);
+	int c;
+	for (int r = 0; r < n; r++) {
+		c = boardFg->col[r];
+		board[r][c] = 'Q';
+	}
+
+	ret[*returnSize] = board;
+	(*returnColumnSizes)[*returnSize] = n;
+	*returnSize += 1;
+	return;
+}
+
+void setBoardFg(int row, int col, BoardFg *boardFg) {
+	boardFg->size = row+1;
+	boardFg->col[row] = col;
+	boardFg->posDiag[row] = row + col;
+	boardFg->negDiag[row] = col - row;
+	return;
+}
+
+bool isNewBoardFgCorr(BoardFg *boardFg){
+	int c = boardFg->col[boardFg->size - 1];
+	int pD = boardFg->posDiag[boardFg->size - 1];
+	int nD = boardFg->negDiag[boardFg->size - 1];
+
+	for (int i = 0; i < boardFg->size - 1; i++) {
+		if (c == boardFg->col[i] || \
+			pD == boardFg->posDiag[i] || \
+			nD == boardFg->negDiag[i]) {
+			return false;
+		}
+	}
+	return true;
+}
+//step is row, each time calling backTrack, we will add 1 to row and make our step further.
+//When it is stop? when we go through all possible rows
+//mechanism: update boardFg, using size to track current step and back rack.
+//we only create output when we satisfy the ending condition. Real output can be done just by boardFg itself. So we only need to generate the 
+//result at the last.
+
+void backTrack(int n, int row, char ***ret, int **returnColumnSizes, int *returnSize, BoardFg *boardFg) {
+	if(boardFg->size >= n) {
+		fillBoard(n, ret, returnColumnSizes, returnSize, boardFg);
+		return;
+	}
+	
+    for(int col = 0; col < n; col++) {
+        //fill current row boardfg
+        setBoardFg(row, col, boardFg);
+
+        //if new flag legal, call backtrack to fill the left
+        if(isNewBoardFgCorr(boardFg)) {
+            backTrack(n, row + 1, ret, returnColumnSizes, returnSize, boardFg);
+        }
+        //undo the curr row boardfg
+        boardFg->size -= 1;
+    }
+
+}
+
+char *** solveNQueens(int n, int* returnSize, int** returnColumnSizes){
+	char ***ret = (char ***)malloc(sizeof(char **) * MAX_RET_NUM);
+	*returnSize = 0;
+	*returnColumnSizes = (int *)malloc(sizeof(int) * MAX_RET_NUM);
+
+	BoardFg boardFg;
+	boardFg.size = 0;
+    
+    backTrack(n, 0, ret, returnColumnSizes, returnSize, &boardFg);
+
+    return ret;
+}
