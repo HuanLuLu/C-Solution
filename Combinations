@@ -1,0 +1,42 @@
+time complexity 
+O(kCn). Since we only build the amount of (n choose k) fully answers, the majority of time comlexity will be related to (n choose k). So the time 
+complexity is O(kCn)
+
+Space: O(kCn) stack
+
+/**
+ * Return an array of arrays of size *returnSize.
+ * The sizes of the arrays are returned as *returnColumnSizes array.
+ * Note: Both returned array and *columnSizes array must be malloced, assume caller calls free().
+ */
+#define MAX_RET_NUM 25000
+
+void backTrack(int n, int k, int **ret, int *returnSize, int **returnColumnSizes, int *ans, int *index, int prevNum) {
+	if (*index == k) {
+		int *temp = (int *)malloc(sizeof(int) * k);
+		memcpy(temp, ans, sizeof(int) * k);
+		ret[*returnSize] = temp;
+		(*returnColumnSizes)[*returnSize] = k;
+		*returnSize += 1;
+		return;
+	}
+
+	for(int currNum = prevNum + 1; currNum <= n; currNum++) {
+		ans[(*index)++] = currNum;
+		backTrack(n, k, ret, returnSize, returnColumnSizes, ans, index, currNum);
+        (*index)--;
+	}
+}
+
+
+int** combine(int n, int k, int* returnSize, int** returnColumnSizes){
+	int **ret = (int **)malloc(sizeof(int *) * MAX_RET_NUM);
+	*returnSize = 0;
+	*returnColumnSizes = (int *)malloc(sizeof(int) * MAX_RET_NUM);
+
+	int *ans = (int *)malloc(sizeof(int) * k);
+	int index = 0;
+
+	backTrack(n, k, ret, returnSize, returnColumnSizes, ans, &index, 0);
+    return ret;
+}
