@@ -22,7 +22,22 @@ func backTrack(currStep) {
   }
 }
 ======================================================
-time complexity: O(n^2) we need to traverse all the nodes in the matrix. But when the code actually running,
+def backtrack(candidate):
+    if find_solution(candidate):
+        output(candidate)
+        return
+    
+    # iterate all possible candidates.
+    for next_candidate in list_of_candidates:
+        if is_valid(next_candidate):
+            # try this partial candidate solution
+            place(next_candidate)
+            # given the candidate, explore further.
+            backtrack(next_candidate)
+            # backtrack
+            remove(next_candidate)
+=====================================================
+time complexity: O(n^n) we need to traverse all the nodes in the matrix. But when the code actually running,
 for each row, we will have less legal choices. So the actual time complexity is roughly O(n!)
 
 space complexity: except the output, we need: O(n) function call stack, O(n) board status
