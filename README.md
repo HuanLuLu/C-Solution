@@ -600,6 +600,9 @@ In this project, I will document all the C coding questions.
 * N-Queens II
   * Question: https://leetcode.com/problems/n-queens-ii/solution/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/N-Queens%20II
+* Combinations
+  * Question: https://leetcode.com/problems/combinations/solution/
+  * solution: https://github.com/HuanLuLu/C-Solution/blob/main/Combinations
   
 
 ## Others:
