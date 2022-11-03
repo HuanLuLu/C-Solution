@@ -603,6 +603,9 @@ In this project, I will document all the C coding questions.
 * Combinations
   * Question: https://leetcode.com/problems/combinations/solution/
   * solution: https://github.com/HuanLuLu/C-Solution/blob/main/Combinations
+* Generate Parentheses
+  * Question: https://leetcode.com/problems/generate-parentheses/solution/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Generate%20Parentheses
   
 
 ## Others:
