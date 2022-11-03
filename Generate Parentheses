@@ -1,0 +1,47 @@
+Time complexity: 
+Catalan number...
+
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+#define MAX_ANS_NUM 3500
+
+void backTrack(int n, char **ret, int *returnSize, int *leftCount, int *rightCount, char *arr, int *index) {
+	if (*rightCount == n) {
+		char *temp = (char *)malloc(sizeof(char) * (2*n+1));
+		strcpy(temp, arr);
+		ret[(*returnSize)++] = temp;
+		return;		
+	}
+
+	if (*leftCount < n) {
+		arr[(*index)++] = '(';
+		*leftCount += 1;
+		backTrack(n, ret, returnSize, leftCount, rightCount, arr, index);
+		*leftCount -= 1;
+		*index -= 1;
+	}
+
+	if (*rightCount < *leftCount) {
+		arr[(*index)++] = ')';
+		*rightCount += 1;
+		backTrack(n, ret, returnSize, leftCount, rightCount, arr, index);
+		*rightCount -= 1;
+		*index -= 1;
+	}
+}
+
+char ** generateParenthesis(int n, int* returnSize){
+	char **ret = (char **)malloc(sizeof(char *) * MAX_ANS_NUM);
+	*returnSize = 0;
+
+	int leftCount = 0;
+	int rightCount = 0;
+
+	char *arr = ( char *)malloc(sizeof(char) * (2*n+1) );
+	arr[2*n] = '\0';
+	int index = 0;
+
+	backTrack(n, ret, returnSize, &leftCount, &rightCount, arr, &index);
+	return ret;
+}
