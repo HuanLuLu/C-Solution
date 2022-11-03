@@ -1,0 +1,35 @@
+time: O(n)
+space: O(height)
+
+/*
+// Definition for a Node.
+struct Node {
+    int val;
+    struct Node* left;
+    struct Node* right;
+};
+*/
+
+struct Node *helper(struct Node *node, struct Node *tail) {
+	if (!node) {return tail;}
+
+	struct Node *newTail = helper(node->left, tail);
+	newTail->right = node;
+	node->left = newTail;
+	return helper(node->right, node);
+}
+
+struct Node* treeToDoublyList(struct Node *root) {
+    struct Node *head = (struct Node *)malloc(sizeof(struct Node));
+    head->left = NULL;
+    head->right = NULL;
+    
+	struct Node *tail = helper(root, head);
+	struct Node *ret = head->right;
+	if(ret) {
+        ret->left = tail;
+	    tail->right = ret;
+    }
+	free(head);	
+	return ret;
+}
