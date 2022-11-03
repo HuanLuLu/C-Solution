@@ -606,6 +606,9 @@ In this project, I will document all the C coding questions.
 * Generate Parentheses
   * Question: https://leetcode.com/problems/generate-parentheses/solution/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Generate%20Parentheses
+* Convert Binary Search Tree to Sorted Doubly Linked List
+  * Question: https://leetcode.com/problems/convert-binary-search-tree-to-sorted-doubly-linked-list/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Convert%20Binary%20Search%20Tree%20to%20Sorted%20Doubly%20Linked%20List
   
 
 ## Others:
