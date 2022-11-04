@@ -1,0 +1,51 @@
+backtrack
+time: how many permutaion? n!--> O(n!)
+space: O(n) for save the answer, and o(n) stack. 
+
+/**
+ * Return an array of arrays of size *returnSize.
+ * The sizes of the arrays are returned as *returnColumnSizes array.
+ * Note: Both returned array and *columnSizes array must be malloced, assume caller calls free().
+ */
+#define MAX_RET_NUM 800
+
+void backTrack(int* nums, int numsSize, int **ret, int* returnSize, int** returnColumnSizes, int *numFg, int *prmtn, int *index) {
+	if (*index == numsSize) {
+		int *temp = (int *)malloc(sizeof(int) * numsSize);
+		memcpy(temp, prmtn, sizeof(int) * numsSize);
+		ret[*returnSize] = temp;
+		(*returnColumnSizes)[(*returnSize)++] = numsSize;
+		return;
+	}
+
+	for (int i = 0; i < 21; i++) {
+		if (numFg[i] == 1) {
+			numFg[i] = 0;
+			prmtn[(*index)++] = i - 10;
+
+			backTrack(nums, numsSize, ret, returnSize, returnColumnSizes, numFg, prmtn, index);
+
+			numFg[i] = 1;
+			*index -= 1;
+		}
+	}
+}
+
+int** permute(int* nums, int numsSize, int* returnSize, int** returnColumnSizes){
+	int **ret = (int **)malloc(sizeof(int *) * MAX_RET_NUM);
+	*returnSize = 0;
+	*returnColumnSizes = (int *)malloc(sizeof(int) * MAX_RET_NUM);
+
+	int numFg[21] = {0};
+	int index = 0;
+	int *prmtn = (int *)malloc(sizeof(int) * numsSize);
+
+	for(int i = 0; i < numsSize; i++) {
+		numFg[nums[i] + 10] = 1;
+	}
+
+	backTrack(nums, numsSize, ret, returnSize, returnColumnSizes, numFg, prmtn, &index);
+
+	free(prmtn);
+	return ret;
+}
