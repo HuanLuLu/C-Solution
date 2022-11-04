@@ -620,6 +620,9 @@ In this project, I will document all the C coding questions.
 * House Robber
   * Question: https://leetcode.com/problems/house-robber/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/House%20Robber
+*   Min Cost Climbing Stairs
+  * Question: https://leetcode.com/explore/learn/card/dynamic-programming/631/strategy-for-solving-dp-problems/4040/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Min%20Cost%20Climbing%20Stairs
   
 
 ## Others:
