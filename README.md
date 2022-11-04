@@ -616,6 +616,11 @@ In this project, I will document all the C coding questions.
   * Question: https://leetcode.com/problems/letter-combinations-of-a-phone-number/solution/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Letter%20Combinations%20of%20a%20Phone%20Number
   
+## Dynamic Programming  
+* House Robber
+  * Question: https://leetcode.com/problems/house-robber/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/House%20Robber
+  
 
 ## Others:
 * Enumaration: https://github.com/HuanLuLu/C-Solution/blob/main/Boolean%20Type%20In%20C
