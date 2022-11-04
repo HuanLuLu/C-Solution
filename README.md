@@ -628,7 +628,7 @@ In this project, I will document all the C coding questions.
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/N-th%20Tribonacci%20Number  
 *  Delete and Earn
   * Question: https://leetcode.com/problems/delete-and-earn/
-  * Solution:
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Delete%20and%20Earn
   
 
 ## Others:
