@@ -1,0 +1,24 @@
+Dynamic programming
+Time O(n): go through all the elelments in the array
+Space O(1): no extra memory needed.
+
+//1 <= nums.length <= 100 
+//0 <= nums[i] <= 400
+//max result: 400*400 = 160,000
+
+#define MAX(a,b) ((a > b) ? a : b)
+
+int rob(int* nums, int numsSize){
+	if (numsSize == 1) {return nums[0];}
+
+	int curr = nums[1], prev1 = nums[0], prev2 = 0;
+	int temp;
+	for(int i = 2; i < numsSize; i++) {
+		temp = MAX(prev1, prev2) + nums[i];
+
+		prev2 = prev1;
+		prev1 = curr;
+		curr = temp;
+	}
+	return MAX(curr, prev1);
+}
