@@ -609,6 +609,9 @@ In this project, I will document all the C coding questions.
 * Convert Binary Search Tree to Sorted Doubly Linked List
   * Question: https://leetcode.com/problems/convert-binary-search-tree-to-sorted-doubly-linked-list/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Convert%20Binary%20Search%20Tree%20to%20Sorted%20Doubly%20Linked%20List
+* Permutations
+  * Question: https://leetcode.com/problems/permutations/submissions/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Permutations
   
 
 ## Others:
