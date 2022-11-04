@@ -1,0 +1,48 @@
+BackTracking
+Time: O(4^n) * O(n)
+Space: Output O(4^4); recursion stack: O(n)
+
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+//0 <= digits.length <= 4 
+//digits[i] is a digit in the range ['2', '9'].
+
+#define MAX_RET_NUM 256
+
+#define CHAR_TO_INT(c) ((int)c - (int)'0')
+
+void backTrack(char * digits, char **ret, int *returnSize, char map[10][5], char *comb, int *index){
+	if (*index == strlen(digits)) {
+		char *temp = (char *)malloc( sizeof(char) * (*index+1) );
+		memcpy(temp, comb, sizeof(char) * *index);
+		temp[*index] = '\0';	
+		ret[(*returnSize)++] = temp;
+		return;
+	}
+
+	int mapIndex = CHAR_TO_INT(digits[*index]);
+	for(int i = 0; i < strlen(map[mapIndex]); i++) {
+		comb[(*index)++] = map[mapIndex][i];
+		backTrack(digits, ret, returnSize, map, comb, index);
+		*index -= 1;
+	}
+}
+
+char ** letterCombinations(char * digits, int* returnSize){
+    if (strlen(digits) == 0) {
+        *returnSize = 0;
+        return NULL;
+    }
+    
+	char ** ret = (char **)malloc(sizeof(char *) * MAX_RET_NUM);
+	*returnSize = 0;
+
+	char map[10][5] = {{""},{""},{"abc"},{"def"},{"ghi"},{"jkl"},{"mno"},{"pqrs"},{"tuv"},{"wxyz"}};
+
+	char comb[4] = {0};
+	int index = 0;
+
+	backTrack(digits, ret, returnSize, map, comb, &index);
+	return ret;
+}
