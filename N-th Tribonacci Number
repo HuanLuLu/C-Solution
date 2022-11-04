@@ -1,0 +1,17 @@
+
+//0 <= n <= 37 
+//The answer is guaranteed to fit within a 32-bit integer, ie. answer <= 2^31 - 1.
+//T0 = 0, T1 = 1, T2 = 1, and Tn+3 = Tn + Tn+1 + Tn+2 for n >= 0.
+
+int tribonacci(int n){
+	if (n < 2) {return n;}
+	int curr = 1, prev1 = 0, prev2 = 0;
+	int temp;
+	for(int i = 2; i <= n; i++) {
+		temp = curr + prev1 + prev2;
+		prev2 = prev1;
+		prev1 = curr;
+		curr = temp;
+	}
+	return curr;
+}
