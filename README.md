@@ -612,6 +612,9 @@ In this project, I will document all the C coding questions.
 * Permutations
   * Question: https://leetcode.com/problems/permutations/submissions/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Permutations
+* Letter Combinations of a Phone Number
+  * Question: https://leetcode.com/problems/letter-combinations-of-a-phone-number/solution/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Letter%20Combinations%20of%20a%20Phone%20Number
   
 
 ## Others:
