@@ -1,0 +1,21 @@
+dynamic programming
+Time : O(n) we need to traverse all the elements in the array
+Space: O(1) no need for extra memory
+
+//2 <= cost.length <= 1000 
+//0 <= cost[i] <= 999
+
+#define MIN(a,b) ( (a < b) ? a : b )
+
+int minCostClimbingStairs(int* cost, int costSize){
+	if (costSize == 1) {return cost[0];}
+
+	int curr = cost[0], prev = 0;	
+	int temp;
+	for(int i = 1; i < costSize; i++) {
+		temp = cost[i] + MIN(curr, prev);
+		prev = curr;
+		curr  = temp;
+	}
+	return MIN(curr, prev);
+}
