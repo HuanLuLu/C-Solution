@@ -1,0 +1,32 @@
+Dynamic Programming
+bottom-to-up
+time: O(n): calculat the all the sums; O(max_val): iterate all possible sums and get the final answer.
+Space: O(MAX_SUMS_LEN): store the sums for all individual digits. 
+
+//1 <= nums.length <= 2 * 10^4 
+//1 <= nums[i] <= 10^4
+
+#define MAX_SUMS_LEN 10001
+
+#define MAX(a, b) ( a > b ? a : b )
+
+int deleteAndEarn(int* nums, int numsSize){
+	int sums[MAX_SUMS_LEN] = {0};
+	int num;
+	int max_val = 0;
+
+	for (int i=0; i<numsSize; i++) {
+		num = nums[i];
+		sums[num] += num;	
+		max_val = MAX(max_val, num);
+	}
+
+	int curr = 0, prev1 = 0, prev2 = 0, temp;
+	for(int i = 1; i<= max_val; i++) {
+		temp = sums[i] + MAX(prev1, prev2);
+		prev2 = prev1;
+		prev1 = curr;
+		curr = temp;	
+	}
+	return MAX(curr, prev1);
+}
