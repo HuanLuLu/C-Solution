@@ -629,6 +629,9 @@ In this project, I will document all the C coding questions.
 *  Delete and Earn
   * Question: https://leetcode.com/problems/delete-and-earn/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Delete%20and%20Earn
+* Longest Common Subsequence
+  * Question: https://leetcode.com/problems/longest-common-subsequence/submissions/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Longest%20Common%20Subsequence
   
 
 ## Others:
