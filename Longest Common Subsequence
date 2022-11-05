@@ -1,0 +1,28 @@
+time complexity: O(m+n)
+space coplexity: O(2*n), n is the length of text1
+
+#define MAX(a,b) ( a > b ? a: b )
+
+int longestCommonSubsequence(char * text1, char * text2){
+	int len1 = strlen(text1);
+	int len2 = strlen(text2);
+
+    int *currCol = (int *)calloc(len1+1, sizeof(int));
+    int *prevCol = (int *)calloc(len1+1, sizeof(int));
+    int *temp;
+
+	for (int col = len2 - 1; col >= 0; col--)	{
+		for (int row = len1 - 1; row >= 0; row--) {
+			if (text1[row] == text2[col]) {
+				currCol[row] = prevCol[row+1] + 1;
+			}
+			else {
+				currCol[row] = MAX(currCol[row+1], prevCol[row]);
+			}
+		}	
+        temp = currCol;
+        currCol = prevCol;
+        prevCol = temp;
+	}
+	return prevCol[0];
+}
