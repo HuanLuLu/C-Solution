@@ -632,6 +632,9 @@ In this project, I will document all the C coding questions.
 * Longest Common Subsequence
   * Question: https://leetcode.com/problems/longest-common-subsequence/submissions/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Longest%20Common%20Subsequence
+* Maximal Square
+  * Question: https://leetcode.com/problems/maximal-square/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Maximal%20Square
   
 
 ## Others:
