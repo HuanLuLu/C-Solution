@@ -1,0 +1,28 @@
+time: O(n^2) * O(m*l) n is the size of the string, m is the max length word in the wordDict, l is the number of the words in the dictionary
+space: O(n), n is the length of the string
+
+bool isStrInDict(char * s, int start, int end, char ** wordDict, int wordDictSize){
+	char word[300] = {0};
+	memcpy(word, s + start, sizeof(char) * (end - start + 1));
+
+	for(int i = 0; i < wordDictSize; i++) {
+		if (strcmp(wordDict[i], word) == 0) {
+            return true;
+        }	
+	}
+	return false;
+}
+
+bool wordBreak(char * s, char ** wordDict, int wordDictSize){
+	int arr[301] = {0};
+	arr[0] = 1;
+
+	for (int currLen = 1; currLen <= strlen(s); currLen++) {
+		for (int preLen = 0; preLen < currLen; preLen++) {
+			if (arr[preLen] && isStrInDict(s, preLen, currLen-1, wordDict, wordDictSize)) {
+				arr[currLen] = 1;
+			}
+		}
+	}
+	return arr[strlen(s)];
+}
