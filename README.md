@@ -635,6 +635,9 @@ In this project, I will document all the C coding questions.
 * Maximal Square
   * Question: https://leetcode.com/problems/maximal-square/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Maximal%20Square
+*  Coin Change
+  * Question: https://leetcode.com/problems/coin-change/
+  * https://github.com/HuanLuLu/C-Solution/blob/main/Coin%20Change
   
 
 ## Others:
