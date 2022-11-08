@@ -637,7 +637,11 @@ In this project, I will document all the C coding questions.
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Maximal%20Square
 *  Coin Change
   * Question: https://leetcode.com/problems/coin-change/
-  * https://github.com/HuanLuLu/C-Solution/blob/main/Coin%20Change
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Coin%20Change
+* Word Break
+  * Question: https://leetcode.com/problems/word-break/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Word%20Break
+  
   
 
 ## Others:
