@@ -1,0 +1,18 @@
+O(n)
+O(1)
+
+int numWays(int n, int k){
+	int n2 = k;
+	if (n == 1) {return n2;}
+
+	int n1 = k*k;
+	if (n == 2) {return n1;}
+
+	int curr;
+	for (int i = 3; i <= n; i++) {
+		curr = (k-1) * (n1 + n2);
+		n2 = n1;
+		n1 = curr;		
+	}
+	return curr;
+}
