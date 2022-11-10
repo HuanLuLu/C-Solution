@@ -1,0 +1,40 @@
+time O(n^2)
+space O(n^2)-->can be optimized into 2 row O(n) 
+
+#define MAX_TWO_VAL(a,b) (a > b ? a : b)
+
+int maxThreeVal(int a, int b ,int c) {
+	int max = a;
+	if (b > max) {max = b;}
+	if (c > max) {max = c;}
+	return max;
+}
+
+int maxProfit(int* prices, int pricesSize){
+	int dp[pricesSize][pricesSize];
+	for (int i = 0; i < pricesSize; i++) {
+		for (int j = 0; j < pricesSize; j++) {
+			dp[i][j] = INT_MIN;
+		}
+	}
+
+	int max = 0;
+	for (int i = 1; i < pricesSize; i++) {
+		dp[0][i] = MAX_TWO_VAL(prices[i] - prices[0], dp[0][i-1]);
+		max = MAX_TWO_VAL(max, dp[0][i]);
+	}
+
+	int curr = 0;
+
+	for (int row = 1; row < pricesSize; row++) {
+		for (int col = row + 1; col < pricesSize; col++) {
+			curr = prices[col] - prices[row];
+			if (row - 3 >= 0 && dp[row-3][row-2] > 0) { 
+                curr += dp[row-3][row-2]; 
+            }
+			dp[row][col] = maxThreeVal(dp[row][col-1], dp[row-1][col], curr);
+			max = MAX_TWO_VAL(max, dp[row][col]);
+		}
+	}
+	return max;
+}
