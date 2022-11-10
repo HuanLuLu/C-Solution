@@ -647,6 +647,9 @@ In this project, I will document all the C coding questions.
 * Best Time to Buy and Sell Stock with Cooldown  
   * Question: https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Best%20Time%20to%20Buy%20and%20Sell%20Stock%20with%20Cooldown
+* Paint Fence
+  * Question: https://leetcode.com/problems/paint-fence/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Paint%20Fence
   
   
 
