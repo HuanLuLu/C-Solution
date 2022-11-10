@@ -1,0 +1,49 @@
+DP
+Algorithm 1:
+making number sequence
+
+int lengthOfLIS(int* nums, int numsSize){
+	int arr[numsSize];
+	arr[0] = nums[0]; 
+	int size = 1;
+	for (int i = 1; i < numsSize; i++) {
+		if (nums[i] > arr[size - 1]) {
+			arr[size++] = nums[i];
+		}
+		else {
+			for (int j = 0; j < i; j++) {
+				if (nums[i] <= arr[j]) {
+					arr[j] = nums[i];
+                    break;
+				}
+			}
+		}
+	}
+	return size;
+}
+
+Algorithm 2:
+using arr to store curr size and max num so far.
+replace the max num with smaller ones in the process
+
+int lengthOfLIS(int* nums, int numsSize){
+	int arr[numsSize+1];
+	memset(arr, INT_MAX, sizeof(int) * (numsSize+1));
+	arr[1] = nums[0];
+	int size = 2;
+	
+	for (int i = 1; i < numsSize; i++) {
+		if (nums[i] > arr[size-1]) {
+			arr[size++] = nums[i];
+		}
+		else {
+			for (int j = size -1; j > 0; j--) {
+				if (nums[i] <= arr[j] && (j == 1 || nums[i] > arr[j-1])) {
+					arr[j] = nums[i];
+					break;
+				}			
+			}
+		}		
+	}
+	return size-1;
+}
