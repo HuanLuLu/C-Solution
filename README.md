@@ -643,7 +643,7 @@ In this project, I will document all the C coding questions.
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Word%20Break
 * Longest Increasing Subsequence
   * Question: https://leetcode.com/problems/longest-increasing-subsequence/submissions/
-  * Solution: 
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Longest%20Increasing%20Subsequence
   
   
 
