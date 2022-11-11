@@ -650,6 +650,9 @@ In this project, I will document all the C coding questions.
 * Paint Fence
   * Question: https://leetcode.com/problems/paint-fence/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Paint%20Fence
+* Coin Change II
+  * Question: https://leetcode.com/problems/coin-change-ii/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Coin%20Change%20II
   
   
 
