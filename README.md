@@ -656,6 +656,9 @@ In this project, I will document all the C coding questions.
 * Decode Ways
   * Question: https://leetcode.com/problems/decode-ways/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Decode%20Ways
+* Best Time to Buy and Sell Stock
+  * Question: https://leetcode.com/explore/learn/card/dynamic-programming/633/common-patterns-continued/4141/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Best%20Time%20to%20Buy%20and%20Sell%20Stock
   
   
 
