@@ -653,6 +653,9 @@ In this project, I will document all the C coding questions.
 * Coin Change II
   * Question: https://leetcode.com/problems/coin-change-ii/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Coin%20Change%20II
+* Decode Ways
+  * Question: https://leetcode.com/problems/decode-ways/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Decode%20Ways
   
   
 
