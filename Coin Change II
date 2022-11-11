@@ -1,0 +1,27 @@
+O(n*m)
+O(m)
+
+int change(int amount, int* coins, int coinsSize){
+	int *curr = (int *)calloc(amount + 1, sizeof(int));
+	int *prev = (int *)calloc(amount + 1, sizeof(int));
+	int *temp;
+
+	prev[0] = 1;
+
+	int coinIdx;
+ 	int coin;
+	
+	for (coinIdx = 0; coinIdx < coinsSize; coinIdx++) {
+		coin = coins[coinIdx];
+		for (int i = 0; i <= amount; i++) {
+            curr[i] = i - coin >= 0 ? curr[i - coin] + prev[i] : prev[i];
+		}
+		temp = curr;
+		curr = prev;
+		prev = temp;
+	}
+	int ret = prev[amount];
+	free(curr); 
+    free(prev);
+	return ret;
+}
