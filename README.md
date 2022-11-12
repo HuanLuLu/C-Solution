@@ -668,6 +668,9 @@ In this project, I will document all the C coding questions.
 * Unique Paths II
   * Question: https://leetcode.com/problems/unique-paths-ii/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Unique%20Paths%20II
+* Minimum Path Sum
+  * Question: https://leetcode.com/problems/minimum-path-sum/submissions/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Minimum%20Path%20Sum
   
   
 
