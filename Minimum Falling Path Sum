@@ -1,0 +1,32 @@
+O(m*n)
+O(n)
+
+#define MIN(a,b) ( a < b ? a : b)
+
+int minFallingPathSum(int** matrix, int matrixSize, int* matrixColSize){
+	int row = matrixSize, col = matrixColSize[0];
+
+	int *curr = (int *)calloc(col, sizeof(int));
+	int *prev = (int *)calloc(col, sizeof(int));
+
+	memcpy(prev, matrix[0], sizeof(int) * col);
+
+	int *temp;
+	for (int r = 1; r < row; r++) {
+		for (int c = 0; c < col; c++) {
+			curr[c] = prev[c];
+			if (c - 1 >= 0) { curr[c] = MIN(curr[c], prev[c-1]); }
+			if (c + 1 < col) { curr[c] = MIN(curr[c], prev[c+1]); }
+			curr[c] += matrix[r][c];
+		}
+		temp = curr;
+		curr = prev;
+		prev = temp;
+	}
+	int ret = INT_MAX;
+	for (int i = 0; i < col; i++){
+		ret = MIN(ret, prev[i]);
+	}
+	free(curr); free(prev);
+	return ret;
+}
