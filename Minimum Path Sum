@@ -1,0 +1,33 @@
+O(m*n)
+O(n)
+
+#define MIN(a,b) ( a < b ? a : b )
+
+int minPathSum(int** grid, int gridSize, int* gridColSize){
+	int row = gridSize, col = gridColSize[0];
+	
+	int *curr = (int *)calloc(col, sizeof(int));
+	int *prev = (int *)calloc(col, sizeof(int));
+
+	prev[0] = grid[0][0];
+	for (int c = 1; c < col; c++) {
+		prev[c] = prev[c-1] + grid[0][c];
+	}
+
+	int *temp;
+	for (int r = 1; r < row; r++) {
+		curr[0] = prev[0] + grid[r][0];
+
+		for (int c = 1; c < col; c++) {
+			curr[c] = MIN(prev[c], curr[c-1]) + grid[r][c];
+		}
+
+		temp = curr;
+		curr = prev;
+		prev = temp;
+	}
+
+	int ret = prev[col-1];
+	free(curr); free(prev);
+	return ret;
+}
