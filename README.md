@@ -671,6 +671,9 @@ In this project, I will document all the C coding questions.
 * Minimum Path Sum
   * Question: https://leetcode.com/problems/minimum-path-sum/submissions/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Minimum%20Path%20Sum
+* Minimum Falling Path Sum
+ * Question: https://leetcode.com/problems/minimum-falling-path-sum/
+ * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Minimum%20Falling%20Path%20Sum
   
   
 
