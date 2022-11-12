@@ -1,0 +1,49 @@
+Algorithm:
+if the array is not circular, then the question is simple. 
+But when the array is circular, we need consider the senaria which we have hollow in the middle, and the max value is the prefix and suffix of the array.
+For example: [1,2,-3,-4,5]
+
+So, based on the analysis above, we have two cases:
+1) max sub-array is still in the straight array. Then we need calculate normal MAX_SUM
+2) if we do have the hollow in the middle, and need to use prefix and suffix of the array, we could consider substracting the min from the total sum
+   In the case: [1,2,-3,-4,5], the min is -7, and the total sum is 1, the max is 1 - (-7) = 8;
+As the result, we output: max(case1, case2)
+
+One exception: all negative number. [-1, -2, -3]
+straight max is -1, the total sum is -6, the straight min is -6. the output will be max(-1, 6 - (-6)) = 0. wrong.
+In this case, we could check total sum and min. if sum == min, it means, in the array, all the elements are negative numbers. So we just need to output
+the max.
+
+O(n)
+O(1)
+
+#define MAX(a,b) ( a > b ? a : b)
+#define MIN(a,b) ( a < b ? a : b)
+
+int maxSubarraySumCircular(int* nums, int numsSize){
+	int sum = 0;
+	int maxSum = INT_MIN;
+	int minSum = INT_MAX;
+
+	int currMax = 0, currMin = 0;
+
+	for (int i = 0; i < numsSize; i++) {
+		sum += nums[i];
+
+		currMax += nums[i];
+		maxSum = MAX(maxSum, currMax);
+		currMax = MAX(0, currMax);
+
+		currMin += nums[i];
+		minSum = MIN(currMin, minSum);
+		currMin = MIN(0, currMin);
+	}
+
+	if (sum == minSum) {
+		return maxSum;
+	}
+	else {        
+		return MAX(maxSum, sum - minSum);
+        
+	}	
+}
