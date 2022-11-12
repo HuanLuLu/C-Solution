@@ -662,6 +662,9 @@ In this project, I will document all the C coding questions.
 * Maximum Sum Circular Subarray
   * Question: https://leetcode.com/problems/maximum-sum-circular-subarray/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Maximum%20Sum%20Circular%20Subarray
+* Unique Paths
+  * Question: https://leetcode.com/problems/unique-paths/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Unique%20Paths
   
   
 
