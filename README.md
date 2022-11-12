@@ -665,6 +665,9 @@ In this project, I will document all the C coding questions.
 * Unique Paths
   * Question: https://leetcode.com/problems/unique-paths/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Unique%20Paths
+* Unique Paths II
+  * Question: https://leetcode.com/problems/unique-paths-ii/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Unique%20Paths%20II
   
   
 
