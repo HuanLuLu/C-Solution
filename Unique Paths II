@@ -1,0 +1,45 @@
+One thing need to address, which is when we have obstacle, we need set the curr to be 0 manually
+
+O(m*n)
+O(n)
+
+int uniquePathsWithObstacles(int** obstacleGrid, int obstacleGridSize, int* obstacleGridColSize){
+	int row = obstacleGridSize; 
+	int col = obstacleGridColSize[0];
+
+	int *curr = (int *)calloc(col, sizeof(int));
+	int *prev = (int *)calloc(col, sizeof(int));
+
+	for (int i = 0; i < col; i++) {
+		if (obstacleGrid[0][i] != 1) {
+			prev[i] = 1;
+		}
+		else {
+			break;
+		}
+	}
+
+	int *temp;
+	for (int r = 1; r < row; r++) {
+		if (obstacleGrid[r][0] == 0) {
+            curr[0] = prev[0];
+        }
+        else {
+            curr[0] = 0;
+        }
+		for (int c = 1; c < col; c++) {
+			if (obstacleGrid[r][c] == 0) {
+                curr[c] = curr[c-1] + prev[c];
+            }
+            else {
+                curr[c] = 0;
+            }
+		}
+		temp = curr;
+		curr = prev;
+		prev = temp;
+	}
+	int ret = prev[col-1];
+	free(prev); free(curr);
+	return ret;
+}
