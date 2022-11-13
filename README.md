@@ -677,6 +677,9 @@ In this project, I will document all the C coding questions.
 * Best Time to Buy and Sell Stock with Transaction Fee
  * Question: https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/
  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Best%20Time%20to%20Buy%20and%20Sell%20Stock%20with%20Transaction%20Fee
+* Paint House
+ * Question: https://leetcode.com/problems/paint-house/
+ * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Paint%20House
   
 ## Others:
 * Enumaration: https://github.com/HuanLuLu/C-Solution/blob/main/Boolean%20Type%20In%20C
