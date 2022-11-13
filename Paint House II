@@ -37,3 +37,45 @@ int minCostII(int** costs, int costsSize, int* costsColSize){
 	free(prevCost); free(currCost);
 	return min;
 }
+
+============
+Optimal DP solution
+We only need first min and sec min for current prize. all current elements will add first min except the elemenet with the same index with last min
+
+time O(M*N), space: O(1)
+
+#define MIN(a,b) ( a < b ? a : b )
+
+
+int minCostII(int** costs, int costsSize, int* costsColSize){
+	int fstMin = costs[0][0], minIndex = 0, secMin = INT_MAX;
+	for (int i = 1; i < costsColSize[0]; i++) {
+		if (costs[0][i] <= fstMin) {
+			secMin = fstMin;
+			fstMin = costs[0][i];
+			minIndex = i;
+		}
+        else if (costs[0][i] < secMin) {
+            secMin = costs[0][i];
+        }
+	}
+
+	int tempFstMin, tempMinIndex, tempSecMin, tempCost;
+	for (int i = 1; i <costsSize; i++) {
+		tempFstMin = minIndex == 0 ? costs[i][0] + secMin : costs[i][0] + fstMin;
+		tempMinIndex = 0; tempSecMin = INT_MAX;
+		for (int j = 1; j < costsColSize[0]; j++) {
+			tempCost = j == minIndex ? costs[i][j] + secMin : costs[i][j] + fstMin;
+			if (tempCost <= tempFstMin) {
+				tempSecMin = tempFstMin;
+				tempMinIndex = j;
+				tempFstMin = tempCost;
+			}
+            else if (tempCost < tempSecMin) {
+                tempSecMin = tempCost;
+            }
+		}
+		fstMin = tempFstMin; minIndex = tempMinIndex; secMin = tempSecMin;
+	}
+	return fstMin;
+}
