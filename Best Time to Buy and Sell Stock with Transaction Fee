@@ -30,3 +30,40 @@ int maxProfit(int* prices, int pricesSize, int fee){
 	free(prev); free(curr);
 	return ret;
 }
+
+=========
+DP+StateMachine
+Three states: buy, sell, hold. Our algorithm is to set the statmachine, the current state only depends on the max of the previous one. 
+At the end, we will pick up the max(0, sell). 
+
+buy-->sell
+buy-->hold-->sell
+
+sell-->buy
+sell->hold-->buy
+
+buy/sell/hold-->hold
+
+We can see, in our case, hold state is not necessary. Since at current hold, we will take the previous maximum value among sell, buy and previous hold, 
+which is also max of futher previous buy and sell. Without hold, we still will pass the previous maximum sell and buy to current state.
+
+Initial state: buy: -prices, sell: since we not sell anything, the profit we made was still 0 (hold the current state.)
+
+#define MAX(a,b) ( a > b ? a : b )
+
+int maxProfit(int* prices, int pricesSize, int fee){
+	int buy = -prices[0], sell = -50001;
+	int tempbuy, tempsell;
+
+	for (int i = 1; i < pricesSize; i++) {
+		tempbuy = MAX(buy, sell - prices[i]);
+		tempsell = MAX(buy + prices[i] - fee, sell);
+		buy = tempbuy;
+		sell = tempsell;
+	}
+	return MAX(sell, 0);
+}
+
+
+
+
