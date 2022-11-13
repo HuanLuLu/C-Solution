@@ -1,0 +1,26 @@
+O(n), O(1)
+
+
+#define MIN(a,b) ( a < b ? a : b )
+
+
+int minCost(int** costs, int costsSize, int* costsColSize){
+	int prevCost[3];
+	int currCost[3];
+	int temp0, temp1, temp2;
+
+	memcpy(prevCost, costs[0], sizeof(int) * 3);
+
+	for (int i = 1; i < costsSize; i++) {
+		currCost[0] = costs[i][0] + MIN(prevCost[1], prevCost[2]);
+		currCost[1] = costs[i][1] + MIN(prevCost[0], prevCost[2]);
+		currCost[2] = costs[i][2] + MIN(prevCost[0], prevCost[1]);
+
+		temp0 = currCost[0]; temp1 = currCost[1]; temp2 = currCost[2];
+		currCost[0] = prevCost[0]; currCost[1] = prevCost[1]; currCost[2] = prevCost[2];
+		prevCost[0] = temp0; prevCost[1] = temp1; prevCost[2] = temp2;
+	}
+
+	int min = MIN(prevCost[0], prevCost[1]);
+	return MIN(min, prevCost[2]);
+}
