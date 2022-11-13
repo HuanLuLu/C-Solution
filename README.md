@@ -680,6 +680,9 @@ In this project, I will document all the C coding questions.
 * Paint House
  * Question: https://leetcode.com/problems/paint-house/
  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Paint%20House
+* Paint House II
+ * Question: https://leetcode.com/problems/paint-house-ii/
+ * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Paint%20House%20II
   
 ## Others:
 * Enumaration: https://github.com/HuanLuLu/C-Solution/blob/main/Boolean%20Type%20In%20C
