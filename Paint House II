@@ -1,0 +1,39 @@
+DP
+O(n * k^2)
+O(k)
+
+#define MIN(a,b) ( a < b ? a : b )
+
+int minCost(int *cost, int size) {
+	if (size == 1) {return cost[0];}
+
+	int min = MIN(cost[0], cost[1]);
+ 	for (int i = 2; i < size; i++) {
+		min = MIN(min, cost[i]);
+	}
+	return min;
+}
+
+int minCostII(int** costs, int costsSize, int* costsColSize){
+	int *currCost = (int *)malloc(sizeof(int) * costsColSize[0]);
+	int *prevCost = (int *)malloc(sizeof(int) * costsColSize[0]);
+
+	memcpy(prevCost, costs[0], sizeof(int) * costsColSize[0]);
+	
+	int temp;
+	int *tempCost;
+	for (int i = 1; i < costsSize; i++) {
+		for (int j = 0; j < costsColSize[0]; j++) {
+			temp = prevCost[j];
+			prevCost[j] = INT_MAX;
+			currCost[j] = minCost(prevCost, costsColSize[0]) + costs[i][j];
+			prevCost[j] = temp;
+		}
+		tempCost = currCost;
+		currCost = prevCost;
+		prevCost = tempCost;
+	}
+	int min = minCost(prevCost, costsColSize[0]);
+	free(prevCost); free(currCost);
+	return min;
+}
