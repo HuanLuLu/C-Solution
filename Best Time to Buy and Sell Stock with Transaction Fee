@@ -1,0 +1,32 @@
+DP
+Complexity: O(n^2)
+O(N)
+#define MAX_TWO_VAL(a,b) ( a > b ? a : b )
+
+int maxProfit(int* prices, int pricesSize, int fee){
+	int *curr = (int *)malloc(sizeof(int) * pricesSize);
+	int *prev = (int *)malloc(sizeof(int) * pricesSize);
+
+	prev[0] = 0;
+	for (int i = 1; i < pricesSize; i++) {
+		prev[i] = MAX_TWO_VAL(prev[i-1], prices[i] - prices[0] - fee);
+	}
+
+	int *temp;
+	int currProfit;
+	for (int i = 1; i < pricesSize; i++) {
+		curr[i] = prev[i];
+		for (int j = i + 1; j < pricesSize; j++) {
+			currProfit = prices[j] - prices[i] - fee;
+			currProfit += prev[i-1];
+			curr[j] = MAX_TWO_VAL(currProfit, curr[j-1]);
+			curr[j] = MAX_TWO_VAL(curr[j], prev[j]);
+		}
+		temp = curr;
+		curr = prev;
+		prev = temp;
+	}
+	int ret = prev[pricesSize - 1];
+	free(prev); free(curr);
+	return ret;
+}
