@@ -38,3 +38,37 @@ int maxProfit(int* prices, int pricesSize){
 	}
 	return max;
 }
+
+===========
+Method 2: DP + State Machine
+State: Hold, Sell, Buy. The way of using the state is to block the invaild state transition. In this case, hold state is necasseray. It will
+block the sell state trans directly into buy state.
+
+sell -> hold
+hold -> hold
+
+hold -> buy
+buy -> hold
+
+buy -> sell
+sell -> sell
+
+O(n)
+O(1)
+
+#define MAX(a,b) ( a > b ? a : b )
+
+int maxProfit(int* prices, int pricesSize){
+	int buy = -prices[0], sell = INT_MIN, hold = 0;
+	int tempbuy, tempsell, temphold;
+
+	for (int i = 1; i < pricesSize; i++) {
+		tempbuy = MAX(buy, hold - prices[i]);
+		tempsell = MAX(sell, buy + prices[i]); 
+		temphold =	MAX(hold, sell);
+		buy = tempbuy;
+		sell = tempsell;
+		hold = temphold;
+	}
+	return MAX(hold, sell);
+}
