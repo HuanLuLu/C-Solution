@@ -689,6 +689,9 @@ In this project, I will document all the C coding questions.
 * Maximum Length of Repeated Subarray
  * Question: https://leetcode.com/problems/maximum-length-of-repeated-subarray/
  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Maximum%20Length%20of%20Repeated%20Subarray
+* Number of Dice Rolls With Target Sum
+ * Question: https://leetcode.com/problems/number-of-dice-rolls-with-target-sum/
+ * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Number%20of%20Dice%20Rolls%20With%20Target%20Sum
   
 ## Others:
 * Enumaration: https://github.com/HuanLuLu/C-Solution/blob/main/Boolean%20Type%20In%20C
