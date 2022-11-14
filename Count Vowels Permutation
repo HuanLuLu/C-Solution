@@ -7,8 +7,8 @@ How to pass to the next state? sum the previous state based on the state machine
 One thing need to be noticed is the overflow problem. In the question, they mentioned in case the answer is too larger, we need to mod 10^9 +7
 It is roughlt 1 billion, half of the int. If we decide to continue using int type variable, we need to mod the sum for every addtion between two
 variables. Otherwise, we could just use long type to avoid the problem.
-
-
+====================
+Using int type:
 //10^9 + 7
 
 int countVowelPermutation(int n){
@@ -31,4 +31,27 @@ int countVowelPermutation(int n){
 	}
 
 	return (((((cntA + cntE) % modVal + cntI) % modVal) + cntO) % modVal + cntU) % modVal;
+}
+===============
+Using long type
+int countVowelPermutation(int n){
+	long cntA = 1, cntE = 1, cntI = 1, cntO = 1, cntU = 1;
+	long tempA = 0, tempE = 0, tempI = 0, tempO = 0, tempU = 0;
+    int modVal = 1000000007;
+	
+	for (int i = 2; i <= n; i++) {
+		tempA = (cntE + cntI + cntU) % modVal;
+		tempE = (cntA + cntI) % modVal;
+		tempI = (cntE + cntO) % modVal;
+		tempO = cntI;
+		tempU = (cntO + cntI) % modVal;
+
+		cntA = tempA;
+		cntE = tempE;
+		cntI = tempI;
+		cntO = tempO;
+		cntU = tempU;
+	}
+
+	return (int)((cntA + cntE + cntI + cntO + cntU) % modVal);
 }
