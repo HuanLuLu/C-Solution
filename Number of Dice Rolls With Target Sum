@@ -1,0 +1,29 @@
+DP problem
+Using easy cases to imply how to get the next states
+three loops, the time complexity is: O(n*k*target)
+the space complexity is O(target)
+
+
+
+#define MIN(a,b) ( a < b ? a : b )
+#define MAX(a,b) ( a > b ? a : b )
+
+int numRollsToTarget(int n, int k, int target){
+	int modVal = 1000000007;
+	int *curr = (int *)calloc( target + 1, sizeof(int) );
+	int *prev = (int *)calloc( target + 1, sizeof(int) );
+
+	prev[0] = 1;
+	int *temp;
+	for (int dice = 1; dice <= n; dice++) {
+        memset(curr, 0, sizeof(int) * (target + 1));
+		for (int idx = 1*dice; idx <= MIN(target, k*dice); idx++) {
+			for (int i = MAX(0, idx - k); i <= idx - 1; i++)
+				curr[idx] = (curr[idx] + prev[i]) % modVal;
+		}
+		temp = curr; curr = prev; prev = temp;
+	}
+	int ret = prev[target];
+	free(curr); free(prev);
+	return ret;
+}
