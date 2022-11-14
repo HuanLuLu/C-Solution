@@ -683,6 +683,9 @@ In this project, I will document all the C coding questions.
 * Paint House II
  * Question: https://leetcode.com/problems/paint-house-ii/
  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Paint%20House%20II
+* Count Vowels Permutation
+ * Question: https://leetcode.com/problems/count-vowels-permutation/
+ * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Count%20Vowels%20Permutation
   
 ## Others:
 * Enumaration: https://github.com/HuanLuLu/C-Solution/blob/main/Boolean%20Type%20In%20C
