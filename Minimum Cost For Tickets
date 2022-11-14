@@ -1,0 +1,48 @@
+several trap:
+1) after 30 days, if we need to travel, we need to buy a another tickets. 
+2) costs not in order. Means, not guarenteed we could just use cost[0] as our first element's cost.
+
+DP
+How to pass the previous status to current?
+We could consider current day's cost is minimum value among three options:  one day ago + one day pass; seven days ago + seven days pass; 30 days
+ago + 30 days pass
+
+Day 0 cost: 0
+Day 1 cost: Day[1] - 1 + cost[0]
+            Day[1] - 7 + cost[1]
+            Day[1] - 30 + cost[2]
+If day1 is 1, then day1 cost is min(day0+cost[0], day0+cost[1], day0+c0st[2])
+
+The gap will equal to the privous value.
+So we set all dp value zero. Then mark the day in days.
+for loop start from dp[1] (to elimit the disorder costs error), if dp[i] == 0, dp[i] = dp[i-1], so we can pass the previous to the next non-zero element.
+
+O(n)
+O(1)---366 days
+
+#define MAX(a,b) ( a > b ? a : b )
+#define MIN(a,b) ( a < b ? a : b )
+
+int mincostTickets(int* days, int daysSize, int* costs, int costsSize){
+	int dp[366] = {0};
+
+	for (int i = 0; i < daysSize; i++) {
+		dp[days[i]] = 1;
+	}
+
+	int idx;
+	for (int i = 1; i <= days[daysSize - 1]; i++) {
+		if (dp[i] == 0) {
+			dp[i] = dp[i-1];
+		}
+		else {
+			idx = MAX(0, i - 1);
+			dp[i] = dp[idx] + costs[0];
+			idx = MAX(0, i - 7);
+			dp[i] = MIN(dp[i], dp[idx] + costs[1]);
+			idx = MAX(0, i - 30);
+			dp[i] = MIN(dp[i], dp[idx] + costs[2]);
+		}
+	}
+	return dp[days[daysSize - 1]];
+}
