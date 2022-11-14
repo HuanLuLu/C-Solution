@@ -686,6 +686,9 @@ In this project, I will document all the C coding questions.
 * Count Vowels Permutation
  * Question: https://leetcode.com/problems/count-vowels-permutation/
  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Count%20Vowels%20Permutation
+* Maximum Length of Repeated Subarray
+ * Question: https://leetcode.com/problems/maximum-length-of-repeated-subarray/
+ * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Maximum%20Length%20of%20Repeated%20Subarray
   
 ## Others:
 * Enumaration: https://github.com/HuanLuLu/C-Solution/blob/main/Boolean%20Type%20In%20C
