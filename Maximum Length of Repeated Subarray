@@ -1,0 +1,36 @@
+DP + optimal memory solution
+Be causion between two question: "1143. Longest Common Subsequence" VS "718. Maximum Length of Repeated Subarray"
+In 1143. Longest Common Subsequence, the defination of common subsequence is the subset can skip postion, and does not need to be consecutive.
+In 718. Maximum Length of Repeated Subarray, we need the subset to be consecutive.
+
+So, in 1143, we need to bring the max of previous to the current step. But in 718, we only consider the diagnal situation. In other words,
+when two numbers are equal, we will use the diagnal element + 1 to be the new value.
+
+O(m*n)
+O(n)
+
+#define MAX(a, b) ( a > b ? a : b )
+
+//nums2Size * nums1Size
+int findLength(int* nums1, int nums1Size, int* nums2, int nums2Size){
+	int *curr = (int *)malloc(sizeof(int) * nums2Size);
+	int *prev = (int *)malloc(sizeof(int) * nums2Size);
+
+	for (int i = nums2Size - 1; i >= 0; i--) {
+		prev[i] = (nums2[i] == nums1[nums1Size - 1]) ? 1 : 0;
+	}
+
+	int *temp, max = 0;
+	for (int n1 = nums1Size - 2; n1 >= 0; n1--) {
+		curr[nums2Size - 1] = (nums2[nums2Size - 1] == nums1[n1]) ? 1 : 0;
+		curr[nums2Size - 1] = MAX(curr[nums2Size - 1], prev[nums2Size - 1]);
+        max = MAX(max, curr[nums2Size - 1]);
+		for (int n2 = nums2Size - 2; n2 >= 0; n2--) {
+			curr[n2] = (nums1[n1] == nums2[n2]) ? prev[n2+1] + 1 : 0;
+            max = MAX(max, curr[n2]);
+		}
+		temp = curr; curr = prev; prev = temp;
+	}
+    free(curr); free(prev);
+	return max;
+}
