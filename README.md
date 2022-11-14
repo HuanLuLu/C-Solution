@@ -692,6 +692,9 @@ In this project, I will document all the C coding questions.
 * Number of Dice Rolls With Target Sum
  * Question: https://leetcode.com/problems/number-of-dice-rolls-with-target-sum/
  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Number%20of%20Dice%20Rolls%20With%20Target%20Sum
+* Minimum Cost For Tickets
+ * Quesion: https://leetcode.com/problems/minimum-cost-for-tickets/submissions/
+ * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Minimum%20Cost%20For%20Tickets
   
 ## Others:
 * Enumaration: https://github.com/HuanLuLu/C-Solution/blob/main/Boolean%20Type%20In%20C
