@@ -1,0 +1,119 @@
+Method1: Brutal force 
+Using backTrack to find all the possible solution.
+Time complexity: it is a binary decision tree. For every elements in s1 and s2, we have two options: we either choose it or not to construct the substring.
+So the time cplx will be O(2 ^(m+n))
+
+Space complexity: 
+Stack, depends on the height of the decision tree. it will be the length of the str3: O(m+n)
+
+bool backTracking(char * s1, char * s2, char * s3, int idx1, int idx2, int idx3, int cnt1, int cnt2, int lastStr) {
+	if (idx3 == strlen(s3)) {
+		if (abs(cnt1 - cnt2) <= 1) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	int tempCnt, ret;
+	if (idx1 < strlen(s1) && s1[idx1] == s3[idx3]) {
+		tempCnt = (lastStr == 1) ? cnt1 : cnt1 + 1;
+		if (backTracking(s1, s2, s3, idx1+1, idx2, idx3+1, tempCnt, cnt2, 1)) {return true;}
+	}
+
+	if (idx2 < strlen(s2) && s2[idx2] == s3[idx3]) {
+		tempCnt = (lastStr == 2) ? cnt2 : cnt2 + 1;
+		if (backTracking(s1, s2, s3, idx1, idx2+1, idx3+1, cnt1, tempCnt, 2)) {return true;}
+	}
+	return false;
+}
+
+
+bool isInterleave(char * s1, char * s2, char * s3){
+	int idx1 = 0, idx2 = 0, idx3 = 0;
+	int cnt1  = 0, cnt2 = 0;
+	int lastStr = 0;
+    if (strlen(s3) != strlen(s1) + strlen(s2)) {return false;}
+	return backTracking(s1, s2, s3, idx1, idx2, idx3, cnt1, cnt2, lastStr);
+}
+
+==================
+Method2 : DP
+The key of DP solution is to find the current states and how to pass it to the next one.
+Consider 
+--------------
+str1: "aab"; 
+str2: "cd"; 
+str3: "aacdb"
+--------------
+We first notice one thing is the index of str3 is equal to index of str1 plus index of str2:  idx3 = idx1 + idx2 - 1;
+So at idx1 = i, idx2 = j, the current state depends on 2 conditions: if current elements in str1 or str2 is equal to the element in s3 
+and the previous related status.
+
+Now we use the following two dimention matrix to store the status. Each elements is boolean type, means if just using current substring 1
+and substring 2, we could construct corresponding string 3.
+
+We add extra column and row to represent 0. It means we does not choose any elements from the corresponding string.
+
+Let's check the example. We mark x in the following matrix. How to decide the status of position x?
+the row of x is 2, the columen of x is 2. Now we are checking the forth elemnt in s3. We either have checked two elements in s1 and 1 in s2,
+or 1 in s1 and 2 in s2. How to decide? 
+
+No better solution, but we have to check both. So, if s1[2] matches, it means we are now choosing the second element in s1, and in another words,
+So in the previous status, we chose two elements in s2, and one element in s1, which is the matrix[1][2].
+
+If now s2[2] mathes, it means the previous status is we chose 2 elements in s1 and 1 element in s2, which is martrix[2][1]
+
+ 0 c d
+0
+a
+a    x
+b
+
+So we could use DP to solve the problem:
+Time: O(m*n)
+Space: O(n)
+
+bool isInterleave(char * s1, char * s2, char * s3){
+	if (strlen(s1) + strlen(s2) != strlen(s3)) {return false;}
+
+	int *prev = (int *)malloc(sizeof(int) * (strlen(s2) + 1)); 
+	int *curr = (int *)malloc(sizeof(int) * (strlen(s2) + 1));
+
+	prev[0] = true;
+	for (int i = 1; i < strlen(s2) + 1; i++) {
+		prev[i] = (s2[i-1] == s3[i-1]) ? prev[i-1] : false;
+	}
+
+	int *temp;
+	for (int i = 1; i < strlen(s1) + 1; i++) {
+		curr[0] = (s1[0] == s3[0]) ? prev[0] : false;
+		for (int j = 1; j < strlen(s2) + 1; j++) {
+			if (s1[i-1] == s3[i + j - 1]) {
+				if (prev[j]) {
+					curr[j] = true;
+					continue;
+				}
+			}
+
+			if (s2[j-1] == s3[i + j - 1]) {
+				if (curr[j-1]) {
+					curr[j] = true;
+					continue;
+				}
+			}
+
+			curr[j] = false;
+		}
+		temp = curr; curr = prev; prev = temp;
+	}
+	int ret = prev[strlen(s2)];
+	free(prev); free(curr);
+	return ret;
+}
+
+
+
+
+
