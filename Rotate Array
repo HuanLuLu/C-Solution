@@ -1,3 +1,29 @@
+
+circular index:
+O(n), O(1)
+void rotate(int* nums, int numsSize, int k){
+	int cnt = 0;
+	int currIdx = 0, tempIdx = 0, tempVal = nums[0];
+	int nextIdx, nextVal;
+
+	while (cnt < numsSize) {
+        nextIdx = (k + tempIdx) % numsSize;
+        nextVal = nums[nextIdx];
+        nums[nextIdx] = tempVal;
+
+        tempVal = nextVal;
+        tempIdx = nextIdx;
+        cnt++;
+		if (tempIdx == currIdx && cnt < numsSize) {
+			currIdx++;
+			tempIdx = currIdx;
+			tempVal = nums[tempIdx];
+		}
+	}
+	return;
+}
+
+========================
 time O(n); space O(1)
 
 void reverse(int *nums, int start, int end) {
