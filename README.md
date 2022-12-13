@@ -92,6 +92,9 @@ In this project, I will document all the C coding questions.
 * Two Sum III - Data structure design
   * Question: https://leetcode.com/problems/two-sum-iii-data-structure-design/
   * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Two%20Sum%20III%20-%20Data%20structure%20design
+* Rotate Image
+  * Question: https://leetcode.com/problems/rotate-image/description/
+  * Solution: https://github.com/HuanLuLu/C-Solution/blob/main/Rotate%20Image
 
 ## List
 * Singly Linked List
